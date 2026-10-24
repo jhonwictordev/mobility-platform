@@ -1,7 +1,7 @@
-const assert = require('assert');
-const path = require('path');
-const fs = require('fs');
 const { execSync } = require('child_process');
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
 console.log('======================================================================');
 console.log('🧪 SUÍTE DE TESTES: SIMBORA — MAPAS, ROTEAMENTO E SIMULAÇÃO ALAGOAS');
@@ -10,34 +10,50 @@ console.log('===================================================================
 let passed = 0;
 let failed = 0;
 
+const curlCmd = process.platform === 'win32' ? 'curl.exe' : 'curl';
+const nullDev = process.platform === 'win32' ? 'NUL' : '/dev/null';
+
 function test(name, fn) {
   try {
     fn();
     console.log(`✅ [PASS] ${name}`);
     passed++;
   } catch (err) {
-    console.error(`❌ [FAIL] ${name}\n   Erro: ${err.message}`);
+    console.error(`❌ [FAIL] ${name}`);
+    console.error(`   Erro: ${err.message}\n`);
     failed++;
   }
 }
 
-// 1. Eliminação Definitiva do HTTP 403 (tile.openstreetmap.org)
+// 1. Proibição de Servidores Públicos OpenStreetMap
 test('1. Nenhum arquivo ativo deve referenciar tile.openstreetmap.org', () => {
-  const studioFile = path.join(__dirname, '..', 'mobility_interactive_studio.html');
-  const content = fs.readFileSync(studioFile, 'utf8');
-  assert.strictEqual(content.includes('tile.openstreetmap.org'), false, 'Ainda contém tile.openstreetmap.org!');
+  const rootDir = path.resolve(__dirname, '..');
+  const filesToCheck = [
+    path.join(rootDir, 'mobility_interactive_studio.html'),
+    path.join(rootDir, 'apps', 'studio', 'index.html'),
+  ];
+
+  for (const file of filesToCheck) {
+    if (fs.existsSync(file)) {
+      const content = fs.readFileSync(file, 'utf8');
+      assert.ok(
+        !content.includes('tile.openstreetmap.org'),
+        `Encontrada referência bloqueada a tile.openstreetmap.org no arquivo: ${file}`
+      );
+    }
+  }
 });
 
 // 2. Provedores Cartográficos (Esri World Street Map HD & MapTiler)
 test('2. Provedor de tiles deve responder com HTTP 200 OK e imagem válida sem marca d\'água', () => {
-  const cmd = 'curl.exe -s -o NUL -w "%{http_code}" "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/10/548/351.jpg"';
+  const cmd = `${curlCmd} -s -o ${nullDev} -w "%{http_code}" "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/10/548/351.jpg"`;
   const statusCode = execSync(cmd, { encoding: 'utf8' }).trim();
   assert.strictEqual(statusCode, '200', `Esperado HTTP 200, recebido: ${statusCode}`);
 });
 
 // 3. Endpoint Backend /location/route (openrouteservice / Alagoas homologado)
 test('3. Backend /location/route deve calcular trajeto rodoviário real Piaçabuçu → Penedo', () => {
-  const cmd = 'curl.exe -s "http://localhost:3001/location/route?originLat=-10.4056&originLng=-36.4344&destLat=-10.2897&destLng=-36.5864"';
+  const cmd = `${curlCmd} -s "http://localhost:3001/location/route?originLat=-10.4056&originLng=-36.4344&destLat=-10.2897&destLng=-36.5864"`;
   const res = JSON.parse(execSync(cmd, { encoding: 'utf8' }));
   assert.strictEqual(res.status, 'OK');
   assert.strictEqual(res.profile, 'driving-car');
@@ -49,7 +65,7 @@ test('3. Backend /location/route deve calcular trajeto rodoviário real Piaçabu
 
 // 4. Proibição Estrita de Linhas Retas e Tratamento de Erro (HTTP 422)
 test('4. Rotas desconhecidas ou não rodoviárias devem retornar HTTP 422 com mensagem explícita', () => {
-  const cmd = 'curl.exe -s "http://localhost:3001/location/route?originLat=0&originLng=0&destLat=10&destLng=10"';
+  const cmd = `${curlCmd} -s "http://localhost:3001/location/route?originLat=0&originLng=0&destLat=10&destLng=10"`;
   const res = JSON.parse(execSync(cmd, { encoding: 'utf8' }));
   assert.strictEqual(res.statusCode, 422);
   assert.strictEqual(res.error, 'ROUTING_FAILED');
@@ -61,7 +77,6 @@ test('5. Interpolação Turf.js ao longo de 28,2 km deve calcular coordenadas e 
   const routes = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'packages', 'alagoas_routes.json'), 'utf8'));
   const coords = routes.piacabucu_penedo.coordinates;
   
-  // Teste com Turf.js (ou cálculo vetorial equivalente de along)
   const p1 = coords[0];
   const p2 = coords[Math.floor(coords.length / 2)];
   const pEnd = coords[coords.length - 1];
@@ -100,7 +115,7 @@ test('7. Identidade visual SIMBORA (#123D32, #16A572, #FFCC45) aplicada no HTML'
 
 // 8. Validação do Endpoint de Configuração Cartográfica do Backend
 test('8. Backend /location/config deve fornecer configuração do mapa e perfil', () => {
-  const cmd = 'curl.exe -s "http://localhost:3001/location/config"';
+  const cmd = `${curlCmd} -s "http://localhost:3001/location/config"`;
   const res = JSON.parse(execSync(cmd, { encoding: 'utf8' }));
   assert.strictEqual(res.state, 'Alagoas');
   assert.strictEqual(res.routingProfile, 'driving-car');
