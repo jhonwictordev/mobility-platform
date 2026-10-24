@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <!-- Favicon Optimized for 16px/32px/64px crisp legibility -->
+  <rect width="64" height="64" rx="14" fill="#123D32"/>
+  <path d="M 18 48 C 18 38 32 35 36 28 C 40 21 38 14 30 11 C 24 9 16 13 17 21 L 10 20 C 8 8 20 2 32 4 C 44 6 48 18 40 27 C 32 35 24 37 22 42 C 20 47 24 49 28 49 C 36 49 42 43 47 36 L 53 41 C 45 52 36 57 26 57 C 15 57 10 52 18 48 Z" fill="#16A572"/>
+  <polygon points="34,7 48,5 46,19 41,14 32,23 27,18 36,9" fill="#FFCC45"/>
+  <circle cx="18" cy="48" r="3" fill="#FFFFFF"/>
+</svg>

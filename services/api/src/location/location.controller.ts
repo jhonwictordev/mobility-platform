@@ -43,4 +43,19 @@ export class LocationController {
       Number(toLng),
     );
   }
+
+  @Get('route')
+  async getRoute(
+    @Query('originLat') originLat: number,
+    @Query('originLng') originLng: number,
+    @Query('destLat') destLat: number,
+    @Query('destLng') destLng: number,
+  ) {
+    return this.locationService.getRoadRoute(
+      Number(originLat),
+      Number(originLng),
+      Number(destLat),
+      Number(destLng),
+    );
+  }
 }
