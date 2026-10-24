@@ -51,7 +51,7 @@ jobs:
       - name: 4. Backend Dependencies & Compilation
         run: |
           cd services/api
-          npm ci --ignore-scripts
+          npm install --ignore-scripts
           npm run build
 
       - name: 5. Execute SIMBORA Regression & Cartographic Test Suite
