@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 3: MONOGRAMA GEOMÉTRICO ORIGINAL ("THE ARCHITECTURAL MONOGRAM") -->
+  <!-- Construção construtivista angular: dois blocos facetados em 45 graus, zero curvas, zero fitas, máxima autoridade -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .p3-title { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2.5px; fill: #123D32; }
+      .p3-slogan { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: 1.8px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO MONOGRAMA ARQUITETÔNICO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Bloco Superior Verde Vibrante (Fuga em 45°) -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Verde Profundo (Base de Ancoragem) -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#123D32"/>
+
+    <!-- Micro-acento solar em corte de 45° no vértice central -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="5" fill="#FFCC45"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p3-title">SIMBORA</text>
+  <text x="198" y="138" class="p3-slogan">Pediu. Chegou. Simbora!</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="100%" height="100%">
+  <!-- PROPOSTA 1: WORDMARK PERSONALIZADO (SEM SÍMBOLO) -->
+  <!-- Lettering geométrico proprietário com corte angular no 'M' e ponto de energia solar no 'O' -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p1-slogan {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="600" height="200" fill="#FFFFFF"/>
+
+  <!-- WORDMARK VETORIAL CUSTOMIZADO (Y: 105) -->
+  <g transform="translate(40, 45)">
+    <!-- Letra S: Cortes chanfrados paralelos -->
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#123D32"/>
+
+    <!-- Letra I: Coluna pura com corte óptico -->
+    <path d="M 98 6 L 115 6 L 115 95 L 98 95 Z" fill="#123D32"/>
+
+    <!-- Letra M: Hastes angulares e vértice geométrico dinâmico -->
+    <path d="M 128 6 L 148 6 L 166 60 L 184 6 L 204 6 L 204 95 L 187 95 L 187 32 L 172 78 L 159 78 L 145 32 L 145 95 L 128 95 Z" fill="#123D32"/>
+    <!-- Detalhe do corte angular superior no M em Verde Vibrante -->
+    <polygon points="159,6 166,22 173,6" fill="#16A572"/>
+
+    <!-- Letra B: Bojos geométricos com proporção áurea -->
+    <path d="M 218 6 L 248 6 C 263 6, 273 13, 273 26 C 273 34, 267 41, 258 44 C 270 48, 277 56, 277 71 C 277 86, 264 95, 246 95 L 218 95 Z M 235 20 L 235 40 L 246 40 C 253 40, 257 36, 257 30 C 257 24, 253 20, 246 20 Z M 235 53 L 235 81 L 247 81 C 255 81, 260 76, 260 67 C 260 59, 255 53, 247 53 Z" fill="#123D32"/>
+
+    <!-- Letra O: Anel externo com núcleo solar Amarelo Energia no centro -->
+    <path d="M 324 5 C 352 5, 372 25, 372 51 C 372 76, 352 96, 324 96 C 297 96, 276 76, 276 51 C 276 25, 297 5, 324 5 Z M 324 21 C 307 21, 294 34, 294 51 C 294 67, 307 80, 324 80 C 341 80, 354 67, 354 51 C 354 34, 341 21, 324 21 Z" fill="#123D32"/>
+    <!-- Ponto Solar central dentro do O -->
+    <circle cx="324" cy="51" r="10" fill="#FFCC45"/>
+
+    <!-- Letra R: Haste diagonal dinâmica com corte esportivo -->
+    <path d="M 386 6 L 416 6 C 432 6, 442 15, 442 29 C 442 40, 434 48, 423 51 L 444 95 L 424 95 L 406 55 L 403 55 L 403 95 L 386 95 Z M 403 20 L 403 42 L 414 42 C 422 42, 426 38, 426 31 C 426 24, 422 20, 414 20 Z" fill="#123D32"/>
+
+    <!-- Letra A: Triângulo com ápice geométrico chanfrado -->
+    <path d="M 476 6 L 496 6 L 522 95 L 503 95 L 497 73 L 474 73 L 468 95 L 450 95 Z M 486 28 L 478 59 L 493 59 Z" fill="#123D32"/>
+  </g>
+
+  <!-- SLOGAN OFICIAL PRESERVADO -->
+  <text x="44" y="165" class="p1-slogan">Pediu. Chegou. Simbora!</text>
+  <line x1="285" y1="160" x2="550" y2="160" stroke="#FFCC45" stroke-width="2"/>
+</svg>

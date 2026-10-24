@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 3: APP ICON (THE ARCHITECTURAL MONOGRAM) -->
+  <defs>
+    <clipPath id="p3Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Monograma Arquitetônico Escalado (Escala 3.0x, Offset: 80, 80) -->
+  <g transform="translate(68, 68) scale(3.0)">
+    <!-- Bloco Superior Verde Vibrante -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Branco Suave para Máximo Contraste Noturno -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#F8F9F6"/>
+
+    <!-- Acento Solar Dourado -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="6" fill="#FFCC45"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 1: APP ICON (CUSTOM LETTERMARK "S" + PONTO SOLAR) -->
+  <defs>
+    <clipPath id="p1Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Letra S Proprietária Escalada -->
+  <g transform="translate(130, 80) scale(3.5)">
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Ponto Solar de Energia no Canto Superior Direito -->
+  <circle cx="395" cy="115" r="32" fill="#FFCC45"/>
+  <circle cx="395" cy="115" r="16" fill="#16A572"/>
+</svg>

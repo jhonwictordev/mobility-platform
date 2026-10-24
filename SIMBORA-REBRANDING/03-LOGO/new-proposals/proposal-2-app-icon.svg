@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 2: APP ICON (THE QUADRANT APERTURE) -->
+  <defs>
+    <clipPath id="p2Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Símbolo Escalado e Centralizado (Tamanho 300x300, Offset: 106, 106) -->
+  <g transform="translate(106, 106) scale(2.5)">
+    <!-- Quadrante Superior Esquerdo (Branco Suave) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#F8F9F6"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Branco Suave) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#F8F9F6"/>
+
+    <!-- Núcleo Central de Conexão Solar -->
+    <circle cx="60" cy="60" r="15" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6.5" fill="#123D32"/>
+  </g>
+</svg>

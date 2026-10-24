@@ -27,8 +27,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
-      - name: 3. Secret Pattern Detection
-        name: Scan for Hardcoded Secrets
+      - name: 3. Scan for Hardcoded Secrets
         run: |
           echo "Scanning for accidental token and key leakage..."
           python3 -c "
