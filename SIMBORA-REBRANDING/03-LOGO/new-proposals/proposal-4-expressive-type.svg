@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 4: IDENTIDADE TIPOGRÁFICA EXPRESSIVA ("THE ENERGETIC DISPLAY") -->
+  <!-- Lettering bold expressivo, dinâmico e amigável com presença massiva e pulso solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p4-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 64px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        fill: #123D32;
+      }
+      .p4-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SELO EXPRESSIVO NO TOPO DO NOME -->
+  <g transform="translate(45, 30)">
+    <!-- Barra Dinâmica Superior em Verde Vibrante e Amarelo -->
+    <rect x="0" y="0" width="40" height="8" rx="4" fill="#16A572"/>
+    <rect x="48" y="0" width="18" height="8" rx="4" fill="#FFCC45"/>
+
+    <!-- WORDMARK EXPRESSIVO GIGANTE -->
+    <text x="0" y="85" class="p4-title">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+
+    <!-- SLOGAN & ASSINATURA -->
+    <text x="3" y="125" class="p4-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
