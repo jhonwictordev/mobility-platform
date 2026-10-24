@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradients for kinetic flow -->
+    <linearGradient id="riverRibbon" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="50%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <linearGradient id="innerLoopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#123D32"/>
+    </linearGradient>
+
+    <filter id="shadowIcon" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#123D32" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Surface -->
+  <rect width="400" height="400" rx="48" fill="#123D32"/>
+
+  <!-- Subtle Topography / River Curve background motif -->
+  <path d="M -50 150 Q 150 100 250 250 T 450 200" fill="none" stroke="#16A572" stroke-width="1.5" stroke-opacity="0.15"/>
+  <path d="M -50 200 Q 150 150 250 300 T 450 250" fill="none" stroke="#16A572" stroke-width="1.5" stroke-opacity="0.15"/>
+  <path d="M -50 250 Q 150 200 250 350 T 450 300" fill="none" stroke="#16A572" stroke-width="1.5" stroke-opacity="0.15"/>
+
+  <!-- S-Movement Emblem (Alagoas Highway & Rio São Francisco Meander) -->
+  <g filter="url(#shadowIcon)" transform="translate(60, 50)">
+    <!-- Lower Origin Pin / Starting Point (Piaçabuçu) -->
+    <circle cx="55" cy="245" r="16" fill="#16A572"/>
+    <circle cx="55" cy="245" r="7" fill="#F8F9F6"/>
+
+    <!-- Dynamic Flow Track (AL-101 / AL-225 Path) -->
+    <!-- Base Lower Loop of 'S' -->
+    <path d="M 55 245 C 55 200 120 185 150 155 C 180 125 185 85 145 65 C 115 50 70 70 75 110 L 35 105 C 28 45 95 15 155 25 C 215 35 235 95 195 145 C 160 185 115 190 100 220 C 90 240 105 255 130 255 C 165 255 190 230 215 195 L 245 220 C 210 270 170 295 120 295 C 65 295 35 265 55 245 Z" 
+          fill="url(#riverRibbon)"/>
+
+    <!-- High Velocity Forward Arrow / Destination Beacon (Penedo) -->
+    <!-- Seta superior direita integrada na terminação do 'S' -->
+    <path d="M 175 35 L 245 25 L 235 95 L 210 70 L 165 115 L 140 90 L 185 45 Z" 
+          fill="#FFCC45"/>
+
+    <!-- Kinetic Pulsing Node at destination -->
+    <circle cx="235" cy="35" r="8" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Subtitle for Proposal B display -->
+  <text x="200" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="800" fill="#F8F9F6" letter-spacing="3">
+    SÍMBOLO DE MOVIMENTO
+  </text>
+  <text x="200" y="382" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="600" fill="#FFCC45" letter-spacing="1.5">
+    ROTA PIAÇABUÇU ➔ PENEDO
+  </text>
+</svg>

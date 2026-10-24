@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Rich Deep Forest Background with subtle radial glow -->
+    <radialGradient id="bgRadial" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+
+    <!-- Flow Track Gradient: Emerald to Warm Solar Yellow -->
+    <linearGradient id="iconFlowGrad" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="45%" stop-color="#1CD291"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <!-- Kinetic Arrow Gradient -->
+    <linearGradient id="solarArrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFCC45"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <!-- App Icon Specular Drop Shadow -->
+    <filter id="iconDepth" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#051410" flood-opacity="0.5"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#16A572" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- iOS / Squircle Mask Base -->
+  <rect width="512" height="512" rx="115" fill="url(#bgRadial)"/>
+
+  <!-- Subtle Ambient Ring Contour -->
+  <circle cx="256" cy="256" r="210" fill="none" stroke="#16A572" stroke-width="2" stroke-opacity="0.2"/>
+
+  <!-- Iconic S Kinetic Road & River Symbol -->
+  <g filter="url(#iconDepth)" transform="translate(116, 116)">
+    <!-- Origin Waypoint (Piaçabuçu - Embarque) -->
+    <circle cx="70" cy="215" r="18" fill="#16A572"/>
+    <circle cx="70" cy="215" r="8" fill="#F8F9F6"/>
+
+    <!-- Dynamic Flow Track (AL-101 / AL-225 S-Ribbon) -->
+    <path d="M 70 215 C 70 165 135 150 155 120 C 175 90 170 55 138 42 C 108 30 70 50 74 85 L 32 80 C 24 25 85 -2 145 7 C 205 16 220 72 185 116 C 152 154 110 160 98 186 C 88 208 102 222 124 222 C 158 222 184 198 208 168 L 236 190 C 202 238 162 260 114 260 C 62 260 38 238 70 215 Z" 
+          fill="url(#iconFlowGrad)"/>
+
+    <!-- Kinetic Arrow (Destination Arrival - Penedo) -->
+    <path d="M 166 22 L 235 14 L 226 82 L 202 58 L 158 102 L 134 78 L 178 34 Z" 
+          fill="url(#solarArrowGrad)"/>
+
+    <!-- Destination GPS Beacon Pulse -->
+    <circle cx="226" cy="22" r="8" fill="#FFFFFF"/>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+{
+  "name": "mobility-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Independent ride-hailing mobility platform",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "cd services/api && npm run start:dev",
+    "dev:admin": "cd apps/admin && npm run dev",
+    "build:api": "cd services/api && npm run build",
+    "build:admin": "cd apps/admin && npm run build",
+    "seed": "cd services/api && npm run seed",
+    "test": "cd services/api && npm test",
+    "test:e2e": "cd tests && npm test",
+    "clean": "rimraf **/node_modules **/dist **/.next"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "license": "MIT"
+}

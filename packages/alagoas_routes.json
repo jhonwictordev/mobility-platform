@@ -1,0 +1,73 @@
+{
+  "corridor": "Piaçabuçu ⇄ Penedo (Alagoas)",
+  "region": "Baixo São Francisco, Alagoas, Brasil",
+  "distanceKm": 28.4,
+  "estimatedDurationMinutes": 28,
+  "highway": "AL-101 Sul / AL-225",
+  "origin": {
+    "city": "Piaçabuçu",
+    "state": "AL",
+    "name": "Praça São Francisco de Borja (Centro)",
+    "address": "Praça São Francisco de Borja, 100 - Centro, Piaçabuçu - AL",
+    "lat": -10.4058,
+    "lng": -36.4344
+  },
+  "destination": {
+    "city": "Penedo",
+    "state": "AL",
+    "name": "Largo de São Gonçalo (Centro Histórico)",
+    "address": "Largo de São Gonçalo, s/n - Centro Histórico, Penedo - AL",
+    "lat": -10.2917,
+    "lng": -36.5819
+  },
+  "waypoints": [
+    {
+      "step": 1,
+      "title": "Partida em Piaçabuçu",
+      "instruction": "Siga na direção noroeste pela Rua Silvestre Péricles em direção à AL-101",
+      "lat": -10.4058,
+      "lng": -36.4344,
+      "distanceFromStartKm": 0.0
+    },
+    {
+      "step": 2,
+      "title": "Acesso à Rodovia AL-101 Sul",
+      "instruction": "Entre na rodovia AL-101 Sul, passando pelos coqueirais de Piaçabuçu",
+      "lat": -10.3850,
+      "lng": -36.4650,
+      "distanceFromStartKm": 4.5
+    },
+    {
+      "step": 3,
+      "title": "Povoado Retiro",
+      "instruction": "Continue reto na AL-101 Sul contornando o Rio São Francisco",
+      "lat": -10.3620,
+      "lng": -36.4980,
+      "distanceFromStartKm": 11.2
+    },
+    {
+      "step": 4,
+      "title": "Entroncamento AL-225 / Várzeas de Marituba",
+      "instruction": "Mantenha à esquerda na AL-225 rumo ao pólo histórico de Penedo",
+      "lat": -10.3340,
+      "lng": -36.5350,
+      "distanceFromStartKm": 19.8
+    },
+    {
+      "step": 5,
+      "title": "Entrada de Penedo (Av. Wanderley)",
+      "instruction": "Entre na Av. Wanderley e siga em direção à Orla do Rio São Francisco",
+      "lat": -10.3010,
+      "lng": -36.5680,
+      "distanceFromStartKm": 26.1
+    },
+    {
+      "step": 6,
+      "title": "Chegada: Centro Histórico de Penedo",
+      "instruction": "Destino alcançado no Largo de São Gonçalo / Orla Fluvial",
+      "lat": -10.2917,
+      "lng": -36.5819,
+      "distanceFromStartKm": 28.4
+    }
+  ]
+}

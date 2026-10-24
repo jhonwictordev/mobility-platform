@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <!-- Cartão Digital de Motorista Parceiro 600x380 -->
+  <defs>
+    <radialGradient id="cardBg" cx="30%" cy="30%" r="90%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+    <filter id="cardShad" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="380" rx="28" fill="url(#cardBg)" stroke="#16A572" stroke-width="2"/>
+
+  <!-- Top Header with SIMBORA brand -->
+  <g transform="translate(40, 36)">
+    <!-- Brand -->
+    <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" fill="#F8F9F6" letter-spacing="3">
+      SIMBORA
+    </text>
+    <text x="135" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="800" fill="#FFCC45" letter-spacing="2">
+      MOTORISTA
+    </text>
+
+    <!-- Verified Badge -->
+    <g transform="translate(400, 4)">
+      <rect width="120" height="26" rx="13" fill="#16A572" fill-opacity="0.25" stroke="#16A572" stroke-width="1"/>
+      <circle cx="16" cy="13" r="4" fill="#FFCC45"/>
+      <text x="28" y="17" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="800" fill="#F8F9F6">
+        VERIFICADO
+      </text>
+    </g>
+  </g>
+
+  <!-- Driver Profile Section -->
+  <g transform="translate(40, 95)">
+    <!-- Avatar Circle -->
+    <circle cx="50" cy="50" r="50" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+    <text x="50" y="62" text-anchor="middle" font-size="44">👨🏽‍💼</text>
+
+    <!-- Driver Info -->
+    <g transform="translate(125, 15)">
+      <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" fill="#F8F9F6">
+        Carlos Oliveira
+      </text>
+      <text x="0" y="48" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#16A572">
+        Motorista Oficial Parceiro • Alagoas
+      </text>
+      <text x="0" y="70" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFCC45">
+        ⭐ 4.95 • 342 Corridas Realizadas
+      </text>
+    </g>
+  </g>
+
+  <!-- Vehicle Info Box -->
+  <g transform="translate(40, 225)">
+    <rect width="520" height="85" rx="16" fill="#17211D" stroke="#16A572" stroke-width="0.8"/>
+    
+    <g transform="translate(24, 20)">
+      <text x="0" y="18" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="700" fill="#16A572" letter-spacing="1">
+        VEÍCULO AUTORIZADO
+      </text>
+      <text x="0" y="44" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="800" fill="#F8F9F6">
+        Toyota Corolla Hybrid 2023 • Prata
+      </text>
+    </g>
+
+    <g transform="translate(360, 20)">
+      <text x="0" y="18" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="700" fill="#16A572" letter-spacing="1">
+        PLACA MERCOSUL
+      </text>
+      <text x="0" y="44" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="900" fill="#FFCC45" letter-spacing="1">
+        BRA2E19
+      </text>
+    </g>
+  </g>
+
+  <!-- Footer Tagline -->
+  <g transform="translate(40, 345)">
+    <text x="0" y="10" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#F8F9F6" fill-opacity="0.6">
+      Simbora com segurança • Penedo ⇄ Piaçabuçu
+    </text>
+    <text x="520" y="10" text-anchor="end" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="800" fill="#16A572">
+      Pediu. Chegou. Simbora!
+    </text>
+  </g>
+</svg>

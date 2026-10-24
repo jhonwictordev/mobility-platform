@@ -1,0 +1,36 @@
+# Node & Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+
+# Production Builds
+dist/
+*/dist/
+*/*/dist/
+.next/
+*/.next/
+*/*/.next/
+out/
+build/
+
+# SQLite Databases & Logs
+*.sqlite
+*.sqlite-journal
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# External Research Cloned Repositories
+research/rea/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Mobility Driver",
+    "slug": "mobility-driver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mobility.driver"
+    },
+    "android": {
+      "package": "com.mobility.driver",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "INTERNET",
+        "VIBRATE",
+        "WAKE_LOCK"
+      ]
+    }
+  }
+}
