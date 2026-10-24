@@ -1,59 +1,68 @@
-# GUIA DE CONFIGURAÇÃO DO MAPTILER CLOUD — SIMBORA
+# MapTiler Cloud Setup & Integration Guide
 
-> **Documento:** `docs/MAPTILER_SETUP.md`  
-> **Finalidade:** Passo a passo para obtenção e configuração de chaves do MapTiler Cloud
-
----
-
-## 1. COMO OBTER UMA CHAVE GRATUITA NO MAPTILER
-
-1. Acesse o portal oficial do provedor:  
-   👉 **[https://cloud.maptiler.com/account/keys/](https://cloud.maptiler.com/account/keys/)**
-2. Clique em **"Sign in"** ou **"Create a free account"** (pode utilizar login social com Google ou GitHub).
-3. Após o login, vá até a aba **"API keys"**.
-4. Copie a chave padrão gerada ou clique em **"Create a new key"** (exemplo de nome: `SIMBORA Mobility Web`).
-
-> [!TIP]
-> **Limite do Plano Gratuito:** O plano Free do MapTiler oferece **100.000 requisições de mapas por mês**, o que é mais do que suficiente para todo o ciclo de desenvolvimento, testes e simulação contínua.
+**Document:** `docs/MAPTILER_SETUP.md`  
+**Platform:** SIMBORA Mobility Platform  
 
 ---
 
-## 2. BOAS PRÁTICAS DE SEGURANÇA (RESTRIÇÃO DE DOMÍNIOS)
+## 1. Overview
 
-No painel do MapTiler, clique sobre a sua chave e configure as **"Key restrictions"**:
-- **Allowed HTTP referrers:**
-  - `http://localhost:*`
-  - `http://127.0.0.1:*`
-  - `file://*` (para abertura local de arquivos HTML no navegador)
-
-Dessa forma, sua chave pública de mapa não poderá ser consumida por sites de terceiros caso seja visualizada no código frontend.
+MapTiler Cloud provides vector tile services, font glyphs, and styling assets for MapLibre GL JS clients in SIMBORA. This document outlines how to obtain, configure, and secure MapTiler API credentials for local development and production environments.
 
 ---
 
-## 3. CONFIGURAÇÃO NO PROJETO
+## 2. Obtaining an API Key
 
-### Opção A: No SIMBORA Studio (Direto no Navegador)
-1. Abra o arquivo `mobility_interactive_studio.html` no Brave.
-2. No topo da tela, clique no botão **"Chaves API"**.
-3. Cole sua chave no campo `VITE_MAPTILER_KEY (MapTiler Cloud)`.
-4. Clique em **"Salvar e Aplicar"**.
-5. O estúdio recarregará instantaneamente o estilo vetorial **MapTiler Streets v2** e salvará a chave com segurança no `localStorage` do seu navegador.
+1. Register for an account on [MapTiler Cloud](https://cloud.maptiler.com/).
+2. Navigate to **Account** → **Keys**.
+3. Create a new key with access to **Maps** (specifically `streets-v2`).
+4. Note your public key (alphanumeric string).
 
-### Opção B: Via Variáveis de Ambiente
-Copie o arquivo `.env.example` para `.env`:
-```bash
-cp .env.example .env
-```
-E preencha com a sua chave:
+---
+
+## 3. Configuring the Environment
+
+### 3.1 Local Environment File (`.env.local`)
+Create or edit `.env.local` in the project root:
+
 ```env
-VITE_MAPTILER_KEY=sua_chave_maptiler_aqui
-NEXT_PUBLIC_MAPTILER_KEY=sua_chave_maptiler_aqui
+# MapTiler Cloud Public API Key
+VITE_MAPTILER_KEY=your_actual_maptiler_key_here
+NEXT_PUBLIC_MAPTILER_KEY=your_actual_maptiler_key_here
+MAPTILER_API_KEY=your_actual_maptiler_key_here
 ```
+
+*Note: `.env.local` is included in `.gitignore` and must never be committed to source control.*
+
+### 3.2 Dynamic Configuration Ingestion
+The NestJS backend API reads `.env.local` on startup and serves the client configuration at:
+```http
+GET http://localhost:3001/location/config
+```
+Response format:
+```json
+{
+  "maptilerKey": "...",
+  "hasKey": true,
+  "routingProfile": "driving-car",
+  "activeCorridor": "Piaçabuçu -> Penedo",
+  "state": "Alagoas"
+}
+```
+
+SIMBORA Studio automatically checks this endpoint upon initialization and configures both mobile viewports.
 
 ---
 
-## 4. O QUE ACONTECE SE A CHAVE NÃO FOR INFORMADA?
+## 4. Key Security & Domain Restrictions
 
-A plataforma **SIMBORA** foi arquitetada com resiliência de produção:
-- Se nenhuma chave do MapTiler for informada, o sistema ativa automaticamente o fallback **CartoDB Voyager**.
-- O mapa carrega perfeitamente em alta definição, sem telas em branco, sem travamentos e com **zero erros HTTP 403**.
+Because browser-based map renderers transmit the API key in tile requests, apply the following security practices:
+
+1. **Domain Whitelisting**:
+   In the MapTiler Cloud console, configure **Allowed HTTP Origins**:
+   * For local testing: `http://localhost:3000`, `http://localhost:3001`, `http://localhost:8080`, `http://127.0.0.1:*`
+   * For production: `https://*.yourdomain.com`
+2. **Never Use MapTiler Keys for Backend Routing**:
+   MapTiler keys should only authenticate raster/vector tile and style downloads. Server-side highway routing uses OpenRouteService keys stored strictly within private backend environment variables.
+3. **Key Rotation**:
+   If a client key is accidentally committed or exposed publicly, rotate the key in the MapTiler dashboard immediately and update `.env.local`.

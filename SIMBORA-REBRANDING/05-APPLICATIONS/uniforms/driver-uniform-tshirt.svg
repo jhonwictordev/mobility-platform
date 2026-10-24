@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" width="100%" height="100%">
+  <!-- SIMBORA — UNIFORME OFICIAL DO MOTORISTA PARCEIRO: CAMISA POLO -->
+  <defs>
+    <style>
+      .shirt-body { fill: #123D32; stroke: #0B2921; stroke-width: 2; }
+      .shirt-collar { fill: #16A572; stroke: #0B2921; stroke-width: 1.5; }
+      .shirt-detail { fill: #FFCC45; }
+      .uniform-label { font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 800; fill: #123D32; }
+      .uniform-spec { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; fill: #64748B; font-weight: 600; }
+    </style>
+  </defs>
+
+  <rect width="800" height="650" fill="#F1F5F9"/>
+
+  <!-- TÍTULO -->
+  <text x="50" y="45" font-family="'Manrope', sans-serif" font-size="20" font-weight="900" fill="#123D32">UNIFORME OFICIAL — CAMISA POLO DO MOTORISTA PARCEIRO SIMBORA</text>
+  <text x="50" y="70" class="uniform-spec">Tecido Piquet 100% Algodão com Tratamento Climatizado • Bordado Frontal em Alta Definição</text>
+
+  <!-- VISTA FRONTAL DA CAMISA POLO (Centro X: 260) -->
+  <g transform="translate(60, 100)">
+    <!-- Corpo e Mangas da Camisa -->
+    <path d="M 120 70 L 60 140 L 10 110 L 50 40 L 120 15 L 200 35 L 280 15 L 350 40 L 390 110 L 340 140 L 280 70 L 280 440 C 280 455, 265 465, 245 465 L 155 465 C 135 465, 120 455, 120 440 Z" class="shirt-body"/>
+
+    <!-- Detalhe da Gola Polo em Verde Vibrante com Filete Amarelo -->
+    <path d="M 120 15 L 200 70 L 280 15 L 250 10 L 200 35 L 150 10 Z" class="shirt-collar"/>
+    <path d="M 180 70 L 200 160 L 220 70 Z" fill="#16A572"/>
+    <!-- Botões -->
+    <circle cx="200" cy="95" r="4" fill="#FFCC45"/>
+    <circle cx="200" cy="125" r="4" fill="#FFCC45"/>
+
+    <!-- Acabamento da Barra das Mangas em Verde Vibrante -->
+    <line x1="10" y1="110" x2="60" y2="140" stroke="#16A572" stroke-width="8"/>
+    <line x1="390" y1="110" x2="340" y2="140" stroke="#16A572" stroke-width="8"/>
+
+    <!-- BORDADO NO PEITO ESQUERDO (X: 235, Y: 130) -->
+    <g transform="translate(230, 125) scale(0.35)">
+      <!-- Símbolo The Kinetic Ribbon -->
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#F8F9F6" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="11" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="8" fill="#FFCC45"/>
+    </g>
+    <text x="265" y="148" font-family="'Manrope', sans-serif" font-size="12" font-weight="900" fill="#FFFFFF" letter-spacing="1">SIMBORA</text>
+  </g>
+
+  <!-- PAINEL DE ESPECIFICAÇÃO DE BORDADO E COSTURA (LADO DIREITO) -->
+  <g transform="translate(480, 120)">
+    <rect width="280" height="460" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="24" y="40" class="uniform-label">PADRÃO DE BORDADO</text>
+
+    <!-- Visualização Ampliada do Bordado -->
+    <g transform="translate(40, 60) scale(1.6)">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#123D32" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="5" fill="#FFCC45"/>
+      <circle cx="30" cy="80" r="4" fill="#123D32"/>
+    </g>
+
+    <text x="24" y="240" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#123D32">DIMENSÕES TÉCNICAS:</text>
+    <text x="24" y="265" class="uniform-spec">• Largura Total do Bordado: 80 mm</text>
+    <text x="24" y="285" class="uniform-spec">• Altura do Símbolo: 35 mm</text>
+    <text x="24" y="305" class="uniform-spec">• Linha Madeira Polyneon 100% Poliéster</text>
+    <text x="24" y="325" class="uniform-spec">• Verde Escuro: Pantone 3302 C (#123D32)</text>
+    <text x="24" y="345" class="uniform-spec">• Verde Claro: Pantone 7725 C (#16A572)</text>
+    <text x="24" y="365" class="uniform-spec">• Ouro Solar: Pantone 123 C (#FFCC45)</text>
+
+    <!-- Slogan Bordado na Manga Direita -->
+    <rect x="24" y="390" width="232" height="44" rx="8" fill="#123D32"/>
+    <text x="140" y="417" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#FFCC45" text-anchor="middle">
+      "Pediu. Chegou. Simbora!"
+    </text>
+  </g>
+</svg>

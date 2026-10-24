@@ -28,9 +28,9 @@ test('1. Nenhum arquivo ativo deve referenciar tile.openstreetmap.org', () => {
   assert.strictEqual(content.includes('tile.openstreetmap.org'), false, 'Ainda contém tile.openstreetmap.org!');
 });
 
-// 2. Provedores Cartográficos (CartoDB Voyager & MapTiler)
-test('2. Provedor de tiles deve responder com HTTP 200 OK e imagem PNG válida', () => {
-  const cmd = 'curl.exe -s -o NUL -w "%{http_code}" "https://a.basemaps.cartocdn.com/rastertiles/voyager/12/1234/2345@2x.png"';
+// 2. Provedores Cartográficos (Esri World Street Map HD & MapTiler)
+test('2. Provedor de tiles deve responder com HTTP 200 OK e imagem válida sem marca d\'água', () => {
+  const cmd = 'curl.exe -s -o NUL -w "%{http_code}" "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/10/548/351.jpg"';
   const statusCode = execSync(cmd, { encoding: 'utf8' }).trim();
   assert.strictEqual(statusCode, '200', `Esperado HTTP 200, recebido: ${statusCode}`);
 });
@@ -96,6 +96,15 @@ test('7. Identidade visual SIMBORA (#123D32, #16A572, #FFCC45) aplicada no HTML'
   assert.ok(html.includes('#16A572'), 'Verde vibrante ausente');
   assert.ok(html.includes('#FFCC45'), 'Amarelo destaque ausente');
   assert.ok(html.includes('TESTAR PIAÇABUÇU → PENEDO'), 'Botão prioritário ausente');
+});
+
+// 8. Validação do Endpoint de Configuração Cartográfica do Backend
+test('8. Backend /location/config deve fornecer configuração do mapa e perfil', () => {
+  const cmd = 'curl.exe -s "http://localhost:3001/location/config"';
+  const res = JSON.parse(execSync(cmd, { encoding: 'utf8' }));
+  assert.strictEqual(res.state, 'Alagoas');
+  assert.strictEqual(res.routingProfile, 'driving-car');
+  assert.strictEqual(res.activeCorridor, 'Piaçabuçu -> Penedo');
 });
 
 console.log('\n======================================================================');

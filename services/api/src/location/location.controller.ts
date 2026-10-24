@@ -58,4 +58,20 @@ export class LocationController {
       Number(destLng),
     );
   }
+
+  @Get('config')
+  getMapConfig() {
+    const key =
+      process.env.VITE_MAPTILER_KEY ||
+      process.env.MAPTILER_API_KEY ||
+      process.env.NEXT_PUBLIC_MAPTILER_KEY ||
+      '';
+    return {
+      maptilerKey: key,
+      hasKey: key.trim().length > 0,
+      routingProfile: 'driving-car',
+      activeCorridor: 'Piaçabuçu -> Penedo',
+      state: 'Alagoas',
+    };
+  }
 }

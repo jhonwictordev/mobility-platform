@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <!-- SIMBORA — BONÉ OFICIAL DO MOTORISTA PARCEIRO -->
+  <defs>
+    <style>
+      .cap-crown { fill: #123D32; stroke: #0B2921; stroke-width: 2; }
+      .cap-visor { fill: #16A572; stroke: #0F734F; stroke-width: 2; }
+      .cap-button { fill: #FFCC45; }
+    </style>
+  </defs>
+
+  <rect width="600" height="450" fill="#F8F9F6"/>
+
+  <text x="40" y="45" font-family="'Manrope', sans-serif" font-size="20" font-weight="900" fill="#123D32">BONÉ OFICIAL DO MOTORISTA PARCEIRO SIMBORA</text>
+  <text x="40" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#64748B">Modelo Americano 6 Gomos • Sarja Peletizada 100% Algodão • Fecho Metálico Ajustável</text>
+
+  <!-- ILUSTRAÇÃO DO BONÉ (VISTA LATERAL / PERSPECTIVA) -->
+  <g transform="translate(100, 110)">
+    <!-- Copa do Boné em Verde Profundo -->
+    <path d="M 60 220 C 60 110, 160 50, 270 50 C 350 50, 410 100, 420 220 Z" class="cap-crown"/>
+    <!-- Costuras dos Gomos -->
+    <path d="M 270 50 Q 270 140 270 220" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/>
+    <path d="M 270 50 Q 180 120 120 220" stroke="rgba(255,255,255,0.12)" stroke-width="2" fill="none"/>
+    <path d="M 270 50 Q 350 120 380 220" stroke="rgba(255,255,255,0.12)" stroke-width="2" fill="none"/>
+
+    <!-- Botão Superior em Ouro Solar -->
+    <circle cx="270" cy="50" r="10" class="cap-button"/>
+
+    <!-- Aba Curva do Boné em Verde Vibrante com Sanduíche Amarelo -->
+    <path d="M 60 220 C 30 225, 0 240, -40 260 C -10 275, 40 270, 120 250 L 420 220 Z" class="cap-visor"/>
+    <path d="M -40 260 C -10 268, 30 264, 90 248" stroke="#FFCC45" stroke-width="3" fill="none"/>
+
+    <!-- BORDADO FRONTAL THE KINETIC RIBBON + WORDMARK -->
+    <g transform="translate(160, 100) scale(0.7)">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#F8F9F6" stroke-width="11" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    </g>
+    <text x="250" y="152" font-family="'Manrope', sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">SIMBORA</text>
+  </g>
+
+  <!-- ESPECIFICAÇÃO DE MATERIAIS -->
+  <g transform="translate(420, 340)">
+    <rect width="140" height="40" rx="8" fill="#123D32"/>
+    <text x="70" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#FFCC45" text-anchor="middle">EDIÇÃO PARCEIRO</text>
+  </g>
+</svg>

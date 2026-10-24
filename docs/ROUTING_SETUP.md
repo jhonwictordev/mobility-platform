@@ -1,97 +1,72 @@
-# GUIA DO SERVIÇO DE ROTEAMENTO (OPENROUTESERVICE) — SIMBORA
+# Highway Routing & Alagoas Corridor Setup
 
-> **Documento:** `docs/ROUTING_SETUP.md`  
-> **Finalidade:** Arquitetura do backend proxy e integração com openrouteservice
+**Document:** `docs/ROUTING_SETUP.md`  
+**Platform:** SIMBORA Mobility Platform  
 
 ---
 
-## 1. ARQUITETURA DE PROTEÇÃO DE CREDENCIAIS (BACKEND PROXY)
+## 1. Routing Architecture
 
-> [!IMPORTANT]
-> **A chave privada do openrouteservice NUNCA é enviada ao navegador do cliente.**  
-> Todas as requisições de roteamento são intermediadas pelo backend NestJS (`http://localhost:3001/location/route`), garantindo conformidade com padrões de segurança OWASP e prevenindo exaustão de cota por agentes não autorizados.
+Regional ride-hailing requires accurate road network topologies rather than straight-line Euclidean distance approximations. SIMBORA routes intercity trips across the highway system of Alagoas, Brazil using a hybrid architecture:
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    actor User as SIMBORA Studio / Mobile
-    participant Backend as NestJS API (Porta 3001)
-    participant Cache as Cache Geoespacial Alagoas
-    participant ORS as openrouteservice (driving-car)
-
-    User->>Backend: GET /location/route?originLat=...&destLat=...
-    alt OPENROUTESERVICE_API_KEY configurada
-        Backend->>ORS: GET /v2/directions/driving-car?start=...&end=...
-        ORS-->>Backend: 200 OK (GeoJSON Real com Curvas Rodoviárias)
-        Backend-->>User: Retorna geometria calculada
-    else Fallback Alagoas Homologado
-        Backend->>Cache: Busca corredor correspondente em alagoas_routes.json
-        Cache-->>Backend: Retorna 485 nós da AL-101 / AL-225
-        Backend-->>User: Retorna rota homologada (28,2 km, 28 min)
-    else Coordenadas desconhecidas sem chave
-        Backend-->>User: HTTP 422 ROUTING_FAILED (Proibição de linha reta)
-    end
+flowchart LR
+    Client["Client / Studio"] -->|"GET /location/route"| Proxy["NestJS Routing Controller"]
+    Proxy --> Cache{"Corridor in Alagoas Cache?"}
+    Cache -- "Hit (e.g. Piaçabuçu → Penedo)" --> LocalGeo["Serve Pre-computed 485 Road Nodes<br/>(28.2 km via AL-101 / AL-225)"]
+    Cache -- "Miss / Dynamic Coords" --> Upstream["openrouteservice (ORS)<br/>Driving-Car Profile"]
+    Upstream -- "HTTP 200" --> LocalGeo
+    Upstream -- "Invalid Highway" --> Err422["HTTP 422 Unprocessable Entity<br/>(No Straight-Line Fallbacks)"]
 ```
 
 ---
 
-## 2. COMO OBTER UMA CHAVE GRATUITA NO OPENROUTESERVICE
+## 2. Upstream OpenRouteService Configuration
 
-1. Acesse o portal de desenvolvedores:  
-   👉 **[https://openrouteservice.org/dev/#/signup](https://openrouteservice.org/dev/#/signup)**
-2. Crie uma conta gratuita com seu e-mail.
-3. Acesse a aba **"Dashboard"** e gere um **Token Padrão (Free Plan)**.
-4. O plano gratuito oferece **2.000 requisições de rota por dia** (mais de 40 requisições por minuto).
-
----
-
-## 3. CONFIGURAÇÃO NO BACKEND NESTJS
-
-Adicione sua chave ao arquivo `services/api/.env` (ou no root `.env`):
+For dynamic coordinate queries outside cached regional corridors, configure the backend OpenRouteService key in `services/api/.env.local`:
 
 ```env
 OPENROUTESERVICE_API_KEY=replace_with_openrouteservice_api_key
 ```
 
-Ao reiniciar a API (`node dist/main.js`), o backend identificará a variável e direcionará as novas requisições diretamente aos servidores do openrouteservice com perfil `driving-car`.
+### Key Security Safeguards
+* Stored exclusively on the backend server.
+* Never bundled into frontend React or HTML client code.
+* Reverse-proxied via `GET /location/route` to enforce rate limiting and input sanitization.
 
 ---
 
-## 4. CONTRATO DA API DE ROTA (`/location/route`)
+## 3. Verified Alagoas Highway Corridors
 
-### Requisição
-```http
-GET /location/route?originLat=-10.4056&originLng=-36.4344&destLat=-10.2897&destLng=-36.5864 HTTP/1.1
-Host: localhost:3001
-```
+The platform includes pre-compiled, high-density road geometry datasets covering the principal transit arteries in southern Alagoas:
 
-### Resposta de Sucesso (HTTP 200 OK)
-```json
-{
-  "provider": "simbora_alagoas_verified",
-  "profile": "driving-car",
-  "routeKey": "piacabucu_penedo",
-  "name": "Piaçabuçu → Penedo (Prioritário)",
-  "highways": ["AL-101", "AL-225"],
-  "distanceKm": 28.2,
-  "durationMin": 28,
-  "coordinates": [
-    [-36.434405, -10.405602],
-    [-36.434345, -10.405781],
-    ...
-    [-36.586452, -10.289673]
-  ],
-  "pointsCount": 485,
-  "status": "OK"
-}
-```
+| Corridor ID | Origin & Destination | Highways | Distance | Duration | Nodes |
+| :--- | :--- | :--- | :---: | :---: | :---: |
+| `piacabucu_penedo` | Piaçabuçu ↔ Penedo | AL-101 / AL-225 | **28.2 km** | 28 min | **485** |
+| `penedo_igreja_nova` | Penedo ↔ Igreja Nova | AL-110 | **31.9 km** | 31 min | **381** |
+| `penedo_colegio` | Penedo ↔ Porto Real do Colégio | AL-225 / BR-101 | **58.3 km** | 53 min | **744** |
+| `penedo_coruripe` | Penedo ↔ Coruripe | AL-101 Sul | **58.5 km** | 56 min | **612** |
+| `penedo_arapiraca` | Penedo ↔ Arapiraca | AL-110 | **72.3 km** | 68 min | **890** |
+| `penedo_maceio` | Penedo ↔ Maceió | AL-101 Sul | **146.6 km** | 134 min | **1,420** |
+| `piacabucu_coruripe` | Piaçabuçu ↔ Coruripe | AL-101 Sul | **48.9 km** | 44 min | **498** |
 
-### Resposta de Erro (HTTP 422 Unprocessable Entity)
-Quando a rota não puder ser calculada através de rodovias reais:
-```json
-{
-  "statusCode": 422,
-  "error": "ROUTING_FAILED",
-  "message": "Não foi possível calcular a rota rodoviária entre os pontos informados. A plataforma SIMBORA não utiliza linhas retas."
-}
-```
+---
+
+## 4. Turf.js Geodesic Calculations
+
+Clients utilize [Turf.js 6.5](https://turfjs.org/) to evaluate road dynamics along the highway LineString:
+
+1. **Total Road Length**:
+   ```javascript
+   const totalRouteLengthKm = turf.length(turfLineString, { units: 'kilometers' });
+   ```
+2. **Along-Path Interpolation**:
+   ```javascript
+   const currentPoint = turf.along(turfLineString, currentTraveledKm, { units: 'kilometers' });
+   const nextPoint = turf.along(turfLineString, Math.min(currentTraveledKm + 0.05, totalRouteLengthKm), { units: 'kilometers' });
+   ```
+3. **Vehicle Heading / Bearing (0°–360°)**:
+   ```javascript
+   let rawBearing = turf.bearing(currentPoint, nextPoint);
+   let normalizedHeading = (rawBearing + 360) % 360;
+   ```

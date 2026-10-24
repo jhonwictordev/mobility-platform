@@ -1,6 +1,27 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Native environment file loader (.env.local, .env)
+const envCandidateFiles = [
+  path.resolve(process.cwd(), '.env.local'),
+  path.resolve(process.cwd(), '..', '.env.local'),
+  path.resolve(process.cwd(), '..', '..', '.env.local'),
+  path.resolve(process.cwd(), '.env'),
+  path.resolve(process.cwd(), '..', '.env'),
+  path.resolve(process.cwd(), '..', '..', '.env'),
+];
+for (const envPath of envCandidateFiles) {
+  if (fs.existsSync(envPath) && typeof (process as any).loadEnvFile === 'function') {
+    try {
+      (process as any).loadEnvFile(envPath);
+    } catch {
+      // Ignore syntax issues in optional local envs
+    }
+  }
+}
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');

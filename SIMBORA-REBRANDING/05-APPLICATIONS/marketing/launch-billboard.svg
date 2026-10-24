@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" width="100%" height="100%">
+  <!-- SIMBORA — PAINEL RODOVIÁRIO / OUTDOOR DE LANÇAMENTO (14x5m) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .bb-title { font-family: 'Manrope', sans-serif; font-size: 78px; font-weight: 900; fill: #FFFFFF; line-height: 1.05; }
+      .bb-highlight { fill: #FFCC45; }
+      .bb-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 700; fill: #CBD5E1; }
+      .bb-btn { font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; fill: #123D32; }
+    </style>
+    <linearGradient id="bbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="65%" stop-color="#154E3F"/>
+      <stop offset="100%" stop-color="#17211D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Painel Fundo Verde Profundo -->
+  <rect width="1400" height="500" fill="url(#bbGrad)"/>
+
+  <!-- Linhas Cinéticas Gigantes da Fita em Movimento -->
+  <path d="M 0 350 C 400 350, 700 200, 1100 260 C 1250 280, 1350 240, 1400 220" 
+        fill="none" stroke="#16A572" stroke-width="28" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 0 390 C 400 390, 700 240, 1100 300 C 1250 320, 1350 280, 1400 260" 
+        fill="none" stroke="#FFCC45" stroke-width="12" opacity="0.35" stroke-linecap="round"/>
+
+  <!-- CABEÇALHO DA MARCA: LOGOTIPO OFICIAL EM BRANCO (X: 80, Y: 60) -->
+  <g transform="translate(80, 60)">
+    <g transform="scale(0.9)">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#F8F9F6" stroke-width="11" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    </g>
+    <text x="105" y="48" font-family="'Manrope', sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="2">SIMBORA</text>
+  </g>
+
+  <!-- MENSAGEM PRINCIPAL (COPY DE IMPACTO) -->
+  <g transform="translate(80, 190)">
+    <text x="0" y="0" class="bb-title">Pediu. Chegou.</text>
+    <text x="0" y="80" class="bb-title bb-highlight">Simbora!</text>
+    <text x="0" y="145" class="bb-sub">A nova mobilidade rápida e intermunicipal do Baixo São Francisco.</text>
+  </g>
+
+  <!-- BOTÃO DE CHAMADA E BADGES DE LOJA -->
+  <g transform="translate(80, 390)">
+    <rect width="360" height="60" rx="16" fill="#16A572"/>
+    <text x="180" y="38" font-family="'Manrope', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+      Baixe o App Grátis →
+    </text>
+
+    <!-- Selo de Rota Fixa -->
+    <rect x="380" y="0" width="340" height="60" rx="16" fill="rgba(255,255,255,0.08)" stroke="#FFCC45" stroke-width="1.5"/>
+    <text x="550" y="37" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#FFCC45" text-anchor="middle">
+      PENEDO ↔ PIAÇABUÇU POR R$ 15
+    </text>
+  </g>
+
+  <!-- MOCKUP DO SMARTPHONE COM O APP ICON EM DESTAQUE (LADO DIREITO) -->
+  <g transform="translate(1080, 90)">
+    <!-- Ícone Gigante do App Flutuante em Perspectiva -->
+    <rect width="240" height="240" rx="55" fill="#123D32" stroke="#16A572" stroke-width="3" filter="drop-shadow(0 20px 48px rgba(0,0,0,0.5))"/>
+    <g transform="translate(30, 30) scale(1.8)" fill="none">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#F8F9F6" stroke-width="11" stroke-linecap="round"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    </g>
+
+    <!-- QR CODE DE DOWNLOAD DIRETO -->
+    <g transform="translate(70, 270)">
+      <rect width="100" height="100" rx="12" fill="#FFFFFF"/>
+      <!-- QR Pattern -->
+      <rect x="12" y="12" width="24" height="24" fill="#123D32"/>
+      <rect x="64" y="12" width="24" height="24" fill="#123D32"/>
+      <rect x="12" y="64" width="24" height="24" fill="#123D32"/>
+      <circle cx="50" cy="50" r="7" fill="#16A572"/>
+      <circle cx="50" cy="50" r="3.5" fill="#FFCC45"/>
+    </g>
+    <text x="120" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#CBD5E1" text-anchor="middle">
+      Aponte a câmera e viaje
+    </text>
+  </g>
+</svg>

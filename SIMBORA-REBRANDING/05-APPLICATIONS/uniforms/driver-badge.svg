@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700" width="100%" height="100%">
+  <!-- SIMBORA — CRACHÁ DE IDENTIFICAÇÃO OFICIAL DO MOTORISTA (85x125mm) -->
+  <defs>
+    <style>
+      .badge-bg { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 2; rx: 24; }
+      .badge-name { font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 800; fill: #123D32; text-anchor: middle; }
+      .badge-role { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; fill: #16A572; text-anchor: middle; letter-spacing: 1px; }
+      .badge-info { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 600; fill: #4B5563; }
+      .badge-info-bold { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; fill: #17211D; }
+    </style>
+  </defs>
+
+  <rect width="500" height="700" fill="#E2E8F0"/>
+
+  <!-- CORPO DO CRACHÁ EM PVC (400x600 no centro) -->
+  <g transform="translate(50, 40)">
+    <!-- Base com Sombra Suave -->
+    <rect width="400" height="620" class="badge-bg" filter="drop-shadow(0 16px 36px rgba(0,0,0,0.12))"/>
+
+    <!-- ABERTURA PARA O CORDÃO (SLOT HOLE) -->
+    <rect x="170" y="16" width="60" height="8" rx="4" fill="#94A3B8"/>
+
+    <!-- CABEÇALHO VERDE PROFUNDO COM LOGO OFICIAL -->
+    <path d="M 0 45 C 0 35, 10 35, 24 35 L 376 35 C 390 35, 400 35, 400 45 L 400 130 L 0 130 Z" fill="#123D32"/>
+    
+    <!-- Logo Simbora no Cabeçalho -->
+    <g transform="translate(115, 55) scale(0.65)">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#F8F9F6" stroke-width="11" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    </g>
+    <text x="180" y="85" font-family="'Manrope', sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">SIMBORA</text>
+    <text x="182" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#FFCC45" letter-spacing="1">MOTORISTA CREDENCIADO</text>
+
+    <!-- FOTO DO MOTORISTA (CENTRO X: 200, Y: 150) -->
+    <circle cx="200" cy="225" r="65" fill="#F8F9F6" stroke="#16A572" stroke-width="4"/>
+    <!-- Ícone de Usuário Simulado com Rosto Amigável -->
+    <circle cx="200" cy="205" r="26" fill="#123D32"/>
+    <path d="M 155 275 C 155 240, 175 235, 200 235 C 225 235, 245 240, 245 275 Z" fill="#123D32"/>
+    <!-- Selo de Verificação Oficial 5 Estrelas -->
+    <circle cx="250" cy="265" r="18" fill="#FFCC45" stroke="#FFFFFF" stroke-width="3"/>
+    <text x="250" y="271" font-family="'Manrope', sans-serif" font-size="16" font-weight="900" fill="#123D32" text-anchor="middle">★</text>
+
+    <!-- NOME E FUNÇÃO DO MOTORISTA -->
+    <text x="200" y="325" class="badge-name">Carlos Eduardo Santos</text>
+    <text x="200" y="348" class="badge-role">MOTORISTA PARCEIRO • DESDE 2024</text>
+
+    <!-- DIVISOR COM GRADIENTE SUAVE -->
+    <line x1="40" y1="370" x2="360" y2="370" stroke="#E2E8F0" stroke-width="1.5"/>
+
+    <!-- DADOS DO VEÍCULO E CREDENCIAMENTO -->
+    <g transform="translate(45, 395)">
+      <text x="0" y="0" class="badge-info">Veículo Homologado:</text>
+      <text x="160" y="0" class="badge-info-bold">Toyota Hilux / Van Confort</text>
+
+      <text x="0" y="28" class="badge-info">Placa do Veículo:</text>
+      <text x="160" y="28" class="badge-info-bold">BRA2E26 (Penedo/AL)</text>
+
+      <text x="0" y="56" class="badge-info">Rota Autorizada:</text>
+      <text x="160" y="56" class="badge-info-bold">Intermunicipal AL-101 / AL-225</text>
+
+      <text x="0" y="84" class="badge-info">ID Credencial Simbora:</text>
+      <text x="160" y="84" class="badge-info-bold">#SMB-AL-0492</text>
+    </g>
+
+    <!-- QR CODE DE VALIDAÇÃO DE SEGURANÇA EM TEMPO REAL -->
+    <g transform="translate(155, 505)">
+      <rect width="90" height="90" rx="10" fill="#F8F9F6" stroke="#123D32" stroke-width="1.5"/>
+      <rect x="12" y="12" width="22" height="22" fill="#123D32"/>
+      <rect x="56" y="12" width="22" height="22" fill="#123D32"/>
+      <rect x="12" y="56" width="22" height="22" fill="#123D32"/>
+      <circle cx="45" cy="45" r="8" fill="#16A572"/>
+      <circle cx="45" cy="45" r="4" fill="#FFCC45"/>
+    </g>
+    <text x="200" y="608" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="middle">
+      Escaneie para verificar antecedentes e autorização oficial
+    </text>
+  </g>
+</svg>

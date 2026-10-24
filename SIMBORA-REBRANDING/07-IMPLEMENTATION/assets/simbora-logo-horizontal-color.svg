@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 110" width="100%" height="100%">
+  <!-- SIMBORA — LOGOTIPO OFICIAL HORIZONTAL (FUNDO CLARO) -->
+  <!-- Conceito B Refinado: The Kinetic Ribbon -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&amp;display=swap');
+      .logo-brand-title {
+        font-family: 'Manrope', -apple-system, system-ui, sans-serif;
+        font-size: 44px;
+        font-weight: 900;
+        letter-spacing: 2.2px;
+        fill: #123D32;
+      }
+      .logo-brand-slogan {
+        font-family: 'Manrope', -apple-system, system-ui, sans-serif;
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <!-- SÍMBOLO REFINADO: THE KINETIC RIBBON (Offset X: 16, Y: 15, W: 80, H: 80) -->
+  <g transform="translate(16, 15)">
+    <!-- Base Estrutural / Âncora de Partida (Verde Profundo #123D32) -->
+    <path d="M 24 64 C 20 54, 25 44, 38 40 L 48 37 C 58 34, 65 27, 63 16" 
+          stroke="#123D32" stroke-width="9" stroke-linecap="round" fill="none"/>
+    
+    <!-- Fita Dinâmica de Trajetória Ativa (Verde Vibrante #16A572) -->
+    <path d="M 62 18 C 53 9, 36 11, 28 20 C 19 29, 23 41, 41 45 C 58 48, 66 57, 58 68 C 51 77, 36 75, 25 68" 
+          stroke="#16A572" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Ponto Solar de Chegada / Destino Concluído (Amarelo Energia #FFCC45) -->
+    <circle cx="62" cy="18" r="5.2" fill="#FFCC45"/>
+    <circle cx="25" cy="68" r="4.2" fill="#123D32"/>
+  </g>
+
+  <!-- WORDMARK SIMBORA (Kerning Óptico Compensado) -->
+  <text x="120" y="60" class="logo-brand-title">SIMBORA</text>
+  
+  <!-- SLOGAN OFICIAL -->
+  <text x="122" y="85" class="logo-brand-slogan">Pediu. Chegou. Simbora!</text>
+
+  <!-- ACENTO DINÂMICO DE PROGRESSÃO -->
+  <circle cx="430" cy="50" r="4.5" fill="#FFCC45"/>
+</svg>

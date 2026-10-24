@@ -16,7 +16,7 @@ const sensitivePatterns = [
 
 console.log('=== AUDITORIA 1: VERIFICANDO HISTÓRICO COMPLETO DO GIT ===');
 try {
-  const diff = execSync('git log -p', { cwd, encoding: 'utf8', maxBuffer: 100 * 1024 * 1024 });
+  const diff = execSync('git log -p --no-textconv', { cwd, encoding: 'utf8', maxBuffer: 100 * 1024 * 1024 });
 
   sensitivePatterns.forEach(p => {
     const matches = diff.match(new RegExp(p.regex, 'g'));

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 2400" width="1080" height="2400">
+  <!-- SIMBORA — MOBILE APP SPLASH SCREEN (1080x2400) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap');
+      .splash-title {
+        font-family: 'Manrope', sans-serif;
+        font-size: 72px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        fill: #F8F9F6;
+        text-anchor: middle;
+      }
+      .splash-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        fill: #FFCC45;
+        text-anchor: middle;
+      }
+      .splash-footer {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        fill: #94A3B8;
+        text-anchor: middle;
+      }
+    </style>
+    <radialGradient id="splashGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#1B5547"/>
+      <stop offset="100%" stop-color="#123D32"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fundo Verde Profundo com Gradiente Nobre -->
+  <rect width="1080" height="2400" fill="url(#splashGlow)"/>
+
+  <!-- Ondas Cinéticas Sutis de Fundo -->
+  <path d="M -100 800 Q 540 500 1180 800" fill="none" stroke="#16A572" stroke-width="6" opacity="0.15"/>
+  <path d="M -100 1000 Q 540 700 1180 1000" fill="none" stroke="#FFCC45" stroke-width="4" opacity="0.12"/>
+  <path d="M -100 1400 Q 540 1700 1180 1400" fill="none" stroke="#16A572" stroke-width="8" opacity="0.12"/>
+
+  <!-- SÍMBOLO CENTRALIZADO THE KINETIC RIBBON (Offset X: 390, Y: 850, Escala 3.0x) -->
+  <g transform="translate(390, 820) scale(3.0)" fill="none" stroke-linejoin="round">
+    <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" 
+          stroke="#F8F9F6" stroke-width="11" stroke-linecap="round"/>
+    <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" 
+          stroke="#16A572" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    <circle cx="30" cy="80" r="6" fill="#F8F9F6"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="540" y="1250" class="splash-title">SIMBORA</text>
+  <text x="540" y="1310" class="splash-slogan">Pediu. Chegou. Simbora!</text>
+
+  <!-- BARRA DE CARREGAMENTO INTELIGENTE -->
+  <rect x="340" y="1450" width="400" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <rect x="340" y="1450" width="260" height="8" rx="4" fill="#16A572"/>
+  <circle cx="600" cy="1454" r="6" fill="#FFCC45"/>
+
+  <!-- RODAPÉ INSTITUCIONAL -->
+  <text x="540" y="2220" class="splash-footer">Mobilidade Urbana &amp; Intermunicipal</text>
+  <text x="540" y="2260" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#16A572" letter-spacing="3" text-anchor="middle">ALAGOAS • BRASIL</text>
+</svg>

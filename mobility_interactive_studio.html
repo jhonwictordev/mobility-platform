@@ -178,7 +178,7 @@
               ALAGOAS 2.0
             </span>
           </div>
-          <p class="text-xs text-[#16A572] font-semibold">Piaçabuçu ↔ Penedo • MapLibre GL + MapTiler / CartoDB • openrouteservice • Turf.js</p>
+          <p class="text-xs text-[#16A572] font-semibold">Piaçabuçu ↔ Penedo • MapLibre GL JS + MapTiler Cloud Streets v2 • openrouteservice • Turf.js</p>
         </div>
       </div>
 
@@ -340,7 +340,7 @@
         </div>
         <div>
           <span class="text-slate-500">Provedor Cartográfico:</span>
-          <span id="telemetry-tile-provider" class="font-bold text-[#FFCC45]">CartoDB Voyager (HTTP 200 OK)</span>
+          <span id="telemetry-tile-provider" class="font-bold text-[#16A572]">MapTiler Cloud Streets v2 (Ativo)</span>
         </div>
       </div>
     </div>
@@ -843,7 +843,7 @@
       </div>
 
       <p class="text-xs text-slate-300 leading-relaxed">
-        O SIMBORA opera por padrão com <b class="text-[#FFCC45]">CartoDB Voyager</b> (sem erro HTTP 403). Você pode habilitar a renderização vetorial oficial inserindo sua chave gratuita do <b class="text-[#16A572]">MapTiler Cloud</b> abaixo:
+        Configure sua chave do <b class="text-[#16A572]">MapTiler Cloud</b> (<code class="text-[#FFCC45]">VITE_MAPTILER_KEY</code>) para renderização vetorial de alta definição. Caso a chave não esteja configurada ou expire, o SIMBORA utiliza automaticamente a camada cartográfica HD de Alagoas, 100% limpa e livre de marcas d'água.
       </p>
 
       <div class="space-y-3 text-xs">
@@ -851,6 +851,15 @@
           <label class="block font-bold text-[#FFCC45] mb-1">VITE_MAPTILER_KEY (MapTiler Cloud):</label>
           <input type="text" id="input-maptiler-key" placeholder="Ex: eX4mPlEkEy12345..." class="w-full bg-[#123D32] border border-[#16A572]/60 rounded-xl p-2.5 text-white font-mono outline-none focus:border-[#FFCC45]" />
           <p class="text-[10px] text-slate-400 mt-1">Obtenha sua chave gratuita em <a href="https://cloud.maptiler.com/account/keys/" target="_blank" class="text-[#16A572] underline">cloud.maptiler.com</a> (100.000 requisições/mês grátis).</p>
+        </div>
+
+        <div>
+          <label class="block font-bold text-[#16A572] mb-1">Estilo Cartográfico / Provedor:</label>
+          <select id="select-basemap-provider" onchange="onSelectBasemap(this.value)" class="w-full bg-[#123D32] border border-[#16A572]/60 rounded-xl p-2.5 text-white font-bold text-xs outline-none focus:border-[#FFCC45] cursor-pointer">
+            <option value="maptiler" selected>🚀 MapTiler Cloud Streets v2 (Vetor HiDPI / Requer Chave)</option>
+            <option value="esri">🗺️ Esri World Street Map (HD Alagoas • Zero Watermark • Zero 403)</option>
+            <option value="osm_hot">🌿 OpenStreetMap Humanitarian (HOT • Rodovias e Relevo)</option>
+          </select>
         </div>
 
         <div>
@@ -902,42 +911,108 @@
     let dOriginMarker = null;
     let dDestMarker = null;
 
-    // MapTiler / Tile Configuration (Zero HTTP 403 Guaranteed)
+    // Non-Watermarked High-Definition Street Maps for Alagoas (Zero "API KEY REQUIRED", Zero HTTP 403)
+    const ESRI_STREETS_STYLE = {
+      version: 8,
+      sources: {
+        'esri-streets': {
+          type: 'raster',
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}.jpg'
+          ],
+          tileSize: 256,
+          attribution: '© Esri, HERE, Garmin, OpenStreetMap contributors'
+        }
+      },
+      layers: [
+        {
+          id: 'esri-streets-layer',
+          type: 'raster',
+          source: 'esri-streets',
+          minzoom: 0,
+          maxzoom: 19
+        }
+      ]
+    };
+
+    const OSM_HOT_STYLE = {
+      version: 8,
+      sources: {
+        'osm-hot': {
+          type: 'raster',
+          tiles: [
+            'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+            'https://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+          ],
+          tileSize: 256,
+          attribution: '© OpenStreetMap contributors, Humanitarian OpenStreetMap Team'
+        }
+      },
+      layers: [
+        {
+          id: 'osm-hot-layer',
+          type: 'raster',
+          source: 'osm-hot',
+          minzoom: 0,
+          maxzoom: 19
+        }
+      ]
+    };
+
+    // Check URL query parameters for key overrides
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramKey = urlParams.get('key') || urlParams.get('maptiler_key') || urlParams.get('VITE_MAPTILER_KEY');
+    if (paramKey && paramKey.trim().length > 5) {
+      localStorage.setItem('SIMBORA_MAPTILER_KEY', paramKey.trim());
+    }
+
     let maptilerKey = localStorage.getItem('SIMBORA_MAPTILER_KEY') || '';
     let orsKey = localStorage.getItem('SIMBORA_ORS_KEY') || '';
+    let currentMapProvider = (maptilerKey && maptilerKey.trim().length > 5) ? 'maptiler' : 'esri';
 
     function getMapStyle() {
-      if (maptilerKey && maptilerKey.trim().length > 5) {
-        // MapTiler Cloud Streets v2
-        return 'https://api.maptiler.com/maps/streets-v2/style.json?key=' + maptilerKey.trim();
+      if (currentMapProvider === 'maptiler' && maptilerKey && maptilerKey.trim().length > 5) {
+        return 'https://api.maptiler.com/maps/streets-v2/style.json?key=' + encodeURIComponent(maptilerKey.trim());
       }
+      if (currentMapProvider === 'osm_hot') {
+        return OSM_HOT_STYLE;
+      }
+      return ESRI_STREETS_STYLE;
+    }
 
-      // Default Clean CARTO Voyager (Tile Policy Compliant, Zero 403 Forbidden)
-      return {
-        version: 8,
-        sources: {
-          'carto-voyager': {
-            type: 'raster',
-            tiles: [
-              'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
-              'https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
-              'https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',
-              'https://d.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png'
-            ],
-            tileSize: 256,
-            attribution: '© CARTO, © OpenStreetMap contributors'
+    function updateTileBadgeUI() {
+      const badge = document.getElementById('telemetry-tile-provider');
+      if (!badge) return;
+      if (currentMapProvider === 'maptiler' && maptilerKey && maptilerKey.trim().length > 5) {
+        badge.innerText = 'MapTiler Cloud Streets v2 (Vetor Ativo)';
+        badge.className = 'font-bold text-[#16A572]';
+      } else if (currentMapProvider === 'osm_hot') {
+        badge.innerText = 'OpenStreetMap HOT (Alagoas Regional)';
+        badge.className = 'font-bold text-[#FFCC45]';
+      } else {
+        badge.innerText = 'Esri World Street (Alagoas HD • Zero 403)';
+        badge.className = 'font-bold text-[#16A572]';
+      }
+    }
+
+    async function loadServerMapConfig() {
+      try {
+        const res = await fetch('http://localhost:3001/location/config');
+        if (res.ok) {
+          const cfg = await res.json();
+          if (cfg.maptilerKey && cfg.maptilerKey.trim().length > 5 && !maptilerKey) {
+            maptilerKey = cfg.maptilerKey.trim();
+            localStorage.setItem('SIMBORA_MAPTILER_KEY', maptilerKey);
+            currentMapProvider = 'maptiler';
+            logEvent('MAP_ENGINE', 'Chave VITE_MAPTILER_KEY importada do servidor local (.env.local).');
+            applyMapStyle(pMap, getMapStyle(), 'passenger');
+            applyMapStyle(dMap, getMapStyle(), 'driver');
+            updateTileBadgeUI();
           }
-        },
-        layers: [
-          {
-            id: 'carto-voyager-layer',
-            type: 'raster',
-            source: 'carto-voyager',
-            minzoom: 0,
-            maxzoom: 20
-          }
-        ]
-      };
+        }
+      } catch (e) {
+        // Backend offline or local file protocol
+      }
     }
 
     // Window Load
@@ -945,8 +1020,9 @@
       lucide.createIcons();
       initTurfRoute();
       initMaps();
+      loadServerMapConfig();
       logEvent('SYSTEM', 'SIMBORA Studio 2.0 pronto.');
-      logEvent('MAP_ENGINE', 'Provedor ativo: ' + (maptilerKey ? 'MapTiler Streets' : 'CARTO Voyager (HTTP 403 Livre)'));
+      logEvent('MAP_ENGINE', 'Provedor ativo: ' + (currentMapProvider === 'maptiler' ? 'MapTiler Streets v2' : 'Esri World Street (Alagoas HD • Sem marca d\'água)'));
       logEvent('GEODATA', 'Cenário carregado: ' + currentRoute.name + ' (' + currentRoute.distanceKm + ' km, 485 nós)');
     });
 
@@ -970,6 +1046,7 @@
         zoom: 12,
         attributionControl: false
       });
+      attachMapErrorFallback(pMap, 'passenger');
 
       // 2. Driver Map
       dMap = new maplibregl.Map({
@@ -979,12 +1056,50 @@
         zoom: 12,
         attributionControl: false
       });
+      attachMapErrorFallback(dMap, 'driver');
 
       pMap.on('load', () => setupMapLayers(pMap, 'passenger'));
       dMap.on('load', () => setupMapLayers(dMap, 'driver'));
+      updateTileBadgeUI();
+    }
+
+    function attachMapErrorFallback(mapInstance, type) {
+      mapInstance.on('error', (e) => {
+        const isAuthError = e && (
+          e.status === 401 || e.status === 403 ||
+          (e.error && (e.error.status === 401 || e.error.status === 403 || (e.error.message && (e.error.message.includes('403') || e.error.message.includes('401')))))
+        );
+        if (isAuthError && currentMapProvider === 'maptiler') {
+          console.warn(`[SIMBORA] MapTiler key authentication failed (${type}). Seamlessly falling back to HD Alagoas Street Map.`);
+          logEvent('MAP_ENGINE', `⚠️ Chave MapTiler não autorizada (HTTP 403/401). Ativando mapa rodoviário HD Alagoas.`);
+          currentMapProvider = 'esri';
+          updateTileBadgeUI();
+          mapInstance.setStyle(ESRI_STREETS_STYLE);
+          mapInstance.once('style.load', () => setupMapLayers(mapInstance, type));
+        }
+      });
+    }
+
+    function applyMapStyle(mapInstance, styleObj, type) {
+      if (!mapInstance) return;
+      mapInstance.setStyle(styleObj);
+      mapInstance.once('style.load', () => {
+        setupMapLayers(mapInstance, type);
+      });
+    }
+
+    function onSelectBasemap(val) {
+      currentMapProvider = val;
+      logEvent('MAP_ENGINE', 'Provedor alterado para: ' + val);
+      applyMapStyle(pMap, getMapStyle(), 'passenger');
+      applyMapStyle(dMap, getMapStyle(), 'driver');
+      if (panoMap) applyMapStyle(panoMap, getMapStyle(), 'panoramic');
+      updateTileBadgeUI();
     }
 
     function setupMapLayers(mapInstance, type) {
+      if (!mapInstance || !currentRoute) return;
+
       const geojsonRoute = {
         type: 'Feature',
         properties: {},
@@ -993,6 +1108,13 @@
           coordinates: currentRoute.coordinates
         }
       };
+
+      // Remove existing source/layers if present before re-adding
+      if (mapInstance.getSource('highway-route')) {
+        if (mapInstance.getLayer('highway-route-line')) mapInstance.removeLayer('highway-route-line');
+        if (mapInstance.getLayer('highway-route-casing')) mapInstance.removeLayer('highway-route-casing');
+        mapInstance.removeSource('highway-route');
+      }
 
       // Add Route Source
       mapInstance.addSource('highway-route', {
@@ -1122,7 +1244,7 @@
       driverMapFitRoute();
 
       logEvent('DISPATCH', 'Passageiro e Motorista posicionados. Aguardando comando para iniciar corrida!');
-      alert('Cenário Piaçabuçu → Penedo configurado com sucesso!\n\nClique em "SOLICITAR SIMBORA" no celular do passageiro ou em "Iniciar Corrida" no topo.');
+      showNotificationToast('⭐ Cenário Piaçabuçu → Penedo pronto! Clique em "Iniciar Corrida" no topo ou "SOLICITAR SIMBORA" no celular.');
     }
 
     // ==========================================
@@ -1577,13 +1699,29 @@
       closeConfigModal();
       logEvent('CONFIG', 'Chaves salvas localmente.');
 
-      if (maptilerKey) {
-        document.getElementById('telemetry-tile-provider').innerText = 'MapTiler Cloud Streets (Ativo)';
-        if (pMap) pMap.setStyle(getMapStyle());
-        if (dMap) dMap.setStyle(getMapStyle());
+      if (maptilerKey && maptilerKey.length > 5) {
+        currentMapProvider = 'maptiler';
+        logEvent('MAP_ENGINE', 'MapTiler Streets v2 ativado com chave do usuário.');
       } else {
-        document.getElementById('telemetry-tile-provider').innerText = 'CartoDB Voyager (HTTP 200 OK)';
+        currentMapProvider = 'esri';
+        logEvent('MAP_ENGINE', 'Esri World Street Map (HD Alagoas) ativo.');
       }
+
+      applyMapStyle(pMap, getMapStyle(), 'passenger');
+      applyMapStyle(dMap, getMapStyle(), 'driver');
+      if (panoMap) applyMapStyle(panoMap, getMapStyle(), 'panoramic');
+      updateTileBadgeUI();
+    }
+
+    function showNotificationToast(msg) {
+      const existing = document.getElementById('simbora-toast');
+      if (existing) existing.remove();
+      const toast = document.createElement('div');
+      toast.id = 'simbora-toast';
+      toast.className = 'fixed bottom-6 right-6 z-50 bg-[#123D32] border-2 border-[#16A572] text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs font-bold';
+      toast.innerHTML = '<span>🚗</span><span>' + msg + '</span>';
+      document.body.appendChild(toast);
+      setTimeout(() => { if (toast) toast.remove(); }, 5000);
     }
 
     // Event Console Logging
