@@ -2,6 +2,7 @@ import {
   Injectable,
   BadRequestException,
   NotFoundException,
+  ForbiddenException,
   Logger,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -11,6 +12,7 @@ import {
   TripStatus,
   VehicleCategory,
   DriverStatus,
+  UserRole,
 } from '../database/entities';
 import { isValidTransition } from '../common/utils/trip-state-machine';
 import { haversineDistance, estimateTravelTime } from '../common/utils/haversine';
@@ -109,12 +111,12 @@ export class TripsService {
   }
 
   /**
-   * Transition state safely with validation
+   * Transition state safely with validation and role-based ownership checks
    */
   async updateStatus(
     tripId: string,
     newStatus: TripStatus,
-    userId?: string,
+    currentUser?: any,
     cancelReason?: string,
   ): Promise<Trip> {
     const trip = await this.tripRepo.findOne({
@@ -128,6 +130,32 @@ export class TripsService {
       throw new BadRequestException(
         `Transição inválida de ${trip.status} para ${newStatus}`,
       );
+    }
+
+    // Role-based ownership verification
+    if (currentUser) {
+      const isPassenger = trip.passengerId === currentUser.userId;
+      const isDriver = trip.driver && trip.driver.userId === currentUser.userId;
+      const isAdmin = currentUser.role === UserRole.ADMIN;
+
+      if (!isPassenger && !isDriver && !isAdmin) {
+        throw new ForbiddenException('Não autorizado a alterar o status desta corrida');
+      }
+
+      const driverActions = [
+        TripStatus.DRIVER_ARRIVING,
+        TripStatus.DRIVER_ARRIVED,
+        TripStatus.IN_PROGRESS,
+        TripStatus.COMPLETED,
+        TripStatus.CANCELLED_BY_DRIVER,
+      ];
+      if (driverActions.includes(newStatus) && !isDriver && !isAdmin) {
+        throw new ForbiddenException('Apenas o motorista atribuído ou um administrador pode realizar esta transição');
+      }
+
+      if (newStatus === TripStatus.CANCELLED_BY_PASSENGER && !isPassenger && !isAdmin) {
+        throw new ForbiddenException('Apenas o passageiro titular ou um administrador pode cancelar como passageiro');
+      }
     }
 
     const previousStatus = trip.status;
@@ -172,11 +200,12 @@ export class TripsService {
     }
     this.wsGateway.broadcastAdmin('admin:trip_updated', saved);
 
+    const auditUserId = currentUser?.userId || (typeof currentUser === 'string' ? currentUser : undefined);
     await this.auditService.log(
       'Trip',
       tripId,
       `STATUS_${newStatus}`,
-      userId,
+      auditUserId,
       { previousStatus, newStatus, cancelReason },
     );
 
