@@ -849,7 +849,7 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="block font-bold text-[#FFCC45] mb-1">VITE_MAPTILER_KEY (MapTiler Cloud):</label>
-          <input type="text" id="input-maptiler-key" placeholder="Ex: eX4mPlEkEy12345..." class="w-full bg-[#123D32] border border-[#16A572]/60 rounded-xl p-2.5 text-white font-mono outline-none focus:border-[#FFCC45]" />
+          <input type="text" id="input-maptiler-key" value="7bwWEW7XuNoRCA0JLIOJ" placeholder="7bwWEW7XuNoRCA0JLIOJ" class="w-full bg-[#123D32] border border-[#16A572]/60 rounded-xl p-2.5 text-white font-mono outline-none focus:border-[#FFCC45]" />
           <p class="text-[10px] text-slate-400 mt-1">Obtenha sua chave gratuita em <a href="https://cloud.maptiler.com/account/keys/" target="_blank" class="text-[#16A572] underline">cloud.maptiler.com</a> (100.000 requisições/mês grátis).</p>
         </div>
 
@@ -966,7 +966,9 @@
       localStorage.setItem('SIMBORA_MAPTILER_KEY', paramKey.trim());
     }
 
-    let maptilerKey = localStorage.getItem('SIMBORA_MAPTILER_KEY') || '';
+    const DEFAULT_MAPTILER_KEY = '7bwWEW7XuNoRCA0JLIOJ';
+    const storedKey = localStorage.getItem('SIMBORA_MAPTILER_KEY');
+    let maptilerKey = (storedKey && storedKey.trim().length > 5) ? storedKey.trim() : DEFAULT_MAPTILER_KEY;
     let orsKey = localStorage.getItem('SIMBORA_ORS_KEY') || '';
     let currentMapProvider = (maptilerKey && maptilerKey.trim().length > 5) ? 'maptiler' : 'esri';
 
@@ -1000,7 +1002,7 @@
         const res = await fetch('http://localhost:3001/location/config');
         if (res.ok) {
           const cfg = await res.json();
-          if (cfg.maptilerKey && cfg.maptilerKey.trim().length > 5 && !maptilerKey) {
+          if (cfg.maptilerKey && cfg.maptilerKey.trim().length > 5 && cfg.maptilerKey !== maptilerKey) {
             maptilerKey = cfg.maptilerKey.trim();
             localStorage.setItem('SIMBORA_MAPTILER_KEY', maptilerKey);
             currentMapProvider = 'maptiler';

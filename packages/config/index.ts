@@ -3,6 +3,19 @@ export const CONFIG = {
   BRAND_SLOGAN: 'Pediu. Chegou. Simbora!',
   API_URL: process.env.API_URL || 'http://localhost:3001',
   WS_URL: process.env.WS_URL || 'ws://localhost:3001',
+  MAPTILER: {
+    DEFAULT_KEY: '7bwWEW7XuNoRCA0JLIOJ',
+    API_KEY:
+      process.env.VITE_MAPTILER_KEY ||
+      process.env.NEXT_PUBLIC_MAPTILER_KEY ||
+      process.env.EXPO_PUBLIC_MAPTILER_KEY ||
+      process.env.MAPTILER_API_KEY ||
+      '7bwWEW7XuNoRCA0JLIOJ',
+    STYLE_URL: (key?: string) =>
+      `https://api.maptiler.com/maps/streets-v2/style.json?key=${key || '7bwWEW7XuNoRCA0JLIOJ'}`,
+    TILE_URL: (key?: string) =>
+      `https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}.png?key=${key || '7bwWEW7XuNoRCA0JLIOJ'}`,
+  },
   DEFAULT_MAP_CENTER: {
     lat: -10.2917,
     lng: -36.5819,

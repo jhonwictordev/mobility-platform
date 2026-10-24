@@ -90,14 +90,18 @@ test('5. Interpolação Turf.js ao longo de 28,2 km deve calcular coordenadas e 
 });
 
 // 6. Variáveis de Ambiente e Segurança (.env.example)
-test('6. Arquivos .env.example devem existir no root, backend e admin sem credenciais privadas', () => {
+test('6. Arquivos .env.example devem existir no root, backend, admin e mobile sem credenciais privadas', () => {
   const rootEnv = path.join(__dirname, '..', '.env.example');
   const apiEnv = path.join(__dirname, '..', 'services', 'api', '.env.example');
   const adminEnv = path.join(__dirname, '..', 'apps', 'admin', '.env.example');
+  const passengerEnv = path.join(__dirname, '..', 'apps', 'passenger', '.env.example');
+  const driverEnv = path.join(__dirname, '..', 'apps', 'driver', '.env.example');
 
   assert.ok(fs.existsSync(rootEnv), 'Root .env.example ausente');
   assert.ok(fs.existsSync(apiEnv), 'API .env.example ausente');
   assert.ok(fs.existsSync(adminEnv), 'Admin .env.example ausente');
+  assert.ok(fs.existsSync(passengerEnv), 'Passenger .env.example ausente');
+  assert.ok(fs.existsSync(driverEnv), 'Driver .env.example ausente');
 
   const content = fs.readFileSync(rootEnv, 'utf8');
   assert.ok(content.includes('VITE_MAPTILER_KEY='));
@@ -120,6 +124,17 @@ test('8. Backend /location/config deve fornecer configuração do mapa e perfil'
   assert.strictEqual(res.state, 'Alagoas');
   assert.strictEqual(res.routingProfile, 'driving-car');
   assert.strictEqual(res.activeCorridor, 'Piaçabuçu -> Penedo');
+});
+
+// 9. Validação do Estilo Vetorial MapTiler Cloud
+test('9. Integração MapTiler Cloud Streets v2 deve responder com HTTP 200 e fornecer estilo vetorial ativo', () => {
+  const cmd = `${curlCmd} -s "http://localhost:3001/location/config"`;
+  const res = JSON.parse(execSync(cmd, { encoding: 'utf8' }));
+  const key = res.maptilerKey || '7bwWEW7XuNoRCA0JLIOJ';
+  const styleCmd = `${curlCmd} -s -o ${nullDev} -w "%{http_code}" "https://api.maptiler.com/maps/streets-v2/style.json?key=${key}"`;
+  const statusCode = execSync(styleCmd, { encoding: 'utf8' }).trim();
+  assert.strictEqual(statusCode, '200', `MapTiler Cloud retornou status inesperado: ${statusCode}`);
+  console.log(`   [Info] MapTiler Cloud Streets v2 estilo vetorial homologado com HTTP 200 OK.`);
 });
 
 console.log('\n======================================================================');

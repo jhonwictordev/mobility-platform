@@ -198,6 +198,16 @@ export default function SimboraStudioPage() {
           >
             Resetar
           </button>
+
+          <a
+            href="http://localhost:8080"
+            target="_blank"
+            rel="noreferrer"
+            className="px-5 py-4 rounded-2xl bg-[#16A572] hover:bg-[#139063] text-white font-black text-sm shadow-md transition flex items-center gap-2 cursor-pointer"
+          >
+            <span>🗺️</span>
+            <span>SIMBORA Studio MapTiler (8080)</span>
+          </a>
         </div>
       </div>
 
