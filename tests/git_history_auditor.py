@@ -58,7 +58,7 @@ def audit():
                     for m in matches:
                         raw_val = m.group(1) if m.groups() else m.group(0)
                         # Filter obvious false positives/tests
-                        if any(fp in raw_val.lower() for fp in ["your_", "replace_", "placeholder", "xxx", "demo", "example"]):
+                        if any(fp in raw_val.lower() for fp in ["your_", "replace_", "placeholder", "xxx", "demo", "example", "testpass"]):
                             continue
                         findings.append({
                             "commit": commit_hash,
