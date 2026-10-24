@@ -51,7 +51,7 @@ jobs:
       - name: 4. Backend Dependencies & Compilation
         run: |
           cd services/api
-          npm install --ignore-scripts
+          npm install
           npm run build
 
       - name: 5. Start Backend & Execute Regression & Cartographic Test Suite
