@@ -9,3 +9,5 @@ export { DriverLocation } from './driver-location.entity';
 export { Payment, PaymentMethod, PaymentStatus } from './payment.entity';
 export { AuditLog } from './audit-log.entity';
 export { Document, DocumentType, DocumentStatus } from './document.entity';
+export { SavedPlace } from './saved-place.entity';
+export { ChatMessage } from './chat-message.entity';

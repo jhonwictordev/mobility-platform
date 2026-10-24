@@ -1,9 +1,16 @@
-import { Injectable, Logger } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  BadRequestException,
+  ForbiddenException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import {
   Driver,
   DriverStatus,
+  ApprovalStatus,
   Trip,
   TripStatus,
   VehicleCategory,
@@ -53,6 +60,7 @@ export class DispatchService {
     for (const driver of onlineDrivers) {
       if (this.driverPendingOffers.has(driver.id)) continue;
       if (driver.status !== DriverStatus.ONLINE) continue;
+      if (driver.approvalStatus !== ApprovalStatus.APPROVED) continue;
       if (driver.currentLat == null || driver.currentLng == null) continue;
 
       const primaryVehicle = driver.vehicle;
@@ -153,7 +161,7 @@ export class DispatchService {
 
   async acceptTrip(tripId: string, driverId: string): Promise<Trip> {
     if (this.tripLocks.has(tripId)) {
-      throw new Error('Esta corrida já está sendo processada por outro motorista');
+      throw new BadRequestException('Esta corrida já está sendo processada por outro motorista');
     }
     this.tripLocks.add(tripId);
 
@@ -163,14 +171,17 @@ export class DispatchService {
         relations: { passenger: true },
       });
 
-      if (!trip) throw new Error('Corrida não encontrada');
+      if (!trip) throw new NotFoundException('Corrida não encontrada');
       if (trip.status !== TripStatus.SEARCHING) {
-        throw new Error(`Corrida não disponível para aceite (status: ${trip.status})`);
+        throw new BadRequestException(`Corrida não disponível para aceite (status: ${trip.status})`);
       }
 
       const driver = await this.driversService.findById(driverId);
       if (driver.status !== DriverStatus.ONLINE) {
-        throw new Error('Motorista não está online');
+        throw new BadRequestException('Motorista precisa estar ONLINE para aceitar corridas');
+      }
+      if (driver.approvalStatus !== ApprovalStatus.APPROVED) {
+        throw new ForbiddenException('Motorista precisa estar com cadastro APROVADO para aceitar corridas');
       }
 
       const offer = this.activeOffers.get(tripId);

@@ -52,8 +52,8 @@ export class AdminService {
     return this.driversService.setApproval(driverId, ApprovalStatus.APPROVED);
   }
 
-  async rejectDriver(driverId: string) {
-    return this.driversService.setApproval(driverId, ApprovalStatus.REJECTED);
+  async rejectDriver(driverId: string, reason?: string) {
+    return this.driversService.setApproval(driverId, ApprovalStatus.REJECTED, reason);
   }
 
   async approveVehicle(vehicleId: string) {

@@ -60,6 +60,7 @@ jobs:
           node dist/main.js &
           sleep 4
           cd ../..
+          node tests/test_sprint1_auth_and_profiles.js
           node tests/test_simbora_maps_and_routing.js
           node tests/test_penedo_piacabucu.js
           node tests/test_security_hardening.js

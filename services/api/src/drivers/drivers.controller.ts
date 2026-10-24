@@ -2,11 +2,13 @@ import {
   Controller,
   Get,
   Post,
+  Patch,
   Body,
   Param,
   Put,
   UseGuards,
   ForbiddenException,
+  BadRequestException,
 } from '@nestjs/common';
 import { DriversService } from './drivers.service';
 import { DriverStatus, ApprovalStatus, UserRole } from '../database/entities';
@@ -25,19 +27,48 @@ export class DriversController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Patch('me')
+  async updateMyDriverProfile(
+    @CurrentUser() user: any,
+    @Body()
+    body: {
+      licenseNumber?: string;
+      cnhCategory?: string;
+      pixKey?: string;
+      pixKeyType?: string;
+    },
+  ) {
+    return this.driversService.updateProfile(user.userId, body);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Post('register')
   async registerDriver(
     @CurrentUser() user: any,
     @Body('licenseNumber') licenseNumber: string,
+    @Body('cnhCategory') cnhCategory?: string,
   ) {
     return this.driversService.create({
       userId: user.userId,
-      licenseNumber,
+      licenseNumber: licenseNumber || 'PENDING_CNH',
+      cnhCategory: cnhCategory || 'B',
       status: DriverStatus.OFFLINE,
       approvalStatus: ApprovalStatus.PENDING,
       rating: 5.0,
       totalTrips: 0,
     });
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('online')
+  async getOnlineDrivers() {
+    return this.driversService.findOnlineDrivers();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/public')
+  async getPublicProfile(@Param('id') id: string) {
+    return this.driversService.getPublicProfile(id);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -60,30 +91,21 @@ export class DriversController {
   async updateApproval(
     @Param('id') id: string,
     @Body('approvalStatus') approvalStatus: ApprovalStatus,
+    @Body('rejectionReason') rejectionReason?: string,
   ) {
-    return this.driversService.setApproval(id, approvalStatus);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('online')
-  async getOnlineDrivers() {
-    return this.driversService.findOnlineDrivers();
+    if (!approvalStatus) {
+      throw new BadRequestException('Status de aprovação é obrigatório');
+    }
+    return this.driversService.setApproval(id, approvalStatus, rejectionReason);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getDriver(@Param('id') id: string, @CurrentUser() user: any) {
     const driver = await this.driversService.findById(id);
-    // Public safe view for passengers, full view for owner/admin
+    // Public safe view for other users, full view for owner/admin
     if (driver.userId !== user.userId && user.role !== UserRole.ADMIN) {
-      return {
-        id: driver.id,
-        rating: driver.rating,
-        totalTrips: driver.totalTrips,
-        status: driver.status,
-        approvalStatus: driver.approvalStatus,
-        vehicles: driver.vehicles?.filter((v) => v.approved),
-      };
+      return this.driversService.getPublicProfile(id);
     }
     return driver;
   }

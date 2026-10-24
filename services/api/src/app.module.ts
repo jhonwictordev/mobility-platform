@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { DriversModule } from './drivers/drivers.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
+import { DocumentsModule } from './documents/documents.module';
 import { LocationModule } from './location/location.module';
 import { PricingModule } from './pricing/pricing.module';
 import { DispatchModule } from './dispatch/dispatch.module';
@@ -25,6 +26,7 @@ import { SecurityHeadersMiddleware } from './common/middleware/security.middlewa
     AuthModule,
     DriversModule,
     VehiclesModule,
+    DocumentsModule,
     LocationModule,
     PricingModule,
     DispatchModule,

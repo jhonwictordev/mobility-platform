@@ -80,14 +80,27 @@ export class TripsController {
     @CurrentUser() user: any,
     @Body('status') status: TripStatus,
     @Body('reason') reason?: string,
+    @Body('pinCode') pinCode?: string,
   ) {
     const trip = await this.tripsService.updateStatus(
       id,
       status,
       user,
       reason,
+      pinCode,
     );
     return { success: true, data: trip };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/decline')
+  async declineTrip(@Param('id') id: string, @CurrentUser() user: any) {
+    const driver = await this.driversService.findByUserId(user.userId);
+    if (!driver) {
+      throw new ForbiddenException('Usuário não possui perfil de motorista cadastrado');
+    }
+    const result = await this.tripsService.declineTrip(id, driver.id);
+    return { success: true, data: result };
   }
 
   @UseGuards(JwtAuthGuard)
@@ -104,6 +117,69 @@ export class TripsController {
       reason,
     );
     return { success: true, data: trip };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/chat')
+  async sendChat(
+    @Param('id') id: string,
+    @CurrentUser() user: any,
+    @Body('message') message: string,
+  ) {
+    if (!message || !message.trim()) {
+      throw new BadRequestException('Mensagem não pode ser vazia');
+    }
+    const trip = await this.tripsService.findById(id);
+    const isPassenger = trip.passengerId === user.userId;
+    const isDriver = trip.driver && trip.driver.userId === user.userId;
+    const isAdmin = user.role === UserRole.ADMIN;
+
+    if (!isPassenger && !isDriver && !isAdmin) {
+      throw new ForbiddenException('Acesso negado ao chat desta corrida');
+    }
+
+    const senderRole = isPassenger ? 'passenger' : isDriver ? 'driver' : 'admin';
+    const chat = await this.tripsService.sendChatMessage(
+      id,
+      user.userId,
+      senderRole,
+      message,
+    );
+    return { success: true, data: chat };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/chat')
+  async getChat(@Param('id') id: string, @CurrentUser() user: any) {
+    const trip = await this.tripsService.findById(id);
+    const isPassenger = trip.passengerId === user.userId;
+    const isDriver = trip.driver && trip.driver.userId === user.userId;
+    const isAdmin = user.role === UserRole.ADMIN;
+
+    if (!isPassenger && !isDriver && !isAdmin) {
+      throw new ForbiddenException('Acesso negado às mensagens desta corrida');
+    }
+
+    return this.tripsService.getChatMessages(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/sos')
+  async triggerSos(
+    @Param('id') id: string,
+    @CurrentUser() user: any,
+    @Body('reason') reason?: string,
+  ) {
+    const trip = await this.tripsService.findById(id);
+    const isPassenger = trip.passengerId === user.userId;
+    const isDriver = trip.driver && trip.driver.userId === user.userId;
+    const isAdmin = user.role === UserRole.ADMIN;
+
+    if (!isPassenger && !isDriver && !isAdmin) {
+      throw new ForbiddenException('Apenas os envolvidos na corrida podem acionar o SOS');
+    }
+
+    return this.tripsService.triggerSosAlert(id, user.userId, reason);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -162,6 +238,20 @@ export class TripsController {
     if (!isPassenger && !isDriver && !isAdmin) {
       throw new ForbiddenException('Acesso negado aos detalhes desta corrida');
     }
+
+    if (isPassenger && trip.driver) {
+      const sanitizedDriver: any = {
+        id: trip.driver.id,
+        name: trip.driver.user?.name,
+        rating: trip.driver.rating,
+        totalTrips: trip.driver.totalTrips,
+        vehicle: trip.driver.vehicle,
+        currentLat: trip.driver.currentLat,
+        currentLng: trip.driver.currentLng,
+      };
+      return { ...trip, driver: sanitizedDriver };
+    }
+
     return trip;
   }
 

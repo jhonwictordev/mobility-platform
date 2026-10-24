@@ -31,31 +31,37 @@ export class Vehicle {
   @JoinColumn({ name: 'driverId' })
   driver!: Driver;
 
-  @Column({ length: 50 })
+  @Column({ type: 'varchar', length: 50 })
   make!: string;
 
-  @Column({ length: 50 })
+  @Column({ type: 'varchar', length: 50 })
   model!: string;
 
-  @Column()
+  @Column({ type: 'integer' })
   year!: number;
 
-  @Column({ length: 30 })
+  @Column({ type: 'varchar', length: 30 })
   color!: string;
 
-  @Column({ length: 20, unique: true })
+  @Column({ type: 'varchar', length: 20, unique: true })
   plateNumber!: string;
+
+  @Column({ type: 'varchar', length: 20, nullable: true })
+  renavam!: string | null;
 
   @Column({ type: 'varchar', default: VehicleCategory.ECONOMY })
   category!: VehicleCategory;
 
-  @Column({ default: 4 })
+  @Column({ type: 'integer', default: 4 })
   seats!: number;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   approved!: boolean;
 
-  @Column({ default: true })
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  inspectionNotes!: string | null;
+
+  @Column({ type: 'boolean', default: true })
   isActive!: boolean;
 
   @CreateDateColumn()

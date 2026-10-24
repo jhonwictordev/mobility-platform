@@ -15,23 +15,44 @@ export class VehiclesService {
     return this.vehicleRepo.save(vehicle);
   }
 
-  async findByDriverId(driverId: string): Promise<Vehicle | null> {
-    return this.vehicleRepo.findOne({ where: { driverId } });
+  async findByDriverId(driverId: string): Promise<Vehicle[]> {
+    return this.vehicleRepo.find({
+      where: { driverId },
+      order: { createdAt: 'DESC' },
+    });
   }
 
   async findById(id: string): Promise<Vehicle> {
-    const vehicle = await this.vehicleRepo.findOne({ where: { id } });
+    const vehicle = await this.vehicleRepo.findOne({
+      where: { id },
+      relations: { driver: true },
+    });
     if (!vehicle) throw new NotFoundException('Veículo não encontrado');
     return vehicle;
   }
 
-  async updateApproval(id: string, approved: boolean): Promise<Vehicle> {
+  async updateApproval(id: string, approved: boolean, notes?: string): Promise<Vehicle> {
     const vehicle = await this.findById(id);
     vehicle.approved = approved;
+    if (notes !== undefined) {
+      vehicle.inspectionNotes = notes;
+    }
+    return this.vehicleRepo.save(vehicle);
+  }
+
+  async updateCategory(id: string, category: VehicleCategory): Promise<Vehicle> {
+    const vehicle = await this.findById(id);
+    vehicle.category = category;
     return this.vehicleRepo.save(vehicle);
   }
 
   async findAll(): Promise<Vehicle[]> {
-    return this.vehicleRepo.find();
+    return this.vehicleRepo.find({
+      relations: { driver: true },
+    });
+  }
+
+  async count(): Promise<number> {
+    return this.vehicleRepo.count();
   }
 }

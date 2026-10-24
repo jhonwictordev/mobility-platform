@@ -89,6 +89,9 @@ export class Trip {
   @Column({ type: 'varchar', default: VehicleCategory.ECONOMY })
   category!: VehicleCategory;
 
+  @Column({ type: 'varchar', length: 10, default: '4821' })
+  pinCode!: string;
+
   @Column({ type: 'float', default: 1.0 })
   surgeMultiplier!: number;
 

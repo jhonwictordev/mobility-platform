@@ -1,10 +1,18 @@
 import { Controller, Get, Query, Put, Body, UseGuards } from '@nestjs/common';
 import { PricingService } from './pricing.service';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
+import { RolesGuard } from '../common/guards/roles.guard';
+import { Roles } from '../common/decorators';
+import { UserRole } from '../database/entities';
 
 @Controller('pricing')
 export class PricingController {
   constructor(private readonly pricingService: PricingService) {}
+
+  @Get('categories')
+  getCategories() {
+    return this.pricingService.getCategoriesConfig();
+  }
 
   @Get('estimate')
   getEstimate(
@@ -21,7 +29,8 @@ export class PricingController {
     );
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Put('surge')
   setSurge(@Body('multiplier') multiplier: number) {
     this.pricingService.setSurgeMultiplier(Number(multiplier));

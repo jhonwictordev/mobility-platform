@@ -78,6 +78,14 @@ export default function RootLayout({
             </Link>
 
             <Link
+              href="/vehicles"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1A5243] text-sm font-semibold transition text-slate-100 hover:text-white"
+            >
+              <span className="text-lg">🛡️</span>
+              <span>Veículos & Vistoria</span>
+            </Link>
+
+            <Link
               href="/passengers"
               className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1A5243] text-sm font-semibold transition text-slate-100 hover:text-white"
             >

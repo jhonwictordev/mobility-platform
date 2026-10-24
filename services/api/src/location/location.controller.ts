@@ -1,14 +1,29 @@
-import { Controller, Post, Body, Get, Query, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Query,
+  UseGuards,
+  ForbiddenException,
+} from '@nestjs/common';
 import { LocationService } from './location.service';
+import { DriversService } from '../drivers/drivers.service';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
+import { CurrentUser } from '../common/decorators';
+import { UserRole } from '../database/entities';
 
 @Controller('location')
 export class LocationController {
-  constructor(private readonly locationService: LocationService) {}
+  constructor(
+    private readonly locationService: LocationService,
+    private readonly driversService: DriversService,
+  ) {}
 
   @UseGuards(JwtAuthGuard)
   @Post('update')
   async updateLocation(
+    @CurrentUser() user: any,
     @Body()
     body: {
       driverId: string;
@@ -19,6 +34,12 @@ export class LocationController {
       tripId?: string;
     },
   ) {
+    if (user.role !== UserRole.ADMIN) {
+      const driver = await this.driversService.findByUserId(user.userId);
+      if (!driver || driver.id !== body.driverId) {
+        throw new ForbiddenException('Não autorizado a atualizar localização de outro motorista');
+      }
+    }
     return this.locationService.recordLocation(
       body.driverId,
       body.lat,

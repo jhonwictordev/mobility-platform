@@ -18,6 +18,7 @@ export enum PaymentMethod {
   CREDIT_CARD = 'credit_card',
   DEBIT_CARD = 'debit_card',
   WALLET = 'wallet',
+  PIX = 'pix',
 }
 
 export enum PaymentStatus {
@@ -43,6 +44,12 @@ export class Payment {
   @Column({ type: 'float' })
   amount!: number;
 
+  @Column({ type: 'float', default: 0 })
+  platformFee!: number;
+
+  @Column({ type: 'float', default: 0 })
+  driverPayout!: number;
+
   @Column({ type: 'varchar', default: PaymentMethod.CASH })
   method!: PaymentMethod;
 
@@ -51,6 +58,9 @@ export class Payment {
 
   @Column({ type: 'varchar', nullable: true })
   transactionId!: string | null;
+
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  pixCopyPaste!: string | null;
 
   @Column({ type: 'float', nullable: true })
   tip!: number | null;

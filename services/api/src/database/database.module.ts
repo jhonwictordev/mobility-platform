@@ -10,6 +10,8 @@ import {
   Payment,
   AuditLog,
   Document,
+  SavedPlace,
+  ChatMessage,
 } from './entities';
 
 @Module({
@@ -26,6 +28,8 @@ import {
         Payment,
         AuditLog,
         Document,
+        SavedPlace,
+        ChatMessage,
       ],
       synchronize: true, // Auto schema sync in dev
       logging: false,
@@ -39,6 +43,8 @@ import {
       Payment,
       AuditLog,
       Document,
+      SavedPlace,
+      ChatMessage,
     ]),
   ],
   exports: [TypeOrmModule],

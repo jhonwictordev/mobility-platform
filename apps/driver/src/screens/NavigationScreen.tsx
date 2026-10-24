@@ -33,14 +33,18 @@ export default function NavigationScreen({ navigation }: any) {
   };
 
   const handleStartTrip = async () => {
-    if (pin.length < 4) {
+    if (pin.trim().length < 4) {
       Alert.alert(
         'PIN Obrigatório',
         'Peça o código PIN de 4 dígitos ao passageiro para iniciar a corrida com segurança.',
       );
       return;
     }
-    await updateTripStatus(TripStatus.IN_PROGRESS);
+    try {
+      await updateTripStatus(TripStatus.IN_PROGRESS, pin.trim());
+    } catch (err: any) {
+      Alert.alert('PIN Inválido', err.message || 'Código PIN incorreto');
+    }
   };
 
   const handleCompleteTrip = async () => {

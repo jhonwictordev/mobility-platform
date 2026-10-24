@@ -1,4 +1,4 @@
-import { Controller, Get, Put, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Put, Param, Body, UseGuards } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../common/guards/roles.guard';
@@ -26,8 +26,8 @@ export class AdminController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   @Put('drivers/:id/reject')
-  rejectDriver(@Param('id') id: string) {
-    return this.adminService.rejectDriver(id);
+  rejectDriver(@Param('id') id: string, @Body('reason') reason?: string) {
+    return this.adminService.rejectDriver(id, reason);
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)

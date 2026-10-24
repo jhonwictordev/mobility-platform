@@ -42,6 +42,15 @@ export class PricingService {
     return this.surgeMultiplier;
   }
 
+  getCategoriesConfig() {
+    return Object.entries(FARE_CONFIG).map(([category, config]) => ({
+      category,
+      ...config,
+      surgeMultiplier: this.surgeMultiplier,
+      currency: 'BRL',
+    }));
+  }
+
   calculateFare(
     category: VehicleCategory,
     distanceKm: number,

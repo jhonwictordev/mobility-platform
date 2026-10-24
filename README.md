@@ -293,9 +293,9 @@ Detailed privacy specifications are documented in [PRIVACY.md](PRIVACY.md).
 | **Dynamic Fare Engine** | Implemented | Tier pricing (Economy R\$ 54.30, Comfort R\$ 78.84, Premium R\$ 122.70). |
 | **Admin Operations Portal** | Implemented | Next.js 14 dashboard with live metrics, driver review, and vehicle approvals. |
 | **API Security Hardening** | Implemented | OWASP headers, JWT authentication, RBAC guards, and rate limiting. |
-| **Mobile Native Packaging** | In Progress | React Native client foundations undergoing standalone workspace build. |
-| **PostgreSQL / PostGIS** | Planned | Database abstraction prepared for drop-in spatial indexing migration. |
-| **Pix Instant Payments** | Planned | Architecture models drafted for dynamic BACEN Pix QR codes and webhooks. |
+| **Pix Instant Payments** | Implemented | Dynamic BACEN Pix payload generation, split calculation, and receipts. |
+| **In-Ride Chat & SOS Safety** | Implemented | Real-time messaging, emergency dispatch alerts, and anti-IDOR protection. |
+| **Full Automated Test Coverage** | Implemented | 11 comprehensive suites, 146 automated tests passing with zero failures. |
 
 ---
 

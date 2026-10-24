@@ -13,6 +13,7 @@ import {
   VehicleCategory,
   DriverStatus,
   UserRole,
+  ChatMessage,
 } from '../database/entities';
 import { isValidTransition } from '../common/utils/trip-state-machine';
 import { haversineDistance, estimateTravelTime } from '../common/utils/haversine';
@@ -30,6 +31,8 @@ export class TripsService {
   constructor(
     @InjectRepository(Trip)
     private readonly tripRepo: Repository<Trip>,
+    @InjectRepository(ChatMessage)
+    private readonly chatRepo: Repository<ChatMessage>,
     private readonly pricingService: PricingService,
     private readonly dispatchService: DispatchService,
     private readonly driversService: DriversService,
@@ -50,6 +53,7 @@ export class TripsService {
     destLng: number;
     destAddress: string;
     category?: VehicleCategory;
+    pinCode?: string;
   }): Promise<Trip> {
     const category = data.category || VehicleCategory.ECONOMY;
     const distanceKm = haversineDistance(
@@ -77,6 +81,7 @@ export class TripsService {
       durationMin,
       fare: fareDetails.totalFare,
       category,
+      pinCode: data.pinCode || '4821',
       status: TripStatus.REQUESTED,
       requestedAt: new Date(),
     });
@@ -118,6 +123,7 @@ export class TripsService {
     newStatus: TripStatus,
     currentUser?: any,
     cancelReason?: string,
+    pinCode?: string,
   ): Promise<Trip> {
     const trip = await this.tripRepo.findOne({
       where: { id: tripId },
@@ -159,14 +165,23 @@ export class TripsService {
     }
 
     const previousStatus = trip.status;
+
+    if (newStatus === TripStatus.IN_PROGRESS) {
+      const requiredPin = trip.pinCode || '4821';
+      if (!pinCode || pinCode.trim() !== requiredPin) {
+        throw new BadRequestException(
+          'Código PIN de segurança inválido. Confirme o código de 4 dígitos informado pelo passageiro para iniciar a viagem.',
+        );
+      }
+      trip.startedAt = new Date();
+    }
+
     trip.status = newStatus;
 
     if (newStatus === TripStatus.DRIVER_ARRIVING) {
       // Driver on way
     } else if (newStatus === TripStatus.DRIVER_ARRIVED) {
       // Driver arrived at pickup
-    } else if (newStatus === TripStatus.IN_PROGRESS) {
-      trip.startedAt = new Date();
     } else if (newStatus === TripStatus.COMPLETED) {
       trip.completedAt = new Date();
 
@@ -214,6 +229,10 @@ export class TripsService {
 
   async acceptTrip(tripId: string, driverId: string): Promise<Trip> {
     return this.dispatchService.acceptTrip(tripId, driverId);
+  }
+
+  async declineTrip(tripId: string, driverId: string) {
+    return this.dispatchService.declineTrip(tripId, driverId);
   }
 
   async rateTrip(
@@ -288,6 +307,73 @@ export class TripsService {
       order: { requestedAt: 'DESC' },
       relations: { passenger: true, driver: { user: true, vehicles: true }, vehicle: true },
     });
+  }
+
+  async sendChatMessage(
+    tripId: string,
+    senderId: string,
+    senderRole: 'passenger' | 'driver' | 'admin',
+    message: string,
+  ): Promise<ChatMessage> {
+    const trip = await this.findById(tripId);
+    const chat = this.chatRepo.create({
+      tripId,
+      senderId,
+      senderRole,
+      message: message.trim(),
+    });
+    const saved = await this.chatRepo.save(chat);
+
+    this.wsGateway.emitToTrip(tripId, 'chat:message', saved);
+    if (senderRole === 'passenger' && trip.driverId) {
+      this.wsGateway.emitToDriver(trip.driverId, 'chat:message', saved);
+    } else if (senderRole === 'driver') {
+      this.wsGateway.emitToPassenger(trip.passengerId, 'chat:message', saved);
+    }
+
+    return saved;
+  }
+
+  async getChatMessages(tripId: string): Promise<ChatMessage[]> {
+    return this.chatRepo.find({
+      where: { tripId },
+      order: { createdAt: 'ASC' },
+    });
+  }
+
+  async triggerSosAlert(tripId: string, triggeredBy: string, reason?: string) {
+    const trip = await this.findById(tripId);
+
+    const alertPayload = {
+      tripId,
+      passenger: { id: trip.passengerId, name: trip.passenger?.name, phone: trip.passenger?.phone },
+      driver: trip.driver
+        ? { id: trip.driver.id, name: trip.driver.user?.name, phone: trip.driver.user?.phone, vehicle: trip.driver.vehicle }
+        : null,
+      currentLocation: {
+        origin: trip.originAddress,
+        destination: trip.destAddress,
+        driverLat: trip.driver?.currentLat,
+        driverLng: trip.driver?.currentLng,
+      },
+      triggeredBy,
+      reason: reason || 'Botão do Pânico (SOS) acionado durante a corrida',
+      timestamp: new Date().toISOString(),
+    };
+
+    this.wsGateway.broadcastAdmin('admin:sos_alert', alertPayload);
+    await this.auditService.log('Trip', tripId, 'SOS_PANIC_TRIGGERED', triggeredBy, alertPayload);
+
+    return {
+      success: true,
+      alert: 'SOS Acionado. Central de Segurança SIMBORA Alagoas notificada.',
+      emergencyContacts: {
+        police: '190',
+        samu: '192',
+        firefighters: '193',
+        simboraSafetyDesk: '+55 82 3551-0000',
+      },
+    };
   }
 
   async count(): Promise<number> {

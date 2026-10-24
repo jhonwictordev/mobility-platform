@@ -119,7 +119,7 @@ export default function TripScreen({ navigation }: any) {
                 <View style={styles.pinContainer}>
                   <View>
                     <Text style={styles.pinLabel}>SEU PIN DE SEGURANÇA</Text>
-                    <Text style={styles.pinNumber}>7429</Text>
+                    <Text style={styles.pinNumber}>{currentTrip.pinCode || '4821'}</Text>
                   </View>
                   <Text style={styles.pinHelp}>
                     Fale este código ao motorista antes de iniciar a viagem.

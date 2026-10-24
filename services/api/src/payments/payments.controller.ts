@@ -33,6 +33,8 @@ export class PaymentsController {
       tripId: string;
       amount: number;
       method?: PaymentMethod;
+      tip?: number;
+      pixCopyPaste?: string;
     },
   ) {
     const trip = await this.tripRepo.findOne({
@@ -41,7 +43,6 @@ export class PaymentsController {
     });
     if (!trip) throw new NotFoundException('Corrida não encontrada');
 
-    // Only the trip passenger, assigned driver, or admin can trigger payment
     const isPassenger = trip.passengerId === user.userId;
     const isDriver = trip.driver && trip.driver.userId === user.userId;
     const isAdmin = user.role === UserRole.ADMIN;
@@ -50,11 +51,57 @@ export class PaymentsController {
       throw new ForbiddenException('Não autorizado a processar pagamento desta corrida');
     }
 
-    return this.paymentsService.processTestPayment(
+    return this.paymentsService.processPayment(
       body.tripId,
       body.amount,
       body.method,
+      body.tip,
+      body.pixCopyPaste,
     );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('pix/generate')
+  async generatePix(
+    @CurrentUser() user: any,
+    @Body() body: { tripId: string; amount?: number },
+  ) {
+    const trip = await this.tripRepo.findOne({
+      where: { id: body.tripId },
+      relations: { driver: true },
+    });
+    if (!trip) throw new NotFoundException('Corrida não encontrada');
+
+    const isPassenger = trip.passengerId === user.userId;
+    const isDriver = trip.driver && trip.driver.userId === user.userId;
+    const isAdmin = user.role === UserRole.ADMIN;
+
+    if (!isPassenger && !isDriver && !isAdmin) {
+      throw new ForbiddenException('Não autorizado a gerar PIX para esta corrida');
+    }
+
+    const amount = body.amount || trip.fare || 15.0;
+    return this.paymentsService.generatePixPayload(body.tripId, amount);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('receipt/:tripId')
+  async getReceipt(@Param('tripId') tripId: string, @CurrentUser() user: any) {
+    const trip = await this.tripRepo.findOne({
+      where: { id: tripId },
+      relations: { driver: true },
+    });
+    if (!trip) throw new NotFoundException('Corrida não encontrada');
+
+    const isPassenger = trip.passengerId === user.userId;
+    const isDriver = trip.driver && trip.driver.userId === user.userId;
+    const isAdmin = user.role === UserRole.ADMIN;
+
+    if (!isPassenger && !isDriver && !isAdmin) {
+      throw new ForbiddenException('Acesso negado ao recibo desta corrida');
+    }
+
+    return this.paymentsService.getDetailedReceipt(tripId);
   }
 
   @UseGuards(JwtAuthGuard)

@@ -17,6 +17,7 @@ import {
   AuditLog,
   DriverLocation,
   Document,
+  SavedPlace,
 } from './entities';
 
 async function seed() {
@@ -37,6 +38,7 @@ async function seed() {
       Payment,
       AuditLog,
       Document,
+      SavedPlace,
     ],
     synchronize: true,
   });

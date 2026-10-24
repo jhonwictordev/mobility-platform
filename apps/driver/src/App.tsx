@@ -12,6 +12,7 @@ import HomeScreen from './screens/HomeScreen';
 import NavigationScreen from './screens/NavigationScreen';
 import EarningsScreen from './screens/EarningsScreen';
 import DocumentsScreen from './screens/DocumentsScreen';
+import AccountScreen from './screens/AccountScreen';
 
 import { useDriverStore } from './stores/driverStore';
 
@@ -62,6 +63,14 @@ function DriverTabs() {
         options={{
           tabBarLabel: 'Veículo',
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 20 }}>📋</Text>,
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarLabel: 'Conta',
+          tabBarIcon: ({ color }) => <Text style={{ fontSize: 20 }}>👤</Text>,
         }}
       />
     </Tab.Navigator>

@@ -14,6 +14,7 @@ import {
 } from 'typeorm';
 import { User } from './user.entity';
 import { Vehicle } from './vehicle.entity';
+import { Document } from './document.entity';
 
 export enum DriverStatus {
   ONLINE = 'online',
@@ -43,6 +44,15 @@ export class Driver {
   @Column({ type: 'varchar', length: 50 })
   licenseNumber!: string;
 
+  @Column({ type: 'varchar', length: 10, default: 'B' })
+  cnhCategory!: string; // 'B' | 'C' | 'D' | 'AB'
+
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  pixKey!: string | null;
+
+  @Column({ type: 'varchar', length: 20, nullable: true })
+  pixKeyType!: string | null; // 'CPF' | 'EMAIL' | 'PHONE' | 'RANDOM'
+
   @Column({ type: 'varchar', default: DriverStatus.OFFLINE })
   status!: DriverStatus;
 
@@ -61,8 +71,14 @@ export class Driver {
   @Column({ type: 'varchar', default: ApprovalStatus.PENDING })
   approvalStatus!: ApprovalStatus;
 
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  rejectionReason!: string | null;
+
   @OneToMany(() => Vehicle, (vehicle) => vehicle.driver)
   vehicles!: Vehicle[];
+
+  @OneToMany(() => Document, (doc) => doc.driver)
+  documents?: Document[];
 
   get vehicle(): Vehicle | undefined {
     return this.vehicles && this.vehicles.length > 0 ? this.vehicles[0] : undefined;

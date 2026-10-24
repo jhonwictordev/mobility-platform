@@ -8,7 +8,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { SavedPlace } from './saved-place.entity';
 
 export enum UserRole {
   PASSENGER = 'passenger',
@@ -39,8 +41,29 @@ export class User {
   @Column({ type: 'varchar', nullable: true })
   avatar!: string | null;
 
+  @Column({ type: 'boolean', default: false })
+  phoneVerified!: boolean;
+
+  @Column({ type: 'varchar', length: 10, nullable: true })
+  otpCode!: string | null;
+
+  @Column({ type: 'datetime', nullable: true })
+  otpExpiresAt!: Date | null;
+
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  resetToken!: string | null;
+
+  @Column({ type: 'datetime', nullable: true })
+  resetTokenExpiresAt!: Date | null;
+
+  @Column({ type: 'text', nullable: true })
+  preferences!: string | null; // JSON: { preferredCategory, accessibility, emergencyContact }
+
   @Column({ type: 'boolean', default: true })
   isActive!: boolean;
+
+  @OneToMany(() => SavedPlace, (place) => place.user)
+  savedPlaces?: SavedPlace[];
 
   @CreateDateColumn()
   createdAt!: Date;
