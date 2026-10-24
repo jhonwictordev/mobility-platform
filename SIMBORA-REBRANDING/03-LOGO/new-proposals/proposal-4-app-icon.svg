@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 4: APP ICON - EXPRESSIVE DISPLAY S! -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+      .p4-icon-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 270px;
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Decorative dynamic energy bars at corner -->
+  <rect x="70" y="60" width="72" height="14" rx="7" fill="#16A572"/>
+  <rect x="154" y="60" width="28" height="14" rx="7" fill="#FFCC45"/>
+  <!-- Typographic Expressive S! lockup -->
+  <g transform="translate(90, 365)">
+    <text class="p4-icon-text" fill="#F8F9F6">S<tspan fill="#FFCC45">!</tspan></text>
+  </g>
+</svg>

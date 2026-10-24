@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 5: CONEXÃO E MOBILIDADE ABSTRATA ("THE TRANSIT NEXUS") -->
+  <!-- Dois nós de trânsito (Origem e Destino) convergindo na lente de encontro solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p5-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        fill: #123D32;
+      }
+      .p5-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+    <!-- Clip paths for left crescent, right crescent, and intersection lens -->
+    <clipPath id="circle-left">
+      <circle cx="85" cy="100" r="48"/>
+    </clipPath>
+    <clipPath id="circle-right">
+      <circle cx="127" cy="100" r="48"/>
+    </clipPath>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: THE TRANSIT NEXUS -->
+  <g transform="translate(15, 0)">
+    <!-- Base Right Circle (Verde Vibrante) -->
+    <circle cx="127" cy="100" r="48" fill="#16A572"/>
+
+    <!-- Left Circle (Verde Profundo) with cutout to reveal right -->
+    <!-- We draw Left Circle fully -->
+    <circle cx="85" cy="100" r="48" fill="#123D32"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) - intersection of both circles -->
+    <g clip-path="url(#circle-left)">
+      <circle cx="127" cy="100" r="48" fill="#FFCC45"/>
+    </g>
+
+    <!-- Inner Core Points: Origin & Destination micro-indicators -->
+    <circle cx="70" cy="100" r="8" fill="#F8F9F6"/>
+    <circle cx="142" cy="100" r="8" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(225, 108)">
+    <text x="0" y="0" class="p5-title">SIMBORA</text>
+    <text x="3" y="32" class="p5-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>

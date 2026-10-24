@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- VAR E: SOLID EMBEDDED BADGE S! -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Inner Energetic Plate in Verde Vibrante -->
+  <rect x="56" y="56" width="400" height="400" rx="72" fill="#16A572"/>
+  <g transform="translate(130, 100)">
+    <g transform="skewX(-10)">
+      <!-- S in Pure White -->
+      <path d="M 175 28 L 128 28 C 124 18, 112 12, 94 12 C 64 12, 44 30, 44 58 C 44 82, 62 96, 102 108 C 154 122, 188 148, 188 204 C 188 262, 142 300, 84 300 C 32 300, 2 268, 0 216 L 50 212 C 52 242, 68 258, 88 258 C 112 258, 130 242, 130 212 C 130 186, 114 174, 72 160 C 24 146, 0 122, 0 68 C 0 24, 40 0, 94 0 C 146 0, 174 24, 175 28 Z" fill="#FFFFFF"/>
+      
+      <!-- ! in Amarelo Energia with sharp white halo -->
+      <path d="M 216 10 L 256 10 L 246 195 L 226 195 Z" fill="#FFCC45"/>
+      <circle cx="236" cy="258" r="26" fill="#FFCC45"/>
+    </g>
+  </g>
+</svg>

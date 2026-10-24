@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .lockup-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 64px; font-weight: 900; letter-spacing: 3px; fill: #123D32; }
+      .lockup-slogan { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14.5px; font-weight: 800; letter-spacing: 2.2px; text-transform: uppercase; fill: #16A572; }
+    </style>
+  </defs>
+  <rect width="760" height="220" fill="#FFFFFF"/>
+  <!-- Icon Symbol (150x150) -->
+  <g transform="translate(35, 35) scale(0.293)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- VAR C: PURE GEOMETRIC MONOLITH (Vertical, High-Tech Modern) -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 92)">
+    <!-- Monolithic S: Pure geometric contours, squircle ends, balanced mass -->
+    <path d="M 190 40 C 172 14, 144 0, 104 0 C 44 0, 2 36, 2 86 C 2 140, 48 166, 108 180 C 158 192, 184 212, 184 250 C 184 290, 150 324, 94 324 C 44 324, 12 296, 4 246 L 58 240 C 62 268, 76 280, 98 280 C 122 280, 138 264, 138 244 C 138 214, 114 198, 64 184 C 20 170, 0 142, 0 88 C 0 34, 40 0, 104 0 C 150 0, 182 22, 194 44 Z" fill="#F8F9F6"/>
+
+    <!-- Geometric Capsule Exclamation Stem -->
+    <rect x="228" y="10" width="44" height="196" rx="22" fill="#FFCC45"/>
+
+    <!-- Pure Solar Circle Dot -->
+    <circle cx="250" cy="280" r="26" fill="#FFCC45"/>
+  </g>
+</svg>
+  </g>
+  <!-- Full Brand Name & Slogan -->
+  <g transform="translate(225, 115)">
+    <text x="0" y="0" class="lockup-title">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+    <text x="3" y="38" class="lockup-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>

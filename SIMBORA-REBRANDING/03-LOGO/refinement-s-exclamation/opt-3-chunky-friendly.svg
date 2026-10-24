@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(85, 85)">
+    <!-- Chunky S with rounded pill terminals -->
+    <path d="M 185 55 C 168 20, 138 4, 98 4 C 42 4, 0 42, 0 98 C 0 156, 48 184, 112 198 C 162 210, 184 228, 184 256 C 184 290, 150 318, 98 318 C 48 318, 14 292, 4 246 L 62 238 C 66 262, 80 274, 98 274 C 120 274, 134 260, 134 242 C 134 216, 110 202, 60 188 C 18 174, 0 144, 0 94 C 0 38, 42 0, 100 0 C 150 0, 182 22, 196 46 Z" fill="#F8F9F6"/>
+    <!-- Chunky rounded exclamation stem -->
+    <rect x="230" y="8" width="56" height="198" rx="28" fill="#FFCC45"/>
+    <!-- Chunky round dot -->
+    <circle cx="258" cy="274" r="32" fill="#FFCC45"/>
+  </g>
+</svg>

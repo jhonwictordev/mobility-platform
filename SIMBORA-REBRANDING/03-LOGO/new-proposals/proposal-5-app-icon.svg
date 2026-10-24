@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 5: APP ICON - TRANSIT NEXUS -->
+  <defs>
+    <clipPath id="app-circle-left">
+      <circle cx="206" cy="256" r="118"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Símbolo Transit Nexus -->
+  <g>
+    <!-- Right Node (Branco Suave) -->
+    <circle cx="306" cy="256" r="118" fill="#F8F9F6"/>
+
+    <!-- Left Node (Verde Vibrante) -->
+    <circle cx="206" cy="256" r="118" fill="#16A572"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) -->
+    <g clip-path="url(#app-circle-left)">
+      <circle cx="306" cy="256" r="118" fill="#FFCC45"/>
+    </g>
+
+    <!-- Focal micro-accents -->
+    <circle cx="168" cy="256" r="16" fill="#123D32"/>
+    <circle cx="344" cy="256" r="16" fill="#123D32"/>
+  </g>
+</svg>

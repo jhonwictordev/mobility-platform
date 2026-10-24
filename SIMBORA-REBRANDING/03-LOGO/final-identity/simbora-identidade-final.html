@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMBORA — Identidade Visual Definitiva (Stencil Speed Cut)</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-profundo: #123D32;
+    --verde-vibrante: #16A572;
+    --amarelo-energia: #FFCC45;
+    --branco-suave: #F8F9F6;
+    --grafite: #17211D;
+    --cinza-bg: #F4F7F5;
+    --borda: #E2E8E4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #090E0C;
+    color: #17211D;
+    line-height: 1.4;
+    padding: 30px 20px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1360px; margin: 0 auto; }
+
+  /* HEADER HERO */
+  .hero-card {
+    background: linear-gradient(135deg, #123D32 0%, #08211A 100%);
+    border-radius: 24px;
+    padding: 48px;
+    color: #FFFFFF;
+    margin-bottom: 36px;
+    border: 1px solid rgba(22, 165, 114, 0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .badge-approved {
+    background: #FFCC45;
+    color: #123D32;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 6px 18px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .hero-title { font-size: 46px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+  .hero-title span { color: #FFCC45; }
+  .hero-subtitle { font-size: 18px; color: #A3C9BC; max-width: 860px; line-height: 1.5; }
+
+  /* PALETTE STRIP */
+  .palette-strip {
+    display: flex;
+    gap: 16px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .color-swatch {
+    flex: 1;
+    height: 75px;
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* SECTION CARDS */
+  .section-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 32px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+  .section-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--verde-profundo);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-desc { font-size: 14.5px; color: #52635B; margin-bottom: 28px; max-width: 800px; }
+
+  /* SHOWCASE GRIDS */
+  .app-icon-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 36px;
+    align-items: center;
+    background: var(--cinza-bg);
+    border-radius: 18px;
+    padding: 36px;
+  }
+  .hero-app-icon {
+    width: 220px;
+    height: 220px;
+    border-radius: 50px;
+    box-shadow: 0 24px 48px rgba(18, 61, 50, 0.35);
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .screen-sizes-row {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #DCE4E0;
+  }
+  .size-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .size-label { font-size: 11px; font-weight: 800; color: #8A9D94; }
+
+  /* LOCKUPS DISPLAY */
+  .lockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .lockup-box {
+    border-radius: 16px;
+    padding: 30px;
+    border: 2px solid var(--borda);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    position: relative;
+  }
+  .lockup-box.dark { background: var(--verde-profundo); border-color: var(--verde-profundo); }
+  .tag-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8A9D94;
+  }
+  .lockup-box.dark .tag-label { color: #7AA897; }
+
+  /* MOBILE APP SIMULATION */
+  .phone-mock-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .phone-frame {
+    width: 280px;
+    height: 540px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    border: 10px solid #17211D;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .phone-splash {
+    background: #123D32;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    padding: 30px;
+    text-align: center;
+  }
+
+  /* SPECS TABLE */
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .specs-table th {
+    background: #E8EFEA;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 800;
+    color: var(--verde-profundo);
+    border-bottom: 2px solid #D2DFD7;
+  }
+  .specs-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #E6ECE8;
+    color: #33443C;
+  }
+
+  @media print {
+    body { background: #FFFFFF; padding: 0; }
+    .hero-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-card { box-shadow: none; border: 1px solid #CCD6D1; page-break-inside: avoid; }
+    .lockup-box.dark { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .phone-splash { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero-card">
+    <div class="badge-approved">DIREÇÃO VISUAL APROVADA &bull; OPÇÃO 05</div>
+    <h1 class="hero-title">SIMBORA<span>!</span> &bull; Identidade Visual Definitiva</h1>
+    <p class="hero-subtitle">
+      O conceito <strong>Stencil Speed Cut</strong> consolida o monograma "S!" como um símbolo proprietário de alta performance.
+      O 'S' seccionado na diagonal evoca a pista e a aceleração rápida, enquanto a exclamação em Amarelo Energia traduz a voz popular:
+      <em>"Pediu. Chegou. Simbora!"</em>
+    </p>
+
+    <div class="palette-strip">
+      <div class="color-swatch" style="background: #123D32; color: #FFFFFF;">
+        <span>#123D32</span>
+        <span>Verde Profundo</span>
+      </div>
+      <div class="color-swatch" style="background: #16A572; color: #FFFFFF;">
+        <span>#16A572</span>
+        <span>Verde Vibrante</span>
+      </div>
+      <div class="color-swatch" style="background: #FFCC45; color: #17211D;">
+        <span>#FFCC45</span>
+        <span>Amarelo Energia</span>
+      </div>
+      <div class="color-swatch" style="background: #F8F9F6; color: #17211D; border: 1px solid rgba(0,0,0,0.1);">
+        <span>#F8F9F6</span>
+        <span>Branco Suave</span>
+      </div>
+      <div class="color-swatch" style="background: #17211D; color: #FFFFFF;">
+        <span>#17211D</span>
+        <span>Grafite Mineral</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. ÍCONE DE APLICATIVO -->
+  <section class="section-card">
+    <h2 class="section-title">1. Ícone Oficial do Aplicativo (iOS / Android)</h2>
+    <p class="section-desc">
+      Projetado com curvatura contínua (squircle rx=112) e inclinação aerodinâmica de 12 graus.
+      A leitura é impecável tanto na tela inicial quanto em micro-resoluções do sistema operacional.
+    </p>
+
+    <div class="app-icon-grid">
+      <div>
+        <div class="hero-app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg>
+        </div>
+        <p style="text-align: center; font-size: 12px; font-weight: 700; color: #697E75; margin-top: 14px;">
+          Master Icon 512x512
+        </p>
+      </div>
+
+      <div>
+        <h3 style="font-size: 18px; font-weight: 800; color: #123D32; margin-bottom: 8px;">Anatomia &amp; Significado</h3>
+        <p style="font-size: 14px; color: #43544D; line-height: 1.5; margin-bottom: 16px;">
+          <strong>Asa Superior (#F8F9F6):</strong> Início da corrida, clareza e direção.<br>
+          <strong>Corte de Aceleração (14px):</strong> Abertura que simboliza a pista e o trajeto em velocidade.<br>
+          <strong>Asa Inferior (#16A572):</strong> Impulso motor em Verde Vibrante.<br>
+          <strong>Exclamação (#FFCC45):</strong> O toque solar nordestino e o fechamento alegre do nome <em>SIMBORA!</em>.
+        </p>
+
+        <div class="screen-sizes-row">
+          <div class="size-item">
+            <span class="size-label">64px</span>
+            <div style="width:64px; height:64px; border-radius:16px; overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg></div>
+          </div>
+          <div class="size-item">
+            <span class="size-label">48px</span>
+            <div style="width:48px; height:48px; border-radius:12px; overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg></div>
+          </div>
+          <div class="size-item">
+            <span class="size-label">36px</span>
+            <div style="width:36px; height:36px; border-radius:9px; overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg></div>
+          </div>
+          <div class="size-item">
+            <span class="size-label">24px</span>
+            <div style="width:24px; height:24px; border-radius:6px; overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg></div>
+          </div>
+          <div class="size-item">
+            <span class="size-label">16px (Favicon)</span>
+            <div style="width:16px; height:16px; border-radius:4px; overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. LOGOTIPO PRINCIPAL HORIZONTAL & VERTICAL -->
+  <section class="section-card">
+    <h2 class="section-title">2. Aplicações do Logotipo Oficial</h2>
+    <p class="section-desc">
+      O logotipo combina o badge do símbolo com o wordmark em tipografia geométrica pesada (Plus Jakarta Sans 900),
+      mantendo a exclamação amarela integrada ao nome e o slogan preservado.
+    </p>
+
+    <div class="lockup-grid">
+      <!-- Fundo Claro -->
+      <div class="lockup-box">
+        <span class="tag-label">Aplicação Principal &bull; Fundo Claro</span>
+        <div style="width: 100%; max-width: 580px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 200" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .title-light { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 68px; font-weight: 900; letter-spacing: 3px; fill: #123D32; }
+      .slogan-light { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; fill: #16A572; }
+    </style>
+  </defs>
+  <rect width="780" height="200" fill="#FFFFFF"/>
+  <!-- Ícone Badge S! (140x140) -->
+  <g transform="translate(30, 30)">
+    <rect width="140" height="140" rx="32" fill="#123D32"/>
+    <g transform="translate(27, 23) scale(0.27) skewX(-12)">
+      <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+      <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+      <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+      <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+    </g>
+  </g>
+  <!-- Tipografia Master & Slogan -->
+  <g transform="translate(205, 110)">
+    <text x="0" y="0" class="title-light">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+    <text x="4" y="38" class="slogan-light">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+        </div>
+      </div>
+
+      <!-- Fundo Escuro -->
+      <div class="lockup-box dark">
+        <span class="tag-label">Aplicação Invertida &bull; Fundo Verde Profundo</span>
+        <div style="width: 100%; max-width: 580px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 200" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .title-dark { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 68px; font-weight: 900; letter-spacing: 3px; fill: #F8F9F6; }
+      .slogan-dark { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; fill: #16A572; }
+    </style>
+  </defs>
+  <rect width="780" height="200" fill="#123D32"/>
+  <!-- Ícone Badge S! com borda suave -->
+  <g transform="translate(30, 30)">
+    <rect width="140" height="140" rx="32" fill="#0D2C24" stroke="rgba(22, 165, 114, 0.4)" stroke-width="2"/>
+    <g transform="translate(27, 23) scale(0.27) skewX(-12)">
+      <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+      <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+      <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+      <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+    </g>
+  </g>
+  <!-- Tipografia Master & Slogan -->
+  <g transform="translate(205, 110)">
+    <text x="0" y="0" class="title-dark">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+    <text x="4" y="38" class="slogan-dark">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+        </div>
+      </div>
+
+      <!-- Monocromático Preto -->
+      <div class="lockup-box">
+        <span class="tag-label">Monocromático Preto &bull; Impressão Laser / P&amp;B</span>
+        <div style="width: 100%; max-width: 580px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 200" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .title-mono { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 68px; font-weight: 900; letter-spacing: 3px; fill: #000000; }
+      .slogan-mono { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; fill: #000000; }
+    </style>
+  </defs>
+  <rect width="780" height="200" fill="#FFFFFF"/>
+  <g transform="translate(30, 30)">
+    <rect width="140" height="140" rx="32" fill="#000000"/>
+    <g transform="translate(27, 23) scale(0.27) skewX(-12)">
+      <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#FFFFFF"/>
+      <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#FFFFFF" opacity="0.6"/>
+      <polygon points="238,8 288,8 274,212 248,212" fill="#FFFFFF"/>
+      <circle cx="260" cy="282" r="28" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <g transform="translate(205, 110)">
+    <text x="0" y="0" class="title-mono">SIMBORA!</text>
+    <text x="4" y="38" class="slogan-mono">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+        </div>
+      </div>
+
+      <!-- Aplicação Vertical -->
+      <div class="lockup-box">
+        <span class="tag-label">Aplicação Vertical &bull; Selo Centralizado</span>
+        <div style="width: 100%; max-width: 320px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .title-vert { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 50px; font-weight: 900; letter-spacing: 3px; fill: #123D32; text-anchor: middle; }
+      .slogan-vert { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; fill: #16A572; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect width="400" height="480" fill="#FFFFFF"/>
+  <!-- Ícone Centralizado -->
+  <g transform="translate(110, 40)">
+    <rect width="180" height="180" rx="42" fill="#123D32"/>
+    <g transform="translate(35, 30) scale(0.35) skewX(-12)">
+      <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+      <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+      <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+      <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+    </g>
+  </g>
+  <text x="200" y="300" class="title-vert">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+  <text x="200" y="336" class="slogan-vert">Pediu. Chegou. Simbora!</text>
+</svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SIMULAÇÃO MOBILE (SPLASH SCREEN & INTERFACE) -->
+  <section class="section-card">
+    <h2 class="section-title">3. Presença no Produto Digital (Mobile Experience)</h2>
+    <p class="section-desc">
+      Visualização da nova identidade na experiência real do passageiro e motorista:
+    </p>
+
+    <div class="phone-mock-row">
+      <!-- Tela 1: Splash Screen -->
+      <div class="phone-frame">
+        <div class="phone-splash">
+          <div style="width: 120px; height: 120px; border-radius: 28px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 16px 32px rgba(0,0,0,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg>
+          </div>
+          <div style="font-size: 28px; font-weight: 900; letter-spacing: 2px;">SIMBORA<span style="color:#FFCC45;">!</span></div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #16A572; margin-top: 6px;">
+            Pediu. Chegou. Simbora!
+          </div>
+          <div style="margin-top: 80px; width: 36px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden;">
+            <div style="width: 60%; height: 100%; background: #FFCC45;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tela 2: Home Header / In-App -->
+      <div class="phone-frame">
+        <div style="padding: 24px 20px 16px; background: #123D32; color: #FFFFFF; display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 34px; height: 34px; border-radius: 8px; overflow: hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- SIMBORA APP ICON — STENCIL SPEED CUT -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(100, 85) skewX(-12)">
+    <!-- Asa Superior S (Branco Suave #F8F9F6) -->
+    <path d="M 188 28 L 138 28 C 130 16, 116 10, 94 10 C 58 10, 36 30, 36 60 C 36 86, 56 102, 102 114 L 140 126 L 40 162 C 15 146, 0 120, 0 70 C 0 22, 42 0, 100 0 C 158 0, 186 24, 188 28 Z" fill="#F8F9F6"/>
+    <!-- Asa Inferior S (Verde Vibrante #16A572) com rasgo de velocidade -->
+    <path d="M 198 214 C 198 284, 150 326, 88 326 C 34 326, 2 292, 0 236 L 56 230 C 58 262, 74 278, 96 278 C 122 278, 142 260, 142 228 C 142 200, 124 186, 78 172 L 68 168 L 168 132 C 188 152, 198 180, 198 214 Z" fill="#16A572"/>
+    <!-- Exclamação Solar (Amarelo Energia #FFCC45) -->
+    <polygon points="238,8 288,8 274,212 248,212" fill="#FFCC45"/>
+    <circle cx="260" cy="282" r="28" fill="#FFCC45"/>
+  </g>
+</svg></div>
+            <div style="font-size: 18px; font-weight: 900;">SIMBORA<span style="color:#FFCC45;">!</span></div>
+          </div>
+          <div style="background: #16A572; width: 32px; height: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900;">JS</div>
+        </div>
+        <div style="padding: 20px; background: #F8F9F6; flex: 1;">
+          <div style="background: #FFFFFF; padding: 16px; border-radius: 16px; border: 1px solid #E2E8E4; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="font-size: 12px; font-weight: 800; color: #16A572; text-transform: uppercase;">Para onde você quer ir?</div>
+            <div style="margin-top: 10px; padding: 12px 14px; background: #F1F5F3; border-radius: 10px; font-size: 14px; font-weight: 600; color: #17211D;">
+              Penedo &bull; Centro Histórico
+            </div>
+          </div>
+          <div style="margin-top: 16px; background: #FFCC45; color: #17211D; padding: 14px; border-radius: 12px; text-align: center; font-weight: 900; font-size: 14px; box-shadow: 0 6px 16px rgba(255,204,69,0.35);">
+            Pedir Viagem Agora
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ESPECIFICAÇÕES TÉCNICAS E ARQUIVOS ENTREGUES -->
+  <section class="section-card">
+    <h2 class="section-title">4. Pacote de Assets Vetoriais Disponibilizados</h2>
+    <p class="section-desc">
+      Todos os arquivos vetoriais foram gerados em SVG escalável e estão prontos para uso em mobile, web e material impresso:
+    </p>
+
+    <table class="specs-table">
+      <thead>
+        <tr>
+          <th>Arquivo Vetorial</th>
+          <th>Formato</th>
+          <th>Destino Principal</th>
+          <th>Cores Utilizadas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>simbora-app-icon.svg</strong></td>
+          <td>SVG 512x512</td>
+          <td>Google Play Store, Apple App Store, APK, IPA</td>
+          <td>#123D32, #F8F9F6, #16A572, #FFCC45</td>
+        </tr>
+        <tr>
+          <td><strong>simbora-logo-horizontal-light.svg</strong></td>
+          <td>SVG 780x200</td>
+          <td>Web Header, Documentos, Faturas, Email, Cartão</td>
+          <td>#123D32, #16A572, #FFCC45</td>
+        </tr>
+        <tr>
+          <td><strong>simbora-logo-horizontal-dark.svg</strong></td>
+          <td>SVG 780x200</td>
+          <td>Header escuro, Splash Screen, Telas de Login</td>
+          <td>#F8F9F6, #16A572, #FFCC45, #123D32</td>
+        </tr>
+        <tr>
+          <td><strong>simbora-logo-vertical.svg</strong></td>
+          <td>SVG 400x480</td>
+          <td>Uniformes, Adesivos de Carro, Crachás, Camisetas</td>
+          <td>#123D32, #16A572, #FFCC45</td>
+        </tr>
+        <tr>
+          <td><strong>simbora-symbol-isolated.svg</strong></td>
+          <td>SVG 350x350</td>
+          <td>Marcador de Mapa (Map Pin), Avatar, Favicon</td>
+          <td>#123D32, #16A572, #FFCC45 (Transparente)</td>
+        </tr>
+        <tr>
+          <td><strong>simbora-logo-monochrome-black.svg</strong></td>
+          <td>SVG 780x200</td>
+          <td>Impressão PB, Carimbo, Registro de Marca INPI</td>
+          <td>#000000 puro</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+</body>
+</html>

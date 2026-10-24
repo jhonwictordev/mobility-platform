@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- VAR A: KINETIC VELOCITY S! -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <g transform="translate(110, 86)">
+    <!-- Slanted container for forward velocity (skewX -11deg) -->
+    <g transform="skewX(-11)">
+      <!-- Custom S Path -->
+      <path d="M 185 24 C 185 8, 168 0, 130 0 C 65 0, 15 32, 10 92 C 6 142, 50 162, 105 178 C 160 194, 185 210, 185 250 C 185 298, 145 324, 95 324 C 42 324, 8 296, 2 245 L 64 238 C 67 265, 82 278, 102 278 C 122 278, 136 266, 136 248 C 136 226, 115 212, 70 198 C 22 182, 0 155, 0 102 C 0 44, 48 0, 125 0 C 182 0, 228 32, 235 90 L 178 98 C 174 72, 158 52, 130 52 C 108 52, 92 64, 92 84 C 92 102, 110 114, 145 125 C 195 142, 235 170, 235 235 C 235 292, 195 340, 105 340 C 35 340, 0 295, 0 230" fill="none"/>
+      
+      <!-- SOLID SCULPTED S (Geometric bezier outline) -->
+      <path d="M 195 32 L 140 32 C 135 22, 122 14, 102 14 C 70 14, 48 34, 48 64 C 48 90, 68 106, 112 118 C 168 134, 206 162, 206 224 C 206 288, 156 328, 92 328 C 36 328, 2 294, 0 238 L 56 232 C 58 266, 76 282, 98 282 C 124 282, 144 264, 144 232 C 144 204, 126 190, 80 176 C 28 160, 0 134, 0 74 C 0 26, 44 0, 104 0 C 162 0, 194 28, 195 32 Z" fill="#F8F9F6"/>
+
+      <!-- BESPOKE EXCLAMATION STEM (Tapered dynamic wedge) -->
+      <path d="M 236 12 L 282 12 L 272 216 L 246 216 Z" fill="#FFCC45"/>
+
+      <!-- BESPOKE EXCLAMATION SOLAR DOT -->
+      <circle cx="258" cy="285" r="28" fill="#FFCC45"/>
+    </g>
+  </g>
+</svg>

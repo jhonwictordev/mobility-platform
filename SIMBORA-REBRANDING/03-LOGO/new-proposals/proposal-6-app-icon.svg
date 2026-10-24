@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 6: APP ICON - AZULEJO MODERNISTA -->
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Azulejo Modernista Centralizado -->
+  <g transform="translate(106, 106)">
+    <!-- Base Plate -->
+    <rect width="300" height="300" rx="40" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 30 30 H 150 V 150 A 120 120 0 0 1 30 30 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 270 270 H 150 V 150 A 120 120 0 0 1 270 270 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 150 30 L 270 30 L 270 150 Z" fill="#16A572"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 150 270 L 30 270 L 30 150 Z" fill="#123D32"/>
+
+    <!-- Núcleo Solar Central (Amarelo Energia) -->
+    <circle cx="150" cy="150" r="44" fill="#FFCC45"/>
+    <circle cx="150" cy="150" r="16" fill="#123D32"/>
+  </g>
+</svg>

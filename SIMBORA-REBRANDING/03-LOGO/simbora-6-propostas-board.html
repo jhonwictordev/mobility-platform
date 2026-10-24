@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMBORA — Prancha Comparativa de Identidade Visual (6 Propostas)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-profundo: #123D32;
+    --verde-vibrante: #16A572;
+    --amarelo-energia: #FFCC45;
+    --branco-suave: #F8F9F6;
+    --grafite: #17211D;
+    --cinza-borda: #E2E8E4;
+    --cinza-bg: #F1F4F2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0B110E;
+    color: #17211D;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px 80px;
+  }
+
+  /* SLIDE / CARD STYLING */
+  .slide {
+    background: #FFFFFF;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    padding: 40px 48px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* COVER SLIDE */
+  .slide-cover {
+    background: linear-gradient(135deg, #123D32 0%, #0D2B23 100%);
+    color: #F8F9F6;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(22, 165, 114, 0.3);
+  }
+
+  .cover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 24px;
+  }
+
+  .brand-pill {
+    background: rgba(22, 165, 114, 0.2);
+    border: 1px solid #16A572;
+    color: #FFCC45;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .cover-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 30px 0 16px;
+  }
+
+  .cover-title span {
+    color: #FFCC45;
+  }
+
+  .cover-subtitle {
+    font-size: 20px;
+    color: #A3C9BC;
+    max-width: 850px;
+    line-height: 1.5;
+  }
+
+  .palette-bar {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .swatch {
+    flex: 1;
+    height: 70px;
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* PROPOSAL HEADER */
+  .proposal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--cinza-bg);
+  }
+
+  .proposal-badge {
+    background: var(--verde-profundo);
+    color: var(--amarelo-energia);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .proposal-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--verde-profundo);
+    letter-spacing: -0.5px;
+  }
+
+  .proposal-concept {
+    font-size: 15px;
+    color: #4A5B53;
+    max-width: 680px;
+    margin-top: 6px;
+  }
+
+  .proposal-tagline {
+    background: #E8F5EE;
+    color: var(--verde-vibrante);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid #C4E3D2;
+    text-align: right;
+  }
+
+  /* PROPOSAL GRID LAYOUT */
+  .proposal-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  .main-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .logo-box {
+    background: #FFFFFF;
+    border: 2px solid var(--cinza-borda);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    position: relative;
+  }
+
+  .logo-box.dark {
+    background: var(--verde-profundo);
+    border-color: var(--verde-profundo);
+  }
+
+  .box-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8C9E95;
+  }
+
+  .logo-box.dark .box-label {
+    color: #7AA897;
+  }
+
+  .side-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .app-icon-card {
+    background: var(--cinza-bg);
+    border: 1px solid var(--cinza-borda);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .app-icon-wrapper {
+    width: 140px;
+    height: 140px;
+    border-radius: 32px;
+    box-shadow: 0 16px 32px rgba(18, 61, 50, 0.25);
+    overflow: hidden;
+    margin: 10px 0 14px;
+    transition: transform 0.2s;
+  }
+
+  .micro-test-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid var(--cinza-borda);
+  }
+
+  .mono-box {
+    background: #FFFFFF;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    position: relative;
+  }
+
+  /* COMPARISON MATRIX SLIDE */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .matrix-card {
+    border: 2px solid var(--cinza-borda);
+    border-radius: 14px;
+    padding: 20px;
+    background: #FFFFFF;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .matrix-card:hover {
+    border-color: var(--verde-vibrante);
+  }
+
+  .matrix-card .p-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--verde-vibrante);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .matrix-card .p-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--verde-profundo);
+    margin: 4px 0 14px;
+  }
+
+  .matrix-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 20px;
+    margin: 0 auto 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+
+  .matrix-logo-preview {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    border-top: 1px solid var(--cinza-bg);
+    padding-top: 10px;
+  }
+
+  /* PRINT RULES FOR LANDSCAPE PDF */
+  @page {
+    size: A4 landscape;
+    margin: 8mm;
+  }
+
+  @media print {
+    body { background: #FFFFFF; }
+    .deck-container { padding: 0; max-width: 100%; }
+    .slide {
+      box-shadow: none;
+      border: 1px solid #D0D8D4;
+      margin-bottom: 0;
+      min-height: 190mm;
+      padding: 16mm;
+      page-break-after: always;
+      break-after: page;
+    }
+    .slide-cover {
+      min-height: 190mm;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .logo-box.dark {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck-container">
+
+  <!-- ==================== SLIDE 0: CAPA DA APRESENTAÇÃO ==================== -->
+  <section class="slide slide-cover">
+    <div class="cover-header">
+      <div class="brand-pill">SIMBORA MOBILIDADE BRASIL</div>
+      <div style="font-size: 13px; font-weight: 700; color: #FFCC45; letter-spacing: 1px;">DIREÇÃO DE ARTE &amp; BRANDING</div>
+    </div>
+
+    <div>
+      <h1 class="cover-title">Prancha Comparativa<br><span>6 Propostas de Marca</span></h1>
+      <p class="cover-subtitle">
+        Estudo visual estrito desenvolvido sob novas lógicas formais independentes.
+        Descarte completo do conceito de fita / 8 / loop infinito. Apresentação padronizada
+        para validação e escolha formal.
+      </p>
+    </div>
+
+    <div>
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #7AA897; margin-bottom: 12px;">
+        Paleta Oficial Preservada &amp; Slogan Oficial: "Pediu. Chegou. Simbora!"
+      </div>
+      <div class="palette-bar">
+        <div class="swatch" style="background: #123D32; color: #FFFFFF;">
+          <span>#123D32</span>
+          <span>Verde Profundo</span>
+        </div>
+        <div class="swatch" style="background: #16A572; color: #FFFFFF;">
+          <span>#16A572</span>
+          <span>Verde Vibrante</span>
+        </div>
+        <div class="swatch" style="background: #FFCC45; color: #17211D;">
+          <span>#FFCC45</span>
+          <span>Amarelo Energia</span>
+        </div>
+        <div class="swatch" style="background: #F8F9F6; color: #17211D; border: 1px solid rgba(0,0,0,0.1);">
+          <span>#F8F9F6</span>
+          <span>Branco Suave</span>
+        </div>
+        <div class="swatch" style="background: #17211D; color: #FFFFFF;">
+          <span>#17211D</span>
+          <span>Grafite Mineral</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROPOSTA 1: WORDMARK PERSONALIZADO ==================== -->
+  <section class="slide">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge">Proposta 01 &bull; Tipografia Proprietária</div>
+        <h2 class="proposal-title">Wordmark Solar Personalizado (Sem Símbolo)</h2>
+        <p class="proposal-concept">
+          Lettering geométrico com corte angular no 'M' e ponto solar de energia perfeitamente centralizado no 'O'.
+          Identidade limpa, madura e imponente, sem necessidade de ícone externo.
+        </p>
+      </div>
+      <div class="proposal-tagline">
+        Slogan: Pediu. Chegou. Simbora!
+      </div>
+    </div>
+
+    <div class="proposal-grid">
+      <div class="main-showcase">
+        <!-- Logo Principal Fundo Claro -->
+        <div class="logo-box">
+          <span class="box-label">Aplicação Principal &bull; Fundo Claro</span>
+          <div style="width: 100%; max-width: 580px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="100%" height="100%">
+  <!-- PROPOSTA 1: WORDMARK PERSONALIZADO (SEM SÍMBOLO) -->
+  <!-- Lettering geométrico proprietário com corte angular no 'M' e ponto de energia solar no 'O' -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p1-slogan {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="600" height="200" fill="#FFFFFF"/>
+
+  <!-- WORDMARK VETORIAL CUSTOMIZADO (Y: 105) -->
+  <g transform="translate(40, 45)">
+    <!-- Letra S: Cortes chanfrados paralelos -->
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#123D32"/>
+
+    <!-- Letra I: Coluna pura com corte óptico -->
+    <path d="M 98 6 L 115 6 L 115 95 L 98 95 Z" fill="#123D32"/>
+
+    <!-- Letra M: Hastes angulares e vértice geométrico dinâmico -->
+    <path d="M 128 6 L 148 6 L 166 60 L 184 6 L 204 6 L 204 95 L 187 95 L 187 32 L 172 78 L 159 78 L 145 32 L 145 95 L 128 95 Z" fill="#123D32"/>
+    <!-- Detalhe do corte angular superior no M em Verde Vibrante -->
+    <polygon points="159,6 166,22 173,6" fill="#16A572"/>
+
+    <!-- Letra B: Bojos geométricos com proporção áurea -->
+    <path d="M 218 6 L 248 6 C 263 6, 273 13, 273 26 C 273 34, 267 41, 258 44 C 270 48, 277 56, 277 71 C 277 86, 264 95, 246 95 L 218 95 Z M 235 20 L 235 40 L 246 40 C 253 40, 257 36, 257 30 C 257 24, 253 20, 246 20 Z M 235 53 L 235 81 L 247 81 C 255 81, 260 76, 260 67 C 260 59, 255 53, 247 53 Z" fill="#123D32"/>
+
+    <!-- Letra O: Anel externo com núcleo solar Amarelo Energia no centro -->
+    <path d="M 324 5 C 352 5, 372 25, 372 51 C 372 76, 352 96, 324 96 C 297 96, 276 76, 276 51 C 276 25, 297 5, 324 5 Z M 324 21 C 307 21, 294 34, 294 51 C 294 67, 307 80, 324 80 C 341 80, 354 67, 354 51 C 354 34, 341 21, 324 21 Z" fill="#123D32"/>
+    <!-- Ponto Solar central dentro do O -->
+    <circle cx="324" cy="51" r="10" fill="#FFCC45"/>
+
+    <!-- Letra R: Haste diagonal dinâmica com corte esportivo -->
+    <path d="M 386 6 L 416 6 C 432 6, 442 15, 442 29 C 442 40, 434 48, 423 51 L 444 95 L 424 95 L 406 55 L 403 55 L 403 95 L 386 95 Z M 403 20 L 403 42 L 414 42 C 422 42, 426 38, 426 31 C 426 24, 422 20, 414 20 Z" fill="#123D32"/>
+
+    <!-- Letra A: Triângulo com ápice geométrico chanfrado -->
+    <path d="M 476 6 L 496 6 L 522 95 L 503 95 L 497 73 L 474 73 L 468 95 L 450 95 Z M 486 28 L 478 59 L 493 59 Z" fill="#123D32"/>
+  </g>
+
+  <!-- SLOGAN OFICIAL PRESERVADO -->
+  <text x="44" y="165" class="p1-slogan">Pediu. Chegou. Simbora!</text>
+  <line x1="285" y1="160" x2="550" y2="160" stroke="#FFCC45" stroke-width="2"/>
+</svg>
+          </div>
+        </div>
+
+        <!-- Logo Versão Monocromática / Fundo Escuro -->
+        <div class="logo-box dark">
+          <span class="box-label">Aplicação Invertida &bull; Verde Profundo (#123D32)</span>
+          <div style="width: 100%; max-width: 580px; filter: brightness(0) invert(1);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="100%" height="100%">
+  <!-- PROPOSTA 1: WORDMARK PERSONALIZADO (SEM SÍMBOLO) -->
+  <!-- Lettering geométrico proprietário com corte angular no 'M' e ponto de energia solar no 'O' -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p1-slogan {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="600" height="200" fill="#FFFFFF"/>
+
+  <!-- WORDMARK VETORIAL CUSTOMIZADO (Y: 105) -->
+  <g transform="translate(40, 45)">
+    <!-- Letra S: Cortes chanfrados paralelos -->
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#123D32"/>
+
+    <!-- Letra I: Coluna pura com corte óptico -->
+    <path d="M 98 6 L 115 6 L 115 95 L 98 95 Z" fill="#123D32"/>
+
+    <!-- Letra M: Hastes angulares e vértice geométrico dinâmico -->
+    <path d="M 128 6 L 148 6 L 166 60 L 184 6 L 204 6 L 204 95 L 187 95 L 187 32 L 172 78 L 159 78 L 145 32 L 145 95 L 128 95 Z" fill="#123D32"/>
+    <!-- Detalhe do corte angular superior no M em Verde Vibrante -->
+    <polygon points="159,6 166,22 173,6" fill="#16A572"/>
+
+    <!-- Letra B: Bojos geométricos com proporção áurea -->
+    <path d="M 218 6 L 248 6 C 263 6, 273 13, 273 26 C 273 34, 267 41, 258 44 C 270 48, 277 56, 277 71 C 277 86, 264 95, 246 95 L 218 95 Z M 235 20 L 235 40 L 246 40 C 253 40, 257 36, 257 30 C 257 24, 253 20, 246 20 Z M 235 53 L 235 81 L 247 81 C 255 81, 260 76, 260 67 C 260 59, 255 53, 247 53 Z" fill="#123D32"/>
+
+    <!-- Letra O: Anel externo com núcleo solar Amarelo Energia no centro -->
+    <path d="M 324 5 C 352 5, 372 25, 372 51 C 372 76, 352 96, 324 96 C 297 96, 276 76, 276 51 C 276 25, 297 5, 324 5 Z M 324 21 C 307 21, 294 34, 294 51 C 294 67, 307 80, 324 80 C 341 80, 354 67, 354 51 C 354 34, 341 21, 324 21 Z" fill="#123D32"/>
+    <!-- Ponto Solar central dentro do O -->
+    <circle cx="324" cy="51" r="10" fill="#FFCC45"/>
+
+    <!-- Letra R: Haste diagonal dinâmica com corte esportivo -->
+    <path d="M 386 6 L 416 6 C 432 6, 442 15, 442 29 C 442 40, 434 48, 423 51 L 444 95 L 424 95 L 406 55 L 403 55 L 403 95 L 386 95 Z M 403 20 L 403 42 L 414 42 C 422 42, 426 38, 426 31 C 426 24, 422 20, 414 20 Z" fill="#123D32"/>
+
+    <!-- Letra A: Triângulo com ápice geométrico chanfrado -->
+    <path d="M 476 6 L 496 6 L 522 95 L 503 95 L 497 73 L 474 73 L 468 95 L 450 95 Z M 486 28 L 478 59 L 493 59 Z" fill="#123D32"/>
+  </g>
+
+  <!-- SLOGAN OFICIAL PRESERVADO -->
+  <text x="44" y="165" class="p1-slogan">Pediu. Chegou. Simbora!</text>
+  <line x1="285" y1="160" x2="550" y2="160" stroke="#FFCC45" stroke-width="2"/>
+</svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-showcase">
+        <!-- App Icon -->
+        <div class="app-icon-card">
+          <span class="box-label" style="position: static; margin-bottom: 8px;">Ícone de Aplicativo (iOS / Android)</span>
+          <div class="app-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 1: APP ICON (CUSTOM LETTERMARK "S" + PONTO SOLAR) -->
+  <defs>
+    <clipPath id="p1Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Letra S Proprietária Escalada -->
+  <g transform="translate(130, 80) scale(3.5)">
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Ponto Solar de Energia no Canto Superior Direito -->
+  <circle cx="395" cy="115" r="32" fill="#FFCC45"/>
+  <circle cx="395" cy="115" r="16" fill="#16A572"/>
+</svg>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: #4A5B53;">Lettermark S. + Ponto Solar</span>
+
+          <!-- Teste 24px -->
+          <div class="micro-test-row">
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">24px:</span>
+            <div style="width: 24px; height: 24px; border-radius: 5px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 1: APP ICON (CUSTOM LETTERMARK "S" + PONTO SOLAR) -->
+  <defs>
+    <clipPath id="p1Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Letra S Proprietária Escalada -->
+  <g transform="translate(130, 80) scale(3.5)">
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Ponto Solar de Energia no Canto Superior Direito -->
+  <circle cx="395" cy="115" r="32" fill="#FFCC45"/>
+  <circle cx="395" cy="115" r="16" fill="#16A572"/>
+</svg>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">36px:</span>
+            <div style="width: 36px; height: 36px; border-radius: 8px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 1: APP ICON (CUSTOM LETTERMARK "S" + PONTO SOLAR) -->
+  <defs>
+    <clipPath id="p1Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Letra S Proprietária Escalada -->
+  <g transform="translate(130, 80) scale(3.5)">
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Ponto Solar de Energia no Canto Superior Direito -->
+  <circle cx="395" cy="115" r="32" fill="#FFCC45"/>
+  <circle cx="395" cy="115" r="16" fill="#16A572"/>
+</svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monocromático Puro -->
+        <div class="mono-box">
+          <span class="box-label">Validação Monocromática P&amp;B</span>
+          <div style="width: 100%; max-width: 260px; filter: grayscale(1) contrast(200%);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 1: APP ICON (CUSTOM LETTERMARK "S" + PONTO SOLAR) -->
+  <defs>
+    <clipPath id="p1Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Letra S Proprietária Escalada -->
+  <g transform="translate(130, 80) scale(3.5)">
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Ponto Solar de Energia no Canto Superior Direito -->
+  <circle cx="395" cy="115" r="32" fill="#FFCC45"/>
+  <circle cx="395" cy="115" r="16" fill="#16A572"/>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROPOSTA 2: SÍMBOLO ABSTRATO INDEPENDENTE ==================== -->
+  <section class="slide">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge">Proposta 02 &bull; Abstração Geométrica Pura</div>
+        <h2 class="proposal-title">The Quadrant Aperture (Símbolo Abstrato)</h2>
+        <p class="proposal-concept">
+          4 quadrantes sólidos em oposição geométrica convergindo para uma abertura solar central.
+          Lógica modernista no estilo Chermayeff &amp; Geismar e Pentagram. Memorabilidade imediata.
+        </p>
+      </div>
+      <div class="proposal-tagline">
+        Slogan: Pediu. Chegou. Simbora!
+      </div>
+    </div>
+
+    <div class="proposal-grid">
+      <div class="main-showcase">
+        <div class="logo-box">
+          <span class="box-label">Aplicação Horizontal &bull; Fundo Claro</span>
+          <div style="width: 100%; max-width: 600px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 2: SÍMBOLO ABSTRATO INDEPENDENTE ("THE QUADRANT APERTURE") -->
+  <!-- 4 quadrantes geométricos sólidos convergindo em um portal central de trânsito solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p2-title { font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2px; fill: #123D32; }
+      .p2-slogan { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 2px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO ABSTRATO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Quadrante Superior Esquerdo (Verde Profundo) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#123D32"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante - Movimento) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Verde Profundo - Base) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#123D32"/>
+
+    <!-- Núcleo Central de Conexão Solar (Amarelo Energia) -->
+    <circle cx="60" cy="60" r="14" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6" fill="#FFFFFF"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p2-title">SIMBORA</text>
+  <text x="198" y="138" class="p2-slogan">Pediu. Chegou. Simbora!</text>
+</svg>
+          </div>
+        </div>
+
+        <div class="logo-box dark">
+          <span class="box-label">Aplicação Invertida &bull; Verde Profundo (#123D32)</span>
+          <div style="width: 100%; max-width: 600px; filter: brightness(0) invert(1);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 2: SÍMBOLO ABSTRATO INDEPENDENTE ("THE QUADRANT APERTURE") -->
+  <!-- 4 quadrantes geométricos sólidos convergindo em um portal central de trânsito solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p2-title { font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2px; fill: #123D32; }
+      .p2-slogan { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 2px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO ABSTRATO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Quadrante Superior Esquerdo (Verde Profundo) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#123D32"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante - Movimento) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Verde Profundo - Base) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#123D32"/>
+
+    <!-- Núcleo Central de Conexão Solar (Amarelo Energia) -->
+    <circle cx="60" cy="60" r="14" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6" fill="#FFFFFF"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p2-title">SIMBORA</text>
+  <text x="198" y="138" class="p2-slogan">Pediu. Chegou. Simbora!</text>
+</svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-showcase">
+        <div class="app-icon-card">
+          <span class="box-label" style="position: static; margin-bottom: 8px;">Ícone de Aplicativo (iOS / Android)</span>
+          <div class="app-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 2: APP ICON (THE QUADRANT APERTURE) -->
+  <defs>
+    <clipPath id="p2Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Símbolo Escalado e Centralizado (Tamanho 300x300, Offset: 106, 106) -->
+  <g transform="translate(106, 106) scale(2.5)">
+    <!-- Quadrante Superior Esquerdo (Branco Suave) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#F8F9F6"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Branco Suave) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#F8F9F6"/>
+
+    <!-- Núcleo Central de Conexão Solar -->
+    <circle cx="60" cy="60" r="15" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6.5" fill="#123D32"/>
+  </g>
+</svg>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: #4A5B53;">Abertura Central Quadrante</span>
+
+          <div class="micro-test-row">
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">24px:</span>
+            <div style="width: 24px; height: 24px; border-radius: 5px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 2: APP ICON (THE QUADRANT APERTURE) -->
+  <defs>
+    <clipPath id="p2Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Símbolo Escalado e Centralizado (Tamanho 300x300, Offset: 106, 106) -->
+  <g transform="translate(106, 106) scale(2.5)">
+    <!-- Quadrante Superior Esquerdo (Branco Suave) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#F8F9F6"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Branco Suave) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#F8F9F6"/>
+
+    <!-- Núcleo Central de Conexão Solar -->
+    <circle cx="60" cy="60" r="15" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6.5" fill="#123D32"/>
+  </g>
+</svg>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">36px:</span>
+            <div style="width: 36px; height: 36px; border-radius: 8px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 2: APP ICON (THE QUADRANT APERTURE) -->
+  <defs>
+    <clipPath id="p2Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Símbolo Escalado e Centralizado (Tamanho 300x300, Offset: 106, 106) -->
+  <g transform="translate(106, 106) scale(2.5)">
+    <!-- Quadrante Superior Esquerdo (Branco Suave) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#F8F9F6"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Branco Suave) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#F8F9F6"/>
+
+    <!-- Núcleo Central de Conexão Solar -->
+    <circle cx="60" cy="60" r="15" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6.5" fill="#123D32"/>
+  </g>
+</svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="mono-box">
+          <span class="box-label">Validação Monocromática P&amp;B</span>
+          <div style="width: 100%; max-width: 260px; filter: grayscale(1) contrast(200%);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 2: APP ICON (THE QUADRANT APERTURE) -->
+  <defs>
+    <clipPath id="p2Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Símbolo Escalado e Centralizado (Tamanho 300x300, Offset: 106, 106) -->
+  <g transform="translate(106, 106) scale(2.5)">
+    <!-- Quadrante Superior Esquerdo (Branco Suave) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#F8F9F6"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Branco Suave) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#F8F9F6"/>
+
+    <!-- Núcleo Central de Conexão Solar -->
+    <circle cx="60" cy="60" r="15" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6.5" fill="#123D32"/>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROPOSTA 3: MONOGRAMA GEOMÉTRICO ORIGINAL ==================== -->
+  <section class="slide">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge">Proposta 03 &bull; Geometria Construtivista</div>
+        <h2 class="proposal-title">The Architectural Monogram (Chanfro 45°)</h2>
+        <p class="proposal-concept">
+          Construção monolítica e arquitetônica em 45 graus. Zero curvas, zero fitas, zero infinito.
+          Força estrutural de alta solidez, inspirada na arquitetura brutalista e modular contemporânea.
+        </p>
+      </div>
+      <div class="proposal-tagline">
+        Slogan: Pediu. Chegou. Simbora!
+      </div>
+    </div>
+
+    <div class="proposal-grid">
+      <div class="main-showcase">
+        <div class="logo-box">
+          <span class="box-label">Aplicação Horizontal &bull; Fundo Claro</span>
+          <div style="width: 100%; max-width: 600px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 3: MONOGRAMA GEOMÉTRICO ORIGINAL ("THE ARCHITECTURAL MONOGRAM") -->
+  <!-- Construção construtivista angular: dois blocos facetados em 45 graus, zero curvas, zero fitas, máxima autoridade -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .p3-title { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2.5px; fill: #123D32; }
+      .p3-slogan { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: 1.8px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO MONOGRAMA ARQUITETÔNICO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Bloco Superior Verde Vibrante (Fuga em 45°) -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Verde Profundo (Base de Ancoragem) -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#123D32"/>
+
+    <!-- Micro-acento solar em corte de 45° no vértice central -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="5" fill="#FFCC45"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p3-title">SIMBORA</text>
+  <text x="198" y="138" class="p3-slogan">Pediu. Chegou. Simbora!</text>
+</svg>
+          </div>
+        </div>
+
+        <div class="logo-box dark">
+          <span class="box-label">Aplicação Invertida &bull; Verde Profundo (#123D32)</span>
+          <div style="width: 100%; max-width: 600px; filter: brightness(0) invert(1);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 3: MONOGRAMA GEOMÉTRICO ORIGINAL ("THE ARCHITECTURAL MONOGRAM") -->
+  <!-- Construção construtivista angular: dois blocos facetados em 45 graus, zero curvas, zero fitas, máxima autoridade -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .p3-title { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2.5px; fill: #123D32; }
+      .p3-slogan { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: 1.8px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO MONOGRAMA ARQUITETÔNICO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Bloco Superior Verde Vibrante (Fuga em 45°) -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Verde Profundo (Base de Ancoragem) -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#123D32"/>
+
+    <!-- Micro-acento solar em corte de 45° no vértice central -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="5" fill="#FFCC45"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p3-title">SIMBORA</text>
+  <text x="198" y="138" class="p3-slogan">Pediu. Chegou. Simbora!</text>
+</svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-showcase">
+        <div class="app-icon-card">
+          <span class="box-label" style="position: static; margin-bottom: 8px;">Ícone de Aplicativo (iOS / Android)</span>
+          <div class="app-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 3: APP ICON (THE ARCHITECTURAL MONOGRAM) -->
+  <defs>
+    <clipPath id="p3Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Monograma Arquitetônico Escalado (Escala 3.0x, Offset: 80, 80) -->
+  <g transform="translate(68, 68) scale(3.0)">
+    <!-- Bloco Superior Verde Vibrante -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Branco Suave para Máximo Contraste Noturno -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#F8F9F6"/>
+
+    <!-- Acento Solar Dourado -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="6" fill="#FFCC45"/>
+  </g>
+</svg>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: #4A5B53;">Monograma Construtivista 45°</span>
+
+          <div class="micro-test-row">
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">24px:</span>
+            <div style="width: 24px; height: 24px; border-radius: 5px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 3: APP ICON (THE ARCHITECTURAL MONOGRAM) -->
+  <defs>
+    <clipPath id="p3Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Monograma Arquitetônico Escalado (Escala 3.0x, Offset: 80, 80) -->
+  <g transform="translate(68, 68) scale(3.0)">
+    <!-- Bloco Superior Verde Vibrante -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Branco Suave para Máximo Contraste Noturno -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#F8F9F6"/>
+
+    <!-- Acento Solar Dourado -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="6" fill="#FFCC45"/>
+  </g>
+</svg>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">36px:</span>
+            <div style="width: 36px; height: 36px; border-radius: 8px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 3: APP ICON (THE ARCHITECTURAL MONOGRAM) -->
+  <defs>
+    <clipPath id="p3Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Monograma Arquitetônico Escalado (Escala 3.0x, Offset: 80, 80) -->
+  <g transform="translate(68, 68) scale(3.0)">
+    <!-- Bloco Superior Verde Vibrante -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Branco Suave para Máximo Contraste Noturno -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#F8F9F6"/>
+
+    <!-- Acento Solar Dourado -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="6" fill="#FFCC45"/>
+  </g>
+</svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="mono-box">
+          <span class="box-label">Validação Monocromática P&amp;B</span>
+          <div style="width: 100%; max-width: 260px; filter: grayscale(1) contrast(200%);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 3: APP ICON (THE ARCHITECTURAL MONOGRAM) -->
+  <defs>
+    <clipPath id="p3Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Monograma Arquitetônico Escalado (Escala 3.0x, Offset: 80, 80) -->
+  <g transform="translate(68, 68) scale(3.0)">
+    <!-- Bloco Superior Verde Vibrante -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Branco Suave para Máximo Contraste Noturno -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#F8F9F6"/>
+
+    <!-- Acento Solar Dourado -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="6" fill="#FFCC45"/>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROPOSTA 4: IDENTIDADE TIPOGRÁFICA EXPRESSIVA ==================== -->
+  <section class="slide">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge">Proposta 04 &bull; Tipografia Expressiva &amp; Display</div>
+        <h2 class="proposal-title">The Energetic Display &bull; SIMBORA!</h2>
+        <p class="proposal-concept">
+          Tipografia ultra-bold, calorosa e vibrante com ponto de exclamação em Amarelo Energia.
+          Captura a espontaneidade brasileira do chamado "Simbora!". Alta proximidade e energia popular.
+        </p>
+      </div>
+      <div class="proposal-tagline">
+        Slogan: Pediu. Chegou. Simbora!
+      </div>
+    </div>
+
+    <div class="proposal-grid">
+      <div class="main-showcase">
+        <div class="logo-box">
+          <span class="box-label">Aplicação Horizontal &bull; Fundo Claro</span>
+          <div style="width: 100%; max-width: 600px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 4: IDENTIDADE TIPOGRÁFICA EXPRESSIVA ("THE ENERGETIC DISPLAY") -->
+  <!-- Lettering bold expressivo, dinâmico e amigável com presença massiva e pulso solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p4-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 64px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        fill: #123D32;
+      }
+      .p4-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SELO EXPRESSIVO NO TOPO DO NOME -->
+  <g transform="translate(45, 30)">
+    <!-- Barra Dinâmica Superior em Verde Vibrante e Amarelo -->
+    <rect x="0" y="0" width="40" height="8" rx="4" fill="#16A572"/>
+    <rect x="48" y="0" width="18" height="8" rx="4" fill="#FFCC45"/>
+
+    <!-- WORDMARK EXPRESSIVO GIGANTE -->
+    <text x="0" y="85" class="p4-title">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+
+    <!-- SLOGAN & ASSINATURA -->
+    <text x="3" y="125" class="p4-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+          </div>
+        </div>
+
+        <div class="logo-box dark">
+          <span class="box-label">Aplicação Invertida &bull; Verde Profundo (#123D32)</span>
+          <div style="width: 100%; max-width: 600px; filter: brightness(0) invert(1);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 4: IDENTIDADE TIPOGRÁFICA EXPRESSIVA ("THE ENERGETIC DISPLAY") -->
+  <!-- Lettering bold expressivo, dinâmico e amigável com presença massiva e pulso solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p4-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 64px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        fill: #123D32;
+      }
+      .p4-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SELO EXPRESSIVO NO TOPO DO NOME -->
+  <g transform="translate(45, 30)">
+    <!-- Barra Dinâmica Superior em Verde Vibrante e Amarelo -->
+    <rect x="0" y="0" width="40" height="8" rx="4" fill="#16A572"/>
+    <rect x="48" y="0" width="18" height="8" rx="4" fill="#FFCC45"/>
+
+    <!-- WORDMARK EXPRESSIVO GIGANTE -->
+    <text x="0" y="85" class="p4-title">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+
+    <!-- SLOGAN & ASSINATURA -->
+    <text x="3" y="125" class="p4-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-showcase">
+        <div class="app-icon-card">
+          <span class="box-label" style="position: static; margin-bottom: 8px;">Ícone de Aplicativo (iOS / Android)</span>
+          <div class="app-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 4: APP ICON - EXPRESSIVE DISPLAY S! -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+      .p4-icon-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 270px;
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Decorative dynamic energy bars at corner -->
+  <rect x="70" y="60" width="72" height="14" rx="7" fill="#16A572"/>
+  <rect x="154" y="60" width="28" height="14" rx="7" fill="#FFCC45"/>
+  <!-- Typographic Expressive S! lockup -->
+  <g transform="translate(90, 365)">
+    <text class="p4-icon-text" fill="#F8F9F6">S<tspan fill="#FFCC45">!</tspan></text>
+  </g>
+</svg>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: #4A5B53;">Lettermark S! Expressivo</span>
+
+          <div class="micro-test-row">
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">24px:</span>
+            <div style="width: 24px; height: 24px; border-radius: 5px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 4: APP ICON - EXPRESSIVE DISPLAY S! -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+      .p4-icon-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 270px;
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Decorative dynamic energy bars at corner -->
+  <rect x="70" y="60" width="72" height="14" rx="7" fill="#16A572"/>
+  <rect x="154" y="60" width="28" height="14" rx="7" fill="#FFCC45"/>
+  <!-- Typographic Expressive S! lockup -->
+  <g transform="translate(90, 365)">
+    <text class="p4-icon-text" fill="#F8F9F6">S<tspan fill="#FFCC45">!</tspan></text>
+  </g>
+</svg>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">36px:</span>
+            <div style="width: 36px; height: 36px; border-radius: 8px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 4: APP ICON - EXPRESSIVE DISPLAY S! -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+      .p4-icon-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 270px;
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Decorative dynamic energy bars at corner -->
+  <rect x="70" y="60" width="72" height="14" rx="7" fill="#16A572"/>
+  <rect x="154" y="60" width="28" height="14" rx="7" fill="#FFCC45"/>
+  <!-- Typographic Expressive S! lockup -->
+  <g transform="translate(90, 365)">
+    <text class="p4-icon-text" fill="#F8F9F6">S<tspan fill="#FFCC45">!</tspan></text>
+  </g>
+</svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="mono-box">
+          <span class="box-label">Validação Monocromática P&amp;B</span>
+          <div style="width: 100%; max-width: 260px; filter: grayscale(1) contrast(200%);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 4: APP ICON - EXPRESSIVE DISPLAY S! -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+      .p4-icon-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 270px;
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Decorative dynamic energy bars at corner -->
+  <rect x="70" y="60" width="72" height="14" rx="7" fill="#16A572"/>
+  <rect x="154" y="60" width="28" height="14" rx="7" fill="#FFCC45"/>
+  <!-- Typographic Expressive S! lockup -->
+  <g transform="translate(90, 365)">
+    <text class="p4-icon-text" fill="#F8F9F6">S<tspan fill="#FFCC45">!</tspan></text>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROPOSTA 5: CONEXÃO E MOBILIDADE ABSTRATA ==================== -->
+  <section class="slide">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge">Proposta 05 &bull; Conexão &amp; Mobilidade Não-Literal</div>
+        <h2 class="proposal-title">The Transit Nexus (Lente de Encontro)</h2>
+        <p class="proposal-concept">
+          Dois nós de trânsito (Origem e Destino) em intersecção geométrica pura (Vesica Piscis), gerando
+          o ponto de conexão solar em Amarelo Energia. Zero setas literais, zero carros, sofisticação pura.
+        </p>
+      </div>
+      <div class="proposal-tagline">
+        Slogan: Pediu. Chegou. Simbora!
+      </div>
+    </div>
+
+    <div class="proposal-grid">
+      <div class="main-showcase">
+        <div class="logo-box">
+          <span class="box-label">Aplicação Horizontal &bull; Fundo Claro</span>
+          <div style="width: 100%; max-width: 600px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 5: CONEXÃO E MOBILIDADE ABSTRATA ("THE TRANSIT NEXUS") -->
+  <!-- Dois nós de trânsito (Origem e Destino) convergindo na lente de encontro solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p5-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        fill: #123D32;
+      }
+      .p5-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+    <!-- Clip paths for left crescent, right crescent, and intersection lens -->
+    <clipPath id="circle-left">
+      <circle cx="85" cy="100" r="48"/>
+    </clipPath>
+    <clipPath id="circle-right">
+      <circle cx="127" cy="100" r="48"/>
+    </clipPath>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: THE TRANSIT NEXUS -->
+  <g transform="translate(15, 0)">
+    <!-- Base Right Circle (Verde Vibrante) -->
+    <circle cx="127" cy="100" r="48" fill="#16A572"/>
+
+    <!-- Left Circle (Verde Profundo) with cutout to reveal right -->
+    <!-- We draw Left Circle fully -->
+    <circle cx="85" cy="100" r="48" fill="#123D32"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) - intersection of both circles -->
+    <g clip-path="url(#circle-left)">
+      <circle cx="127" cy="100" r="48" fill="#FFCC45"/>
+    </g>
+
+    <!-- Inner Core Points: Origin & Destination micro-indicators -->
+    <circle cx="70" cy="100" r="8" fill="#F8F9F6"/>
+    <circle cx="142" cy="100" r="8" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(225, 108)">
+    <text x="0" y="0" class="p5-title">SIMBORA</text>
+    <text x="3" y="32" class="p5-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+          </div>
+        </div>
+
+        <div class="logo-box dark">
+          <span class="box-label">Aplicação Invertida &bull; Verde Profundo (#123D32)</span>
+          <div style="width: 100%; max-width: 600px; filter: brightness(0) invert(1);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 5: CONEXÃO E MOBILIDADE ABSTRATA ("THE TRANSIT NEXUS") -->
+  <!-- Dois nós de trânsito (Origem e Destino) convergindo na lente de encontro solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p5-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        fill: #123D32;
+      }
+      .p5-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+    <!-- Clip paths for left crescent, right crescent, and intersection lens -->
+    <clipPath id="circle-left">
+      <circle cx="85" cy="100" r="48"/>
+    </clipPath>
+    <clipPath id="circle-right">
+      <circle cx="127" cy="100" r="48"/>
+    </clipPath>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: THE TRANSIT NEXUS -->
+  <g transform="translate(15, 0)">
+    <!-- Base Right Circle (Verde Vibrante) -->
+    <circle cx="127" cy="100" r="48" fill="#16A572"/>
+
+    <!-- Left Circle (Verde Profundo) with cutout to reveal right -->
+    <!-- We draw Left Circle fully -->
+    <circle cx="85" cy="100" r="48" fill="#123D32"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) - intersection of both circles -->
+    <g clip-path="url(#circle-left)">
+      <circle cx="127" cy="100" r="48" fill="#FFCC45"/>
+    </g>
+
+    <!-- Inner Core Points: Origin & Destination micro-indicators -->
+    <circle cx="70" cy="100" r="8" fill="#F8F9F6"/>
+    <circle cx="142" cy="100" r="8" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(225, 108)">
+    <text x="0" y="0" class="p5-title">SIMBORA</text>
+    <text x="3" y="32" class="p5-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-showcase">
+        <div class="app-icon-card">
+          <span class="box-label" style="position: static; margin-bottom: 8px;">Ícone de Aplicativo (iOS / Android)</span>
+          <div class="app-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 5: APP ICON - TRANSIT NEXUS -->
+  <defs>
+    <clipPath id="app-circle-left">
+      <circle cx="206" cy="256" r="118"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Símbolo Transit Nexus -->
+  <g>
+    <!-- Right Node (Branco Suave) -->
+    <circle cx="306" cy="256" r="118" fill="#F8F9F6"/>
+
+    <!-- Left Node (Verde Vibrante) -->
+    <circle cx="206" cy="256" r="118" fill="#16A572"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) -->
+    <g clip-path="url(#app-circle-left)">
+      <circle cx="306" cy="256" r="118" fill="#FFCC45"/>
+    </g>
+
+    <!-- Focal micro-accents -->
+    <circle cx="168" cy="256" r="16" fill="#123D32"/>
+    <circle cx="344" cy="256" r="16" fill="#123D32"/>
+  </g>
+</svg>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: #4A5B53;">Nexo de Trânsito &amp; Lente Solar</span>
+
+          <div class="micro-test-row">
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">24px:</span>
+            <div style="width: 24px; height: 24px; border-radius: 5px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 5: APP ICON - TRANSIT NEXUS -->
+  <defs>
+    <clipPath id="app-circle-left">
+      <circle cx="206" cy="256" r="118"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Símbolo Transit Nexus -->
+  <g>
+    <!-- Right Node (Branco Suave) -->
+    <circle cx="306" cy="256" r="118" fill="#F8F9F6"/>
+
+    <!-- Left Node (Verde Vibrante) -->
+    <circle cx="206" cy="256" r="118" fill="#16A572"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) -->
+    <g clip-path="url(#app-circle-left)">
+      <circle cx="306" cy="256" r="118" fill="#FFCC45"/>
+    </g>
+
+    <!-- Focal micro-accents -->
+    <circle cx="168" cy="256" r="16" fill="#123D32"/>
+    <circle cx="344" cy="256" r="16" fill="#123D32"/>
+  </g>
+</svg>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">36px:</span>
+            <div style="width: 36px; height: 36px; border-radius: 8px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 5: APP ICON - TRANSIT NEXUS -->
+  <defs>
+    <clipPath id="app-circle-left">
+      <circle cx="206" cy="256" r="118"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Símbolo Transit Nexus -->
+  <g>
+    <!-- Right Node (Branco Suave) -->
+    <circle cx="306" cy="256" r="118" fill="#F8F9F6"/>
+
+    <!-- Left Node (Verde Vibrante) -->
+    <circle cx="206" cy="256" r="118" fill="#16A572"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) -->
+    <g clip-path="url(#app-circle-left)">
+      <circle cx="306" cy="256" r="118" fill="#FFCC45"/>
+    </g>
+
+    <!-- Focal micro-accents -->
+    <circle cx="168" cy="256" r="16" fill="#123D32"/>
+    <circle cx="344" cy="256" r="16" fill="#123D32"/>
+  </g>
+</svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="mono-box">
+          <span class="box-label">Validação Monocromática P&amp;B</span>
+          <div style="width: 100%; max-width: 260px; filter: grayscale(1) contrast(200%);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 5: APP ICON - TRANSIT NEXUS -->
+  <defs>
+    <clipPath id="app-circle-left">
+      <circle cx="206" cy="256" r="118"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Símbolo Transit Nexus -->
+  <g>
+    <!-- Right Node (Branco Suave) -->
+    <circle cx="306" cy="256" r="118" fill="#F8F9F6"/>
+
+    <!-- Left Node (Verde Vibrante) -->
+    <circle cx="206" cy="256" r="118" fill="#16A572"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) -->
+    <g clip-path="url(#app-circle-left)">
+      <circle cx="306" cy="256" r="118" fill="#FFCC45"/>
+    </g>
+
+    <!-- Focal micro-accents -->
+    <circle cx="168" cy="256" r="16" fill="#123D32"/>
+    <circle cx="344" cy="256" r="16" fill="#123D32"/>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROPOSTA 6: CONCEITO BRASILEIRO CONTEMPORÂNEO ==================== -->
+  <section class="slide">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge">Proposta 06 &bull; Concretismo Brasileiro Contemporâneo</div>
+        <h2 class="proposal-title">O Azulejo Modernista (Athos Bulcão &amp; Wollner)</h2>
+        <p class="proposal-concept">
+          Inspirado na azulejaria e cobogós modernistas brasileiros. Um mosaico geométrico rítmico que une
+          herança arquitetônica nacional, rigor técnico e sol nordestino integrado.
+        </p>
+      </div>
+      <div class="proposal-tagline">
+        Slogan: Pediu. Chegou. Simbora!
+      </div>
+    </div>
+
+    <div class="proposal-grid">
+      <div class="main-showcase">
+        <div class="logo-box">
+          <span class="box-label">Aplicação Horizontal &bull; Fundo Claro</span>
+          <div style="width: 100%; max-width: 600px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 6: CONCEITO EXPERIMENTAL BRASILEIRO CONTEMPORÂNEO ("O AZULEJO MODERNISTA") -->
+  <!-- Inspirado no Concretismo Brasileiro, Athos Bulcão, Alexandre Wollner e Cobogós arquitetônicos -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p6-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 5px;
+        fill: #123D32;
+      }
+      .p6-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: O AZULEJO MODERNISTA (ATHOS & WOLLNER) -->
+  <g transform="translate(60, 45)">
+    <!-- Base Moldura Suave do Azulejo -->
+    <rect x="0" y="0" width="110" height="110" rx="16" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 12 12 H 55 V 55 A 43 43 0 0 1 12 12 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 98 98 H 55 V 55 A 43 43 0 0 1 98 98 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 55 12 L 98 12 L 98 55 Z" fill="#16A572" opacity="0.9"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 55 98 L 12 98 L 12 55 Z" fill="#123D32" opacity="0.9"/>
+
+    <!-- Ponto Focal Central: O Sol Nordestino (Amarelo Energia) -->
+    <circle cx="55" cy="55" r="16" fill="#FFCC45"/>
+    <circle cx="55" cy="55" r="6" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(230, 108)">
+    <text x="0" y="0" class="p6-title">SIMBORA</text>
+    <text x="4" y="32" class="p6-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+          </div>
+        </div>
+
+        <div class="logo-box dark">
+          <span class="box-label">Aplicação Invertida &bull; Verde Profundo (#123D32)</span>
+          <div style="width: 100%; max-width: 600px; filter: brightness(0) invert(1);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 6: CONCEITO EXPERIMENTAL BRASILEIRO CONTEMPORÂNEO ("O AZULEJO MODERNISTA") -->
+  <!-- Inspirado no Concretismo Brasileiro, Athos Bulcão, Alexandre Wollner e Cobogós arquitetônicos -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p6-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 5px;
+        fill: #123D32;
+      }
+      .p6-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: O AZULEJO MODERNISTA (ATHOS & WOLLNER) -->
+  <g transform="translate(60, 45)">
+    <!-- Base Moldura Suave do Azulejo -->
+    <rect x="0" y="0" width="110" height="110" rx="16" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 12 12 H 55 V 55 A 43 43 0 0 1 12 12 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 98 98 H 55 V 55 A 43 43 0 0 1 98 98 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 55 12 L 98 12 L 98 55 Z" fill="#16A572" opacity="0.9"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 55 98 L 12 98 L 12 55 Z" fill="#123D32" opacity="0.9"/>
+
+    <!-- Ponto Focal Central: O Sol Nordestino (Amarelo Energia) -->
+    <circle cx="55" cy="55" r="16" fill="#FFCC45"/>
+    <circle cx="55" cy="55" r="6" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(230, 108)">
+    <text x="0" y="0" class="p6-title">SIMBORA</text>
+    <text x="4" y="32" class="p6-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-showcase">
+        <div class="app-icon-card">
+          <span class="box-label" style="position: static; margin-bottom: 8px;">Ícone de Aplicativo (iOS / Android)</span>
+          <div class="app-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 6: APP ICON - AZULEJO MODERNISTA -->
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Azulejo Modernista Centralizado -->
+  <g transform="translate(106, 106)">
+    <!-- Base Plate -->
+    <rect width="300" height="300" rx="40" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 30 30 H 150 V 150 A 120 120 0 0 1 30 30 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 270 270 H 150 V 150 A 120 120 0 0 1 270 270 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 150 30 L 270 30 L 270 150 Z" fill="#16A572"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 150 270 L 30 270 L 30 150 Z" fill="#123D32"/>
+
+    <!-- Núcleo Solar Central (Amarelo Energia) -->
+    <circle cx="150" cy="150" r="44" fill="#FFCC45"/>
+    <circle cx="150" cy="150" r="16" fill="#123D32"/>
+  </g>
+</svg>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: #4A5B53;">Azulejo Modernista Brasileiro</span>
+
+          <div class="micro-test-row">
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">24px:</span>
+            <div style="width: 24px; height: 24px; border-radius: 5px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 6: APP ICON - AZULEJO MODERNISTA -->
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Azulejo Modernista Centralizado -->
+  <g transform="translate(106, 106)">
+    <!-- Base Plate -->
+    <rect width="300" height="300" rx="40" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 30 30 H 150 V 150 A 120 120 0 0 1 30 30 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 270 270 H 150 V 150 A 120 120 0 0 1 270 270 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 150 30 L 270 30 L 270 150 Z" fill="#16A572"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 150 270 L 30 270 L 30 150 Z" fill="#123D32"/>
+
+    <!-- Núcleo Solar Central (Amarelo Energia) -->
+    <circle cx="150" cy="150" r="44" fill="#FFCC45"/>
+    <circle cx="150" cy="150" r="16" fill="#123D32"/>
+  </g>
+</svg>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: #8C9E95;">36px:</span>
+            <div style="width: 36px; height: 36px; border-radius: 8px; overflow: hidden;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 6: APP ICON - AZULEJO MODERNISTA -->
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Azulejo Modernista Centralizado -->
+  <g transform="translate(106, 106)">
+    <!-- Base Plate -->
+    <rect width="300" height="300" rx="40" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 30 30 H 150 V 150 A 120 120 0 0 1 30 30 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 270 270 H 150 V 150 A 120 120 0 0 1 270 270 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 150 30 L 270 30 L 270 150 Z" fill="#16A572"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 150 270 L 30 270 L 30 150 Z" fill="#123D32"/>
+
+    <!-- Núcleo Solar Central (Amarelo Energia) -->
+    <circle cx="150" cy="150" r="44" fill="#FFCC45"/>
+    <circle cx="150" cy="150" r="16" fill="#123D32"/>
+  </g>
+</svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="mono-box">
+          <span class="box-label">Validação Monocromática P&amp;B</span>
+          <div style="width: 100%; max-width: 260px; filter: grayscale(1) contrast(200%);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 6: APP ICON - AZULEJO MODERNISTA -->
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Azulejo Modernista Centralizado -->
+  <g transform="translate(106, 106)">
+    <!-- Base Plate -->
+    <rect width="300" height="300" rx="40" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 30 30 H 150 V 150 A 120 120 0 0 1 30 30 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 270 270 H 150 V 150 A 120 120 0 0 1 270 270 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 150 30 L 270 30 L 270 150 Z" fill="#16A572"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 150 270 L 30 270 L 30 150 Z" fill="#123D32"/>
+
+    <!-- Núcleo Solar Central (Amarelo Energia) -->
+    <circle cx="150" cy="150" r="44" fill="#FFCC45"/>
+    <circle cx="150" cy="150" r="16" fill="#123D32"/>
+  </g>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SLIDE FINAL: MATRIZ DE COMPARAÇÃO DIRETA ==================== -->
+  <section class="slide" style="min-height: 600px;">
+    <div class="proposal-header">
+      <div>
+        <div class="proposal-badge" style="background: #16A572; color: #FFFFFF;">Matriz Comparativa Final</div>
+        <h2 class="proposal-title">Visão Lado a Lado &bull; As 6 Direções Visuais</h2>
+        <p class="proposal-concept">
+          Avalie e compare diretamente o impacto visual, memorabilidade e legibilidade de cada ícone e marca.
+          Aguardando sua escolha para seguirmos com o Brand Book e implementação final.
+        </p>
+      </div>
+      <div style="text-align: right;">
+        <span style="font-size: 12px; font-weight: 800; color: #16A572; text-transform: uppercase;">Aguardando Seleção</span>
+      </div>
+    </div>
+
+    <div class="matrix-grid">
+      <!-- 1 -->
+      <div class="matrix-card">
+        <span class="p-num">Proposta 01</span>
+        <h3 class="p-name">Wordmark Solar</h3>
+        <div class="matrix-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 1: APP ICON (CUSTOM LETTERMARK "S" + PONTO SOLAR) -->
+  <defs>
+    <clipPath id="p1Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Letra S Proprietária Escalada -->
+  <g transform="translate(130, 80) scale(3.5)">
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Ponto Solar de Energia no Canto Superior Direito -->
+  <circle cx="395" cy="115" r="32" fill="#FFCC45"/>
+  <circle cx="395" cy="115" r="16" fill="#16A572"/>
+</svg></div>
+        <div class="matrix-logo-preview"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="100%" height="100%">
+  <!-- PROPOSTA 1: WORDMARK PERSONALIZADO (SEM SÍMBOLO) -->
+  <!-- Lettering geométrico proprietário com corte angular no 'M' e ponto de energia solar no 'O' -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p1-slogan {
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="600" height="200" fill="#FFFFFF"/>
+
+  <!-- WORDMARK VETORIAL CUSTOMIZADO (Y: 105) -->
+  <g transform="translate(40, 45)">
+    <!-- Letra S: Cortes chanfrados paralelos -->
+    <path d="M 62 18 C 50 18, 38 24, 38 36 C 38 46, 46 51, 58 54 C 74 58, 82 64, 82 76 C 82 90, 68 96, 52 96 C 36 96, 22 88, 20 74 L 38 71 C 39 77, 45 81, 52 81 C 60 81, 65 77, 65 73 C 65 67, 58 63, 46 59 C 30 54, 21 47, 21 34 C 21 21, 34 5, 60 5 C 74 5, 84 12, 87 24 L 70 28 C 68 22, 63 18, 55 18 Z" fill="#123D32"/>
+
+    <!-- Letra I: Coluna pura com corte óptico -->
+    <path d="M 98 6 L 115 6 L 115 95 L 98 95 Z" fill="#123D32"/>
+
+    <!-- Letra M: Hastes angulares e vértice geométrico dinâmico -->
+    <path d="M 128 6 L 148 6 L 166 60 L 184 6 L 204 6 L 204 95 L 187 95 L 187 32 L 172 78 L 159 78 L 145 32 L 145 95 L 128 95 Z" fill="#123D32"/>
+    <!-- Detalhe do corte angular superior no M em Verde Vibrante -->
+    <polygon points="159,6 166,22 173,6" fill="#16A572"/>
+
+    <!-- Letra B: Bojos geométricos com proporção áurea -->
+    <path d="M 218 6 L 248 6 C 263 6, 273 13, 273 26 C 273 34, 267 41, 258 44 C 270 48, 277 56, 277 71 C 277 86, 264 95, 246 95 L 218 95 Z M 235 20 L 235 40 L 246 40 C 253 40, 257 36, 257 30 C 257 24, 253 20, 246 20 Z M 235 53 L 235 81 L 247 81 C 255 81, 260 76, 260 67 C 260 59, 255 53, 247 53 Z" fill="#123D32"/>
+
+    <!-- Letra O: Anel externo com núcleo solar Amarelo Energia no centro -->
+    <path d="M 324 5 C 352 5, 372 25, 372 51 C 372 76, 352 96, 324 96 C 297 96, 276 76, 276 51 C 276 25, 297 5, 324 5 Z M 324 21 C 307 21, 294 34, 294 51 C 294 67, 307 80, 324 80 C 341 80, 354 67, 354 51 C 354 34, 341 21, 324 21 Z" fill="#123D32"/>
+    <!-- Ponto Solar central dentro do O -->
+    <circle cx="324" cy="51" r="10" fill="#FFCC45"/>
+
+    <!-- Letra R: Haste diagonal dinâmica com corte esportivo -->
+    <path d="M 386 6 L 416 6 C 432 6, 442 15, 442 29 C 442 40, 434 48, 423 51 L 444 95 L 424 95 L 406 55 L 403 55 L 403 95 L 386 95 Z M 403 20 L 403 42 L 414 42 C 422 42, 426 38, 426 31 C 426 24, 422 20, 414 20 Z" fill="#123D32"/>
+
+    <!-- Letra A: Triângulo com ápice geométrico chanfrado -->
+    <path d="M 476 6 L 496 6 L 522 95 L 503 95 L 497 73 L 474 73 L 468 95 L 450 95 Z M 486 28 L 478 59 L 493 59 Z" fill="#123D32"/>
+  </g>
+
+  <!-- SLOGAN OFICIAL PRESERVADO -->
+  <text x="44" y="165" class="p1-slogan">Pediu. Chegou. Simbora!</text>
+  <line x1="285" y1="160" x2="550" y2="160" stroke="#FFCC45" stroke-width="2"/>
+</svg></div>
+      </div>
+
+      <!-- 2 -->
+      <div class="matrix-card">
+        <span class="p-num">Proposta 02</span>
+        <h3 class="p-name">The Quadrant Aperture</h3>
+        <div class="matrix-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 2: APP ICON (THE QUADRANT APERTURE) -->
+  <defs>
+    <clipPath id="p2Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Símbolo Escalado e Centralizado (Tamanho 300x300, Offset: 106, 106) -->
+  <g transform="translate(106, 106) scale(2.5)">
+    <!-- Quadrante Superior Esquerdo (Branco Suave) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#F8F9F6"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Branco Suave) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#F8F9F6"/>
+
+    <!-- Núcleo Central de Conexão Solar -->
+    <circle cx="60" cy="60" r="15" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6.5" fill="#123D32"/>
+  </g>
+</svg></div>
+        <div class="matrix-logo-preview"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 2: SÍMBOLO ABSTRATO INDEPENDENTE ("THE QUADRANT APERTURE") -->
+  <!-- 4 quadrantes geométricos sólidos convergindo em um portal central de trânsito solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p2-title { font-family: 'Manrope', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2px; fill: #123D32; }
+      .p2-slogan { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 2px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO ABSTRATO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Quadrante Superior Esquerdo (Verde Profundo) -->
+    <path d="M 10 10 L 55 10 C 55 35, 35 55, 10 55 Z" fill="#123D32"/>
+    
+    <!-- Quadrante Superior Direito (Verde Vibrante - Movimento) -->
+    <path d="M 65 10 L 110 10 L 110 55 C 85 55, 65 35, 65 10 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Esquerdo (Verde Vibrante) -->
+    <path d="M 10 65 C 35 65, 55 85, 55 110 L 10 110 Z" fill="#16A572"/>
+    
+    <!-- Quadrante Inferior Direito (Verde Profundo - Base) -->
+    <path d="M 110 65 L 110 110 L 65 110 C 65 85, 85 65, 110 65 Z" fill="#123D32"/>
+
+    <!-- Núcleo Central de Conexão Solar (Amarelo Energia) -->
+    <circle cx="60" cy="60" r="14" fill="#FFCC45"/>
+    <circle cx="60" cy="60" r="6" fill="#FFFFFF"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p2-title">SIMBORA</text>
+  <text x="198" y="138" class="p2-slogan">Pediu. Chegou. Simbora!</text>
+</svg></div>
+      </div>
+
+      <!-- 3 -->
+      <div class="matrix-card">
+        <span class="p-num">Proposta 03</span>
+        <h3 class="p-name">Architectural Monogram</h3>
+        <div class="matrix-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PROPOSTA 3: APP ICON (THE ARCHITECTURAL MONOGRAM) -->
+  <defs>
+    <clipPath id="p3Radius">
+      <rect width="512" height="512" rx="115"/>
+    </clipPath>
+  </defs>
+
+  <rect width="512" height="512" rx="115" fill="#123D32"/>
+
+  <!-- Monograma Arquitetônico Escalado (Escala 3.0x, Offset: 80, 80) -->
+  <g transform="translate(68, 68) scale(3.0)">
+    <!-- Bloco Superior Verde Vibrante -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Branco Suave para Máximo Contraste Noturno -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#F8F9F6"/>
+
+    <!-- Acento Solar Dourado -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="6" fill="#FFCC45"/>
+  </g>
+</svg></div>
+        <div class="matrix-logo-preview"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 3: MONOGRAMA GEOMÉTRICO ORIGINAL ("THE ARCHITECTURAL MONOGRAM") -->
+  <!-- Construção construtivista angular: dois blocos facetados em 45 graus, zero curvas, zero fitas, máxima autoridade -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&amp;display=swap');
+      .p3-title { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 52px; font-weight: 900; letter-spacing: 2.5px; fill: #123D32; }
+      .p3-slogan { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: 1.8px; fill: #16A572; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO MONOGRAMA ARQUITETÔNICO (X: 35, Y: 35, W: 130, H: 130) -->
+  <g transform="translate(35, 35)">
+    <!-- Bloco Superior Verde Vibrante (Fuga em 45°) -->
+    <polygon points="20,15 105,15 105,48 55,48 75,70 42,70 20,48" fill="#16A572"/>
+    
+    <!-- Bloco Inferior Verde Profundo (Base de Ancoragem) -->
+    <polygon points="105,105 20,105 20,72 70,72 50,50 83,50 105,72" fill="#123D32"/>
+
+    <!-- Micro-acento solar em corte de 45° no vértice central -->
+    <polygon points="56,43 69,43 62,56" fill="#FFCC45"/>
+    <circle cx="105" cy="15" r="5" fill="#FFCC45"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="195" y="105" class="p3-title">SIMBORA</text>
+  <text x="198" y="138" class="p3-slogan">Pediu. Chegou. Simbora!</text>
+</svg></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="matrix-card">
+        <span class="p-num">Proposta 04</span>
+        <h3 class="p-name">The Energetic Display</h3>
+        <div class="matrix-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 4: APP ICON - EXPRESSIVE DISPLAY S! -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900&amp;display=swap');
+      .p4-icon-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 270px;
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+  <!-- Decorative dynamic energy bars at corner -->
+  <rect x="70" y="60" width="72" height="14" rx="7" fill="#16A572"/>
+  <rect x="154" y="60" width="28" height="14" rx="7" fill="#FFCC45"/>
+  <!-- Typographic Expressive S! lockup -->
+  <g transform="translate(90, 365)">
+    <text class="p4-icon-text" fill="#F8F9F6">S<tspan fill="#FFCC45">!</tspan></text>
+  </g>
+</svg></div>
+        <div class="matrix-logo-preview"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 200" width="100%" height="100%">
+  <!-- PROPOSTA 4: IDENTIDADE TIPOGRÁFICA EXPRESSIVA ("THE ENERGETIC DISPLAY") -->
+  <!-- Lettering bold expressivo, dinâmico e amigável com presença massiva e pulso solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap');
+      .p4-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 64px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        fill: #123D32;
+      }
+      .p4-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="650" height="200" fill="#FFFFFF"/>
+
+  <!-- SELO EXPRESSIVO NO TOPO DO NOME -->
+  <g transform="translate(45, 30)">
+    <!-- Barra Dinâmica Superior em Verde Vibrante e Amarelo -->
+    <rect x="0" y="0" width="40" height="8" rx="4" fill="#16A572"/>
+    <rect x="48" y="0" width="18" height="8" rx="4" fill="#FFCC45"/>
+
+    <!-- WORDMARK EXPRESSIVO GIGANTE -->
+    <text x="0" y="85" class="p4-title">SIMBORA<tspan fill="#FFCC45">!</tspan></text>
+
+    <!-- SLOGAN & ASSINATURA -->
+    <text x="3" y="125" class="p4-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg></div>
+      </div>
+
+      <!-- 5 -->
+      <div class="matrix-card">
+        <span class="p-num">Proposta 05</span>
+        <h3 class="p-name">The Transit Nexus</h3>
+        <div class="matrix-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 5: APP ICON - TRANSIT NEXUS -->
+  <defs>
+    <clipPath id="app-circle-left">
+      <circle cx="206" cy="256" r="118"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Símbolo Transit Nexus -->
+  <g>
+    <!-- Right Node (Branco Suave) -->
+    <circle cx="306" cy="256" r="118" fill="#F8F9F6"/>
+
+    <!-- Left Node (Verde Vibrante) -->
+    <circle cx="206" cy="256" r="118" fill="#16A572"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) -->
+    <g clip-path="url(#app-circle-left)">
+      <circle cx="306" cy="256" r="118" fill="#FFCC45"/>
+    </g>
+
+    <!-- Focal micro-accents -->
+    <circle cx="168" cy="256" r="16" fill="#123D32"/>
+    <circle cx="344" cy="256" r="16" fill="#123D32"/>
+  </g>
+</svg></div>
+        <div class="matrix-logo-preview"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 5: CONEXÃO E MOBILIDADE ABSTRATA ("THE TRANSIT NEXUS") -->
+  <!-- Dois nós de trânsito (Origem e Destino) convergindo na lente de encontro solar -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p5-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        fill: #123D32;
+      }
+      .p5-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+    <!-- Clip paths for left crescent, right crescent, and intersection lens -->
+    <clipPath id="circle-left">
+      <circle cx="85" cy="100" r="48"/>
+    </clipPath>
+    <clipPath id="circle-right">
+      <circle cx="127" cy="100" r="48"/>
+    </clipPath>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: THE TRANSIT NEXUS -->
+  <g transform="translate(15, 0)">
+    <!-- Base Right Circle (Verde Vibrante) -->
+    <circle cx="127" cy="100" r="48" fill="#16A572"/>
+
+    <!-- Left Circle (Verde Profundo) with cutout to reveal right -->
+    <!-- We draw Left Circle fully -->
+    <circle cx="85" cy="100" r="48" fill="#123D32"/>
+
+    <!-- Central Intersection Lens (Amarelo Energia) - intersection of both circles -->
+    <g clip-path="url(#circle-left)">
+      <circle cx="127" cy="100" r="48" fill="#FFCC45"/>
+    </g>
+
+    <!-- Inner Core Points: Origin & Destination micro-indicators -->
+    <circle cx="70" cy="100" r="8" fill="#F8F9F6"/>
+    <circle cx="142" cy="100" r="8" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(225, 108)">
+    <text x="0" y="0" class="p5-title">SIMBORA</text>
+    <text x="3" y="32" class="p5-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg></div>
+      </div>
+
+      <!-- 6 -->
+      <div class="matrix-card">
+        <span class="p-num">Proposta 06</span>
+        <h3 class="p-name">O Azulejo Modernista</h3>
+        <div class="matrix-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- PROPOSTA 6: APP ICON - AZULEJO MODERNISTA -->
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#123D32"/>
+
+  <!-- Azulejo Modernista Centralizado -->
+  <g transform="translate(106, 106)">
+    <!-- Base Plate -->
+    <rect width="300" height="300" rx="40" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 30 30 H 150 V 150 A 120 120 0 0 1 30 30 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 270 270 H 150 V 150 A 120 120 0 0 1 270 270 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 150 30 L 270 30 L 270 150 Z" fill="#16A572"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 150 270 L 30 270 L 30 150 Z" fill="#123D32"/>
+
+    <!-- Núcleo Solar Central (Amarelo Energia) -->
+    <circle cx="150" cy="150" r="44" fill="#FFCC45"/>
+    <circle cx="150" cy="150" r="16" fill="#123D32"/>
+  </g>
+</svg></div>
+        <div class="matrix-logo-preview"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
+  <!-- PROPOSTA 6: CONCEITO EXPERIMENTAL BRASILEIRO CONTEMPORÂNEO ("O AZULEJO MODERNISTA") -->
+  <!-- Inspirado no Concretismo Brasileiro, Athos Bulcão, Alexandre Wollner e Cobogós arquitetônicos -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      .p6-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 5px;
+        fill: #123D32;
+      }
+      .p6-slogan {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <rect width="700" height="200" fill="#FFFFFF"/>
+
+  <!-- SÍMBOLO: O AZULEJO MODERNISTA (ATHOS & WOLLNER) -->
+  <g transform="translate(60, 45)">
+    <!-- Base Moldura Suave do Azulejo -->
+    <rect x="0" y="0" width="110" height="110" rx="16" fill="#F8F9F6"/>
+
+    <!-- Quadrante Superior Esquerdo: Arco Concreto (Verde Profundo) -->
+    <path d="M 12 12 H 55 V 55 A 43 43 0 0 1 12 12 Z" fill="#123D32"/>
+
+    <!-- Quadrante Inferior Direito: Arco Concreto Inverso (Verde Vibrante) -->
+    <path d="M 98 98 H 55 V 55 A 43 43 0 0 1 98 98 Z" fill="#16A572"/>
+
+    <!-- Quadrante Superior Direito: Cunha Angular (Verde Vibrante) -->
+    <path d="M 55 12 L 98 12 L 98 55 Z" fill="#16A572" opacity="0.9"/>
+
+    <!-- Quadrante Inferior Esquerdo: Cunha Angular (Verde Profundo) -->
+    <path d="M 55 98 L 12 98 L 12 55 Z" fill="#123D32" opacity="0.9"/>
+
+    <!-- Ponto Focal Central: O Sol Nordestino (Amarelo Energia) -->
+    <circle cx="55" cy="55" r="16" fill="#FFCC45"/>
+    <circle cx="55" cy="55" r="6" fill="#123D32"/>
+  </g>
+
+  <!-- TIPOGRAFIA E SLOGAN -->
+  <g transform="translate(230, 108)">
+    <text x="0" y="0" class="p6-title">SIMBORA</text>
+    <text x="4" y="32" class="p6-slogan">Pediu. Chegou. Simbora!</text>
+  </g>
+</svg></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; padding: 20px 24px; background: #E8F5EE; border-radius: 12px; border: 1px solid #C4E3D2; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <strong style="color: #123D32; font-size: 15px;">Próximo Passo Decisório:</strong>
+        <p style="color: #335347; font-size: 13px; margin-top: 2px;">
+          Qual das 6 propostas melhor representa a nova fase do SIMBORA? Responda indicando o número desejado (ou eventuais refinamentos pontuais).
+        </p>
+      </div>
+      <div style="background: #123D32; color: #FFCC45; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 8px;">
+        DECISÃO HUMANA PENDENTE
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
