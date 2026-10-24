@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <!-- SIMBORA — INSTAGRAM FEED OFICIAL (1080x1350 - FORMATO 4:5 RETRATO) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800;900&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@700&amp;display=swap');
+      .feed-tag { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 3px; fill: #FFCC45; text-transform: uppercase; }
+      .feed-headline { font-family: 'Manrope', sans-serif; font-size: 64px; font-weight: 900; fill: #F8F9F6; line-height: 1.15; }
+      .feed-body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 600; fill: #CBD5E1; line-height: 1.5; }
+      .feed-cta-txt { font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 800; fill: #123D32; }
+    </style>
+    <radialGradient id="feedBg" cx="30%" cy="30%" r="90%">
+      <stop offset="0%" stop-color="#184D3F"/>
+      <stop offset="100%" stop-color="#123D32"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fundo em Verde Profundo Nobre -->
+  <rect width="1080" height="1350" fill="url(#feedBg)"/>
+
+  <!-- Grafismo de Ondas Cinéticas de Fundo -->
+  <path d="M -100 400 Q 540 150 1180 400" fill="none" stroke="#16A572" stroke-width="8" opacity="0.25"/>
+  <path d="M -100 600 Q 540 350 1180 600" fill="none" stroke="#FFCC45" stroke-width="4" opacity="0.2"/>
+  <path d="M -100 900 Q 540 1200 1180 900" fill="none" stroke="#16A572" stroke-width="12" opacity="0.15"/>
+
+  <!-- TOPO: LOGOTIPO OFICIAL EM VERSÃO CLARA -->
+  <g transform="translate(100, 100)">
+    <g transform="scale(0.9)">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#F8F9F6" stroke-width="11" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    </g>
+    <text x="105" y="48" font-family="'Manrope', sans-serif" font-size="36" font-weight="900" fill="#F8F9F6" letter-spacing="2">SIMBORA</text>
+    <text x="106" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#FFCC45" letter-spacing="1.5">PEDIU. CHEGOU. SIMBORA!</text>
+  </g>
+
+  <!-- TAG DE LANÇAMENTO -->
+  <g transform="translate(100, 290)">
+    <rect width="280" height="48" rx="24" fill="rgba(255, 204, 69, 0.15)" stroke="#FFCC45" stroke-width="1.5"/>
+    <text x="140" y="32" class="feed-tag" text-anchor="middle">★ NOVIDADE OFICIAL</text>
+  </g>
+
+  <!-- HEADLINE PRINCIPAL -->
+  <g transform="translate(100, 400)">
+    <text x="0" y="0" class="feed-headline">A mobilidade que</text>
+    <text x="0" y="75" class="feed-headline">conecta você a</text>
+    <text x="0" y="150" class="feed-headline" fill="#16A572">todo lugar.</text>
+  </g>
+
+  <!-- CORPO DO TEXTO -->
+  <g transform="translate(100, 620)">
+    <text x="0" y="0" class="feed-body">Chegou o SIMBORA: o aplicativo brasileiro</text>
+    <text x="0" y="42" class="feed-body">feito para o seu dia a dia e para suas viagens</text>
+    <text x="0" y="84" class="feed-body">entre cidades. Rápido, seguro e sem susto no preço.</text>
+  </g>
+
+  <!-- CARD DE DESTAQUE INTERMUNICIPAL COM ROTA -->
+  <g transform="translate(100, 780)">
+    <rect width="880" height="240" rx="30" fill="#17211D" stroke="#16A572" stroke-width="1.5"/>
+    
+    <g transform="translate(40, 40)">
+      <circle cx="20" cy="25" r="14" fill="#16A572"/>
+      <circle cx="20" cy="115" r="14" fill="#FFCC45"/>
+      <line x1="20" y1="40" x2="20" y2="100" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="6,4"/>
+
+      <text x="50" y="32" font-family="'Manrope', sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">Penedo (Centro &amp; Orla)</text>
+      <text x="50" y="122" font-family="'Manrope', sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">Piaçabuçu (Foz do São Francisco)</text>
+      
+      <rect x="560" y="45" width="220" height="70" rx="18" fill="#123D32" stroke="#FFCC45" stroke-width="1.5"/>
+      <text x="670" y="90" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="800" fill="#FFCC45" text-anchor="middle">R$ 15,00</text>
+    </g>
+  </g>
+
+  <!-- BOTÃO DE CTA & DOWNLOAD -->
+  <g transform="translate(100, 1100)">
+    <rect width="880" height="110" rx="28" fill="#FFCC45" filter="drop-shadow(0 16px 32px rgba(255,204,69,0.3))"/>
+    <text x="440" y="68" class="feed-cta-txt" text-anchor="middle">Baixe o App nas Lojas • Disponível Já →</text>
+  </g>
+
+  <!-- NOTA DE RODAPÉ -->
+  <text x="540" y="1280" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="600" fill="#94A3B8" text-anchor="middle">
+    www.simboraapp.com.br • @simbora.mobilidade
+  </text>
+</svg>

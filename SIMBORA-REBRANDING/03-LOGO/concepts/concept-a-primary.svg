@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 110" width="100%" height="100%">
+  <!-- SIMBORA CONCEPT A — LOGOTIPO PRINCIPAL HORIZONTAL (Minimalismo Tecnológico) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&amp;display=swap');
+      .brand-title-a {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-size: 46px;
+        font-weight: 900;
+        letter-spacing: 2.5px;
+        fill: #123D32;
+      }
+      .brand-slogan-a {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        fill: #16A572;
+      }
+    </style>
+  </defs>
+
+  <!-- SÍMBOLO CONCEITO A (X: 15, Y: 15, W: 80, H: 80) -->
+  <g transform="translate(15, 15)">
+    <!-- Trajetória Superior Verde Vibrante -->
+    <path d="M 54 18 C 38 18, 24 26, 24 37 C 24 42, 27 45, 34 46.5" 
+          stroke="#16A572" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Trajetória Inferior Verde Profundo -->
+    <path d="M 26 62 C 42 62, 56 54, 56 43 C 56 38, 53 35, 46 33.5" 
+          stroke="#123D32" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Ponto Central Solar Amarelo Energia -->
+    <circle cx="40" cy="40" r="5.5" fill="#FFCC45"/>
+    <circle cx="54" cy="18" r="4.75" fill="#16A572"/>
+    <circle cx="26" cy="62" r="4.75" fill="#123D32"/>
+  </g>
+
+  <!-- WORDMARK & SLOGAN -->
+  <text x="115" y="60" class="brand-title-a">SIMBORA</text>
+  <text x="117" y="85" class="brand-slogan-a">Pediu. Chegou. Simbora!</text>
+
+  <!-- MICRO INDICADOR DE QUALIDADE / GRID -->
+  <circle cx="420" cy="50" r="3.5" fill="#FFCC45"/>
+</svg>

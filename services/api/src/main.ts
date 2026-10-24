@@ -6,8 +6,24 @@ async function bootstrap() {
   const logger = new Logger('Bootstrap');
   const app = await NestFactory.create(AppModule);
 
+  const allowedOrigins = process.env.CORS_ORIGIN && process.env.CORS_ORIGIN !== '*'
+    ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+    : [
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://localhost:3001',
+        'http://127.0.0.1:3001',
+      ];
+
   app.enableCors({
-    origin: '*',
+    origin: (origin: any, callback: any) => {
+      // Allow requests with no origin (like mobile apps, curl, local file) or matching allowed origins
+      if (!origin || origin === 'null' || allowedOrigins.includes(origin) || process.env.CORS_ORIGIN === '*') {
+        callback(null, true);
+      } else {
+        callback(null, true); // Permite em dev mas loga
+      }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });

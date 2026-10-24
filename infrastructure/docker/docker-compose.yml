@@ -9,9 +9,9 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
-      - DATABASE_URL=postgres://mobility:replace_with_db_password@postgres:5432/mobility_db
+      - DATABASE_URL=postgres://${POSTGRES_USER:-simbora_user}:${POSTGRES_PASSWORD:-simbora_dev_placeholder}@postgres:5432/${POSTGRES_DB:-simbora_db}
       - REDIS_URL=redis://redis:6379
-      - JWT_SECRET=replace_with_jwt_secret
+      - JWT_SECRET=${JWT_SECRET:-replace_with_jwt_secret}
     depends_on:
       - postgres
       - redis
@@ -20,9 +20,9 @@ services:
   postgres:
     image: postgis/postgis:16-3.4
     environment:
-      POSTGRES_USER: mobility
-      POSTGRES_PASSWORD: replace_with_db_password
-      POSTGRES_DB: mobility_db
+      POSTGRES_USER: ${POSTGRES_USER:-simbora_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-simbora_dev_placeholder}
+      POSTGRES_DB: ${POSTGRES_DB:-simbora_db}
     ports:
       - "5432:5432"
     volumes:

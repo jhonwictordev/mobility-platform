@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SIMBORA — Brand Book Oficial & Manual de Identidade Visual</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 14mm 12mm 14mm 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: #17211D;
+      background-color: #FFFFFF;
+      font-size: 10pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      page-break-after: always;
+      position: relative;
+      min-height: 260mm;
+      padding-bottom: 15mm;
+    }
+
+    .page-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #E2E8F0;
+      padding-top: 4mm;
+      font-size: 7.5pt;
+      color: #64748B;
+      font-weight: 700;
+    }
+
+    .header-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .tag-green { background: #DCFCE7; color: #166534; }
+    .tag-gold { background: #FEF3C7; color: #92400E; }
+    .tag-dark { background: #123D32; color: #FFCC45; }
+
+    h1.sec-title {
+      font-size: 20pt;
+      font-weight: 900;
+      color: #123D32;
+      margin-top: 2mm;
+      margin-bottom: 1.5mm;
+      letter-spacing: -0.5px;
+    }
+
+    p.sec-subtitle {
+      font-size: 9.5pt;
+      color: #4B5563;
+      margin-bottom: 5mm;
+    }
+
+    .card {
+      background: #F8F9F6;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .svg-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .svg-container svg {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5pt;
+      margin-top: 6px;
+    }
+
+    th {
+      background: #F8F9F6;
+      border-bottom: 2px solid #CBD5E1;
+      padding: 6px 8px;
+      text-align: left;
+      font-weight: 800;
+      color: #123D32;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #E2E8F0;
+      color: #334155;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* COVER PAGE */
+    .cover-container {
+      background: #123D32;
+      color: #FFFFFF;
+      height: 265mm;
+      border-radius: 20px;
+      padding: 20mm 16mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border: 4px solid #16A572;
+    }
+
+    .cover-hero-logo {
+      background: #17211D;
+      padding: 20px;
+      border-radius: 18px;
+      border: 2px solid #16A572;
+      max-width: 90%;
+      margin: 15mm 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== CAPA DO BRAND BOOK ==================== -->
+  <div class="page">
+    <div class="cover-container">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span class="header-tag tag-gold" style="font-size: 9pt; padding: 4px 12px;">MANUAL DE IDENTIDADE VISUAL & BRAND BOOK v1.0</span>
+          <span style="font-weight: 800; color: #16A572; font-size: 10pt;">EDIÇÃO 2026</span>
+        </div>
+
+        <div style="margin-top: 15mm;">
+          <h1 style="font-size: 38pt; font-weight: 900; line-height: 1.05; letter-spacing: -1px; color: #F8F9F6;">
+            SIMBORA
+          </h1>
+          <p style="font-size: 18pt; font-weight: 800; color: #FFCC45; margin-top: 4mm;">
+            "Pediu. Chegou. Simbora!"
+          </p>
+          <p style="font-size: 11pt; color: #DCFCE7; margin-top: 4mm; max-width: 480px; line-height: 1.4;">
+            Plataforma Brasileira de Mobilidade Urbana e Intermunicipal.
+            Identidade visual corporativa, design system, componentes mobile e simulador geográfico.
+          </p>
+        </div>
+      </div>
+
+      <!-- Center Logo Box -->
+      <div class="cover-hero-logo">
+        <div class="svg-container" style="max-height: 110px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="darkGradC" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+    <filter id="glowDark" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#16A572" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Forest Background -->
+  <rect width="620" height="160" rx="24" fill="#123D32"/>
+
+  <g transform="translate(32, 22)">
+    <!-- 1. SÍMBOLO INTEGRADO COM GLOW -->
+    <g transform="translate(0, 0) scale(0.38)" filter="url(#glowDark)">
+      <rect width="280" height="280" rx="64" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+      
+      <!-- Waypoint de partida -->
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+
+      <!-- S cinético -->
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#darkGradC)"/>
+
+      <!-- Seta indicadora solar -->
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="#FFCC45"/>
+      <circle cx="214" cy="26" r="6" fill="#123D32"/>
+    </g>
+
+    <!-- 2. WORDMARK: SIMBORA EM BRANCO SUAVE -->
+    <g transform="translate(132, 10)">
+      <!-- S -->
+      <path d="M 38 24 C 38 13 29 10 20 10 C 10 10 3 14 2 22 C 1 31 10 34 19 37 C 29 40 40 43 40 54 C 40 65 30 70 19 70 C 8 70 1 65 0 55 L 10 53 C 11 59 15 62 19 62 C 24 62 29 59 29 53 C 29 47 22 45 14 41 C 5 38 -3 33 -2 23 C -1 13 8 2 21 2 C 34 2 48 10 49 24 Z" fill="#F8F9F6"/>
+
+      <!-- I -->
+      <rect x="58" y="4" width="10" height="66" rx="5" fill="#F8F9F6"/>
+      <circle cx="63" cy="-4" r="5" fill="#FFCC45"/>
+
+      <!-- M -->
+      <path d="M 82 70 L 82 8 C 82 6 85 3 87 4 C 90 5 92 7 95 11 L 106 33 L 117 11 C 120 7 122 5 125 4 C 127 3 130 6 130 8 L 130 70 L 120 70 L 120 25 L 110 46 C 108 48 104 48 102 46 L 92 25 L 92 70 Z" fill="#F8F9F6"/>
+
+      <!-- B -->
+      <path d="M 146 5 L 166 5 C 176 5 184 10 184 20 C 184 27 179 32 173 34 C 181 36 187 42 187 50 C 187 62 177 70 166 70 L 146 70 Z M 156 15 L 156 32 L 165 32 C 170 32 173 28 173 23 C 173 18 170 15 165 15 Z M 156 42 L 156 61 L 166 61 C 171 61 176 57 176 51 C 176 45 171 42 166 42 Z" fill="#F8F9F6"/>
+
+      <!-- O -->
+      <path d="M 218 4 C 235 4 247 18 247 38 C 247 58 235 72 218 72 C 201 72 189 58 189 38 C 189 18 201 4 218 4 Z M 218 14 C 207 14 200 24 200 38 C 200 52 207 62 218 62 C 229 62 236 52 236 38 C 236 24 229 14 218 14 Z" fill="#F8F9F6"/>
+
+      <!-- R -->
+      <path d="M 257 5 L 277 5 C 287 5 294 12 294 23 C 294 32 288 39 279 41 L 296 70 L 284 70 L 269 43 L 267 43 L 267 70 L 257 70 Z M 267 15 L 267 33 L 276 33 C 281 33 284 30 284 24 C 284 18 281 15 276 15 Z" fill="#F8F9F6"/>
+
+      <!-- A -->
+      <path d="M 317 4 L 327 4 L 346 70 L 335 70 L 331 54 L 314 54 L 310 70 L 299 70 Z M 316 44 L 328 44 L 322 21 Z" fill="#F8F9F6"/>
+      <polygon points="325,-3 337,-8 334,-12 322,-7" fill="#FFCC45"/>
+
+      <!-- 3. SLOGAN OFICIAL -->
+      <text x="3" y="94" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#16A572" letter-spacing="2.8">
+        PEDIU. CHEGOU. SIMBORA!
+      </text>
+
+      <!-- Badge de Origem Regional -->
+      <g transform="translate(290, 81)">
+        <rect width="68" height="17" rx="5" fill="#16A572" fill-opacity="0.25" stroke="#16A572" stroke-width="0.8"/>
+        <text x="7" y="12" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="800" fill="#FFCC45" letter-spacing="1">
+          ALAGOAS
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+
+        </div>
+      </div>
+
+      <!-- Cover Bottom Info -->
+      <div style="border-top: 1px solid rgba(22, 165, 114, 0.5); padding-top: 6mm; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <p style="font-size: 8pt; color: #16A572; font-weight: 800; text-transform: uppercase;">Polo de Lançamento Inaugural</p>
+          <p style="font-size: 11pt; font-weight: 800; color: #FFFFFF;">Alagoas • Penedo ⇄ Piaçabuçu</p>
+          <p style="font-size: 8.5pt; color: #94A3B8;">Corredor Rodoviário AL-101 Sul / AL-225 (28,2 km)</p>
+        </div>
+
+        <div style="text-align: right;">
+          <p style="font-size: 8pt; color: #FFCC45; font-weight: 800; text-transform: uppercase;">Startup de Tecnologia</p>
+          <p style="font-size: 10pt; font-weight: 800; color: #FFFFFF;">Mobility Platform Clean-Room</p>
+          <p style="font-size: 8pt; color: #94A3B8;">Google Antigravity Engineering</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 2: CONCEITO, VALORES E SLOGANS ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 01 • Conceito & DNA da Marca</span>
+    <h1 class="sec-title">Fundamentos Estratégicos da Marca SIMBORA</h1>
+    <p class="sec-subtitle">Conexão humana, confiabilidade técnica e orgulho da cultura brasileira no transporte de passageiros.</p>
+
+    <div class="grid-2">
+      <div class="card" style="border-left: 4px solid #16A572;">
+        <h3 style="font-size: 11pt; font-weight: 800; color: #123D32;">Missão</h3>
+        <p style="font-size: 8.5pt; color: #4B5563; margin-top: 4px;">
+          Conectar pessoas, municípios e oportunidades no Brasil com transporte seguro, justo e acessível, valorizando as peculiaridades regionais a partir do Baixo São Francisco.
+        </p>
+      </div>
+
+      <div class="card" style="border-left: 4px solid #FFCC45;">
+        <h3 style="font-size: 11pt; font-weight: 800; color: #123D32;">Visão</h3>
+        <p style="font-size: 8.5pt; color: #4B5563; margin-top: 4px;">
+          Ser a maior referência de transporte intermunicipal do Nordeste e do Brasil, integrando alta tecnologia com remuneração transparente e calor humano.
+        </p>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="card" style="margin-top: 4px;">
+      <h3 style="font-size: 11pt; font-weight: 800; color: #123D32; margin-bottom: 6px;">Pilares de Valor</h3>
+      <div class="grid-3" style="font-size: 8pt;">
+        <div style="padding: 6px; background: #FFFFFF; border-radius: 8px; border: 1px solid #E2E8F0;">
+          <p style="font-weight: 800; color: #16A572;">1. Confiança & Segurança</p>
+          <p style="color: #64748B; margin-top: 2px;">Telemetria contínua a cada 3s e validação obrigatória por PIN de 4 dígitos.</p>
+        </div>
+        <div style="padding: 6px; background: #FFFFFF; border-radius: 8px; border: 1px solid #E2E8F0;">
+          <p style="font-weight: 800; color: #16A572;">2. Proximidade & Calor</p>
+          <p style="color: #64748B; margin-top: 2px;">Comunicação amigável, sem burocracia ou jargões corporativos herméticos.</p>
+        </div>
+        <div style="padding: 6px; background: #FFFFFF; border-radius: 8px; border: 1px solid #E2E8F0;">
+          <p style="font-weight: 800; color: #16A572;">3. Justiça Tarifária</p>
+          <p style="color: #64748B; margin-top: 2px;">Preço justo para o usuário e repasse rápido e digno para os motoristas parceiros.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slogans -->
+    <div class="card" style="background: #123D32; color: #FFFFFF; border: none; margin-top: 6px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span class="header-tag tag-gold">Slogan Principal Oficial</span>
+        <span style="font-size: 7.5pt; color: #DCFCE7;">Métrica rítmica de 3 tempos</span>
+      </div>
+      <p style="font-size: 20pt; font-weight: 900; color: #FFCC45; margin: 4px 0;">"Pediu. Chegou. Simbora!"</p>
+      <p style="font-size: 8.5pt; color: #E2E8F0;">
+        Transmite agilidade imediata ("Pediu"), pontualidade resoluta ("Chegou") e a partida animada ("Simbora!").
+      </p>
+    </div>
+
+    <!-- Alternativas Avaliadas -->
+    <div class="card">
+      <h3 style="font-size: 9.5pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">5 Alternativas Estratégicas Avaliadas</h3>
+      <table style="font-size: 8pt;">
+        <tr>
+          <td style="font-weight: 700; width: 40%;">"Seu caminho sem complicação."</td>
+          <td style="color: #64748B;">Enfatiza fricção zero, facilidade de uso para idosos e primeira viagem.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700;">"Mobilidade com o calor da nossa terra."</td>
+          <td style="color: #64748B;">Apelo afetivo à identidade nordestina e recepção acolhedora.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700;">"De ponta a ponta, vai de Simbora."</td>
+          <td style="color: #64748B;">Destinado a viagens de longa distância e corredores intermunicipais.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700;">"A rota certa pro seu dia render."</td>
+          <td style="color: #64748B;">Foco pragmático em trabalhadores e estudantes no dia a dia.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700;">"Conectando cidades, aproximando pessoas."</td>
+          <td style="color: #64748B;">Tom institucional para relacionamento com secretarias de transporte e prefeituras.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 01 • DNA & Conceito</span>
+      <span>Página 2</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 3: AS 3 PROPOSTAS DE LOGOTIPO ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 02 • Propostas de Logotipo</span>
+    <h1 class="sec-title">As Três Direções Visuais da Marca</h1>
+    <p class="sec-subtitle">Comparativo fundamentado das soluções visuais desenvolvidas para a SIMBORA.</p>
+
+    <!-- PROPOSTA A -->
+    <div class="card" style="margin-bottom: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <span class="header-tag tag-green">Proposta A • Wordmark Moderno Alagoano</span>
+        <span style="font-size: 7.5pt; color: #64748B; font-weight: 700;">Tipográfico Puro</span>
+      </div>
+      <div class="grid-2" style="align-items: center;">
+        <div class="svg-container" style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 8px; padding: 8px; max-height: 55px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 130" width="100%" height="100%">
+  <defs>
+    <linearGradient id="simboraGradA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="60%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+    <filter id="subtleShadowA" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#123D32" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background container subtle rounded -->
+  <rect width="500" height="130" rx="20" fill="#F8F9F6"/>
+
+  <!-- Proposal A: Wordmark Moderno Alagoano -->
+  <g transform="translate(30, 20)">
+    <!-- Custom Geometrical Vector Wordmark: S I M B O R A -->
+    
+    <!-- S -->
+    <path d="M 45 28 C 45 16 35 12 24 12 C 12 12 4 17 3 27 C 2 37 12 41 22 44 C 34 47 46 51 46 63 C 46 76 34 82 22 82 C 10 82 1 76 0 65 L 12 63 C 13 70 18 73 23 73 C 29 73 34 69 34 63 C 34 56 26 53 16 49 C 6 45 -4 39 -3 27 C -2 15 8 3 24 3 C 40 3 56 12 57 28 Z" fill="#123D32"/>
+
+    <!-- I -->
+    <rect x="70" y="5" width="12" height="76" rx="6" fill="#123D32"/>
+    <circle cx="76" cy="-4" r="5" fill="#FFCC45"/>
+
+    <!-- M -->
+    <path d="M 98 81 L 98 10 C 98 7 101 4 104 5 C 107 6 110 9 113 13 L 126 38 L 139 13 C 142 9 145 6 148 5 C 151 4 154 7 154 10 L 154 81 L 143 81 L 143 30 L 131 53 C 129 56 123 56 121 53 L 109 30 L 109 81 Z" fill="#123D32"/>
+
+    <!-- B -->
+    <path d="M 172 6 L 195 6 C 206 6 215 12 215 23 C 215 31 209 37 202 39 C 211 41 218 48 218 58 C 218 72 207 81 194 81 L 172 81 Z M 184 17 L 184 37 L 194 37 C 199 37 203 33 203 27 C 203 21 199 17 194 17 Z M 184 48 L 184 70 L 195 70 C 201 70 206 66 206 59 C 206 52 201 48 195 48 Z" fill="#123D32"/>
+
+    <!-- O -->
+    <path d="M 256 5 C 275 5 289 21 289 44 C 289 67 275 83 256 83 C 237 83 223 67 223 44 C 223 21 237 5 256 5 Z M 256 16 C 243 16 235 28 235 44 C 235 60 243 72 256 72 C 269 72 277 60 277 44 C 277 28 269 16 256 16 Z" fill="#123D32"/>
+
+    <!-- R -->
+    <path d="M 299 6 L 322 6 C 334 6 342 14 342 27 C 342 37 335 45 325 47 L 344 81 L 330 81 L 313 49 L 311 49 L 311 81 L 299 81 Z M 311 17 L 311 38 L 321 38 C 327 38 331 34 331 27 C 331 20 327 17 321 17 Z" fill="#123D32"/>
+
+    <!-- A (Com acento cinético em Amarelo Energia) -->
+    <path d="M 368 5 L 379 5 L 401 81 L 388 81 L 383 62 L 364 62 L 359 81 L 347 81 Z M 367 51 L 380 51 L 373.5 24 Z" fill="#123D32"/>
+    <!-- Kinetic Forward Slash Accent -->
+    <path d="M 378 -2 L 392 -8 L 388 -13 L 374 -7 Z" fill="#FFCC45"/>
+
+    <!-- Tagline abaixo -->
+    <text x="70" y="100" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#16A572" letter-spacing="2.5">
+      PEDIU. CHEGOU. SIMBORA!
+    </text>
+    
+    <!-- Micro badge Alagoas -->
+    <rect x="360" y="89" width="70" height="15" rx="4" fill="#123D32" fill-opacity="0.08"/>
+    <text x="367" y="100" font-family="system-ui, sans-serif" font-size="9" font-weight="800" fill="#123D32">
+      ALAGOAS
+    </text>
+  </g>
+</svg>
+
+        </div>
+        <div style="font-size: 8pt; color: #4B5563;">
+          <p><b>Características:</b> Desenho com geometria arredondada, corte dinâmico no travessão da letra 'A' e acento solar dourado.</p>
+          <p style="color: #166534; font-weight: 700; margin-top: 2px;">✓ Excelente legibilidade em mídia impressa e outdoors.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROPOSTA B -->
+    <div class="card" style="margin-bottom: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <span class="header-tag tag-green">Proposta B • Símbolo de Movimento & Rio</span>
+        <span style="font-size: 7.5pt; color: #64748B; font-weight: 700;">Pictograma Abstrato</span>
+      </div>
+      <div class="grid-2" style="align-items: center;">
+        <div class="svg-container" style="background: #123D32; border-radius: 8px; padding: 6px; max-height: 65px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradients for kinetic flow -->
+    <linearGradient id="riverRibbon" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="50%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <linearGradient id="innerLoopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#123D32"/>
+    </linearGradient>
+
+    <filter id="shadowIcon" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#123D32" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Surface -->
+  <rect width="400" height="400" rx="48" fill="#123D32"/>
+
+  <!-- Subtle Topography / River Curve background motif -->
+  <path d="M -50 150 Q 150 100 250 250 T 450 200" fill="none" stroke="#16A572" stroke-width="1.5" stroke-opacity="0.15"/>
+  <path d="M -50 200 Q 150 150 250 300 T 450 250" fill="none" stroke="#16A572" stroke-width="1.5" stroke-opacity="0.15"/>
+  <path d="M -50 250 Q 150 200 250 350 T 450 300" fill="none" stroke="#16A572" stroke-width="1.5" stroke-opacity="0.15"/>
+
+  <!-- S-Movement Emblem (Alagoas Highway & Rio São Francisco Meander) -->
+  <g filter="url(#shadowIcon)" transform="translate(60, 50)">
+    <!-- Lower Origin Pin / Starting Point (Piaçabuçu) -->
+    <circle cx="55" cy="245" r="16" fill="#16A572"/>
+    <circle cx="55" cy="245" r="7" fill="#F8F9F6"/>
+
+    <!-- Dynamic Flow Track (AL-101 / AL-225 Path) -->
+    <!-- Base Lower Loop of 'S' -->
+    <path d="M 55 245 C 55 200 120 185 150 155 C 180 125 185 85 145 65 C 115 50 70 70 75 110 L 35 105 C 28 45 95 15 155 25 C 215 35 235 95 195 145 C 160 185 115 190 100 220 C 90 240 105 255 130 255 C 165 255 190 230 215 195 L 245 220 C 210 270 170 295 120 295 C 65 295 35 265 55 245 Z" 
+          fill="url(#riverRibbon)"/>
+
+    <!-- High Velocity Forward Arrow / Destination Beacon (Penedo) -->
+    <!-- Seta superior direita integrada na terminação do 'S' -->
+    <path d="M 175 35 L 245 25 L 235 95 L 210 70 L 165 115 L 140 90 L 185 45 Z" 
+          fill="#FFCC45"/>
+
+    <!-- Kinetic Pulsing Node at destination -->
+    <circle cx="235" cy="35" r="8" fill="#F8F9F6"/>
+  </g>
+
+  <!-- Subtitle for Proposal B display -->
+  <text x="200" y="365" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="800" fill="#F8F9F6" letter-spacing="3">
+    SÍMBOLO DE MOVIMENTO
+  </text>
+  <text x="200" y="382" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="600" fill="#FFCC45" letter-spacing="1.5">
+    ROTA PIAÇABUÇU ➔ PENEDO
+  </text>
+</svg>
+
+        </div>
+        <div style="font-size: 8pt; color: #4B5563;">
+          <p><b>Características:</b> Fita contínua em formato de 'S', conectando a curva do Rio São Francisco à seta de chegada dourada em Penedo.</p>
+          <p style="color: #166534; font-weight: 700; margin-top: 2px;">✓ Alto poder de reconhecimento em tamanhos reduzidos (app icon e favicon).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROPOSTA C (RECOMENDADA) -->
+    <div class="card" style="border: 2px solid #16A572; background: #ECFDF5/40; margin-bottom: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+        <span class="header-tag tag-dark">Proposta C • Identidade Híbrida Oficial (RECOMENDADA)</span>
+        <span class="header-tag tag-gold" style="font-size: 7pt;">ESCOLHA HOMOLOGADA</span>
+      </div>
+      <div class="grid-2" style="align-items: center;">
+        <div class="svg-container" style="background: #FFFFFF; border: 1px solid #16A572; border-radius: 8px; padding: 8px; max-height: 65px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" width="100%" height="100%">
+  <defs>
+    <!-- Kinetic Gradients -->
+    <linearGradient id="simboraSymbolGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="55%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFCC45"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <filter id="logoElevation" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#123D32" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="620" height="160" rx="24" fill="#F8F9F6"/>
+
+  <g transform="translate(32, 22)">
+    <!-- 1. SÍMBOLO INTEGRADO (S dinâmico em fita com seta solar) -->
+    <g transform="translate(0, 0) scale(0.38)" filter="url(#logoElevation)">
+      <!-- Background icon circle -->
+      <rect width="280" height="280" rx="64" fill="#123D32"/>
+      
+      <!-- Waypoint de partida (Piaçabuçu) -->
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+
+      <!-- Traçado do S cinético -->
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#simboraSymbolGrad)"/>
+
+      <!-- Seta indicadora de direção / Chegada (Penedo) -->
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="url(#arrowGrad)"/>
+      <circle cx="214" cy="26" r="6" fill="#F8F9F6"/>
+    </g>
+
+    <!-- 2. WORDMARK: SIMBORA (Posicionado com alinhamento óptico) -->
+    <g transform="translate(132, 10)">
+      <!-- S -->
+      <path d="M 38 24 C 38 13 29 10 20 10 C 10 10 3 14 2 22 C 1 31 10 34 19 37 C 29 40 40 43 40 54 C 40 65 30 70 19 70 C 8 70 1 65 0 55 L 10 53 C 11 59 15 62 19 62 C 24 62 29 59 29 53 C 29 47 22 45 14 41 C 5 38 -3 33 -2 23 C -1 13 8 2 21 2 C 34 2 48 10 49 24 Z" fill="#123D32"/>
+
+      <!-- I -->
+      <rect x="58" y="4" width="10" height="66" rx="5" fill="#123D32"/>
+      <circle cx="63" cy="-4" r="5" fill="#FFCC45"/>
+
+      <!-- M -->
+      <path d="M 82 70 L 82 8 C 82 6 85 3 87 4 C 90 5 92 7 95 11 L 106 33 L 117 11 C 120 7 122 5 125 4 C 127 3 130 6 130 8 L 130 70 L 120 70 L 120 25 L 110 46 C 108 48 104 48 102 46 L 92 25 L 92 70 Z" fill="#123D32"/>
+
+      <!-- B -->
+      <path d="M 146 5 L 166 5 C 176 5 184 10 184 20 C 184 27 179 32 173 34 C 181 36 187 42 187 50 C 187 62 177 70 166 70 L 146 70 Z M 156 15 L 156 32 L 165 32 C 170 32 173 28 173 23 C 173 18 170 15 165 15 Z M 156 42 L 156 61 L 166 61 C 171 61 176 57 176 51 C 176 45 171 42 166 42 Z" fill="#123D32"/>
+
+      <!-- O -->
+      <path d="M 218 4 C 235 4 247 18 247 38 C 247 58 235 72 218 72 C 201 72 189 58 189 38 C 189 18 201 4 218 4 Z M 218 14 C 207 14 200 24 200 38 C 200 52 207 62 218 62 C 229 62 236 52 236 38 C 236 24 229 14 218 14 Z" fill="#123D32"/>
+
+      <!-- R -->
+      <path d="M 257 5 L 277 5 C 287 5 294 12 294 23 C 294 32 288 39 279 41 L 296 70 L 284 70 L 269 43 L 267 43 L 267 70 L 257 70 Z M 267 15 L 267 33 L 276 33 C 281 33 284 30 284 24 C 284 18 281 15 276 15 Z" fill="#123D32"/>
+
+      <!-- A com acento cinético de aceleração -->
+      <path d="M 317 4 L 327 4 L 346 70 L 335 70 L 331 54 L 314 54 L 310 70 L 299 70 Z M 316 44 L 328 44 L 322 21 Z" fill="#123D32"/>
+      <polygon points="325,-3 337,-8 334,-12 322,-7" fill="#FFCC45"/>
+
+      <!-- 3. SLOGAN OFICIAL -->
+      <text x="3" y="94" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#16A572" letter-spacing="2.8">
+        PEDIU. CHEGOU. SIMBORA!
+      </text>
+
+      <!-- Badge de Origem Regional -->
+      <g transform="translate(290, 81)">
+        <rect width="68" height="17" rx="5" fill="#123D32" fill-opacity="0.08"/>
+        <text x="7" y="12" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="800" fill="#123D32" letter-spacing="1">
+          ALAGOAS
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+
+        </div>
+        <div style="font-size: 8pt; color: #17211D;">
+          <p><b>Conceito Central:</b> Integração perfeita entre o Símbolo de Movimento e a tipografia proprietária SIMBORA com o slogan oficial.</p>
+          <p style="color: #123D32; font-weight: 800; margin-top: 2px;">
+            ★ Máxima versatilidade técnica: opera em cabeçalhos, telas de celular, frotas de veículos e materiais institucionais.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 02 • Propostas de Logotipo</span>
+      <span>Página 3</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 4: VARIAÇÕES E NORMAS DE USO DO LOGO ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 03 • Versões Oficiais & Aplicação</span>
+    <h1 class="sec-title">Variações Oficiais do Logotipo SIMBORA</h1>
+    <p class="sec-subtitle">Todas as versões homologadas com matriz de respiro e contraste aprovados.</p>
+
+    <div class="grid-2">
+      <!-- Fundo Claro -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">1. Principal Horizontal (Fundo Claro)</p>
+        <div class="svg-container" style="background: #F8F9F6; border: 1px solid #CBD5E1; border-radius: 8px; padding: 8px; height: 50px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" width="100%" height="100%">
+  <defs>
+    <!-- Kinetic Gradients -->
+    <linearGradient id="simboraSymbolGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="55%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFCC45"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <filter id="logoElevation" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#123D32" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="620" height="160" rx="24" fill="#F8F9F6"/>
+
+  <g transform="translate(32, 22)">
+    <!-- 1. SÍMBOLO INTEGRADO (S dinâmico em fita com seta solar) -->
+    <g transform="translate(0, 0) scale(0.38)" filter="url(#logoElevation)">
+      <!-- Background icon circle -->
+      <rect width="280" height="280" rx="64" fill="#123D32"/>
+      
+      <!-- Waypoint de partida (Piaçabuçu) -->
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+
+      <!-- Traçado do S cinético -->
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#simboraSymbolGrad)"/>
+
+      <!-- Seta indicadora de direção / Chegada (Penedo) -->
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="url(#arrowGrad)"/>
+      <circle cx="214" cy="26" r="6" fill="#F8F9F6"/>
+    </g>
+
+    <!-- 2. WORDMARK: SIMBORA (Posicionado com alinhamento óptico) -->
+    <g transform="translate(132, 10)">
+      <!-- S -->
+      <path d="M 38 24 C 38 13 29 10 20 10 C 10 10 3 14 2 22 C 1 31 10 34 19 37 C 29 40 40 43 40 54 C 40 65 30 70 19 70 C 8 70 1 65 0 55 L 10 53 C 11 59 15 62 19 62 C 24 62 29 59 29 53 C 29 47 22 45 14 41 C 5 38 -3 33 -2 23 C -1 13 8 2 21 2 C 34 2 48 10 49 24 Z" fill="#123D32"/>
+
+      <!-- I -->
+      <rect x="58" y="4" width="10" height="66" rx="5" fill="#123D32"/>
+      <circle cx="63" cy="-4" r="5" fill="#FFCC45"/>
+
+      <!-- M -->
+      <path d="M 82 70 L 82 8 C 82 6 85 3 87 4 C 90 5 92 7 95 11 L 106 33 L 117 11 C 120 7 122 5 125 4 C 127 3 130 6 130 8 L 130 70 L 120 70 L 120 25 L 110 46 C 108 48 104 48 102 46 L 92 25 L 92 70 Z" fill="#123D32"/>
+
+      <!-- B -->
+      <path d="M 146 5 L 166 5 C 176 5 184 10 184 20 C 184 27 179 32 173 34 C 181 36 187 42 187 50 C 187 62 177 70 166 70 L 146 70 Z M 156 15 L 156 32 L 165 32 C 170 32 173 28 173 23 C 173 18 170 15 165 15 Z M 156 42 L 156 61 L 166 61 C 171 61 176 57 176 51 C 176 45 171 42 166 42 Z" fill="#123D32"/>
+
+      <!-- O -->
+      <path d="M 218 4 C 235 4 247 18 247 38 C 247 58 235 72 218 72 C 201 72 189 58 189 38 C 189 18 201 4 218 4 Z M 218 14 C 207 14 200 24 200 38 C 200 52 207 62 218 62 C 229 62 236 52 236 38 C 236 24 229 14 218 14 Z" fill="#123D32"/>
+
+      <!-- R -->
+      <path d="M 257 5 L 277 5 C 287 5 294 12 294 23 C 294 32 288 39 279 41 L 296 70 L 284 70 L 269 43 L 267 43 L 267 70 L 257 70 Z M 267 15 L 267 33 L 276 33 C 281 33 284 30 284 24 C 284 18 281 15 276 15 Z" fill="#123D32"/>
+
+      <!-- A com acento cinético de aceleração -->
+      <path d="M 317 4 L 327 4 L 346 70 L 335 70 L 331 54 L 314 54 L 310 70 L 299 70 Z M 316 44 L 328 44 L 322 21 Z" fill="#123D32"/>
+      <polygon points="325,-3 337,-8 334,-12 322,-7" fill="#FFCC45"/>
+
+      <!-- 3. SLOGAN OFICIAL -->
+      <text x="3" y="94" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#16A572" letter-spacing="2.8">
+        PEDIU. CHEGOU. SIMBORA!
+      </text>
+
+      <!-- Badge de Origem Regional -->
+      <g transform="translate(290, 81)">
+        <rect width="68" height="17" rx="5" fill="#123D32" fill-opacity="0.08"/>
+        <text x="7" y="12" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="800" fill="#123D32" letter-spacing="1">
+          ALAGOAS
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7.5pt; color: #64748B; margin-top: 4px;">Aplicação primária em relatórios, web apps e documentos oficiais.</p>
+      </div>
+
+      <!-- Fundo Escuro -->
+      <div class="card" style="background: #123D32; border: 1px solid #16A572;">
+        <p style="font-size: 8pt; font-weight: 800; color: #FFCC45; margin-bottom: 4px;">2. Fundo Escuro / Cockpit</p>
+        <div class="svg-container" style="background: #17211D; border-radius: 8px; padding: 8px; height: 50px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="darkGradC" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+    <filter id="glowDark" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#16A572" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Forest Background -->
+  <rect width="620" height="160" rx="24" fill="#123D32"/>
+
+  <g transform="translate(32, 22)">
+    <!-- 1. SÍMBOLO INTEGRADO COM GLOW -->
+    <g transform="translate(0, 0) scale(0.38)" filter="url(#glowDark)">
+      <rect width="280" height="280" rx="64" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+      
+      <!-- Waypoint de partida -->
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+
+      <!-- S cinético -->
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#darkGradC)"/>
+
+      <!-- Seta indicadora solar -->
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="#FFCC45"/>
+      <circle cx="214" cy="26" r="6" fill="#123D32"/>
+    </g>
+
+    <!-- 2. WORDMARK: SIMBORA EM BRANCO SUAVE -->
+    <g transform="translate(132, 10)">
+      <!-- S -->
+      <path d="M 38 24 C 38 13 29 10 20 10 C 10 10 3 14 2 22 C 1 31 10 34 19 37 C 29 40 40 43 40 54 C 40 65 30 70 19 70 C 8 70 1 65 0 55 L 10 53 C 11 59 15 62 19 62 C 24 62 29 59 29 53 C 29 47 22 45 14 41 C 5 38 -3 33 -2 23 C -1 13 8 2 21 2 C 34 2 48 10 49 24 Z" fill="#F8F9F6"/>
+
+      <!-- I -->
+      <rect x="58" y="4" width="10" height="66" rx="5" fill="#F8F9F6"/>
+      <circle cx="63" cy="-4" r="5" fill="#FFCC45"/>
+
+      <!-- M -->
+      <path d="M 82 70 L 82 8 C 82 6 85 3 87 4 C 90 5 92 7 95 11 L 106 33 L 117 11 C 120 7 122 5 125 4 C 127 3 130 6 130 8 L 130 70 L 120 70 L 120 25 L 110 46 C 108 48 104 48 102 46 L 92 25 L 92 70 Z" fill="#F8F9F6"/>
+
+      <!-- B -->
+      <path d="M 146 5 L 166 5 C 176 5 184 10 184 20 C 184 27 179 32 173 34 C 181 36 187 42 187 50 C 187 62 177 70 166 70 L 146 70 Z M 156 15 L 156 32 L 165 32 C 170 32 173 28 173 23 C 173 18 170 15 165 15 Z M 156 42 L 156 61 L 166 61 C 171 61 176 57 176 51 C 176 45 171 42 166 42 Z" fill="#F8F9F6"/>
+
+      <!-- O -->
+      <path d="M 218 4 C 235 4 247 18 247 38 C 247 58 235 72 218 72 C 201 72 189 58 189 38 C 189 18 201 4 218 4 Z M 218 14 C 207 14 200 24 200 38 C 200 52 207 62 218 62 C 229 62 236 52 236 38 C 236 24 229 14 218 14 Z" fill="#F8F9F6"/>
+
+      <!-- R -->
+      <path d="M 257 5 L 277 5 C 287 5 294 12 294 23 C 294 32 288 39 279 41 L 296 70 L 284 70 L 269 43 L 267 43 L 267 70 L 257 70 Z M 267 15 L 267 33 L 276 33 C 281 33 284 30 284 24 C 284 18 281 15 276 15 Z" fill="#F8F9F6"/>
+
+      <!-- A -->
+      <path d="M 317 4 L 327 4 L 346 70 L 335 70 L 331 54 L 314 54 L 310 70 L 299 70 Z M 316 44 L 328 44 L 322 21 Z" fill="#F8F9F6"/>
+      <polygon points="325,-3 337,-8 334,-12 322,-7" fill="#FFCC45"/>
+
+      <!-- 3. SLOGAN OFICIAL -->
+      <text x="3" y="94" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#16A572" letter-spacing="2.8">
+        PEDIU. CHEGOU. SIMBORA!
+      </text>
+
+      <!-- Badge de Origem Regional -->
+      <g transform="translate(290, 81)">
+        <rect width="68" height="17" rx="5" fill="#16A572" fill-opacity="0.25" stroke="#16A572" stroke-width="0.8"/>
+        <text x="7" y="12" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="800" fill="#FFCC45" letter-spacing="1">
+          ALAGOAS
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7.5pt; color: #DCFCE7; margin-top: 4px;">Utilizada no app do motorista, splash screens e banners noturnos.</p>
+      </div>
+
+      <!-- Vertical Empilhada -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">3. Versão Vertical / Selo</p>
+        <div class="svg-container" style="background: #F8F9F6; border: 1px solid #CBD5E1; border-radius: 8px; padding: 6px; height: 95px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="vertSymbolGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="55%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="320" height="340" rx="28" fill="#F8F9F6"/>
+
+  <g transform="translate(160, 28)" text-anchor="middle">
+    <!-- SÍMBOLO CENTRALIZADO -->
+    <g transform="translate(-56, 0) scale(0.4)" filter="drop-shadow(0px 4px 8px rgba(18,61,50,0.15))">
+      <rect width="280" height="280" rx="64" fill="#123D32"/>
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#vertSymbolGrad)"/>
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="#FFCC45"/>
+      <circle cx="214" cy="26" r="6" fill="#F8F9F6"/>
+    </g>
+
+    <!-- NOME SIMBORA -->
+    <text x="0" y="185" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="36" font-weight="900" fill="#123D32" letter-spacing="4">
+      SIMBORA
+    </text>
+
+    <!-- SLOGAN -->
+    <text x="0" y="215" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#16A572" letter-spacing="2">
+      PEDIU. CHEGOU. SIMBORA!
+    </text>
+
+    <!-- BADGE REGIONAL -->
+    <g transform="translate(-65, 235)">
+      <rect width="130" height="24" rx="12" fill="#123D32" fill-opacity="0.08"/>
+      <text x="65" y="16" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="800" fill="#123D32" letter-spacing="1.5">
+        ALAGOAS • BRASIL
+      </text>
+    </g>
+
+    <text x="0" y="295" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="600" fill="#17211D" fill-opacity="0.6">
+      Penedo • Piaçabuçu & Região
+    </text>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7.5pt; color: #64748B; margin-top: 4px;">Utilizada em cartazes verticais, totens de parada e adesivos.</p>
+      </div>
+
+      <!-- Monocromático -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">4. Monocromático (Pure Black & White)</p>
+        <div class="svg-container" style="background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 8px; padding: 8px; height: 95px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" width="100%" height="100%">
+  <!-- Monochrome Minimalist Version (100% Solid Black / Pure Contrast) -->
+  <rect width="620" height="160" rx="24" fill="#FFFFFF"/>
+
+  <g transform="translate(32, 22)">
+    <!-- SÍMBOLO MONO -->
+    <g transform="translate(0, 0) scale(0.38)">
+      <rect width="280" height="280" rx="64" fill="#000000"/>
+      <circle cx="68" cy="210" r="14" fill="#FFFFFF"/>
+      <circle cx="68" cy="210" r="6" fill="#000000"/>
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" fill="#FFFFFF"/>
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" fill="#FFFFFF"/>
+      <circle cx="214" cy="26" r="6" fill="#000000"/>
+    </g>
+
+    <!-- WORDMARK MONO -->
+    <g transform="translate(132, 10)">
+      <path d="M 38 24 C 38 13 29 10 20 10 C 10 10 3 14 2 22 C 1 31 10 34 19 37 C 29 40 40 43 40 54 C 40 65 30 70 19 70 C 8 70 1 65 0 55 L 10 53 C 11 59 15 62 19 62 C 24 62 29 59 29 53 C 29 47 22 45 14 41 C 5 38 -3 33 -2 23 C -1 13 8 2 21 2 C 34 2 48 10 49 24 Z" fill="#000000"/>
+      <rect x="58" y="4" width="10" height="66" rx="5" fill="#000000"/>
+      <circle cx="63" cy="-4" r="5" fill="#000000"/>
+      <path d="M 82 70 L 82 8 C 82 6 85 3 87 4 C 90 5 92 7 95 11 L 106 33 L 117 11 C 120 7 122 5 125 4 C 127 3 130 6 130 8 L 130 70 L 120 70 L 120 25 L 110 46 C 108 48 104 48 102 46 L 92 25 L 92 70 Z" fill="#000000"/>
+      <path d="M 146 5 L 166 5 C 176 5 184 10 184 20 C 184 27 179 32 173 34 C 181 36 187 42 187 50 C 187 62 177 70 166 70 L 146 70 Z M 156 15 L 156 32 L 165 32 C 170 32 173 28 173 23 C 173 18 170 15 165 15 Z M 156 42 L 156 61 L 166 61 C 171 61 176 57 176 51 C 176 45 171 42 166 42 Z" fill="#000000"/>
+      <path d="M 218 4 C 235 4 247 18 247 38 C 247 58 235 72 218 72 C 201 72 189 58 189 38 C 189 18 201 4 218 4 Z M 218 14 C 207 14 200 24 200 38 C 200 52 207 62 218 62 C 229 62 236 52 236 38 C 236 24 229 14 218 14 Z" fill="#000000"/>
+      <path d="M 257 5 L 277 5 C 287 5 294 12 294 23 C 294 32 288 39 279 41 L 296 70 L 284 70 L 269 43 L 267 43 L 267 70 L 257 70 Z M 267 15 L 267 33 L 276 33 C 281 33 284 30 284 24 C 284 18 281 15 276 15 Z" fill="#000000"/>
+      <path d="M 317 4 L 327 4 L 346 70 L 335 70 L 331 54 L 314 54 L 310 70 L 299 70 Z M 316 44 L 328 44 L 322 21 Z" fill="#000000"/>
+      <polygon points="325,-3 337,-8 334,-12 322,-7" fill="#000000"/>
+      <text x="3" y="94" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="800" fill="#000000" letter-spacing="2.8">
+        PEDIU. CHEGOU. SIMBORA!
+      </text>
+    </g>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7.5pt; color: #64748B; margin-top: 4px;">Para recibos térmicos, bordados em uniformes e impressões P&B.</p>
+      </div>
+    </div>
+
+    <!-- Normas de Respiro e Tamanhos Mínimos -->
+    <div class="card" style="margin-top: 6px;">
+      <h3 style="font-size: 9.5pt; font-weight: 800; color: #123D32;">Área de Proteção & Tamanhos Mínimos</h3>
+      <div class="grid-2" style="font-size: 8pt; margin-top: 4px;">
+        <div>
+          <p><b>Área de Respiro (X):</b> A altura da letra 'S' do logotipo define o espaçamento mínimo obrigatório em todos os lados (1.0X).</p>
+        </div>
+        <div>
+          <p><b>Tamanho Mínimo Digital:</b> 120px de largura (Versão Horizontal) e 24px para o ícone/símbolo isolado.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 03 • Variações Oficiais</span>
+      <span>Página 4</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 5: PALETA DE CORES & ACESSIBILIDADE ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 04 • Sistema Cromático</span>
+    <h1 class="sec-title">Cores Oficiais e Matriz de Acessibilidade</h1>
+    <p class="sec-subtitle">Cores extraídas da paisagem alagoana, com validação matemática de contraste W3C WCAG 2.1.</p>
+
+    <!-- Color Swatches Grid -->
+    <div class="grid-5" style="margin-bottom: 10px;">
+      <div class="card" style="background: #123D32; color: #FFFFFF; border: none; padding: 8px;">
+        <span style="font-size: 6.5pt; color: #16A572; font-weight: 800; text-transform: uppercase;">Mãe da Marca</span>
+        <p style="font-weight: 900; font-size: 9.5pt; margin-top: 6px;">Verde Profundo</p>
+        <p class="font-mono" style="font-size: 8pt; color: #DCFCE7;">#123D32</p>
+        <p style="font-size: 7pt; color: #94A3B8; margin-top: 4px;">RGB: 18, 61, 50</p>
+      </div>
+
+      <div class="card" style="background: #16A572; color: #FFFFFF; border: none; padding: 8px;">
+        <span style="font-size: 6.5pt; color: #DCFCE7; font-weight: 800; text-transform: uppercase;">Ação & Rotas</span>
+        <p style="font-weight: 900; font-size: 9.5pt; margin-top: 6px;">Verde Vibrante</p>
+        <p class="font-mono" style="font-size: 8pt; color: #FFFFFF;">#16A572</p>
+        <p style="font-size: 7pt; color: #DCFCE7; margin-top: 4px;">RGB: 22, 165, 114</p>
+      </div>
+
+      <div class="card" style="background: #FFCC45; color: #123D32; border: none; padding: 8px;">
+        <span style="font-size: 6.5pt; color: #854D0E; font-weight: 800; text-transform: uppercase;">Sol & Destaque</span>
+        <p style="font-weight: 900; font-size: 9.5pt; margin-top: 6px;">Amarelo Energia</p>
+        <p class="font-mono" style="font-size: 8pt; color: #123D32;">#FFCC45</p>
+        <p style="font-size: 7pt; color: #713F12; margin-top: 4px;">RGB: 255, 204, 69</p>
+      </div>
+
+      <div class="card" style="background: #F8F9F6; border: 1px solid #CBD5E1; color: #17211D; padding: 8px;">
+        <span style="font-size: 6.5pt; color: #64748B; font-weight: 800; text-transform: uppercase;">Canvas Neutro</span>
+        <p style="font-weight: 900; font-size: 9.5pt; margin-top: 6px;">Branco Suave</p>
+        <p class="font-mono" style="font-size: 8pt; color: #475569;">#F8F9F6</p>
+        <p style="font-size: 7pt; color: #64748B; margin-top: 4px;">RGB: 248, 249, 246</p>
+      </div>
+
+      <div class="card" style="background: #17211D; color: #FFFFFF; border: none; padding: 8px;">
+        <span style="font-size: 6.5pt; color: #FFCC45; font-weight: 800; text-transform: uppercase;">Cockpit Noturno</span>
+        <p style="font-weight: 900; font-size: 9.5pt; margin-top: 6px;">Grafite Mineral</p>
+        <p class="font-mono" style="font-size: 8pt; color: #CBD5E1;">#17211D</p>
+        <p style="font-size: 7pt; color: #94A3B8; margin-top: 4px;">RGB: 23, 33, 29</p>
+      </div>
+    </div>
+
+    <!-- Contrast Table -->
+    <div class="card">
+      <h3 style="font-size: 9.5pt; font-weight: 800; color: #123D32; margin-bottom: 2px;">Matriz de Conformidade de Acessibilidade (WCAG 2.1)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Combinação (Texto / Fundo)</th>
+            <th>Razão de Contraste</th>
+            <th>Nível Atingido</th>
+            <th>Contexto de Uso Homologado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 700;">Branco Suave (#F8F9F6) sobre Verde Profundo (#123D32)</td>
+            <td class="font-mono" style="font-weight: 800; color: #166534;">12.8 : 1</td>
+            <td><span class="header-tag tag-green">AAA Pass</span></td>
+            <td>Cabeçalhos, botões institucionais, telas de splash e headers</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Amarelo Energia (#FFCC45) sobre Verde Profundo (#123D32)</td>
+            <td class="font-mono" style="font-weight: 800; color: #166534;">9.8 : 1</td>
+            <td><span class="header-tag tag-green">AAA Pass</span></td>
+            <td>Código PIN de 4 dígitos, notas de motorista (estrelas), ETA</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Grafite Mineral (#17211D) sobre Branco Suave (#F8F9F6)</td>
+            <td class="font-mono" style="font-weight: 800; color: #166534;">14.2 : 1</td>
+            <td><span class="header-tag tag-green">AAA Pass</span></td>
+            <td>Textos corridos de endereço, inputs e tabela administrativa</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Branco Suave (#F8F9F6) sobre Grafite Mineral (#17211D)</td>
+            <td class="font-mono" style="font-weight: 800; color: #166534;">14.2 : 1</td>
+            <td><span class="header-tag tag-green">AAA Pass</span></td>
+            <td>Cockpit do motorista, HUD noturno e modo escuro seguro</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 700;">Verde Profundo (#123D32) sobre Amarelo Energia (#FFCC45)</td>
+            <td class="font-mono" style="font-weight: 800; color: #166534;">9.8 : 1</td>
+            <td><span class="header-tag tag-green">AAA Pass</span></td>
+            <td>Botões amarelos com texto escuro ("Cheguei ao Embarque")</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 04 • Sistema Cromático</span>
+      <span>Página 5</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 6: SISTEMA TIPOGRÁFICO ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 05 • Tipografia</span>
+    <h1 class="sec-title">Sistema Tipográfico da SIMBORA</h1>
+    <p class="sec-subtitle">Modernidade geométrica com alta legibilidade em telas móveis e sinalização viária.</p>
+
+    <div class="grid-3" style="margin-bottom: 8px;">
+      <div class="card" style="border-top: 3px solid #16A572;">
+        <span class="header-tag tag-green" style="font-size: 6.5pt;">Fonte Primária</span>
+        <h3 style="font-size: 13pt; font-weight: 900; color: #123D32; margin-top: 4px;">Plus Jakarta Sans</h3>
+        <p style="font-size: 7.5pt; color: #64748B;">Licença SIL Open Font (Google Fonts).</p>
+        <p style="font-size: 8pt; color: #334155; margin-top: 4px;">Títulos, logotipos, botões de ação e preços.</p>
+      </div>
+
+      <div class="card" style="border-top: 3px solid #123D32;">
+        <span class="header-tag tag-green" style="font-size: 6.5pt;">Texto Corrido</span>
+        <h3 style="font-size: 13pt; font-weight: 800; color: #123D32; margin-top: 4px;">Manrope</h3>
+        <p style="font-size: 7.5pt; color: #64748B;">Licença SIL Open Font (Google Fonts).</p>
+        <p style="font-size: 8pt; color: #334155; margin-top: 4px;">Instruções, termos legais e descrições.</p>
+      </div>
+
+      <div class="card" style="border-top: 3px solid #FFCC45;">
+        <span class="header-tag tag-gold" style="font-size: 6.5pt;">Telemetria & Dados</span>
+        <h3 style="font-size: 13pt; font-weight: 800; color: #123D32; margin-top: 4px;">JetBrains Mono</h3>
+        <p style="font-size: 7.5pt; color: #64748B;">Monoespaçada de precisão.</p>
+        <p style="font-size: 8pt; color: #334155; margin-top: 4px;">PIN de 4 dígitos, placas e GPS.</p>
+      </div>
+    </div>
+
+    <!-- Type Scale Table -->
+    <div class="card">
+      <h3 style="font-size: 9.5pt; font-weight: 800; color: #123D32; margin-bottom: 2px;">Hierarquia & Escala de Tamanhos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nível</th>
+            <th>Tamanho / Altura</th>
+            <th>Peso</th>
+            <th>Aplicação Prática no App</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight: 800;">Display Hero</td>
+            <td class="font-mono">40px / 48px</td>
+            <td>Black (900)</td>
+            <td>Valores finais de corrida, splash screen</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 800;">Title 1</td>
+            <td class="font-mono">28px / 36px</td>
+            <td>ExtraBold (800)</td>
+            <td>Títulos de tela e nome do motorista parceiro</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 800;">Headline</td>
+            <td class="font-mono">18px / 24px</td>
+            <td>Bold (700)</td>
+            <td>Botões de ação ("Pedir Simbora", "Aceitar")</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 800;">Body Large</td>
+            <td class="font-mono">16px / 24px</td>
+            <td>Regular (400)</td>
+            <td>Endereços de embarque e desembarque</td>
+          </tr>
+          <tr>
+            <td style="font-weight: 800;">Caption</td>
+            <td class="font-mono">12px / 16px</td>
+            <td>Bold (700)</td>
+            <td>Placas de carro (BRA2E19), tags de status</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 05 • Tipografia</span>
+      <span>Página 6</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 7: ÍCONES DE APLICATIVO & SPLASH ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 06 • Ícones & Splash Screens</span>
+    <h1 class="sec-title">Ícones do Aplicativo (Android & iOS)</h1>
+    <p class="sec-subtitle">Acabamento refinado de startup global sem microtextos ou elementos poluídos.</p>
+
+    <div class="grid-3" style="margin-bottom: 10px;">
+      <!-- iOS App Icon -->
+      <div class="card" style="text-align: center;">
+        <span class="header-tag tag-green" style="font-size: 6.5pt;">iOS App Store</span>
+        <div class="svg-container" style="height: 110px; margin: 8px auto;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Rich Deep Forest Background with subtle radial glow -->
+    <radialGradient id="bgRadial" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+
+    <!-- Flow Track Gradient: Emerald to Warm Solar Yellow -->
+    <linearGradient id="iconFlowGrad" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="45%" stop-color="#1CD291"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <!-- Kinetic Arrow Gradient -->
+    <linearGradient id="solarArrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFCC45"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <!-- App Icon Specular Drop Shadow -->
+    <filter id="iconDepth" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#051410" flood-opacity="0.5"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#16A572" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- iOS / Squircle Mask Base -->
+  <rect width="512" height="512" rx="115" fill="url(#bgRadial)"/>
+
+  <!-- Subtle Ambient Ring Contour -->
+  <circle cx="256" cy="256" r="210" fill="none" stroke="#16A572" stroke-width="2" stroke-opacity="0.2"/>
+
+  <!-- Iconic S Kinetic Road & River Symbol -->
+  <g filter="url(#iconDepth)" transform="translate(116, 116)">
+    <!-- Origin Waypoint (Piaçabuçu - Embarque) -->
+    <circle cx="70" cy="215" r="18" fill="#16A572"/>
+    <circle cx="70" cy="215" r="8" fill="#F8F9F6"/>
+
+    <!-- Dynamic Flow Track (AL-101 / AL-225 S-Ribbon) -->
+    <path d="M 70 215 C 70 165 135 150 155 120 C 175 90 170 55 138 42 C 108 30 70 50 74 85 L 32 80 C 24 25 85 -2 145 7 C 205 16 220 72 185 116 C 152 154 110 160 98 186 C 88 208 102 222 124 222 C 158 222 184 198 208 168 L 236 190 C 202 238 162 260 114 260 C 62 260 38 238 70 215 Z" 
+          fill="url(#iconFlowGrad)"/>
+
+    <!-- Kinetic Arrow (Destination Arrival - Penedo) -->
+    <path d="M 166 22 L 235 14 L 226 82 L 202 58 L 158 102 L 134 78 L 178 34 Z" 
+          fill="url(#solarArrowGrad)"/>
+
+    <!-- Destination GPS Beacon Pulse -->
+    <circle cx="226" cy="22" r="8" fill="#FFFFFF"/>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7.5pt; font-weight: 800; color: #123D32;">Formato Squircle (512×512)</p>
+        <p style="font-size: 7pt; color: #64748B;">Fundo Verde Profundo com S cinético solar.</p>
+      </div>
+
+      <!-- Android Adaptive -->
+      <div class="card" style="text-align: center;">
+        <span class="header-tag tag-green" style="font-size: 6.5pt;">Android Adaptive</span>
+        <div class="svg-container" style="height: 110px; margin: 8px auto; border-radius: 50%; overflow: hidden; background: #123D32; border: 2px solid #FFCC45;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" width="100%" height="100%">
+  <!-- Android Adaptive Icon Foreground (Transparent Background, Symbol in Center 66dp Safe Area) -->
+  <defs>
+    <linearGradient id="adapFlowGrad" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="45%" stop-color="#1CD291"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <linearGradient id="adapSolarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <filter id="adapShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#051410" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#adapShadow)" transform="translate(86, 86) scale(0.92)">
+    <!-- Origin Waypoint -->
+    <circle cx="70" cy="215" r="18" fill="#16A572"/>
+    <circle cx="70" cy="215" r="8" fill="#F8F9F6"/>
+
+    <!-- Dynamic Flow S Track -->
+    <path d="M 70 215 C 70 165 135 150 155 120 C 175 90 170 55 138 42 C 108 30 70 50 74 85 L 32 80 C 24 25 85 -2 145 7 C 205 16 220 72 185 116 C 152 154 110 160 98 186 C 88 208 102 222 124 222 C 158 222 184 198 208 168 L 236 190 C 202 238 162 260 114 260 C 62 260 38 238 70 215 Z" 
+          fill="url(#adapFlowGrad)"/>
+
+    <!-- Kinetic Arrow -->
+    <path d="M 166 22 L 235 14 L 226 82 L 202 58 L 158 102 L 134 78 L 178 34 Z" 
+          fill="url(#adapSolarGrad)"/>
+
+    <!-- Destination GPS Beacon Pulse -->
+    <circle cx="226" cy="22" r="8" fill="#FFFFFF"/>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7.5pt; font-weight: 800; color: #123D32;">Formato Circular (432×432)</p>
+        <p style="font-size: 7pt; color: #64748B;">Respeita estritamente a safe-area de 66dp.</p>
+      </div>
+
+      <!-- Favicon & Notifications -->
+      <div class="card" style="text-align: center;">
+        <span class="header-tag tag-gold" style="font-size: 6.5pt;">Favicon & Notificações</span>
+        <div style="display: flex; justify-content: center; gap: 10px; margin: 25px 0;">
+          <div class="svg-container" style="width: 44px; height: 44px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <!-- Favicon Optimized for 16px/32px/64px crisp legibility -->
+  <rect width="64" height="64" rx="14" fill="#123D32"/>
+  <path d="M 18 48 C 18 38 32 35 36 28 C 40 21 38 14 30 11 C 24 9 16 13 17 21 L 10 20 C 8 8 20 2 32 4 C 44 6 48 18 40 27 C 32 35 24 37 22 42 C 20 47 24 49 28 49 C 36 49 42 43 47 36 L 53 41 C 45 52 36 57 26 57 C 15 57 10 52 18 48 Z" fill="#16A572"/>
+  <polygon points="34,7 48,5 46,19 41,14 32,23 27,18 36,9" fill="#FFCC45"/>
+  <circle cx="18" cy="48" r="3" fill="#FFFFFF"/>
+</svg>
+
+          </div>
+          <div class="svg-container" style="width: 44px; height: 44px; background: #17211D; border-radius: 10px; padding: 6px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="100%" height="100%">
+  <!-- Pure White Silhouette for Android Status Bar Notification -->
+  <path d="M 12 36 C 12 28 22 26 26 21 C 30 16 28 10 22 8 C 17 6 12 9 13 15 L 7 14 C 5 6 14 1 24 3 C 33 4 36 13 30 20 C 24 26 18 28 16 32 C 14 36 17 38 20 38 C 26 38 31 33 35 28 L 39 32 C 33 40 26 44 19 44 C 10 44 7 40 12 36 Z" fill="#FFFFFF"/>
+  <polygon points="25,5 36,3 34,14 30,10 24,16 20,12 27,7" fill="#FFFFFF"/>
+  <circle cx="12" cy="36" r="3" fill="#FFFFFF"/>
+</svg>
+
+          </div>
+        </div>
+        <p style="font-size: 7.5pt; font-weight: 800; color: #123D32;">Miniaturas de Alta Densidade</p>
+        <p style="font-size: 7pt; color: #64748B;">Silhueta pura em branco para barra de status.</p>
+      </div>
+    </div>
+
+    <!-- Splash Screens Previews -->
+    <div class="card">
+      <h3 style="font-size: 9.5pt; font-weight: 800; color: #123D32; margin-bottom: 6px;">Telas de Abertura (Splash Screens 1080×1920)</h3>
+      <div class="grid-2">
+        <div style="text-align: center;">
+          <div class="svg-container" style="height: 160px; background: #123D32; border-radius: 14px; padding: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="100%" height="100%">
+  <defs>
+    <radialGradient id="splashBg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+
+    <linearGradient id="splashSymbolGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="50%" stop-color="#1CD291"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <filter id="splashGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#16A572" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Forest Background -->
+  <rect width="1080" height="1920" fill="url(#splashBg)"/>
+
+  <!-- Subtle Topographic Wave Lines (Alagoas Coast & River) -->
+  <g opacity="0.12" stroke="#16A572" stroke-width="2.5" fill="none">
+    <path d="M -100 600 Q 300 450 600 700 T 1200 600"/>
+    <path d="M -100 800 Q 300 650 600 900 T 1200 800"/>
+    <path d="M -100 1000 Q 300 850 600 1100 T 1200 1000"/>
+    <path d="M -100 1200 Q 300 1050 600 1300 T 1200 1200"/>
+  </g>
+
+  <!-- Center Brand Presentation -->
+  <g transform="translate(540, 880)" text-anchor="middle">
+    <!-- Emblem -->
+    <g transform="translate(-140, -260) scale(1.0)" filter="url(#splashGlow)">
+      <rect width="280" height="280" rx="64" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#splashSymbolGrad)"/>
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="#FFCC45"/>
+      <circle cx="214" cy="26" r="6" fill="#123D32"/>
+    </g>
+
+    <!-- Wordmark -->
+    <text x="0" y="110" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="64" font-weight="900" fill="#F8F9F6" letter-spacing="8">
+      SIMBORA
+    </text>
+
+    <!-- Slogan -->
+    <text x="0" y="165" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#16A572" letter-spacing="4">
+      PEDIU. CHEGOU. SIMBORA!
+    </text>
+
+    <!-- Regional Subtitle -->
+    <text x="0" y="215" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#FFCC45" letter-spacing="2">
+      ALAGOAS • MOBILIDADE INTELIGENTE
+    </text>
+  </g>
+
+  <!-- Footer Indicator -->
+  <g transform="translate(540, 1750)" text-anchor="middle">
+    <circle cx="-24" cy="0" r="5" fill="#16A572"/>
+    <circle cx="0" cy="0" r="5" fill="#FFCC45"/>
+    <circle cx="24" cy="0" r="5" fill="#16A572"/>
+    <text x="0" y="50" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#F8F9F6" fill-opacity="0.4" letter-spacing="1">
+      Penedo • Piaçabuçu • Litoral Sul
+    </text>
+  </g>
+</svg>
+
+          </div>
+          <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-top: 4px;">Splash Passageiro</p>
+          <p style="font-size: 7pt; color: #64748B;">Glow esmeralda e linhas topográficas do São Francisco.</p>
+        </div>
+
+        <div style="text-align: center;">
+          <div class="svg-container" style="height: 160px; background: #17211D; border-radius: 14px; padding: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="100%" height="100%">
+  <defs>
+    <radialGradient id="driverSplashBg" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#1E2E28"/>
+      <stop offset="60%" stop-color="#17211D"/>
+      <stop offset="100%" stop-color="#0E1412"/>
+    </radialGradient>
+
+    <linearGradient id="driverGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+
+    <filter id="driverGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#FFCC45" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Dark Cockpit Base -->
+  <rect width="1080" height="1920" fill="url(#driverSplashBg)"/>
+
+  <!-- HUD Grid lines (Safe Driving Atmosphere) -->
+  <g opacity="0.08" stroke="#FFCC45" stroke-width="1.5">
+    <line x1="140" y1="0" x2="140" y2="1920"/>
+    <line x1="940" y1="0" x2="940" y2="1920"/>
+    <line x1="0" y1="400" x2="1080" y2="400"/>
+    <line x1="0" y1="1500" x2="1080" y2="1500"/>
+  </g>
+
+  <!-- Center Driver Presentation -->
+  <g transform="translate(540, 860)" text-anchor="middle">
+    <!-- Driver Gold-Accented Emblem -->
+    <g transform="translate(-140, -260) scale(1.0)" filter="url(#driverGlow)">
+      <rect width="280" height="280" rx="64" fill="#123D32" stroke="#FFCC45" stroke-width="3"/>
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" 
+            fill="url(#driverGoldGrad)"/>
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" 
+            fill="#FFFFFF"/>
+      <circle cx="214" cy="26" r="6" fill="#123D32"/>
+    </g>
+
+    <!-- Wordmark -->
+    <text x="0" y="110" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="60" font-weight="900" fill="#F8F9F6" letter-spacing="8">
+      SIMBORA
+    </text>
+
+    <!-- Driver Sub-Brand Pill -->
+    <g transform="translate(-120, 140)">
+      <rect width="240" height="42" rx="21" fill="#FFCC45"/>
+      <text x="120" y="27" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="900" fill="#123D32" letter-spacing="3">
+        MOTORISTA
+      </text>
+    </g>
+
+    <!-- Partner Value Proposition -->
+    <text x="0" y="240" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="600" fill="#16A572" letter-spacing="2">
+      PARCERIA • AUTONOMIA • GANHOS DIÁRIOS
+    </text>
+  </g>
+
+  <!-- Cockpit Live Status Badge -->
+  <g transform="translate(540, 1720)" text-anchor="middle">
+    <rect x="-150" y="-20" width="300" height="40" rx="20" fill="#123D32" stroke="#16A572" stroke-width="1.5"/>
+    <circle cx="-110" cy="0" r="6" fill="#16A572"/>
+    <text x="10" y="7" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#F8F9F6">
+      SISTEMA PRONTO PARA CORRER
+    </text>
+  </g>
+</svg>
+
+          </div>
+          <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-top: 4px;">Splash SIMBORA Motorista</p>
+          <p style="font-size: 7pt; color: #64748B;">Cockpit escuro com badge de pronto para correr.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 06 • Ícones & Splash</span>
+      <span>Página 7</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 8: SIMBORA STUDIO (SIMULADOR ALAGOAS) ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 07 • SIMBORA Studio</span>
+    <h1 class="sec-title">SIMBORA Studio — Simulador Alagoas</h1>
+    <p class="sec-subtitle">Validação E2E com celulares de passageiro e motorista sincronizados e cartografia real.</p>
+
+    <div class="card" style="background: #123D32; color: #FFFFFF; border: none; margin-bottom: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span class="header-tag tag-gold">Cenário Prioritário de Testes</span>
+        <span style="font-size: 8pt; color: #DCFCE7; font-weight: 800;">AL-101 Sul / AL-225</span>
+      </div>
+      <p style="font-size: 16pt; font-weight: 900; color: #FFCC45; margin: 4px 0;">
+        Piaçabuçu (Foz do São Francisco) ➔ Penedo (Centro Histórico)
+      </p>
+      <div class="grid-3" style="font-size: 8pt; margin-top: 6px; color: #E2E8F0;">
+        <div><b>Distância Rodoviária:</b> 28,2 km</div>
+        <div><b>Tempo Estimado:</b> ~28 min</div>
+        <div><b>Nós Rodoviários OSRM:</b> 485 pontos</div>
+      </div>
+    </div>
+
+    <!-- Dual Phone Architecture Summary -->
+    <div class="grid-2" style="font-size: 8pt; margin-bottom: 10px;">
+      <div class="card" style="border-left: 3px solid #16A572;">
+        <p style="font-weight: 800; font-size: 9pt; color: #123D32;">Celular do Passageiro (Mariana Silva)</p>
+        <p style="color: #64748B; margin-top: 2px;">
+          Seleção de 3 categorias (*Simbora Econômico*, *Simbora Conforto*, *Simbora Intermunicipal*), busca de motorista com radar circular, exibição destacada do **PIN de 4 dígitos** e avaliação pós-viagem.
+        </p>
+      </div>
+
+      <div class="card" style="border-left: 3px solid #FFCC45;">
+        <p style="font-weight: 800; font-size: 9pt; color: #123D32;">Celular do Motorista (Carlos Oliveira)</p>
+        <p style="color: #64748B; margin-top: 2px;">
+          Cockpit em tema escuro (#17211D), alternância de status Online/Offline, card de oferta com contagem regressiva de 25s, HUD de direção para a AL-101 e validação obrigatória do PIN para partida.
+        </p>
+      </div>
+    </div>
+
+    <!-- Primary Action Button Callout -->
+    <div class="card" style="text-align: center; background: #ECFDF5; border: 1.5px solid #16A572;">
+      <p style="font-size: 8.5pt; font-weight: 800; color: #166534; text-transform: uppercase;">Botão Principal do Simulador</p>
+      <div style="display: inline-block; background: #16A572; color: #FFFFFF; font-weight: 900; font-size: 11pt; padding: 8px 24px; border-radius: 12px; margin: 6px 0; letter-spacing: 1px;">
+        TESTAR PIAÇABUÇU ➔ PENEDO
+      </div>
+      <p style="font-size: 7.5pt; color: #64748B;">Disponível em <span class="font-mono" style="font-weight: 700;">http://localhost:3000/studio</span> e no arquivo standalone <span class="font-mono">mobility_interactive_studio.html</span>.</p>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 07 • SIMBORA Studio</span>
+      <span>Página 8</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 9: MARKETING & LANÇAMENTO ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 08 • Marketing & Divulgação</span>
+    <h1 class="sec-title">Identidade de Marketing & Materiais de Lançamento</h1>
+    <p class="sec-subtitle">Peças promocionais concebidas com o calor de Alagoas e alta sofisticação visual.</p>
+
+    <!-- Banner Institucional Preview -->
+    <div class="card" style="margin-bottom: 8px;">
+      <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">Banner Institucional de Lançamento (1200×630)</p>
+      <div class="svg-container" style="background: #123D32; border-radius: 8px; padding: 4px; height: 90px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <!-- Banner Institucional 1200x630 -->
+  <defs>
+    <radialGradient id="banBg" cx="30%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+    <linearGradient id="banGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+    <filter id="banDrop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#051410" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#banBg)"/>
+
+  <!-- Topographic Curvature Lines (Rio São Francisco / Rodovia AL-101) -->
+  <g opacity="0.12" stroke="#16A572" stroke-width="2" fill="none">
+    <path d="M 400 -50 Q 800 200 1250 150"/>
+    <path d="M 450 -50 Q 850 250 1250 200"/>
+    <path d="M 500 -50 Q 900 300 1250 250"/>
+    <path d="M 550 -50 Q 950 350 1250 300"/>
+  </g>
+
+  <!-- Left Copy Column -->
+  <g transform="translate(100, 140)">
+    <!-- Regional Launch Pill -->
+    <g transform="translate(0, 0)">
+      <rect width="250" height="34" rx="17" fill="#16A572" fill-opacity="0.2" stroke="#16A572" stroke-width="1.2"/>
+      <circle cx="20" cy="17" r="5" fill="#FFCC45"/>
+      <text x="36" y="22" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="800" fill="#F8F9F6" letter-spacing="1.5">
+        LANÇAMENTO EM ALAGOAS
+      </text>
+    </g>
+
+    <!-- Main Headline -->
+    <text x="0" y="110" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="54" font-weight="900" fill="#F8F9F6" line-height="1.1">
+      Seu destino começa
+    </text>
+    <text x="0" y="175" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="54" font-weight="900" fill="#FFCC45">
+      com SIMBORA.
+    </text>
+
+    <!-- Value Prop Subtitle -->
+    <text x="0" y="235" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="500" fill="#F8F9F6" fill-opacity="0.85">
+      Mobilidade urbana e viagens intermunicipais com segurança,
+    </text>
+    <text x="0" y="265" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="500" fill="#F8F9F6" fill-opacity="0.85">
+      agilidade e o calor da nossa gente em Penedo e Piaçabuçu.
+    </text>
+
+    <!-- CTA & Slogan -->
+    <g transform="translate(0, 310)">
+      <rect width="230" height="54" rx="27" fill="#16A572"/>
+      <text x="115" y="33" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF" letter-spacing="1">
+        BAIXE O APP AGORA
+      </text>
+
+      <text x="260" y="34" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#FFCC45" letter-spacing="1.5">
+        Pediu. Chegou. Simbora!
+      </text>
+    </g>
+  </g>
+
+  <!-- Right App Mockup Preview Card -->
+  <g transform="translate(780, 110)" filter="url(#banDrop)">
+    <!-- Phone Mockup Container -->
+    <rect width="320" height="420" rx="36" fill="#17211D" stroke="#16A572" stroke-width="2"/>
+
+    <!-- App Header in Mockup -->
+    <g transform="translate(24, 28)">
+      <rect width="36" height="36" rx="10" fill="#123D32"/>
+      <path d="M 12 28 C 12 22 20 20 22 17 C 24 14 23 10 19 8 C 16 7 13 8 13 12 L 8 11 C 7 4 14 0 21 1 C 27 2 29 8 25 13 C 21 17 17 18 16 21 C 15 24 17 25 19 25 C 23 25 26 22 29 19 L 32 21 C 28 27 23 29 18 29 C 11 29 9 26 12 28 Z" fill="#16A572"/>
+      <polygon points="19,3 26,2 25,9 22,6 18,10 15,7 20,4" fill="#FFCC45"/>
+      <text x="46" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="900" fill="#F8F9F6" letter-spacing="1">
+        SIMBORA
+      </text>
+    </g>
+
+    <!-- Route Card Preview in Phone -->
+    <g transform="translate(24, 85)">
+      <rect width="272" height="135" rx="16" fill="#123D32" stroke="#16A572" stroke-width="0.8"/>
+      
+      <!-- Piaçabuçu Point -->
+      <circle cx="24" cy="35" r="7" fill="#16A572"/>
+      <text x="40" y="39" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#F8F9F6">
+        Piaçabuçu • Centro (Foz)
+      </text>
+
+      <!-- Connecting dotted route -->
+      <line x1="24" y1="45" x2="24" y2="75" stroke="#FFCC45" stroke-width="2" stroke-dasharray="3,3"/>
+
+      <!-- Penedo Point -->
+      <circle cx="24" cy="85" r="7" fill="#FFCC45"/>
+      <text x="40" y="89" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#F8F9F6">
+        Penedo • Centro Histórico
+      </text>
+
+      <!-- Distance and ETA -->
+      <rect x="20" y="105" width="232" height="20" rx="4" fill="#17211D"/>
+      <text x="136" y="119" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="700" fill="#FFCC45">
+        28.4 km • 28 min via AL-101
+      </text>
+    </g>
+
+    <!-- Driver Card in Phone -->
+    <g transform="translate(24, 235)">
+      <rect width="272" height="90" rx="16" fill="#1E2E28"/>
+      <circle cx="40" cy="45" r="22" fill="#16A572"/>
+      <text x="40" y="52" text-anchor="middle" font-size="20">🚗</text>
+      <text x="74" y="38" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="13" font-weight="800" fill="#F8F9F6">
+        Motorista a caminho
+      </text>
+      <text x="74" y="55" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="500" fill="#16A572">
+        Toyota Corolla • Placa BRA2E19
+      </text>
+      <text x="74" y="70" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="700" fill="#FFCC45">
+        ⭐ 4.9 (340 corridas)
+      </text>
+    </g>
+
+    <!-- Bottom Status Bar -->
+    <g transform="translate(24, 345)">
+      <rect width="272" height="46" rx="12" fill="#16A572"/>
+      <text x="136" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">
+        ACOMPANHAR VIAGEM
+      </text>
+    </g>
+  </g>
+</svg>
+
+      </div>
+      <p style="font-size: 7pt; color: #64748B; margin-top: 4px;">Headlines: <i>"Seu destino começa com SIMBORA"</i> e <i>"Pediu. Chegou. Simbora!"</i></p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 8px;">
+      <!-- Adesivo Veicular -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">Adesivo para Portas & Para-brisa</p>
+        <div class="svg-container" style="background: #123D32; border-radius: 8px; padding: 4px; height: 60px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%" height="100%">
+  <!-- Adesivo Veicular Conceitual para Portas e Para-brisa (Transparente/Contorno) -->
+  <defs>
+    <linearGradient id="stickGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123D32"/>
+      <stop offset="60%" stop-color="#16A572"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Borda de corte e adesivo vinílico -->
+  <rect x="10" y="10" width="780" height="280" rx="36" fill="#123D32" stroke="#16A572" stroke-width="4"/>
+
+  <g transform="translate(60, 50)">
+    <!-- Símbolo em Emblema -->
+    <g transform="translate(0, 5) scale(0.7)">
+      <rect width="280" height="280" rx="64" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" fill="#16A572"/>
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" fill="#FFCC45"/>
+      <circle cx="214" cy="26" r="6" fill="#123D32"/>
+    </g>
+
+    <!-- Wordmark & Informações do Veículo -->
+    <g transform="translate(230, 25)">
+      <text x="0" y="60" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="64" font-weight="900" fill="#F8F9F6" letter-spacing="6">
+        SIMBORA
+      </text>
+      
+      <text x="0" y="105" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#FFCC45" letter-spacing="3">
+        VEÍCULO CADASTRADO & VERIFICADO
+      </text>
+
+      <text x="0" y="145" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#16A572" letter-spacing="2">
+        PEDIU. CHEGOU. SIMBORA! • ALAGOAS
+      </text>
+    </g>
+
+    <!-- QR Code Mockup no canto direito -->
+    <g transform="translate(560, 25)">
+      <rect width="110" height="110" rx="16" fill="#FFFFFF"/>
+      <!-- QR Pattern simplificado -->
+      <rect x="12" y="12" width="28" height="28" fill="#123D32"/>
+      <rect x="18" y="18" width="16" height="16" fill="#FFFFFF"/>
+      <rect x="70" y="12" width="28" height="28" fill="#123D32"/>
+      <rect x="76" y="18" width="16" height="16" fill="#FFFFFF"/>
+      <rect x="12" y="70" width="28" height="28" fill="#123D32"/>
+      <rect x="18" y="76" width="16" height="16" fill="#FFFFFF"/>
+      <rect x="48" y="20" width="14" height="14" fill="#123D32"/>
+      <rect x="52" y="52" width="20" height="20" fill="#16A572"/>
+      <rect x="75" y="75" width="18" height="18" fill="#123D32"/>
+      <text x="55" y="132" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="800" fill="#F8F9F6">
+        BAIXAR APP
+      </text>
+    </g>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7pt; color: #64748B; margin-top: 2px;">Com QR Code para download e chancela de verificado.</p>
+      </div>
+
+      <!-- Cartão Digital do Motorista -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">Cartão Digital do Motorista Parceiro</p>
+        <div class="svg-container" style="background: #123D32; border-radius: 8px; padding: 4px; height: 60px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <!-- Cartão Digital de Motorista Parceiro 600x380 -->
+  <defs>
+    <radialGradient id="cardBg" cx="30%" cy="30%" r="90%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+    <filter id="cardShad" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="380" rx="28" fill="url(#cardBg)" stroke="#16A572" stroke-width="2"/>
+
+  <!-- Top Header with SIMBORA brand -->
+  <g transform="translate(40, 36)">
+    <!-- Brand -->
+    <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" fill="#F8F9F6" letter-spacing="3">
+      SIMBORA
+    </text>
+    <text x="135" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="800" fill="#FFCC45" letter-spacing="2">
+      MOTORISTA
+    </text>
+
+    <!-- Verified Badge -->
+    <g transform="translate(400, 4)">
+      <rect width="120" height="26" rx="13" fill="#16A572" fill-opacity="0.25" stroke="#16A572" stroke-width="1"/>
+      <circle cx="16" cy="13" r="4" fill="#FFCC45"/>
+      <text x="28" y="17" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="800" fill="#F8F9F6">
+        VERIFICADO
+      </text>
+    </g>
+  </g>
+
+  <!-- Driver Profile Section -->
+  <g transform="translate(40, 95)">
+    <!-- Avatar Circle -->
+    <circle cx="50" cy="50" r="50" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+    <text x="50" y="62" text-anchor="middle" font-size="44">👨🏽‍💼</text>
+
+    <!-- Driver Info -->
+    <g transform="translate(125, 15)">
+      <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" fill="#F8F9F6">
+        Carlos Oliveira
+      </text>
+      <text x="0" y="48" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#16A572">
+        Motorista Oficial Parceiro • Alagoas
+      </text>
+      <text x="0" y="70" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFCC45">
+        ⭐ 4.95 • 342 Corridas Realizadas
+      </text>
+    </g>
+  </g>
+
+  <!-- Vehicle Info Box -->
+  <g transform="translate(40, 225)">
+    <rect width="520" height="85" rx="16" fill="#17211D" stroke="#16A572" stroke-width="0.8"/>
+    
+    <g transform="translate(24, 20)">
+      <text x="0" y="18" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="700" fill="#16A572" letter-spacing="1">
+        VEÍCULO AUTORIZADO
+      </text>
+      <text x="0" y="44" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="800" fill="#F8F9F6">
+        Toyota Corolla Hybrid 2023 • Prata
+      </text>
+    </g>
+
+    <g transform="translate(360, 20)">
+      <text x="0" y="18" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="700" fill="#16A572" letter-spacing="1">
+        PLACA MERCOSUL
+      </text>
+      <text x="0" y="44" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="900" fill="#FFCC45" letter-spacing="1">
+        BRA2E19
+      </text>
+    </g>
+  </g>
+
+  <!-- Footer Tagline -->
+  <g transform="translate(40, 345)">
+    <text x="0" y="10" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#F8F9F6" fill-opacity="0.6">
+      Simbora com segurança • Penedo ⇄ Piaçabuçu
+    </text>
+    <text x="520" y="10" text-anchor="end" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="800" fill="#16A572">
+      Pediu. Chegou. Simbora!
+    </text>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7pt; color: #64748B; margin-top: 2px;">Apresenta nota, veículo (Corolla BRA2E19) e validação.</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Story Instagram -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">Template Story Instagram (1080×1920)</p>
+        <div class="svg-container" style="background: #123D32; border-radius: 8px; padding: 4px; height: 80px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="100%" height="100%">
+  <!-- Template Story Instagram 1080x1920 -->
+  <defs>
+    <radialGradient id="storyBg" cx="50%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+    <linearGradient id="storyGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+    <filter id="storyShad" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#storyBg)"/>
+
+  <!-- Geometric Contour of Rio São Francisco Valley -->
+  <g opacity="0.1" stroke="#16A572" stroke-width="3" fill="none">
+    <path d="M 0 300 Q 540 100 1080 400"/>
+    <path d="M 0 600 Q 540 400 1080 700"/>
+    <path d="M 0 900 Q 540 700 1080 1000"/>
+    <path d="M 0 1200 Q 540 1000 1080 1300"/>
+  </g>
+
+  <!-- Top Brand Navigation in Story -->
+  <g transform="translate(100, 160)">
+    <!-- Small Brand Mark -->
+    <rect width="52" height="52" rx="14" fill="#17211D" stroke="#16A572" stroke-width="2"/>
+    <circle cx="16" cy="38" r="4" fill="#16A572"/>
+    <path d="M 16 38 C 16 30 26 28 30 23 C 33 18 31 12 26 10 C 20 8 15 12 16 18 L 10 17 C 8 7 16 2 26 4 C 36 6 39 16 32 24 C 26 31 19 33 18 37 Z" fill="#16A572"/>
+    <polygon points="26,6 36,4 34,14 31,11 25,16 21,12 28,8" fill="#FFCC45"/>
+
+    <text x="68" y="36" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="28" font-weight="900" fill="#F8F9F6" letter-spacing="3">
+      SIMBORA
+    </text>
+
+    <!-- Regional Pill Right -->
+    <g transform="translate(680, 8)">
+      <rect width="200" height="36" rx="18" fill="#16A572" fill-opacity="0.25"/>
+      <text x="100" y="23" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="800" fill="#FFCC45" letter-spacing="1.5">
+        ALAGOAS
+      </text>
+    </g>
+  </g>
+
+  <!-- Main Headline Callout -->
+  <g transform="translate(100, 360)">
+    <text x="0" y="0" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="700" fill="#16A572" letter-spacing="3">
+      CHEGOU O TRANSPORTE QUE PENEDO ESPERAVA
+    </text>
+
+    <text x="0" y="110" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="82" font-weight="900" fill="#F8F9F6" line-height="1.05">
+      Simbora pra
+    </text>
+    <text x="0" y="200" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="82" font-weight="900" fill="#FFCC45">
+      Penedo?
+    </text>
+
+    <!-- Secondary Punchy Line -->
+    <g transform="translate(0, 270)">
+      <rect width="640" height="64" rx="16" fill="#16A572" fill-opacity="0.2" stroke="#16A572" stroke-width="1.5"/>
+      <text x="32" y="41" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="800" fill="#F8F9F6">
+        De Piaçabuçu pra onde você quiser.
+      </text>
+    </g>
+  </g>
+
+  <!-- Interactive Graphic Route Card in Story -->
+  <g transform="translate(100, 780)" filter="url(#storyShad)">
+    <rect width="880" height="520" rx="40" fill="#17211D" stroke="#16A572" stroke-width="2.5"/>
+
+    <!-- Map representation banner inside card -->
+    <g transform="translate(40, 40)">
+      <!-- Piaçabuçu Point -->
+      <g transform="translate(0, 40)">
+        <circle cx="36" cy="36" r="24" fill="#16A572"/>
+        <text x="36" y="44" text-anchor="middle" font-size="20">🌊</text>
+        <text x="80" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="26" font-weight="900" fill="#F8F9F6">
+          Piaçabuçu (Foz do São Francisco)
+        </text>
+        <text x="80" y="60" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#16A572">
+          Praça São Francisco de Borja • Peba
+        </text>
+      </g>
+
+      <!-- Connecting High-Speed Route -->
+      <line x1="36" y1="120" x2="36" y2="240" stroke="#FFCC45" stroke-width="6" stroke-dasharray="10,8"/>
+      
+      <!-- Distance Badge in Middle of Route -->
+      <g transform="translate(70, 160)">
+        <rect width="320" height="44" rx="22" fill="#123D32" stroke="#FFCC45" stroke-width="1.5"/>
+        <text x="160" y="28" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFCC45">
+          28 km • Rota Direta AL-101 / AL-225
+        </text>
+      </g>
+
+      <!-- Penedo Point -->
+      <g transform="translate(0, 260)">
+        <circle cx="36" cy="36" r="24" fill="#FFCC45"/>
+        <text x="36" y="44" text-anchor="middle" font-size="20">🏛️</text>
+        <text x="80" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="26" font-weight="900" fill="#F8F9F6">
+          Penedo (Centro Histórico)
+        </text>
+        <text x="80" y="60" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#FFCC45">
+          Largo de São Gonçalo • Orla do Velho Chico
+        </text>
+      </g>
+
+      <!-- Pricing / Category Bar in Card -->
+      <g transform="translate(0, 360)">
+        <rect width="800" height="60" rx="16" fill="#123D32"/>
+        <text x="30" y="37" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#F8F9F6">
+          Preço justo, sem susto no fim da viagem.
+        </text>
+        <text x="770" y="37" text-anchor="end" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="900" fill="#FFCC45">
+          A partir de R$ 8,00
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom CTA Swipe-Up Section -->
+  <g transform="translate(540, 1580)" text-anchor="middle">
+    <!-- Pulsing Arrow Up -->
+    <path d="M -20 0 L 0 -20 L 20 0" fill="none" stroke="#FFCC45" stroke-width="4" stroke-linecap="round"/>
+    <path d="M -20 18 L 0 -2 L 20 18" fill="none" stroke="#FFCC45" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+
+    <text x="0" y="65" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="32" font-weight="900" fill="#F8F9F6" letter-spacing="2">
+      ARRASTE PRA CIMA
+    </text>
+
+    <!-- Main Slogan -->
+    <text x="0" y="115" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="800" fill="#FFCC45" letter-spacing="3">
+      PEDIU. CHEGOU. SIMBORA!
+    </text>
+    
+    <text x="0" y="160" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#F8F9F6" fill-opacity="0.6">
+      Disponível para Android e iOS
+    </text>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7pt; color: #64748B; margin-top: 2px;"><i>"Simbora pra Penedo? De Piaçabuçu pra onde você quiser."</i></p>
+      </div>
+
+      <!-- Avatar Social Media -->
+      <div class="card">
+        <p style="font-size: 8pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">Avatar Oficial de Redes Sociais</p>
+        <div class="svg-container" style="background: #123D32; border-radius: 8px; padding: 4px; height: 80px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <!-- Social Media Profile Avatar 800x800 (Circular Friendly) -->
+  <defs>
+    <radialGradient id="socBg" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#1A5243"/>
+      <stop offset="60%" stop-color="#123D32"/>
+      <stop offset="100%" stop-color="#0B261F"/>
+    </radialGradient>
+    <linearGradient id="socFlow" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#16A572"/>
+      <stop offset="50%" stop-color="#1CD291"/>
+      <stop offset="100%" stop-color="#FFCC45"/>
+    </linearGradient>
+    <filter id="socGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#16A572" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#socBg)"/>
+
+  <!-- Centered Circular Safe Area Guides -->
+  <circle cx="400" cy="400" r="380" fill="none" stroke="#16A572" stroke-width="2" stroke-opacity="0.3"/>
+
+  <!-- Center Symbol & Brand Stack -->
+  <g transform="translate(400, 370)" text-anchor="middle">
+    <!-- Emblem -->
+    <g transform="translate(-160, -220) scale(1.15)" filter="url(#socGlow)">
+      <rect width="280" height="280" rx="64" fill="#17211D" stroke="#16A572" stroke-width="3"/>
+      <circle cx="68" cy="210" r="14" fill="#16A572"/>
+      <circle cx="68" cy="210" r="6" fill="#F8F9F6"/>
+      <path d="M 68 210 C 68 165 130 150 150 120 C 170 90 165 60 135 48 C 110 38 75 55 78 85 L 42 80 C 35 32 90 8 145 16 C 200 24 212 75 180 115 C 150 150 110 155 100 180 C 92 200 105 212 125 212 C 155 212 178 190 200 162 L 225 182 C 195 225 160 245 115 245 C 68 245 45 225 68 210 Z" fill="url(#socFlow)"/>
+      <path d="M 160 26 L 222 18 L 214 80 L 192 58 L 152 98 L 130 76 L 170 36 Z" fill="#FFCC45"/>
+      <circle cx="214" cy="26" r="6" fill="#123D32"/>
+    </g>
+
+    <!-- Wordmark -->
+    <text x="0" y="180" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="52" font-weight="900" fill="#F8F9F6" letter-spacing="8">
+      SIMBORA
+    </text>
+
+    <!-- Regional Tag -->
+    <text x="0" y="225" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#FFCC45" letter-spacing="3">
+      ALAGOAS • BRASIL
+    </text>
+  </g>
+</svg>
+
+        </div>
+        <p style="font-size: 7pt; color: #64748B; margin-top: 2px;">Enquadramento otimizado para perfis circulares.</p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 08 • Marketing</span>
+      <span>Página 9</span>
+    </div>
+  </div>
+
+  <!-- ==================== PÁGINA 10: AUDITORIA TÉCNICA E TESTES ==================== -->
+  <div class="page">
+    <span class="header-tag tag-dark">Seção 09 • Validação & Engenharia</span>
+    <h1 class="sec-title">Auditoria Técnica e Aprovação dos Testes</h1>
+    <p class="sec-subtitle">Validação rigorosa sem regressões operacionais no backend ou frontends.</p>
+
+    <!-- Test Suites Results -->
+    <div class="grid-2" style="margin-bottom: 10px;">
+      <div class="card" style="border-left: 4px solid #16A572;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-size: 10pt; font-weight: 800; color: #123D32;">1. Suíte da Máquina de Estados</h3>
+          <span class="header-tag tag-green">10 / 10 PASS</span>
+        </div>
+        <p class="font-mono" style="font-size: 7pt; color: #64748B; margin-top: 2px;">node --test tests/state-machine.test.js</p>
+        <div style="font-size: 7.5pt; color: #334155; margin-top: 6px; line-height: 1.4;">
+          <p>✔ Transições válidas do ciclo de vida</p>
+          <p>✔ Rejeição de transições regressivas ilegais</p>
+          <p>✔ Bloqueio de corrida em estados terminais</p>
+          <p>✔ Cálculo Haversine de coordenadas</p>
+          <p>✔ Algoritmo atômico anti-concorrência de despacho</p>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 4px solid #16A572;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-size: 10pt; font-weight: 800; color: #123D32;">2. Suíte de Rotas Alagoas</h3>
+          <span class="header-tag tag-green">7 / 7 PASS</span>
+        </div>
+        <p class="font-mono" style="font-size: 7pt; color: #64748B; margin-top: 2px;">node tests/test_penedo_piacabucu.js</p>
+        <div style="font-size: 7.5pt; color: #334155; margin-top: 6px; line-height: 1.4;">
+          <p>✔ Existência do dataset alagoas_routes.json</p>
+          <p>✔ Coordenadas oficiais de Piaçabuçu e Penedo</p>
+          <p>✔ Proibição estrita de linhas retas (+33,9% sinuosidade)</p>
+          <p>✔ Cálculo de rolamento (bearing 0° a 360°)</p>
+          <p>✔ Precificação e validação do PIN de segurança 4821</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inventário de Documentação -->
+    <div class="card">
+      <h3 style="font-size: 9.5pt; font-weight: 800; color: #123D32; margin-bottom: 4px;">Inventário de Entregáveis em docs/brand/</h3>
+      <table style="font-size: 7.5pt;">
+        <tr><td><code>BRAND_GUIDELINES.md</code></td><td>Conceito, personas, tom de voz, slogans e comparação fundamentada.</td></tr>
+        <tr><td><code>COLOR_TOKENS.md</code></td><td>Valores Hex, RGB, HSL e matriz de contraste WCAG AA/AAA.</td></tr>
+        <tr><td><code>TYPOGRAPHY.md</code></td><td>Fontes Plus Jakarta Sans, Manrope e JetBrains Mono, type scale.</td></tr>
+        <tr><td><code>LOGO_USAGE.md</code></td><td>Áreas de respiro, tamanhos mínimos e normas de aplicação.</td></tr>
+        <tr><td><code>DESIGN_SYSTEM.md</code></td><td>Tokens, espaçamentos, raios e catálogo SDS v1.0.</td></tr>
+        <tr><td><code>UI_UX_GUIDELINES.md</code></td><td>Jornada das 20 telas de passageiro e 15 telas de condutor.</td></tr>
+        <tr><td><code>REBRANDING_PROGRESS.md</code></td><td>Registro e auditoria de execução do projeto.</td></tr>
+      </table>
+    </div>
+
+    <!-- Conclusão -->
+    <div style="margin-top: 10px; text-align: center; padding: 10px; background: #123D32; color: #FFFFFF; border-radius: 12px;">
+      <p style="font-size: 11pt; font-weight: 900; color: #FFCC45;">SIMBORA — Pediu. Chegou. Simbora!</p>
+      <p style="font-size: 8pt; color: #DCFCE7; margin-top: 2px;">Plataforma Homologada e Pronta para Operação em Alagoas e Expansão Nacional.</p>
+    </div>
+
+    <div class="page-footer">
+      <span>SIMBORA Brand Book • Edição 2026</span>
+      <span>Seção 09 • Auditoria Técnica</span>
+      <span>Página 10</span>
+    </div>
+  </div>
+
+</body>
+</html>

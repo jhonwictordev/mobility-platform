@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432" width="432" height="432">
+  <!-- SIMBORA — ANDROID ADAPTIVE ICON (432x432 com Safe Zone de 260x260) -->
+  <defs>
+    <clipPath id="circleMask">
+      <circle cx="216" cy="216" r="130"/>
+    </clipPath>
+  </defs>
+
+  <!-- Camada 1: Background (Fundo Verde Profundo) -->
+  <rect width="432" height="432" fill="#123D32"/>
+
+  <!-- Safe Zone Visual Guide (Opcional, desabilitada em produção) -->
+  <!-- Camada 2: Foreground (Símbolo dentro da Safe Zone central de 260px) -->
+  <g transform="translate(106, 106) scale(2.2)" fill="none" stroke-linejoin="round">
+    <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" 
+          stroke="#F8F9F6" stroke-width="11" stroke-linecap="round"/>
+    <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" 
+          stroke="#16A572" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    <circle cx="30" cy="80" r="6" fill="#F8F9F6"/>
+  </g>
+</svg>

@@ -9,21 +9,29 @@ import { UserRole } from '../database/entities';
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Get('dashboard')
   getDashboard() {
     return this.adminService.getDashboardMetrics();
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Put('drivers/:id/approve')
   approveDriver(@Param('id') id: string) {
     return this.adminService.approveDriver(id);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Put('drivers/:id/reject')
   rejectDriver(@Param('id') id: string) {
     return this.adminService.rejectDriver(id);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Put('vehicles/:id/approve')
   approveVehicle(@Param('id') id: string) {
     return this.adminService.approveVehicle(id);

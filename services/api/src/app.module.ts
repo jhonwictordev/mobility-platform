@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
 import { WebSocketModule } from './websocket/websocket.module';
 import { AuditModule } from './audit/audit.module';
@@ -13,6 +13,7 @@ import { DispatchModule } from './dispatch/dispatch.module';
 import { PaymentsModule } from './payments/payments.module';
 import { TripsModule } from './trips/trips.module';
 import { AdminModule } from './admin/admin.module';
+import { SecurityHeadersMiddleware } from './common/middleware/security.middleware';
 
 @Module({
   imports: [
@@ -32,4 +33,8 @@ import { AdminModule } from './admin/admin.module';
     AdminModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(SecurityHeadersMiddleware).forRoutes('*');
+  }
+}

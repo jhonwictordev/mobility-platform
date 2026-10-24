@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 2400" width="1080" height="2400">
+  <!-- SIMBORA — MOBILE ONBOARDING SCREEN (1080x2400) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@700&amp;display=swap');
+      .ob-header-title { font-family: 'Manrope', sans-serif; font-size: 54px; font-weight: 900; fill: #123D32; line-height: 1.2; }
+      .ob-body-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; font-weight: 500; fill: #4B5563; line-height: 1.5; }
+      .ob-btn-text { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 800; fill: #FFFFFF; text-anchor: middle; letter-spacing: 1px; }
+      .ob-route-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; fill: #123D32; }
+    </style>
+  </defs>
+
+  <!-- Fundo Limpo Branco Suave -->
+  <rect width="1080" height="2400" fill="#F8F9F6"/>
+
+  <!-- BARRA DE STATUS MOBILE SUPERIOR -->
+  <rect x="0" y="0" width="1080" height="100" fill="#F8F9F6"/>
+  <text x="80" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="700" fill="#17211D">09:41</text>
+  <circle cx="980" cy="60" r="14" fill="#16A572"/>
+  <circle cx="930" cy="60" r="14" fill="#123D32"/>
+
+  <!-- ÁREA DE ILUSTRAÇÃO CONCEITUAL / TRAJETÓRIA (Y: 140 a 1100) -->
+  <g transform="translate(80, 160)">
+    <!-- Card Elevado da Rota Intermunicipal -->
+    <rect width="920" height="920" rx="40" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" filter="drop-shadow(0 16px 36px rgba(18,61,50,0.06))"/>
+    
+    <!-- Mapa Estilizado com Grid Sutil -->
+    <path d="M 100 200 Q 400 100 800 250" fill="none" stroke="#E2E8F0" stroke-width="8"/>
+    <path d="M 200 800 Q 500 600 700 850" fill="none" stroke="#E2E8F0" stroke-width="6"/>
+
+    <!-- Traçado da Rota Oficial Simbora em Verde Vibrante -->
+    <path d="M 180 750 C 260 550, 380 480, 520 400 C 660 320, 720 220, 760 180" 
+          fill="none" stroke="#16A572" stroke-width="14" stroke-linecap="round"/>
+    
+    <!-- Ponto de Partida: Penedo (Centro Histórico) -->
+    <circle cx="180" cy="750" r="28" fill="#123D32"/>
+    <circle cx="180" cy="750" r="14" fill="#FFFFFF"/>
+    <rect x="120" y="800" width="200" height="56" rx="14" fill="#123D32"/>
+    <text x="220" y="836" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="700" fill="#F8F9F6" text-anchor="middle">Penedo (Centro)</text>
+
+    <!-- Ponto de Chegada Solar: Piaçabuçu (Praia do Peba / Foz) -->
+    <circle cx="760" cy="180" r="32" fill="#FFCC45"/>
+    <circle cx="760" cy="180" r="16" fill="#123D32"/>
+    <rect x="660" y="230" width="220" height="56" rx="14" fill="#FFCC45"/>
+    <text x="770" y="266" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" fill="#123D32" text-anchor="middle">Piaçabuçu (Litoral)</text>
+
+    <!-- Card Flutuante de Corrida Ativa -->
+    <rect x="160" y="440" width="600" height="150" rx="24" fill="#123D32" filter="drop-shadow(0 12px 28px rgba(0,0,0,0.25))"/>
+    <circle cx="230" cy="515" r="38" fill="#16A572"/>
+    <!-- Ícone The Kinetic Ribbon em miniatura -->
+    <path d="M 220 525 C 215 515, 225 505, 238 505 C 245 505, 248 518, 235 525" stroke="#F8F9F6" stroke-width="4" fill="none"/>
+    <circle cx="240" cy="505" r="3.5" fill="#FFCC45"/>
+    
+    <text x="290" y="495" font-family="'Manrope', sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">Van Intermunicipal</text>
+    <text x="290" y="530" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="500" fill="#CBD5E1">Partida a cada 30 min • Confort</text>
+    <text x="690" y="525" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="800" fill="#FFCC45" text-anchor="end">R$ 15</text>
+  </g>
+
+  <!-- TEXTOS PRINCIPAIS DE ONBOARDING (Y: 1240 a 1600) -->
+  <g transform="translate(80, 1280)">
+    <!-- Logo Compacto com Slogan -->
+    <g transform="scale(0.85)">
+      <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" stroke="#123D32" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" stroke="#16A572" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <circle cx="72" cy="24" r="6" fill="#FFCC45"/>
+    </g>
+    <text x="100" y="48" font-family="'Manrope', sans-serif" font-size="36" font-weight="900" fill="#123D32" letter-spacing="2">SIMBORA</text>
+
+    <!-- Título de Impacto -->
+    <text x="0" y="160" class="ob-header-title">Viagens rápidas, seguras</text>
+    <text x="0" y="230" class="ob-header-title">e com preço justo.</text>
+
+    <!-- Descrição de Apoio -->
+    <text x="0" y="320" class="ob-body-text">Conectando você dentro da sua cidade e entre municípios vizinhos.</text>
+    <text x="0" y="365" class="ob-body-text">Carros e vans com motoristas parceiros verificados.</text>
+  </g>
+
+  <!-- PONTOS DE NAVEGAÇÃO (INDICATOR DOTS) -->
+  <g transform="translate(80, 1820)">
+    <rect x="0" y="0" width="80" height="16" rx="8" fill="#16A572"/>
+    <circle cx="120" cy="8" r="8" fill="#CBD5E1"/>
+    <circle cx="160" cy="8" r="8" fill="#CBD5E1"/>
+  </g>
+
+  <!-- BOTÃO DE AÇÃO PRIMÁRIO ("COMEÇAR AGORA") -->
+  <g transform="translate(80, 1920)">
+    <rect width="920" height="120" rx="30" fill="#16A572" filter="drop-shadow(0 16px 32px rgba(22,165,114,0.35))"/>
+    <text x="460" y="74" class="ob-btn-text">Pediu. Chegou. Simbora! →</text>
+  </g>
+
+  <!-- BOTÃO SECUNDÁRIO ("SOU MOTORISTA PARCEIRO") -->
+  <g transform="translate(80, 2080)">
+    <rect width="920" height="100" rx="28" fill="transparent" stroke="#123D32" stroke-width="3"/>
+    <text x="460" y="62" font-family="'Manrope', sans-serif" font-size="26" font-weight="700" fill="#123D32" text-anchor="middle">Quero Dirigir com a Simbora</text>
+  </g>
+</svg>

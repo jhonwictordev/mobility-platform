@@ -9,6 +9,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 
 @WebSocketGateway({
   cors: {
@@ -23,7 +24,25 @@ export class MobilityWebSocketGateway
 
   private readonly logger = new Logger(MobilityWebSocketGateway.name);
 
+  constructor(private readonly jwtService: JwtService) {}
+
   handleConnection(client: Socket) {
+    try {
+      const rawToken =
+        client.handshake.auth?.token ||
+        client.handshake.headers?.authorization ||
+        client.handshake.query?.token;
+
+      if (rawToken) {
+        const token = String(rawToken).replace(/^Bearer\s+/i, '');
+        const payload = this.jwtService.verify(token);
+        client.data.user = payload;
+        this.logger.log(`Authenticated client connected: ${client.id} (User: ${payload.sub}, Role: ${payload.role})`);
+        return;
+      }
+    } catch (err: any) {
+      this.logger.debug(`Anonymous client connected: ${client.id} (${err.message})`);
+    }
     this.logger.log(`Client connected: ${client.id}`);
   }
 
@@ -69,6 +88,12 @@ export class MobilityWebSocketGateway
 
   @SubscribeMessage('join:admin')
   handleJoinAdmin(@ConnectedSocket() client: Socket) {
+    // Hardening: Em produção, exigir autenticação estrita de admin
+    if (process.env.NODE_ENV === 'production' && client.data?.user?.role !== 'admin') {
+      this.logger.warn(`Unauthorized attempt to join admin room from ${client.id}`);
+      return { event: 'error', message: 'Acesso negado: Requer privilégios de administrador.' };
+    }
+
     client.join('admin');
     this.logger.log(`Socket ${client.id} joined admin room`);
     return { event: 'joined', room: 'admin' };

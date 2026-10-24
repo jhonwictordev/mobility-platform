@@ -12,6 +12,7 @@ dist/
 */*/.next/
 out/
 build/
+*.tsbuildinfo
 
 # SQLite Databases & Logs
 *.sqlite

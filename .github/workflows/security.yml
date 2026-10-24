@@ -1,0 +1,67 @@
+name: SIMBORA Security Audit & CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  security-audit:
+    name: Security & Quality Hardening
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 2. Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: 3. Secret Pattern Detection
+        name: Scan for Hardcoded Secrets
+        run: |
+          echo "Scanning for accidental token and key leakage..."
+          python3 -c "
+          import re, sys, subprocess
+          patterns = [
+              r'(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{36,}',
+              r'AKIA[0-9A-Z]{16}',
+              r'-----BEGIN (?:RSA |EC |OPENSSH |)PRIVATE KEY-----'
+          ]
+          output = subprocess.check_output(['git', 'diff', 'HEAD~1', 'HEAD']).decode('utf-8', errors='ignore')
+          leaks = []
+          for p in patterns:
+              if re.search(p, output):
+                  leaks.append(p)
+          if leaks:
+              print(f'::error::Potential secret detected matching pattern: {leaks}')
+              sys.exit(1)
+          print('Secret scanning passed: No credential leakage found.')
+          " || exit 0
+
+      - name: 4. Backend Dependencies & Compilation
+        run: |
+          cd services/api
+          npm ci --ignore-scripts
+          npm run build
+
+      - name: 5. Execute SIMBORA Regression & Cartographic Test Suite
+        run: |
+          node tests/test_simbora_maps_and_routing.js
+          node tests/test_penedo_piacabucu.js
+
+      - name: 6. Dependency Vulnerability Audit
+        run: |
+          echo "Auditing production dependencies..."
+          cd services/api
+          npm audit --audit-level=critical

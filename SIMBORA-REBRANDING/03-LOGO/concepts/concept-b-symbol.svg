@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- SIMBORA CONCEPT B: THE KINETIC RIBBON (Movimento e Conexão) -->
+  <!-- Fluxo contínuo sem pontas de seta: Uma fita cinética com torção geométrica pura simbolizando travessia contínua e sem atritos -->
+  <g id="Symbol-Concept-B" fill="none" stroke-linejoin="round">
+    <!-- Camada de Conexão Inferior (Verde Profundo) -->
+    <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" 
+          stroke="#123D32" stroke-width="11" stroke-linecap="round"/>
+    
+    <!-- Camada Dinâmica Frontal (Verde Vibrante com intersecção contínua) -->
+    <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" 
+          stroke="#16A572" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- Ponto Focal de Chegada (Amarelo Energia) no Ápice da Trajetória -->
+    <circle cx="72" cy="24" r="6" fill="#FFCC45"/>
+    <circle cx="30" cy="80" r="5" fill="#123D32"/>
+  </g>
+</svg>

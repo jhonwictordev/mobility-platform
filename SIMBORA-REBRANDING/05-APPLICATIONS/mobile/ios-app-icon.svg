@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- SIMBORA — OFICIAL iOS APP ICON (1024x1024) -->
+  <!-- Conceito B: The Kinetic Ribbon com Máxima Precisão Retina Display -->
+  <defs>
+    <radialGradient id="iconGlow" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#1B5244"/>
+      <stop offset="100%" stop-color="#123D32"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fundo Sólido Verde Profundo com Sutil Gradiente Radial de Luz Superior -->
+  <rect width="1024" height="1024" fill="url(#iconGlow)"/>
+
+  <!-- SÍMBOLO THE KINETIC RIBBON CENTRALIZADO (Escala 6.2x, Offset: 202, 202) -->
+  <g transform="translate(202, 202) scale(6.2)" fill="none" stroke-linejoin="round">
+    <!-- Camada de Conexão Inferior (Branco Suave para Contraste Extremo) -->
+    <path d="M 28 76 C 24 64, 30 52, 44 48 L 56 44 C 68 40, 76 32, 74 20" 
+          stroke="#F8F9F6" stroke-width="11" stroke-linecap="round"/>
+    
+    <!-- Camada Dinâmica Frontal Verde Vibrante -->
+    <path d="M 72 24 C 62 14, 42 16, 32 26 C 22 36, 28 50, 48 54 C 68 58, 76 68, 68 80 C 60 90, 42 88, 30 80" 
+          stroke="#16A572" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- Ponto Solar de Chegada Amarelo Energia -->
+    <circle cx="72" cy="24" r="7.5" fill="#FFCC45"/>
+    <circle cx="30" cy="80" r="6" fill="#F8F9F6"/>
+  </g>
+</svg>

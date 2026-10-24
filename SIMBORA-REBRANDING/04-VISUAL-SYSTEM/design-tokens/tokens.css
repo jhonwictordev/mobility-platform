@@ -1,0 +1,86 @@
+/* ==========================================================================
+   SIMBORA DESIGN SYSTEM — OFFICIAL CSS DESIGN TOKENS (V2.0)
+   Baseado no Conceito B: The Kinetic Ribbon & Paleta Oficial Preservada
+   ========================================================================== */
+
+:root {
+  /* --- PALETA DE CORES IMUTÁVEIS --- */
+  --simbora-color-verde-profundo: #123D32;
+  --simbora-color-verde-vibrante: #16A572;
+  --simbora-color-amarelo-energia: #FFCC45;
+  --simbora-color-branco-suave: #F8F9F6;
+  --simbora-color-grafite-mineral: #17211D;
+
+  /* --- CORES SEMÂNTICAS & PAPÉIS DE INTERFACE --- */
+  --simbora-bg-surface: var(--simbora-color-branco-suave);
+  --simbora-bg-surface-elevated: #FFFFFF;
+  --simbora-bg-surface-dark: var(--simbora-color-verde-profundo);
+  --simbora-bg-card-dark: #1A3029;
+  
+  --simbora-action-primary: var(--simbora-color-verde-vibrante);
+  --simbora-action-hover: #138F62;
+  --simbora-action-active: #0F734F;
+  --simbora-action-focus-ring: rgba(22, 165, 114, 0.4);
+
+  --simbora-highlight: var(--simbora-color-amarelo-energia);
+  --simbora-highlight-subtle: rgba(255, 204, 69, 0.15);
+
+  --simbora-text-primary: var(--simbora-color-grafite-mineral);
+  --simbora-text-secondary: #4B5563;
+  --simbora-text-muted: #64748B;
+  --simbora-text-inverse: var(--simbora-color-branco-suave);
+  --simbora-text-highlight: var(--simbora-color-amarelo-energia);
+
+  --simbora-border-light: #E2E8F0;
+  --simbora-border-subtle: rgba(18, 61, 50, 0.12);
+  --simbora-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* --- TIPOGRAFIA --- */
+  --simbora-font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --simbora-font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --simbora-font-mono: 'JetBrains Mono', monospace;
+
+  --simbora-fs-hero: 3.0rem;       /* 48px */
+  --simbora-fs-h1: 2.375rem;      /* 38px */
+  --simbora-fs-h2: 1.875rem;      /* 30px */
+  --simbora-fs-h3: 1.5rem;        /* 24px */
+  --simbora-fs-body-lg: 1.125rem; /* 18px */
+  --simbora-fs-body: 0.9375rem;   /* 15px */
+  --simbora-fs-caption: 0.75rem;  /* 12px */
+
+  --simbora-fw-regular: 400;
+  --simbora-fw-medium: 500;
+  --simbora-fw-semibold: 600;
+  --simbora-fw-bold: 700;
+  --simbora-fw-extrabold: 800;
+  --simbora-fw-black: 900;
+
+  /* --- ESPAÇAMENTO MODULAR (8-PT GRID) --- */
+  --simbora-space-1: 4px;
+  --simbora-space-2: 8px;
+  --simbora-space-3: 12px;
+  --simbora-space-4: 16px;
+  --simbora-space-6: 24px;
+  --simbora-space-8: 32px;
+  --simbora-space-12: 48px;
+  --simbora-space-16: 64px;
+
+  /* --- BORDER RADIUS --- */
+  --simbora-radius-sm: 6px;
+  --simbora-radius-md: 10px;
+  --simbora-radius-lg: 16px;
+  --simbora-radius-xl: 24px;
+  --simbora-radius-pill: 9999px;
+  --simbora-radius-app-icon: 22%;
+
+  /* --- ELEVAÇÃO & SOMBRAS --- */
+  --simbora-shadow-sm: 0 1px 3px rgba(18, 61, 50, 0.06);
+  --simbora-shadow-card: 0 4px 16px rgba(18, 61, 50, 0.08);
+  --simbora-shadow-elevated: 0 12px 28px rgba(18, 61, 50, 0.14);
+  --simbora-shadow-modal: 0 20px 48px rgba(0, 0, 0, 0.3);
+
+  /* --- TRANSIÇÕES --- */
+  --simbora-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --simbora-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --simbora-transition-spring: 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

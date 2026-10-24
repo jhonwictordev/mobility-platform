@@ -9,9 +9,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { TripsService } from './trips.service';
-import { TripStatus, VehicleCategory } from '../database/entities';
+import { TripStatus, VehicleCategory, UserRole } from '../database/entities';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
-import { CurrentUser } from '../common/decorators';
+import { RolesGuard } from '../common/guards/roles.guard';
+import { CurrentUser, Roles } from '../common/decorators';
 
 @Controller('trips')
 export class TripsController {
@@ -102,11 +103,14 @@ export class TripsController {
     return this.tripsService.findByDriver(driverId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async getTrip(@Param('id') id: string) {
     return this.tripsService.findById(id);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Get()
   async getAllTrips(@Query('status') status?: TripStatus) {
     return this.tripsService.findAll(status);

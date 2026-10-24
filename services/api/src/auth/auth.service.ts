@@ -59,12 +59,14 @@ export class AuthService {
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
+    // Hardening: Registro público força estritamente o papel de passageiro
+    // Prevenção de Escalada de Privilégios (Privilege Escalation)
     const newUser = await this.usersService.create({
       name: data.name,
       email: data.email,
       password: hashedPassword,
       phone: data.phone,
-      role: data.role || UserRole.PASSENGER,
+      role: UserRole.PASSENGER,
     });
 
     return this.login(newUser);
