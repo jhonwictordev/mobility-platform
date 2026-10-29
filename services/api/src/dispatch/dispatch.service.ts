@@ -172,16 +172,19 @@ export class DispatchService {
       });
 
       if (!trip) throw new NotFoundException('Corrida não encontrada');
-      if (trip.status !== TripStatus.SEARCHING) {
-        throw new BadRequestException(`Corrida não disponível para aceite (status: ${trip.status})`);
+      if (trip.status === TripStatus.ACCEPTED || trip.driverId) {
+        throw new BadRequestException('Corrida já atribuída a outro motorista parceiro');
+      }
+      if (trip.status !== TripStatus.SEARCHING && trip.status !== TripStatus.REQUESTED) {
+        throw new BadRequestException(`Corrida não disponível para aceite (status atual: ${trip.status})`);
       }
 
       const driver = await this.driversService.findById(driverId);
-      if (driver.status !== DriverStatus.ONLINE) {
-        throw new BadRequestException('Motorista precisa estar ONLINE para aceitar corridas');
-      }
       if (driver.approvalStatus !== ApprovalStatus.APPROVED) {
         throw new ForbiddenException('Motorista precisa estar com cadastro APROVADO para aceitar corridas');
+      }
+      if (driver.status === DriverStatus.OFFLINE) {
+        throw new BadRequestException('Motorista precisa estar ONLINE para aceitar corridas');
       }
 
       const offer = this.activeOffers.get(tripId);

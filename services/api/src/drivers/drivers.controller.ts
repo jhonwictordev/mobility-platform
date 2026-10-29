@@ -27,6 +27,29 @@ export class DriversController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('me/earnings/weekly')
+  async getMyWeeklyEarnings(@CurrentUser() user: any): Promise<any> {
+    const driver = await this.driversService.findByUserId(user.userId);
+    if (!driver) {
+      throw new BadRequestException('Perfil de motorista não encontrado.');
+    }
+    return this.driversService.getWeeklyEarnings(driver.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('me/status')
+  async updateMyStatus(
+    @CurrentUser() user: any,
+    @Body('status') status: DriverStatus,
+  ) {
+    const driver = await this.driversService.findByUserId(user.userId);
+    if (!driver) {
+      throw new BadRequestException('Perfil de motorista não encontrado.');
+    }
+    return this.driversService.setStatus(driver.id, status);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Patch('me')
   async updateMyDriverProfile(
     @CurrentUser() user: any,
@@ -63,6 +86,16 @@ export class DriversController {
   @Get('online')
   async getOnlineDrivers() {
     return this.driversService.findOnlineDrivers();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/earnings/weekly')
+  async getWeeklyEarningsById(@Param('id') id: string, @CurrentUser() user: any): Promise<any> {
+    const driver = await this.driversService.findById(id);
+    if (driver.userId !== user.userId && user.role !== UserRole.ADMIN) {
+      throw new ForbiddenException('Não autorizado a consultar ganhos de outro motorista');
+    }
+    return this.driversService.getWeeklyEarnings(id);
   }
 
   @UseGuards(JwtAuthGuard)

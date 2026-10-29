@@ -11,3 +11,4 @@ export { AuditLog } from './audit-log.entity';
 export { Document, DocumentType, DocumentStatus } from './document.entity';
 export { SavedPlace } from './saved-place.entity';
 export { ChatMessage } from './chat-message.entity';
+export { VehicleChangeRequest, VehicleChangeRequestStatus } from './vehicle-change-request.entity';

@@ -1,30 +1,30 @@
 {
   "expo": {
-    "name": "Mobility Passenger",
-    "slug": "mobility-passenger",
+    "name": "SIMBORA Passageiro",
+    "slug": "simbora-passenger",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#4F46E5"
+      "backgroundColor": "#123D32"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mobility.passenger",
+      "bundleIdentifier": "com.simbora.passenger",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Precisamos da sua localização para encontrar motoristas próximos.",
-        "NSLocationAlwaysUsageDescription": "Precisamos da sua localização para acompanhar sua viagem."
+        "NSLocationWhenInUseUsageDescription": "Precisamos da sua localização para encontrar motoristas parceiros próximos.",
+        "NSLocationAlwaysUsageDescription": "Precisamos da sua localização para acompanhar sua viagem com segurança."
       }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#4F46E5"
+        "backgroundColor": "#123D32"
       },
-      "package": "com.mobility.passenger",
+      "package": "com.simbora.passenger",
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
@@ -35,7 +35,7 @@
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     },
     "plugins": [
       "expo-location"

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMBORA! — Animação Cinematográfica Oficial (Motion Branding)</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #080D0B;
+    color: #F8F9F6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 30px 20px;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .badge {
+    background: #FFCC45;
+    color: #123D32;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  h1 { font-size: 32px; font-weight: 900; }
+  h1 span { color: #FFCC45; }
+  p { color: #A3C9BC; font-size: 15px; margin-top: 6px; }
+
+  .video-container {
+    width: 100%;
+    max-width: 1100px;
+    background: #123D32;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 40px rgba(22, 165, 114, 0.2);
+    border: 2px solid rgba(22, 165, 114, 0.4);
+    aspect-ratio: 16 / 9;
+    position: relative;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .meta-strip {
+    display: flex;
+    gap: 30px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: #8C9E95;
+  }
+  .meta-strip strong { color: #FFCC45; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">VÍDEO OFICIAL HOMOLOGADO &bull; 1080P 60FPS</div>
+  <h1>SIMBORA<span>!</span> &bull; Animação Cinematográfica</h1>
+  <p>Motion branding oficial com a logo <strong>Stencil Speed Cut</strong> aprovada (8 segundos &bull; 16:9 Full HD).</p>
+</div>
+
+<div class="video-container">
+  <video src="SIMBORA_ANIMACAO_OFICIAL.mp4" controls autoplay loop playsinline></video>
+</div>
+
+<div class="meta-strip">
+  <span>Resolução: <strong>1920x1080 (16:9 Full HD)</strong></span>
+  <span>Taxa de Quadros: <strong>60 FPS</strong></span>
+  <span>Duração: <strong>8 Segundos</strong></span>
+  <span>Fidelidade: <strong>100% Logo Aprovada</strong></span>
+</div>
+
+</body>
+</html>

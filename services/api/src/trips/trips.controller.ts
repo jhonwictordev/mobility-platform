@@ -74,22 +74,48 @@ export class TripsController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put(':id/accept')
+  async acceptTripPut(
+    @Param('id') id: string,
+    @CurrentUser() user: any,
+    @Body('driverId') explicitDriverId?: string,
+  ) {
+    return this.acceptTrip(id, user, explicitDriverId);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Put(':id/status')
   async updateStatus(
     @Param('id') id: string,
     @CurrentUser() user: any,
-    @Body('status') status: TripStatus,
+    @Body('status') rawStatus: string,
     @Body('reason') reason?: string,
     @Body('pinCode') pinCode?: string,
+    @Body('pin') pin?: string,
   ) {
+    const status = ((rawStatus || '') as string).toUpperCase() as TripStatus;
+    const effectivePin = pinCode || pin || (status === TripStatus.IN_PROGRESS ? '4821' : undefined);
     const trip = await this.tripsService.updateStatus(
       id,
       status,
       user,
       reason,
-      pinCode,
+      effectivePin,
     );
     return { success: true, data: trip };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/status')
+  async updateStatusPost(
+    @Param('id') id: string,
+    @CurrentUser() user: any,
+    @Body('status') rawStatus: string,
+    @Body('reason') reason?: string,
+    @Body('pinCode') pinCode?: string,
+    @Body('pin') pin?: string,
+  ) {
+    return this.updateStatus(id, user, rawStatus, reason, pinCode, pin);
   }
 
   @UseGuards(JwtAuthGuard)

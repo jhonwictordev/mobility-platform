@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function VehiclesAdminPage() {
   const [vehicles, setVehicles] = useState<any[]>([]);
@@ -86,6 +87,12 @@ export default function VehiclesAdminPage() {
         </div>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/vehicles/requests"
+            className="px-4 py-2 bg-[#FFCC45] hover:bg-[#ffc526] text-[#123D32] text-xs font-black rounded-xl transition shadow-xs flex items-center gap-1.5"
+          >
+            <span>🔄 Solicitações de Troca</span>
+          </Link>
           <button
             onClick={fetchVehicles}
             className="px-4 py-2 bg-white border border-[#E2E8F0] hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-xl transition"

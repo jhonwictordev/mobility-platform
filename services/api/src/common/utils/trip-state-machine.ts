@@ -22,6 +22,7 @@ const VALID_TRANSITIONS: Record<TripStatus, TripStatus[]> = {
   ],
   [TripStatus.ACCEPTED]: [
     TripStatus.DRIVER_ARRIVING,
+    TripStatus.DRIVER_ARRIVED,
     TripStatus.CANCELLED_BY_PASSENGER,
     TripStatus.CANCELLED_BY_DRIVER,
     TripStatus.FAILED,
@@ -53,11 +54,13 @@ const VALID_TRANSITIONS: Record<TripStatus, TripStatus[]> = {
  * Check if a transition from one trip status to another is valid.
  */
 export function isValidTransition(
-  from: TripStatus,
-  to: TripStatus,
+  from: string | TripStatus,
+  to: string | TripStatus,
 ): boolean {
-  const allowed = VALID_TRANSITIONS[from];
-  return allowed ? allowed.includes(to) : false;
+  const normFrom = ((from || '') as string).toUpperCase() as TripStatus;
+  const normTo = ((to || '') as string).toUpperCase() as TripStatus;
+  const allowed = VALID_TRANSITIONS[normFrom];
+  return allowed ? allowed.includes(normTo) : false;
 }
 
 /**

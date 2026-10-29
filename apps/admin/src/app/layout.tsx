@@ -5,6 +5,11 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'SIMBORA Admin — Centro de Operações de Mobilidade',
   description: 'Painel administrativo e despacho em tempo real — Alagoas (Penedo ⇄ Piaçabuçu)',
+  icons: {
+    icon: '/brand/icons/favicon.svg',
+    shortcut: '/brand/icons/favicon.svg',
+    apple: '/brand/icons/app-icon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -83,6 +88,19 @@ export default function RootLayout({
             >
               <span className="text-lg">🛡️</span>
               <span>Veículos & Vistoria</span>
+            </Link>
+
+            <Link
+              href="/vehicles/requests"
+              className="flex items-center justify-between px-4 py-2.5 ml-4 rounded-xl hover:bg-[#1A5243] text-xs font-semibold transition text-slate-200 hover:text-white border-l-2 border-[#16A572]"
+            >
+              <div className="flex items-center gap-2">
+                <span>🔄</span>
+                <span>Solicitações de Troca</span>
+              </div>
+              <span className="text-[9px] font-black bg-[#FFCC45] text-[#123D32] px-1.5 py-0.5 rounded">
+                NOVO
+              </span>
             </Link>
 
             <Link

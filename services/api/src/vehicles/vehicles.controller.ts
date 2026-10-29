@@ -5,12 +5,18 @@ import {
   Body,
   Param,
   Put,
+  Query,
   UseGuards,
   ForbiddenException,
   BadRequestException,
 } from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
-import { Vehicle, VehicleCategory, UserRole } from '../database/entities';
+import {
+  Vehicle,
+  VehicleCategory,
+  VehicleChangeRequestStatus,
+  UserRole,
+} from '../database/entities';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { CurrentUser, Roles } from '../common/decorators';
@@ -61,6 +67,130 @@ export class VehiclesController {
     });
   }
 
+  // ============================================================
+  // VEHICLE CHANGE REQUESTS (SIMBORA 3.4)
+  // Must be declared before :id route
+  // ============================================================
+
+  @UseGuards(JwtAuthGuard)
+  @Post('change-requests')
+  async createChangeRequest(
+    @CurrentUser() user: any,
+    @Body()
+    body: {
+      driverId?: string;
+      currentVehicleId?: string;
+      requestedMake?: string;
+      requestedModel?: string;
+      requestedYear?: number;
+      requestedColor?: string;
+      requestedPlate?: string;
+      requestedRenavam?: string;
+      requestedCategory?: VehicleCategory;
+      requestedSeats?: number;
+      make?: string;
+      model?: string;
+      year?: number;
+      color?: string;
+      plate?: string;
+      renavam?: string;
+      category?: VehicleCategory;
+      seats?: number;
+      reason: string;
+      notes?: string;
+    },
+  ) {
+    let driverId = body.driverId;
+    if (!driverId) {
+      const driver = await this.driversService.findByUserId(user.userId);
+      if (!driver) {
+        throw new BadRequestException('Motorista não localizado para este usuário.');
+      }
+      driverId = driver.id;
+    } else if (user.role !== UserRole.ADMIN) {
+      const driver = await this.driversService.findById(driverId);
+      if (driver.userId !== user.userId) {
+        throw new ForbiddenException('Não autorizado a solicitar alteração para outro motorista.');
+      }
+    }
+
+    const normalizedData = {
+      requestedMake: body.requestedMake || body.make || '',
+      requestedModel: body.requestedModel || body.model || '',
+      requestedYear: body.requestedYear || body.year || new Date().getFullYear(),
+      requestedColor: body.requestedColor || body.color || 'Branco',
+      requestedPlate: body.requestedPlate || body.plate || '',
+      requestedRenavam: body.requestedRenavam || body.renavam,
+      requestedCategory: body.requestedCategory || body.category || VehicleCategory.ECONOMY,
+      requestedSeats: body.requestedSeats || body.seats || 4,
+      reason: body.reason,
+      notes: body.notes,
+    };
+
+    return this.vehiclesService.createChangeRequest(
+      driverId,
+      body.currentVehicleId || null,
+      normalizedData,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('change-requests/my')
+  async getMyChangeRequests(@CurrentUser() user: any) {
+    const driver = await this.driversService.findByUserId(user.userId);
+    if (!driver) return [];
+    return this.vehiclesService.findChangeRequestsByDriverId(driver.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('change-requests')
+  async listChangeRequests(
+    @CurrentUser() user: any,
+    @Query('status') status?: VehicleChangeRequestStatus,
+  ) {
+    if (user.role !== UserRole.ADMIN) {
+      const driver = await this.driversService.findByUserId(user.userId);
+      if (!driver) return [];
+      return this.vehiclesService.findChangeRequestsByDriverId(driver.id);
+    }
+    return this.vehiclesService.findAllChangeRequests(status);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('change-requests/:id')
+  async getChangeRequestById(@Param('id') id: string) {
+    return this.vehiclesService.findChangeRequestById(id);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Put('change-requests/:id/approve')
+  async approveChangeRequest(
+    @Param('id') id: string,
+    @CurrentUser() user: any,
+    @Body('notes') notes?: string,
+  ) {
+    return this.vehiclesService.approveChangeRequest(id, user.userId, notes);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Put('change-requests/:id/reject')
+  async rejectChangeRequest(
+    @Param('id') id: string,
+    @CurrentUser() user: any,
+    @Body('rejectionReason') rejectionReason: string,
+  ) {
+    if (!rejectionReason || !rejectionReason.trim()) {
+      throw new BadRequestException('A justificativa de reprovação é obrigatória.');
+    }
+    return this.vehiclesService.rejectChangeRequest(id, rejectionReason, user.userId);
+  }
+
+  // ============================================================
+  // VEHICLE RETRIEVAL & INSPECTION
+  // ============================================================
+
   @UseGuards(JwtAuthGuard)
   @Get('my')
   async getMyVehicles(@CurrentUser() user: any) {
@@ -74,7 +204,6 @@ export class VehiclesController {
   async getByDriver(@Param('driverId') driverId: string, @CurrentUser() user: any) {
     const driver = await this.driversService.findById(driverId);
     if (driver.userId !== user.userId && user.role !== UserRole.ADMIN) {
-      // Passengers can only see approved active vehicles
       const vehicles = await this.vehiclesService.findByDriverId(driverId);
       return vehicles.filter((v) => v.approved && v.isActive);
     }

@@ -1,16 +1,26 @@
 {
   "expo": {
-    "name": "Mobility Driver",
-    "slug": "mobility-driver",
+    "name": "SIMBORA Motorista",
+    "slug": "simbora-driver",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#123D32"
+    },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mobility.driver"
+      "bundleIdentifier": "com.simbora.driver"
     },
     "android": {
-      "package": "com.mobility.driver",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#123D32"
+      },
+      "package": "com.simbora.driver",
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",

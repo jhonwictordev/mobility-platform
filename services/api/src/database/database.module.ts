@@ -12,6 +12,7 @@ import {
   Document,
   SavedPlace,
   ChatMessage,
+  VehicleChangeRequest,
 } from './entities';
 
 @Module({
@@ -30,6 +31,7 @@ import {
         Document,
         SavedPlace,
         ChatMessage,
+        VehicleChangeRequest,
       ],
       synchronize: true, // Auto schema sync in dev
       logging: false,
@@ -45,6 +47,7 @@ import {
       Document,
       SavedPlace,
       ChatMessage,
+      VehicleChangeRequest,
     ]),
   ],
   exports: [TypeOrmModule],
