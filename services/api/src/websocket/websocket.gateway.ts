@@ -222,4 +222,10 @@ export class MobilityWebSocketGateway
   broadcastAdmin(event: string, payload: any) {
     this.server?.to('admin').emit(event, payload);
   }
+
+  broadcastEvent(event: string, payload: any) {
+    this.server?.emit(event, payload);
+    this.server?.to('admin').emit(`admin:${event}`, payload);
+  }
+
 }

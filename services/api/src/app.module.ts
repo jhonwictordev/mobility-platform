@@ -14,6 +14,7 @@ import { DispatchModule } from './dispatch/dispatch.module';
 import { PaymentsModule } from './payments/payments.module';
 import { TripsModule } from './trips/trips.module';
 import { AdminModule } from './admin/admin.module';
+import { CarpoolsModule } from './carpools/carpools.module';
 import { SecurityHeadersMiddleware } from './common/middleware/security.middleware';
 
 @Module({
@@ -33,8 +34,10 @@ import { SecurityHeadersMiddleware } from './common/middleware/security.middlewa
     PaymentsModule,
     TripsModule,
     AdminModule,
+    CarpoolsModule,
   ],
 })
+
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(SecurityHeadersMiddleware).forRoutes('*');

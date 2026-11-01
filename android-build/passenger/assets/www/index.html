@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SIMBORA - Passageiro</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Brand Official Typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            simbora: {
+              deep: '#123D32',      // Verde Principal
+              vibrant: '#16A572',   // Verde Vibrante
+              energy: '#FFCC45',    // Amarelo Destaque
+              clean: '#F8F9F6',     // Branco Suave
+              dark: '#17211D',      // Grafite Mineral
+              accent: '#0d2821',    // Verde Mais Escuro
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- MapLibre GL JS v3.6.2 (Real WebGL Map Engine) -->
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+
+  <!-- Turf.js v6.5.0 -->
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Socket.IO Client -->
+  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: #F8F9F6;
+      color: #17211D;
+      height: 100vh;
+      overflow: hidden;
+    }
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-thumb { background: #16A572; border-radius: 2px; }
+
+    .vehicle-marker {
+      width: 42px;
+      height: 42px;
+      background: #123D32;
+      border: 3px solid #FFCC45;
+      border-radius: 50%;
+      box-shadow: 0 6px 16px rgba(18, 61, 50, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #F8F9F6;
+      font-size: 18px;
+      transition: transform 0.08s linear;
+      will-change: transform;
+    }
+    .pin-marker {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .pin-origin { background: #16A572; color: #123D32; border: 3px solid #FFFFFF; }
+    .pin-dest { background: #FFCC45; color: #123D32; border: 3px solid #123D32; }
+  </style>
+</head>
+<body class="flex flex-col h-full w-full select-none relative bg-[#F8F9F6]">
+
+  <!-- TOP HEADER -->
+  <header class="bg-[#123D32] px-4 py-3 flex items-center justify-between border-b border-[#16A572]/30 shadow-md z-30">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-xl bg-[#FFCC45] flex items-center justify-center font-black text-[#123D32] text-sm shadow">
+        S!
+      </div>
+      <div>
+        <h1 class="text-xs font-black tracking-wide text-[#F8F9F6]">SIMBORA <span class="text-[#FFCC45]">Passageiro</span></h1>
+        <p class="text-[9px] text-[#16A572] font-black uppercase">Marina Silva • Piaçabuçu</p>
+      </div>
+    </div>
+
+    <!-- Diagnostic & Network Pill -->
+    <div class="flex items-center gap-2">
+      <button onclick="toggleDiagHost()" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#17211D] border border-[#16A572]/40 text-[10px] font-bold text-slate-200">
+        <span class="w-2 h-2 rounded-full bg-[#16A572] animate-pulse"></span>
+        <span id="p-host-label">3001</span>
+      </button>
+      <div class="w-7 h-7 rounded-full bg-[#16A572] flex items-center justify-center font-black text-[#123D32] text-xs shadow border border-[#FFCC45]">
+        MS
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN VIEWPORT ==================== -->
+  <main class="flex-1 relative overflow-hidden flex flex-col">
+
+    <!-- PAGE 1: HOME (MAP & BOTTOM SHEET) -->
+    <div id="p-screen-home" class="p-page-view flex-1 flex flex-col relative w-full h-full overflow-hidden">
+      
+      <!-- REAL MAP CONTAINER (MapLibre GL JS) -->
+      <div class="relative flex-1 w-full bg-slate-200 overflow-hidden">
+        <div id="passenger-map" class="w-full h-full"></div>
+
+        <!-- Floating Top Card (Origin / Destination) -->
+        <div id="p-floating-route-card" class="absolute top-3 left-3 right-3 bg-[#F8F9F6]/95 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-[#123D32]/20 z-10">
+          <div class="flex items-start gap-2.5">
+            <div class="flex flex-col items-center pt-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#16A572]"></span>
+              <span class="w-0.5 h-5 bg-slate-300 my-0.5"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FFCC45] border border-[#123D32]"></span>
+            </div>
+            <div class="flex-1 space-y-1">
+              <div class="border-b border-slate-200 pb-1">
+                <p class="text-[9px] font-bold text-slate-500 uppercase flex items-center justify-between">
+                  <span>Embarque</span>
+                  <span class="text-[#16A572] font-bold text-[9px]">Piaçabuçu (Centro)</span>
+                </p>
+                <p class="text-xs font-black text-[#123D32] truncate">Praça São Francisco de Borja, 100</p>
+              </div>
+              <div>
+                <p class="text-[9px] font-bold text-slate-500 uppercase flex items-center justify-between">
+                  <span>Destino</span>
+                  <span class="text-[#123D32] bg-[#FFCC45] px-1.5 py-0.2 rounded text-[9px] font-bold">102 Cidades AL</span>
+                </p>
+                <p id="p-card-destination" class="text-xs font-black text-[#123D32] truncate">Penedo (Centro Histórico)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recenter / Follow Controls -->
+        <div class="absolute bottom-4 right-3 flex flex-col gap-2 z-10">
+          <button onclick="passengerMapFitRoute()" class="w-9 h-9 rounded-full bg-[#F8F9F6] text-[#123D32] shadow-lg flex items-center justify-center hover:bg-slate-100 transition border border-[#123D32]/20" title="Ajustar Rota Completa">
+            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+          </button>
+          <button onclick="passengerMapFollowCar()" class="w-9 h-9 rounded-full bg-[#F8F9F6] text-[#16A572] shadow-lg flex items-center justify-center hover:bg-slate-100 transition border border-[#123D32]/20" title="Seguir Veículo">
+            <i data-lucide="navigation" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Sheet (Dynamic States) -->
+      <div class="bg-[#F8F9F6] border-t border-slate-200 rounded-t-3xl shadow-2xl p-4 relative z-20 transition-all duration-300 max-h-[380px] overflow-y-auto mb-16">
+        
+        <!-- STATE 0: INITIAL SEARCH (WITH DISCRETE SERVICE SELECTOR) -->
+        <div id="p-state-initial" class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-black text-sm text-[#123D32]">Olá, Marina!</h3>
+              <p class="text-xs text-slate-500">Selecione o serviço desejado em Alagoas:</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#16A572]/15 text-[#123D32] border border-[#16A572]">
+              102 Cidades AL
+            </span>
+          </div>
+
+          <!-- SELETOR DE MODALIDADE ORIGINAL -->
+          <div class="flex items-center gap-1.5 p-1 bg-slate-200/80 rounded-2xl text-xs font-bold">
+            <button onclick="switchPassengerModality('rides')" id="p-btn-mod-rides" class="flex-1 py-1.5 px-3 rounded-xl bg-[#123D32] text-[#FFCC45] font-black transition flex items-center justify-center gap-1.5 shadow-xs">
+              <span>⚡</span> Corrida Agora
+            </button>
+            <button onclick="switchPassengerModality('carpools')" id="p-btn-mod-carpools" class="flex-1 py-1.5 px-3 rounded-xl text-slate-600 hover:text-[#123D32] transition flex items-center justify-center gap-1.5">
+              <span>🚗</span> Caronas Intermunicipais
+            </button>
+          </div>
+
+          <!-- FLOW A: CORRIDA AGORA (ORIGINAL 100% PRESERVADO) -->
+          <div id="p-rides-flow-view" class="space-y-3">
+            <!-- Big Destination Trigger -->
+            <div onclick="openMunicipalityModal()" class="flex items-center gap-3 p-3 bg-white rounded-2xl border-2 border-[#16A572]/40 shadow-xs cursor-pointer hover:border-[#16A572] transition group">
+              <div class="w-8 h-8 rounded-xl bg-[#123D32] text-[#FFCC45] flex items-center justify-center font-bold text-sm">
+                🔍
+              </div>
+              <div class="flex-1">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Para onde vamos?</p>
+                <p class="text-xs font-black text-slate-800">Penedo (Centro Histórico) • AL-101</p>
+              </div>
+              <span class="text-[10px] font-bold text-[#16A572] bg-[#16A572]/10 px-2 py-1 rounded-lg">
+                Confirmar ➔
+              </span>
+            </div>
+
+            <!-- Categories Selection Card -->
+            <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Escolha a Categoria:</span>
+              <div class="space-y-1.5">
+                <div onclick="selectCategory('comum')" id="cat-comum" class="flex items-center justify-between p-2.5 rounded-xl border-2 border-[#16A572] bg-[#16A572]/10 cursor-pointer">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-lg">🚗</span>
+                    <div>
+                      <h4 class="text-xs font-black text-[#123D32]">SIMBORA Comum</h4>
+                      <p class="text-[9px] text-slate-500">4 min • Rápido e acessível</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-black text-[#123D32]">R$ 38,50</span>
+                </div>
+
+                <div onclick="selectCategory('conforto')" id="cat-conforto" class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200 bg-white cursor-pointer opacity-75">
+                  <div class="flex items-center gap-2.5">
+                    <span class="text-lg">✨</span>
+                    <div>
+                      <h4 class="text-xs font-black text-[#123D32]">SIMBORA Conforto</h4>
+                      <p class="text-[9px] text-slate-500">Sedan com ar-condicionado</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-black text-[#123D32]">R$ 48,00</span>
+                </div>
+              </div>
+
+              <!-- Action Button Solicitar Corrida -->
+              <button onclick="requestRideNow()" class="w-full py-3 bg-[#123D32] hover:bg-[#0d2821] text-[#FFCC45] font-black rounded-xl text-xs shadow-lg transition flex items-center justify-center gap-2 mt-2">
+                <span>SOLICITAR CORRIDA AGORA ➔</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- FLOW B: CARONAS INTERMUNICIPAIS (BLABLACAR MODULE) -->
+          <div id="p-carpools-flow-view" class="hidden space-y-3">
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-black uppercase text-[#123D32] tracking-wider flex items-center gap-1">
+                  <span>🔍</span> Pesquisar Carona
+                </span>
+                <span class="text-[9px] font-bold text-[#16A572] bg-[#16A572]/10 px-2 py-0.5 rounded-full">Alagoas Conectada</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div>
+                  <label class="text-[9px] font-bold text-slate-400 uppercase">Origem:</label>
+                  <select id="p-cp-select-origin" onchange="filterCarpoolsView()" class="w-full mt-0.5 p-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-[#123D32]">
+                    <option value="Piaçabuçu">Piaçabuçu</option>
+                    <option value="Penedo">Penedo</option>
+                    <option value="Maceió">Maceió</option>
+                    <option value="Arapiraca">Arapiraca</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[9px] font-bold text-slate-400 uppercase">Destino:</label>
+                  <select id="p-cp-select-dest" onchange="filterCarpoolsView()" class="w-full mt-0.5 p-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-[#123D32]">
+                    <option value="Penedo">Penedo</option>
+                    <option value="Maceió">Maceió</option>
+                    <option value="Arapiraca">Arapiraca</option>
+                    <option value="Piaçabuçu">Piaçabuçu</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lista de Caronas Disponíveis -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between px-1">
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider" id="p-cp-list-header">Caronas Disponíveis (2)</span>
+                <button onclick="fetchLiveCarpools()" class="text-[10px] font-bold text-[#16A572] hover:underline flex items-center gap-1">
+                  🔄 Atualizar
+                </button>
+              </div>
+
+              <div id="p-carpools-cards-container" class="space-y-2">
+                <!-- Renderizado via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATE 2: RIDE IN PROGRESS WITH PIN 4821 -->
+        <div id="p-state-inprogress" class="hidden space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <div>
+              <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#16A572]/15 px-2 py-0.5 rounded-md">Corrida em Andamento</span>
+              <h4 class="font-black text-sm text-[#123D32] mt-0.5">Carlos Oliveira • Fiat Cronos</h4>
+              <p class="text-[10px] text-slate-500">Placa: QTT-4A82 • Avaliação: ⭐ 4.98</p>
+            </div>
+            <div class="text-right">
+              <span class="text-xs font-black text-[#123D32]">R$ 38,50</span>
+              <span class="text-[9px] text-[#16A572] block font-bold">PIX Direto</span>
+            </div>
+          </div>
+
+          <!-- PIN Security Display -->
+          <div class="bg-[#123D32] text-[#F8F9F6] p-3 rounded-2xl flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-[#FFCC45]">Código de Segurança (PIN)</p>
+              <p class="text-xs text-slate-300">Informe verbalmente ao motorista</p>
+            </div>
+            <div class="bg-[#17211D] px-3.5 py-1.5 rounded-xl border border-[#16A572] font-mono text-xl font-black tracking-widest text-[#FFCC45]">
+              4 8 2 1
+            </div>
+          </div>
+
+          <button onclick="finishPassengerTrip()" class="w-full py-2.5 bg-slate-200 hover:bg-slate-300 text-[#123D32] font-black rounded-xl text-xs transition">
+            Finalizar Corrida
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FIXED BOTTOM NAVIGATION BAR -->
+  <nav class="absolute bottom-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-md border-t border-slate-200 flex items-center justify-around px-2 z-30 pb-3 text-slate-500 shadow-lg">
+    <button onclick="switchPassengerTab('home')" id="p-tab-home" class="p-tab-btn flex flex-col items-center gap-0.5 text-[#123D32] font-black transition">
+      <i data-lucide="map-pin" class="w-4 h-4"></i>
+      <span class="text-[9px]">Início</span>
+    </button>
+    <button onclick="alert('Histórico de viagens do passageiro.');" id="p-tab-activity" class="p-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-[#123D32] font-semibold transition">
+      <i data-lucide="clock" class="w-4 h-4"></i>
+      <span class="text-[9px]">Atividade</span>
+    </button>
+    <button onclick="alert('Chat em tempo real com o motorista Carlos Oliveira.');" id="p-tab-chat" class="p-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-[#123D32] font-semibold transition">
+      <i data-lucide="message-square" class="w-4 h-4"></i>
+      <span class="text-[9px]">Chat</span>
+    </button>
+    <button onclick="alert('Central de Segurança e SOS 190 Alagoas.');" id="p-tab-safety" class="p-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-[#123D32] font-semibold transition">
+      <i data-lucide="shield" class="w-4 h-4"></i>
+      <span class="text-[9px]">Segurança</span>
+    </button>
+    <button onclick="alert('Perfil da passageira Marina Silva.');" id="p-tab-profile" class="p-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-[#123D32] font-semibold transition">
+      <i data-lucide="user" class="w-4 h-4"></i>
+      <span class="text-[9px]">Conta</span>
+    </button>
+  </nav>
+
+  <!-- ==================== MAPLIBRE GL JS ENGINE SCRIPT ==================== -->
+  <script>
+    lucide.createIcons();
+
+    const startCoord = [-36.434405, -10.405602]; // Piaçabuçu
+    const endCoord = [-36.586452, -10.289673];   // Penedo
+
+    const ESRI_STREETS_STYLE = {
+      version: 8,
+      sources: {
+        'esri-streets': {
+          type: 'raster',
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+          ],
+          tileSize: 256,
+          attribution: 'Tiles © Esri'
+        }
+      },
+      layers: [
+        {
+          id: 'esri-streets-layer',
+          type: 'raster',
+          source: 'esri-streets',
+          minzoom: 0,
+          maxzoom: 19
+        }
+      ]
+    };
+
+    let pMap = null;
+    let vehicleMarker = null;
+
+    function initMap() {
+      pMap = new maplibregl.Map({
+        container: 'passenger-map',
+        style: ESRI_STREETS_STYLE,
+        center: startCoord,
+        zoom: 12,
+        attributionControl: false
+      });
+
+      pMap.on('load', () => {
+        // Draw route line Piaçabuçu ➔ Penedo
+        pMap.addSource('route', {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: {
+              type: 'LineString',
+              coordinates: [startCoord, [-36.488238, -10.377492], [-36.524207, -10.301328], endCoord]
+            }
+          }
+        });
+
+        pMap.addLayer({
+          id: 'route-line',
+          type: 'line',
+          source: 'route',
+          layout: { 'line-join': 'round', 'line-cap': 'round' },
+          paint: {
+            'line-color': '#16A572',
+            'line-width': 5
+          }
+        });
+
+        // Origin Marker (Piaçabuçu)
+        const elStart = document.createElement('div');
+        elStart.className = 'pin-marker pin-origin';
+        elStart.innerText = 'P';
+        new maplibregl.Marker({ element: elStart }).setLngLat(startCoord).addTo(pMap);
+
+        // Destination Marker (Penedo)
+        const elEnd = document.createElement('div');
+        elEnd.className = 'pin-marker pin-dest';
+        elEnd.innerText = 'D';
+        new maplibregl.Marker({ element: elEnd }).setLngLat(endCoord).addTo(pMap);
+
+        // Vehicle Marker
+        const elCar = document.createElement('div');
+        elCar.className = 'vehicle-marker';
+        elCar.innerText = '🚗';
+        vehicleMarker = new maplibregl.Marker({ element: elCar }).setLngLat(startCoord).addTo(pMap);
+      });
+    }
+
+    function passengerMapFitRoute() {
+      if (pMap) {
+        const bounds = new maplibregl.LngLatBounds();
+        bounds.extend(startCoord);
+        bounds.extend(endCoord);
+        pMap.fitBounds(bounds, { padding: 40 });
+      }
+    }
+
+    function passengerMapFollowCar() {
+      if (pMap) {
+        pMap.flyTo({ center: startCoord, zoom: 14 });
+      }
+    }
+
+    // Modalidades
+    function switchPassengerModality(modality) {
+      const btnRides = document.getElementById('p-btn-mod-rides');
+      const btnCarpools = document.getElementById('p-btn-mod-carpools');
+      const viewRides = document.getElementById('p-rides-flow-view');
+      const viewCarpools = document.getElementById('p-carpools-flow-view');
+
+      if (modality === 'rides') {
+        btnRides.className = 'flex-1 py-1.5 px-3 rounded-xl bg-[#123D32] text-[#FFCC45] font-black transition flex items-center justify-center gap-1.5 shadow-xs';
+        btnCarpools.className = 'flex-1 py-1.5 px-3 rounded-xl text-slate-600 hover:text-[#123D32] transition flex items-center justify-center gap-1.5';
+        viewRides.classList.remove('hidden');
+        viewCarpools.classList.add('hidden');
+      } else {
+        btnCarpools.className = 'flex-1 py-1.5 px-3 rounded-xl bg-[#123D32] text-[#FFCC45] font-black transition flex items-center justify-center gap-1.5 shadow-xs';
+        btnRides.className = 'flex-1 py-1.5 px-3 rounded-xl text-slate-600 hover:text-[#123D32] transition flex items-center justify-center gap-1.5';
+        viewRides.classList.add('hidden');
+        viewCarpools.classList.remove('hidden');
+        fetchLiveCarpools();
+      }
+    }
+
+    let sampleCarpoolTrips = [
+      {
+        id: 'cp_penedo_maceio_sample',
+        driverName: 'Carlos Oliveira',
+        driverRating: 4.98,
+        vehicleModel: 'Fiat Cronos Precision',
+        vehiclePlate: 'QTT-4A82',
+        originCity: 'Penedo',
+        destinationCity: 'Maceió',
+        departureTime: '06:00',
+        pricePerSeat: 45.00,
+        availableSeats: 2,
+        totalSeats: 3,
+        stops: 'Igreja Nova, São Miguel dos Campos'
+      },
+      {
+        id: 'cp_piacabucu_penedo_sample',
+        driverName: 'Carlos Oliveira',
+        driverRating: 4.98,
+        vehicleModel: 'Fiat Cronos Precision',
+        vehiclePlate: 'QTT-4A82',
+        originCity: 'Piaçabuçu',
+        destinationCity: 'Penedo',
+        departureTime: '07:30',
+        pricePerSeat: 25.00,
+        availableSeats: 3,
+        totalSeats: 3,
+        stops: 'Trevo do Peba'
+      }
+    ];
+
+    async function fetchLiveCarpools() {
+      try {
+        const host = (window.location.hostname === 'localhost') ? 'http://localhost:3001' : 'http://192.168.3.5:3001';
+        const res = await fetch(host + '/carpools/search');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.carpools && data.carpools.length > 0) {
+            sampleCarpoolTrips = data.carpools.map(c => ({
+              id: c.id,
+              driverName: c.driverName || 'Carlos Oliveira',
+              driverRating: 4.98,
+              vehicleModel: c.vehicleModel || 'Fiat Cronos Precision',
+              vehiclePlate: c.vehiclePlate || 'QTT-4A82',
+              originCity: c.originCity,
+              destinationCity: c.destinationCity,
+              departureTime: c.departureTime || '06:00',
+              pricePerSeat: Number(c.pricePerSeat) || 45,
+              availableSeats: c.availableSeats,
+              totalSeats: c.totalSeats,
+              stops: c.intermediateStops ? c.intermediateStops.map(s => s.cityName).join(', ') : 'Direto'
+            }));
+          }
+        }
+      } catch (e) {}
+      renderCarpoolsList(sampleCarpoolTrips);
+    }
+
+    function renderCarpoolsList(trips) {
+      const container = document.getElementById('p-carpools-cards-container');
+      if (!container) return;
+      container.innerHTML = trips.map(t => `
+        <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-[#16A572] transition space-y-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-black text-[#123D32]">${t.originCity} ➔ ${t.destinationCity}</span>
+                <span class="text-[9px] bg-[#16A572]/15 text-[#123D32] px-1.5 py-0.2 rounded font-bold">${t.departureTime}</span>
+              </div>
+              <p class="text-[10px] text-slate-500 mt-0.5">Condutor: <b>${t.driverName}</b> (⭐ ${t.driverRating})</p>
+              <p class="text-[9px] text-slate-400">Veículo: ${t.vehicleModel} • ${t.vehiclePlate}</p>
+              ${t.stops ? `<p class="text-[9px] text-[#16A572] font-semibold">Paradas: ${t.stops}</p>` : ''}
+            </div>
+            <div class="text-right">
+              <span class="text-sm font-black text-[#123D32]">R$ ${t.pricePerSeat.toFixed(2)}</span>
+              <span class="text-[9px] text-slate-400 block">por vaga</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+            <span class="text-[10px] font-bold text-slate-500">
+              Vagas livres: <b class="${t.availableSeats > 0 ? 'text-[#16A572]' : 'text-rose-600'}">${t.availableSeats} de ${t.totalSeats}</b>
+            </span>
+            <button onclick="bookCarpoolSeat('${t.id}')" ${t.availableSeats === 0 ? 'disabled' : ''} class="px-3 py-1.5 bg-[#123D32] hover:bg-[#16A572] text-[#FFCC45] font-black text-[10px] rounded-xl transition shadow-xs disabled:opacity-50">
+              Reservar Vaga ➔
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function bookCarpoolSeat(id) {
+      if (confirm('Confirmar reserva de 1 vaga na viagem intermunicipal?')) {
+        try {
+          const host = (window.location.hostname === 'localhost') ? 'http://localhost:3001' : 'http://192.168.3.5:3001';
+          const res = await fetch(`${host}/carpools/${id}/reservations`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              passengerId: 'marina-silva',
+              passengerName: 'Marina Silva',
+              passengerPhone: '(82) 99123-4567',
+              seatsRequested: 1,
+              originCity: 'Penedo',
+              destinationCity: 'Maceió',
+              totalPrice: 45.00
+            })
+          });
+          if (res.ok) {
+            alert('✅ Reserva Confirmada com Sucesso!
+Vaga garantida no Fiat Cronos.');
+            fetchLiveCarpools();
+          } else {
+            alert('Reserva confirmada em modo demonstração local!');
+          }
+        } catch(e) {
+          alert('Reserva confirmada em modo demonstração local!');
+        }
+      }
+    }
+
+    function requestRideNow() {
+      document.getElementById('p-state-initial').classList.add('hidden');
+      document.getElementById('p-state-inprogress').classList.remove('hidden');
+      alert('⚡ Corrida solicitada com sucesso! Motorista Carlos Oliveira a caminho.');
+    }
+
+    function finishPassengerTrip() {
+      document.getElementById('p-state-inprogress').classList.add('hidden');
+      document.getElementById('p-state-initial').classList.remove('hidden');
+      alert('Corrida concluída com sucesso! Recibo PIX emitido.');
+    }
+
+    function openMunicipalityModal() {
+      alert('102 municípios de Alagoas disponíveis. Destino selecionado: Penedo.');
+    }
+
+    window.addEventListener('load', () => {
+      initMap();
+      renderCarpoolsList(sampleCarpoolTrips);
+    });
+  </script>
+</body>
+</html>

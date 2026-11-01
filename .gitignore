@@ -52,3 +52,33 @@ credentials/
 *.dump
 *.bak
 *.tsbuildinfo
+
+# Temporary testing & backup files
+.test-brave-profile/
+.test-chrome-profile/
+.backup_simbora_4_1/
+.backup_simbora_4_carpool_state/
+*.approved.html
+tests/debug_*
+tests/find_*
+tests/check_*
+tests/apply_*
+tests/fix_extra_brace.js
+tests/locate_scripts.js
+tests/replace_statement.js
+tests/insert_driver_carpools.js
+tests/test_script3_fix.js
+tests/generate_driver_app_4_1.js
+tests/generate_real_native_apps.js
+tests/browser_nav_runner.html
+tests/run_browser_test.js
+tests/run_chrome.js
+tests/last_browser_test_result.json
+
+# Android build intermediate artifacts (preserve src, res, assets, manifest)
+android-build/**/bin/
+android-build/**/gen/
+android-build/**/dex_out/
+android-build/**/*.apk
+android-build/**/*.zip
+android-build/**/*.idsig

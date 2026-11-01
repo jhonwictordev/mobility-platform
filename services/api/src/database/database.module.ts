@@ -13,43 +13,48 @@ import {
   SavedPlace,
   ChatMessage,
   VehicleChangeRequest,
+  CarpoolTrip,
+  CarpoolReservation,
+  CarpoolAlert,
+  CarpoolMessage,
+  CarpoolReview,
+  CarpoolRecurringSchedule,
+  CarpoolFinancialTransaction,
 } from './entities';
+
+const ALL_ENTITIES = [
+  User,
+  Driver,
+  Vehicle,
+  Trip,
+  DriverLocation,
+  Payment,
+  AuditLog,
+  Document,
+  SavedPlace,
+  ChatMessage,
+  VehicleChangeRequest,
+  CarpoolTrip,
+  CarpoolReservation,
+  CarpoolAlert,
+  CarpoolMessage,
+  CarpoolReview,
+  CarpoolRecurringSchedule,
+  CarpoolFinancialTransaction,
+];
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
       database: path.resolve(__dirname, '../../../../mobility.sqlite'),
-      entities: [
-        User,
-        Driver,
-        Vehicle,
-        Trip,
-        DriverLocation,
-        Payment,
-        AuditLog,
-        Document,
-        SavedPlace,
-        ChatMessage,
-        VehicleChangeRequest,
-      ],
+      entities: ALL_ENTITIES,
       synchronize: true, // Auto schema sync in dev
       logging: false,
     }),
-    TypeOrmModule.forFeature([
-      User,
-      Driver,
-      Vehicle,
-      Trip,
-      DriverLocation,
-      Payment,
-      AuditLog,
-      Document,
-      SavedPlace,
-      ChatMessage,
-      VehicleChangeRequest,
-    ]),
+    TypeOrmModule.forFeature(ALL_ENTITIES),
   ],
   exports: [TypeOrmModule],
 })
 export class DatabaseModule {}
+

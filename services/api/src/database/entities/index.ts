@@ -12,3 +12,17 @@ export { Document, DocumentType, DocumentStatus } from './document.entity';
 export { SavedPlace } from './saved-place.entity';
 export { ChatMessage } from './chat-message.entity';
 export { VehicleChangeRequest, VehicleChangeRequestStatus } from './vehicle-change-request.entity';
+export {
+  CarpoolTrip,
+  CarpoolReservation,
+  CarpoolAlert,
+  CarpoolMessage,
+  CarpoolReview,
+  CarpoolRecurringSchedule,
+  CarpoolFinancialTransaction,
+  CarpoolStatus,
+  BookingMode,
+  ReservationStatus,
+  LuggageSize,
+} from './carpool.entity';
+

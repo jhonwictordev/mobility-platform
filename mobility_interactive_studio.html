@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" class="dark">
 <head>
   <meta charset="UTF-8">
@@ -177,6 +177,7 @@
       0% { transform: scaleY(0); opacity: 0.1; }
       100% { transform: scaleY(1); opacity: 1; }
     }
+      .hidden { display: none !important; }
   </style>
 </head>
 
@@ -398,6 +399,8 @@
           <i data-lucide="car" class="w-3.5 h-3.5"></i> Telas Motorista:
         </span>
         <button onclick="switchDriverTab('nav')" id="pill-d-nav" class="px-2.5 py-1 rounded-lg font-bold bg-[#FFCC45] text-[#123D32] transition">🧭 Navegar (GPS)</button>
+        <button onclick="switchDriverTab('carpools')" id="pill-d-carpools" class="px-2.5 py-1 rounded-lg font-bold bg-[#17211D] text-slate-300 hover:text-white border border-[#16A572]/30 transition">👥 Minhas Caronas</button>
+        <button onclick="switchDriverTab('carpools')" id="pill-d-carpools" class="px-2.5 py-1 rounded-lg font-bold bg-[#17211D] text-slate-300 hover:text-white border border-[#16A572]/30 transition">👥 Minhas Caronas</button>
         <button onclick="switchDriverTab('earnings')" id="pill-d-earnings" class="px-2.5 py-1 rounded-lg font-bold bg-[#17211D] text-slate-300 hover:text-white border border-[#16A572]/30 transition">💰 Ganhos PIX</button>
         <button onclick="switchDriverTab('docs')" id="pill-d-docs" class="px-2.5 py-1 rounded-lg font-bold bg-[#17211D] text-slate-300 hover:text-white border border-[#16A572]/30 transition">📋 Documentos</button>
         <button onclick="switchDriverTab('vehicle')" id="pill-d-vehicle" class="px-2.5 py-1 rounded-lg font-bold bg-[#17211D] text-slate-300 hover:text-white border border-[#16A572]/30 transition">🚙 Veículo</button>
@@ -524,12 +527,72 @@
                 <div class="flex items-center justify-between">
                   <div>
                     <h3 class="font-black text-sm text-[#123D32]">Olá, Marina!</h3>
-                    <p class="text-xs text-slate-500">De onde vamos sair e para onde você vai?</p>
+                    <p class="text-xs text-slate-500">Selecione o serviço desejado em Alagoas:</p>
                   </div>
                   <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#16A572]/15 text-[#123D32] border border-[#16A572]">
                     102 Cidades AL
                   </span>
                 </div>
+
+                <!-- SELETOR DISCRETO DE SERVIÇOS (DESIGN SYSTEM OFICIAL) -->
+                <div class="flex items-center gap-1.5 p-1 bg-slate-200/80 rounded-2xl text-xs font-bold">
+                  <button onclick="switchPassengerModality('rides')" id="p-btn-mod-rides" class="flex-1 py-1.5 px-3 rounded-xl bg-[#123D32] text-[#FFCC45] font-black transition flex items-center justify-center gap-1.5 shadow-xs">
+                    <span>⚡</span> Corrida Agora
+                  </button>
+                  <button onclick="switchPassengerModality('carpools')" id="p-btn-mod-carpools" class="flex-1 py-1.5 px-3 rounded-xl text-slate-600 hover:text-[#123D32] transition flex items-center justify-center gap-1.5">
+                    <span>🚗</span> Caronas Intermunicipais
+                  </button>
+                </div>
+
+                <!-- CONTAINER DO FLUXO DE CARONAS INTERMUNICIPAIS (BLABLACAR MODULE) -->
+                <div id="p-carpools-flow-view" class="hidden space-y-3">
+                  <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs space-y-2.5">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[10px] font-black uppercase text-[#123D32] tracking-wider flex items-center gap-1">
+                        <span>🔍</span> Pesquisar Carona
+                      </span>
+                      <span class="text-[9px] font-bold text-[#16A572] bg-[#16A572]/10 px-2 py-0.5 rounded-full">Alagoas Conectada</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                      <div>
+                        <label class="text-[9px] font-bold text-slate-400 uppercase">Origem:</label>
+                        <select id="p-cp-select-origin" onchange="filterCarpoolsView()" class="w-full mt-0.5 p-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-[#123D32]">
+                          <option value="Piaçabuçu">Piaçabuçu</option>
+                          <option value="Penedo">Penedo</option>
+                          <option value="Maceió">Maceió</option>
+                          <option value="Arapiraca">Arapiraca</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="text-[9px] font-bold text-slate-400 uppercase">Destino:</label>
+                        <select id="p-cp-select-dest" onchange="filterCarpoolsView()" class="w-full mt-0.5 p-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-[#123D32]">
+                          <option value="Penedo">Penedo</option>
+                          <option value="Maceió">Maceió</option>
+                          <option value="Arapiraca">Arapiraca</option>
+                          <option value="Piaçabuçu">Piaçabuçu</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Lista de Caronas Disponíveis -->
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between px-1">
+                      <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider" id="p-cp-list-header">Caronas Disponíveis (2)</span>
+                      <button onclick="fetchLiveCarpools()" class="text-[10px] font-bold text-[#16A572] hover:underline flex items-center gap-1">
+                        🔄 Atualizar
+                      </button>
+                    </div>
+
+                    <div id="p-carpools-cards-container" class="space-y-2">
+                      <!-- Renderizado via JS -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CONTAINER DO FLUXO CORRIDA AGORA (ORIGINAL 100% PRESERVADO) -->
+                <div id="p-rides-flow-view" class="space-y-3.5">
 
                 <!-- Big Destination Trigger -->
                 <div onclick="openMunicipalityModal('destination')" class="flex items-center gap-3 p-3 bg-white rounded-2xl border-2 border-[#16A572]/40 shadow-xs cursor-pointer hover:border-[#16A572] transition group">
@@ -1780,26 +1843,312 @@
             </div>
           </div>
 
-          <!-- ==================== PAGE 2: GANHOS (CARTEIRA & GRÁFICO) ==================== -->
-          <div id="d-screen-earnings" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] text-[#F8F9F6] pt-14 pb-20 px-4">
+          <!-- ==================== PAGE 1.5: MINHAS CARONAS (BLABLACAR MODULE) ==================== -->
+          
+          <!-- ==================== PAGE: MINHAS CORRIDAS (URBANAS SOB DEMANDA) ==================== -->
+          <div id="d-screen-rides" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] pt-14 pb-20 px-4 text-[#F8F9F6]">
+            <!-- Header -->
             <div class="flex items-center justify-between mb-3 border-b border-[#123D32] pb-2">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-[#16A572] text-[#123D32] flex items-center justify-center font-black">
+                  <i data-lucide="car" class="w-5 h-5 text-[#123D32]"></i>
+                </div>
+                <div>
+                  <h2 class="text-sm font-black text-[#F8F9F6]">Minhas Corridas</h2>
+                  <p class="text-[10px] text-slate-400">Corridas Urbanas Sob Demanda • Gestão e Histórico</p>
+                </div>
+              </div>
+              <span id="d-rides-status-pill" class="text-[10px] font-black bg-[#16A572]/20 text-[#16A572] border border-[#16A572]/40 px-2 py-0.5 rounded-full">ONLINE</span>
+            </div>
+
+            <!-- Segmented Filter Tabs -->
+            <div class="flex bg-[#123D32] p-1 rounded-xl border border-[#16A572]/30 mb-3 text-[11px] font-bold">
+              <button onclick="filterDriverRides('all')" id="d-rf-all" class="flex-1 py-1 rounded-lg bg-[#FFCC45] text-[#123D32] font-black transition">Todas</button>
+              <button onclick="filterDriverRides('active')" id="d-rf-active" class="flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition">Em Andamento</button>
+              <button onclick="filterDriverRides('completed')" id="d-rf-completed" class="flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition">Concluídas</button>
+              <button onclick="filterDriverRides('cancelled')" id="d-rf-cancelled" class="flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition">Canceladas</button>
+            </div>
+
+            <!-- Live Active Ride Banner (Conditional) -->
+            <div id="d-live-ride-card" class="mb-3 hidden">
+              <div class="p-3.5 rounded-2xl bg-gradient-to-br from-[#123D32] to-[#0d2821] border-2 border-[#16A572] shadow-lg space-y-2">
+                <div class="flex justify-between items-center">
+                  <span class="text-[10px] font-black uppercase text-[#00FF9C] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/40 flex items-center gap-1 animate-pulse">
+                    <span class="w-2 h-2 rounded-full bg-[#00FF9C]"></span> Corrida em Andamento
+                  </span>
+                  <span class="text-xs font-mono font-bold text-[#FFCC45] bg-[#123D32] px-2 py-0.5 rounded-lg border border-[#16A572]/40">PIN: 4821</span>
+                </div>
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 id="d-live-ride-passenger" class="font-black text-sm text-white">Marina Silva</h4>
+                    <p id="d-live-ride-route" class="text-[11px] text-slate-300">Piaçabuçu ➔ Penedo Centro</p>
+                  </div>
+                  <div class="text-right">
+                    <span id="d-live-ride-fare" class="text-base font-black text-[#16A572]">R$ 38,50</span>
+                    <span class="text-[9px] text-slate-400 block">Líquido Condutor</span>
+                  </div>
+                </div>
+                <div class="flex gap-2 pt-1">
+                  <button onclick="switchDriverTab('nav')" class="flex-1 py-2 bg-[#FFCC45] hover:bg-[#ffc526] text-[#123D32] font-black rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
+                    <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Abrir Navegação GPS
+                  </button>
+                  <button onclick="completeCurrentRide()" class="px-3 py-2 bg-[#16A572] hover:bg-[#139063] text-[#123D32] font-black rounded-xl text-xs transition">
+                    Finalizar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- List of Urban Rides -->
+            <div id="d-rides-list-container" class="space-y-2.5 text-xs">
+              <!-- Ride 1 (Marina Silva) -->
+              <div class="d-ride-item bg-[#123D32]/80 p-3.5 rounded-2xl border border-[#16A572]/30 space-y-2" data-status="completed">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/30">Hoje • 14:35</span>
+                      <span class="text-[9px] font-bold text-slate-400">SIMBORA Comum</span>
+                    </div>
+                    <h4 class="font-black text-sm text-white mt-1">Piaçabuçu ➔ Penedo</h4>
+                    <p class="text-[10px] text-slate-300">Embarque: Beira Rio • Destino: Centro Histórico</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-base font-black text-[#16A572]">+ R$ 38,50</span>
+                    <span class="text-[9px] text-slate-400 block">Bruto: R$ 45,30</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/20 text-[11px]">
+                  <span class="text-slate-300 flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-[#FFCC45]"></i> Marina Silva (5.0 ★)</span>
+                  <span class="text-[10px] font-bold text-slate-400">28,2 km • 32 min</span>
+                  <span class="text-[9px] font-black bg-[#16A572]/20 text-[#16A572] px-2 py-0.5 rounded-full">CONCLUÍDA</span>
+                </div>
+
+                <div class="flex gap-2 pt-1 text-[11px]">
+                  <button onclick="alert('Rota concluída: 28,2 km via AL-101 Sul. Repasse PIX de R$ 38,50 efetuado com sucesso!')" class="flex-1 py-1.5 bg-[#17211D] hover:bg-[#123D32] text-slate-200 border border-[#16A572]/30 rounded-xl font-bold transition flex items-center justify-center gap-1">
+                    <i data-lucide="map" class="w-3.5 h-3.5 text-[#FFCC45]"></i> Ver Rota & Detalhes
+                  </button>
+                  <button onclick="alert('Recibo Digital SIMBORA #SB-8921\nPassageiro: Marina Silva\nTarifa Bruta: R$ 45,30\nTaxa Simbora (15%): -R$ 6,80\nLíquido Condutor: R$ 38,50')" class="px-3 py-1.5 bg-[#17211D] hover:bg-[#123D32] text-slate-300 border border-slate-700 rounded-xl font-bold transition flex items-center gap-1">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Recibo
+                  </button>
+                </div>
+              </div>
+
+              <!-- Ride 2 (João Pedro Santos) -->
+              <div class="d-ride-item bg-[#123D32]/80 p-3.5 rounded-2xl border border-[#16A572]/30 space-y-2" data-status="completed">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/30">Hoje • 11:15</span>
+                      <span class="text-[9px] font-bold text-[#FFCC45]">SIMBORA Conforto</span>
+                    </div>
+                    <h4 class="font-black text-sm text-white mt-1">Penedo ➔ Piaçabuçu</h4>
+                    <p class="text-[10px] text-slate-300">Embarque: Cooperativa 1º de Maio • Destino: Trevo AL-101</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-base font-black text-[#16A572]">+ R$ 36,00</span>
+                    <span class="text-[9px] text-slate-400 block">Bruto: R$ 42,35</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/20 text-[11px]">
+                  <span class="text-slate-300 flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-[#FFCC45]"></i> João Pedro Santos (4.9 ★)</span>
+                  <span class="text-[10px] font-bold text-slate-400">26,8 km • 29 min</span>
+                  <span class="text-[9px] font-black bg-[#16A572]/20 text-[#16A572] px-2 py-0.5 rounded-full">CONCLUÍDA</span>
+                </div>
+
+                <div class="flex gap-2 pt-1 text-[11px]">
+                  <button onclick="alert('Rota concluída: 26,8 km via Rodovia AL-101. Repasse PIX de R$ 36,00 efetuado com sucesso!')" class="flex-1 py-1.5 bg-[#17211D] hover:bg-[#123D32] text-slate-200 border border-[#16A572]/30 rounded-xl font-bold transition flex items-center justify-center gap-1">
+                    <i data-lucide="map" class="w-3.5 h-3.5 text-[#FFCC45]"></i> Ver Rota & Detalhes
+                  </button>
+                  <button onclick="alert('Recibo Digital SIMBORA #SB-8919\nPassageiro: João Pedro Santos\nTarifa Bruta: R$ 42,35\nTaxa Simbora (15%): -R$ 6,35\nLíquido Condutor: R$ 36,00')" class="px-3 py-1.5 bg-[#17211D] hover:bg-[#123D32] text-slate-300 border border-slate-700 rounded-xl font-bold transition flex items-center gap-1">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Recibo
+                  </button>
+                </div>
+              </div>
+
+              <!-- Ride 3 (Camila Duarte) -->
+              <div class="d-ride-item bg-[#123D32]/80 p-3.5 rounded-2xl border border-[#16A572]/30 space-y-2" data-status="completed">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/30">Hoje • 09:20</span>
+                      <span class="text-[9px] font-bold text-[#FFCC45]">SIMBORA Mulher</span>
+                    </div>
+                    <h4 class="font-black text-sm text-white mt-1">Penedo (Av. Wanderley) ➔ Orla</h4>
+                    <p class="text-[10px] text-slate-300">Corrida Urbana Curta • Beira Rio São Francisco</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-base font-black text-[#16A572]">+ R$ 14,20</span>
+                    <span class="text-[9px] text-slate-400 block">Bruto: R$ 16,70</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/20 text-[11px]">
+                  <span class="text-slate-300 flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-[#FFCC45]"></i> Camila Duarte (4.98 ★)</span>
+                  <span class="text-[10px] font-bold text-slate-400">5,4 km • 12 min</span>
+                  <span class="text-[9px] font-black bg-[#16A572]/20 text-[#16A572] px-2 py-0.5 rounded-full">CONCLUÍDA</span>
+                </div>
+              </div>
+
+              <!-- Ride 4 (Lucas Vieira) -->
+              <div class="d-ride-item bg-[#123D32]/80 p-3.5 rounded-2xl border border-[#16A572]/30 space-y-2" data-status="completed">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/30">Ontem • 18:40</span>
+                      <span class="text-[9px] font-bold text-slate-400">SIMBORA Comum</span>
+                    </div>
+                    <h4 class="font-black text-sm text-white mt-1">Piaçabuçu (Praia do Peba) ➔ Penedo</h4>
+                    <p class="text-[10px] text-slate-300">Retorno de Praia • Rodovia AL-101</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-base font-black text-[#16A572]">+ R$ 42,00</span>
+                    <span class="text-[9px] text-slate-400 block">Bruto: R$ 49,41</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/20 text-[11px]">
+                  <span class="text-slate-300 flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5 text-[#FFCC45]"></i> Lucas Vieira (4.92 ★)</span>
+                  <span class="text-[10px] font-bold text-slate-400">31,5 km • 38 min</span>
+                  <span class="text-[9px] font-black bg-[#16A572]/20 text-[#16A572] px-2 py-0.5 rounded-full">CONCLUÍDA</span>
+                </div>
+              </div>
+
+              <!-- Ride 5 (Cancelada) -->
+              <div class="d-ride-item bg-[#123D32]/80 p-3.5 rounded-2xl border border-rose-900/40 space-y-2" data-status="cancelled">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[9px] font-black uppercase text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded-md border border-rose-800/40">Ontem • 16:10</span>
+                      <span class="text-[9px] font-bold text-slate-400">SIMBORA Comum</span>
+                    </div>
+                    <h4 class="font-black text-sm text-white mt-1">Penedo Centro ➔ Santa Luzia</h4>
+                    <p class="text-[10px] text-rose-300/80">Cancelada pelo passageiro antes do deslocamento</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm font-black text-slate-400">R$ 0,00</span>
+                    <span class="text-[9px] text-slate-500 block">Sem taxa</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/20 text-[11px]">
+                  <span class="text-slate-400 flex items-center gap-1"><i data-lucide="user-x" class="w-3.5 h-3.5 text-rose-400"></i> Marcos Almeida</span>
+                  <span class="text-[9px] font-black bg-rose-950/70 text-rose-300 px-2 py-0.5 rounded-full border border-rose-800/30">CANCELADA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="d-screen-carpools" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] pt-14 pb-20 px-4 text-[#F8F9F6]">
+            <div class="flex items-center justify-between mb-3 border-b border-[#123D32] pb-2">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-[#FFCC45] text-[#123D32] flex items-center justify-center font-black">
+                  👥
+                </div>
+                <div>
+                  <h2 class="text-sm font-black text-[#F8F9F6]">Minhas Caronas Intermunicipais</h2>
+                  <p class="text-[10px] text-slate-400">Gestão de Viagens • Disponível mesmo OFF-LINE</p>
+                </div>
+              </div>
+              <button onclick="openPublishCarpoolModal()" class="px-2.5 py-1.5 bg-[#16A572] hover:bg-[#139063] text-[#123D32] font-black text-[11px] rounded-xl transition flex items-center gap-1 shadow-xs">
+                <span>➕</span> Publicar
+              </button>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <!-- Card Viagem 1 -->
+              <div class="bg-[#123D32]/80 p-3.5 rounded-2xl border border-[#16A572]/40 space-y-2">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="text-[9px] font-black uppercase text-[#FFCC45] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/30">Saída • 06:00</span>
+                    <h4 class="font-black text-sm text-white mt-1">Penedo ➔ Maceió</h4>
+                    <p class="text-[10px] text-slate-300">Via Igreja Nova e São Miguel dos Campos</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-base font-black text-[#00FF9C]">R$ 45,00</span>
+                    <span class="text-[9px] text-slate-400 block">por assento</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/30 text-[11px]">
+                  <span class="text-slate-300 font-bold">Vagas Livres: <b class="text-[#FFCC45]">2 de 3</b></span>
+                  <span class="text-[10px] font-bold text-[#16A572]">Instant Booking Ativo</span>
+                </div>
+
+                <div class="bg-[#0B1B16] p-2.5 rounded-xl border border-slate-800 space-y-1">
+                  <div class="flex justify-between items-center text-[10px]">
+                    <span class="font-bold text-slate-300">👤 Marina Silva (1 vaga reservada)</span>
+                    <span class="text-[#00FF9C] font-black">CONFIRMADA</span>
+                  </div>
+                  <p class="text-[9px] text-slate-400">Embarque: Beira Rio, Penedo • Desembarque: Maceió</p>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                  <button onclick="alert('Viagem intermunicipal iniciada! Rota carregada no GPS.')" class="flex-1 py-2 bg-[#16A572] text-[#123D32] font-black rounded-xl text-[11px] transition">
+                    Iniciar Viagem
+                  </button>
+                  <button onclick="alert('Chat da carona com Marina Silva aberto.')" class="px-3 py-2 bg-[#17211D] text-slate-200 border border-slate-700 font-bold rounded-xl text-[11px] transition">
+                    💬 Chat
+                  </button>
+                </div>
+              </div>
+
+              <!-- Card Viagem 2 -->
+              <div class="bg-[#123D32]/80 p-3.5 rounded-2xl border border-[#16A572]/40 space-y-2">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="text-[9px] font-black uppercase text-[#FFCC45] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/30">Diária • 07:30</span>
+                    <h4 class="font-black text-sm text-white mt-1">Piaçabuçu ➔ Penedo</h4>
+                    <p class="text-[10px] text-slate-300">Parada: Trevo do Peba (AL-101)</p>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-base font-black text-[#00FF9C]">R$ 25,00</span>
+                    <span class="text-[9px] text-slate-400 block">por assento</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#16A572]/30 text-[11px]">
+                  <span class="text-slate-300 font-bold">Vagas Livres: <b class="text-[#FFCC45]">3 de 3</b></span>
+                  <span class="text-[10px] font-bold text-[#FFCC45]">Aprovação Manual</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                  <button onclick="alert('Viagem intermunicipal iniciada! Rota carregada no GPS.')" class="flex-1 py-2 bg-[#16A572] text-[#123D32] font-black rounded-xl text-[11px] transition">
+                    Iniciar Viagem
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== PAGE 2: GANHOS (CARTEIRA UNIFICADA & GRÁFICO) ==================== -->
+          <div id="d-screen-earnings" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] text-[#F8F9F6] pt-14 pb-20 px-4">
+            <div class="flex items-center justify-between mb-2 border-b border-[#123D32] pb-2">
               <h2 class="text-base font-black text-[#FFCC45] flex items-center gap-2">
                 <i data-lucide="wallet" class="w-5 h-5 text-[#16A572]"></i> Meus Ganhos
               </h2>
               <span class="text-[10px] font-bold bg-[#16A572]/20 text-[#16A572] px-2 py-0.5 rounded-full">Repasse 85%</span>
             </div>
 
-            <!-- Earnings Metrics Header Grid -->
+            <!-- Modality Filter Segmented Bar (SIMBORA 4.1: TODOS | CORRIDAS | CARONAS) -->
+            <div class="flex bg-[#123D32] p-1 rounded-xl border border-[#16A572]/40 mb-3 text-xs font-bold shadow-xs">
+              <button id="d-filter-btn-all" onclick="setDriverEarningsFilter('all')" class="flex-1 py-1.5 rounded-lg text-center transition bg-[#FFCC45] text-[#123D32] font-black">TODOS</button>
+              <button id="d-filter-btn-rides" onclick="setDriverEarningsFilter('rides')" class="flex-1 py-1.5 rounded-lg text-center transition text-slate-300 hover:text-white">CORRIDAS</button>
+              <button id="d-filter-btn-carpools" onclick="setDriverEarningsFilter('carpools')" class="flex-1 py-1.5 rounded-lg text-center transition text-slate-300 hover:text-white">CARONAS</button>
+            </div>
+
+            <!-- Earnings Metrics Header Grid (Dynamically updated by filter) -->
             <div class="grid grid-cols-2 gap-2 mb-3 text-xs">
               <div class="bg-[#123D32]/80 p-3 rounded-2xl border border-[#16A572]/30">
                 <span class="text-[10px] text-slate-400 font-bold uppercase">Ganhos Hoje:</span>
-                <p class="text-lg font-black text-[#16A572] mt-0.5">R$ 178,20</p>
-                <span class="text-[10px] text-slate-400">4 viagens concluídas</span>
+                <p id="d-earnings-today-val" class="text-lg font-black text-[#16A572] mt-0.5">R$ 178,20</p>
+                <span id="d-earnings-today-sub" class="text-[10px] text-slate-400">4 viagens concluídas</span>
               </div>
               <div class="bg-[#123D32]/80 p-3 rounded-2xl border border-[#16A572]/30">
                 <span class="text-[10px] text-slate-400 font-bold uppercase">Ganhos da Semana:</span>
-                <p class="text-lg font-black text-[#FFCC45] mt-0.5">R$ 1.140,00</p>
-                <span class="text-[10px] text-slate-400">Média: R$ 43,84 / corrida</span>
+                <p id="d-earnings-week-val" class="text-lg font-black text-[#FFCC45] mt-0.5">R$ 1.140,00</p>
+                <span id="d-earnings-week-sub" class="text-[10px] text-slate-400">Média: R$ 43,84 / corrida</span>
               </div>
             </div>
 
@@ -1859,46 +2208,101 @@
             </button>
           </div>
 
-          <!-- ==================== SUBPAGE: EXTRATO DO MOTORISTA ==================== -->
+          <!-- ==================== SUBPAGE: EXTRATO DO MOTORISTA (SIMBORA 4.1 UNIFICADO) ==================== -->
           <div id="d-subpage-statement" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] text-[#F8F9F6] pt-14 pb-20 px-4">
             <div class="flex items-center gap-2 mb-3 pb-2 border-b border-[#123D32]">
               <button onclick="goBackDriver()" class="p-1.5 rounded-xl bg-[#123D32] hover:bg-[#0d2821] text-[#FFCC45] transition flex items-center gap-1 font-bold text-xs">
                 <i data-lucide="chevron-left" class="w-4 h-4"></i> Voltar
               </button>
-              <h3 class="font-black text-sm text-[#F8F9F6]">Extrato Financeiro</h3>
+              <h3 class="font-black text-sm text-[#F8F9F6]">Extrato Financeiro Unificado</h3>
             </div>
 
-            <div class="space-y-2.5 text-xs">
-              <div class="p-3 rounded-2xl bg-[#123D32]/70 border border-[#16A572]/30 space-y-1">
+            <!-- Modality Filter Buttons in Statement -->
+            <div class="flex bg-[#123D32] p-1 rounded-xl border border-[#16A572]/30 mb-3 text-[11px] font-bold">
+              <button onclick="filterDriverStatement('all')" id="d-st-all" class="flex-1 py-1 rounded-lg bg-[#FFCC45] text-[#123D32] font-black transition">Todas</button>
+              <button onclick="filterDriverStatement('rides')" id="d-st-rides" class="flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition">Corridas</button>
+              <button onclick="filterDriverStatement('carpools')" id="d-st-carpools" class="flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition">Caronas</button>
+              <button onclick="filterDriverStatement('payouts')" id="d-st-payouts" class="flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition">Saques</button>
+            </div>
+
+            <div id="d-statement-items-container" class="space-y-2.5 text-xs">
+              <!-- Item 1: Corrida Urbana (Marina Silva) -->
+              <div class="d-statement-row p-3 rounded-2xl bg-[#123D32]/70 border border-[#16A572]/30 space-y-1.5" data-category="rides">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/40">CORRIDA URBANA</span>
+                  <span class="text-[10px] text-slate-400">Hoje • 14:35</span>
+                </div>
                 <div class="flex justify-between">
                   <span class="font-bold text-white">Piaçabuçu ➔ Penedo (28,2 km)</span>
-                  <span class="font-black text-[#16A572]">+ R$ 57,80</span>
+                  <span class="font-black text-[#16A572]">+ R$ 38,50</span>
                 </div>
-                <div class="flex justify-between text-[11px] text-slate-400">
-                  <span>Bruto: R$ 68,01 | Taxa SIMBORA (15%): -R$ 10,21</span>
-                  <span class="text-[#FFCC45]">PIX Pago</span>
-                </div>
-              </div>
-
-              <div class="p-3 rounded-2xl bg-[#123D32]/70 border border-[#16A572]/30 space-y-1">
-                <div class="flex justify-between">
-                  <span class="font-bold text-white">Penedo Centro ➔ Cooperativa (8,5 km)</span>
-                  <span class="font-black text-[#16A572]">+ R$ 20,40</span>
-                </div>
-                <div class="flex justify-between text-[11px] text-slate-400">
-                  <span>Bruto: R$ 24,00 | Taxa SIMBORA (15%): -R$ 3,60</span>
-                  <span class="text-[#FFCC45]">PIX Pago</span>
+                <div class="flex justify-between text-[11px] text-slate-400 pt-1 border-t border-[#16A572]/20">
+                  <span>Bruto: R$ 45,30 | Taxa SIMBORA (15%): -R$ 6,80</span>
+                  <span class="text-[#00FF9C] font-bold">Disponível</span>
                 </div>
               </div>
 
-              <div class="p-3 rounded-2xl bg-[#123D32]/70 border border-[#16A572]/30 space-y-1">
-                <div class="flex justify-between">
-                  <span class="font-bold text-white">Penedo ➔ Igreja Nova (31,9 km)</span>
-                  <span class="font-black text-[#16A572]">+ R$ 69,70</span>
+              <!-- Item 2: Carona Intermunicipal (Penedo ➔ Maceió) -->
+              <div class="d-statement-row p-3 rounded-2xl bg-[#123D32]/70 border border-[#FFCC45]/30 space-y-1.5" data-category="carpools">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] font-black uppercase text-[#FFCC45] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#FFCC45]/40">CARONA INTERMUNICIPAL</span>
+                  <span class="text-[10px] text-slate-400">Hoje • 06:00</span>
                 </div>
-                <div class="flex justify-between text-[11px] text-slate-400">
-                  <span>Bruto: R$ 82,00 | Taxa SIMBORA (15%): -R$ 12,30</span>
-                  <span class="text-[#FFCC45]">PIX Pago</span>
+                <div class="flex justify-between">
+                  <span class="font-bold text-white">Penedo ➔ Maceió (1 assento Marina S.)</span>
+                  <span class="font-black text-[#FFCC45]">+ R$ 38,25</span>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-400 pt-1 border-t border-[#16A572]/20">
+                  <span>Valor: R$ 45,00 | Taxa SIMBORA (15%): -R$ 6,75</span>
+                  <span class="text-[#00FF9C] font-bold">Disponível</span>
+                </div>
+              </div>
+
+              <!-- Item 3: Corrida Urbana (João Pedro Santos) -->
+              <div class="d-statement-row p-3 rounded-2xl bg-[#123D32]/70 border border-[#16A572]/30 space-y-1.5" data-category="rides">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/40">CORRIDA URBANA</span>
+                  <span class="text-[10px] text-slate-400">Hoje • 11:15</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-bold text-white">Penedo ➔ Piaçabuçu (26,8 km)</span>
+                  <span class="font-black text-[#16A572]">+ R$ 36,00</span>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-400 pt-1 border-t border-[#16A572]/20">
+                  <span>Bruto: R$ 42,35 | Taxa SIMBORA (15%): -R$ 6,35</span>
+                  <span class="text-[#00FF9C] font-bold">Disponível</span>
+                </div>
+              </div>
+
+              <!-- Item 4: Corrida Urbana (Camila Duarte) -->
+              <div class="d-statement-row p-3 rounded-2xl bg-[#123D32]/70 border border-[#16A572]/30 space-y-1.5" data-category="rides">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] font-black uppercase text-[#16A572] bg-[#17211D] px-2 py-0.5 rounded-md border border-[#16A572]/40">CORRIDA URBANA</span>
+                  <span class="text-[10px] text-slate-400">Hoje • 09:20</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-bold text-white">Penedo Av. Wanderley ➔ Orla (5,4 km)</span>
+                  <span class="font-black text-[#16A572]">+ R$ 14,20</span>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-400 pt-1 border-t border-[#16A572]/20">
+                  <span>Bruto: R$ 16,70 | Taxa SIMBORA (15%): -R$ 2,50</span>
+                  <span class="text-[#00FF9C] font-bold">Disponível</span>
+                </div>
+              </div>
+
+              <!-- Item 5: Saque PIX Realizado -->
+              <div class="d-statement-row p-3 rounded-2xl bg-[#123D32]/70 border border-slate-700/60 space-y-1.5" data-category="payouts">
+                <div class="flex justify-between items-center">
+                  <span class="text-[9px] font-black uppercase text-slate-300 bg-[#17211D] px-2 py-0.5 rounded-md border border-slate-700">SAQUE PIX IMEDIATO</span>
+                  <span class="text-[10px] text-slate-400">Ontem • 21:30</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-bold text-white">Transferência PIX para Conta Pessoal</span>
+                  <span class="font-black text-rose-400">- R$ 250,00</span>
+                </div>
+                <div class="flex justify-between text-[11px] text-slate-400 pt-1 border-t border-[#16A572]/20">
+                  <span>Chave: carlos.oliveira@pix</span>
+                  <span class="text-[#00FF9C] font-bold">Liquidado Banco Central</span>
                 </div>
               </div>
             </div>
@@ -1907,9 +2311,11 @@
           <!-- ==================== PAGE 3: DOCUMENTOS (HOMOLOGAÇÃO) ==================== -->
           <div id="d-screen-docs" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] text-[#F8F9F6] pt-14 pb-20 px-4">
             <div class="flex items-center justify-between mb-3 border-b border-[#123D32] pb-2">
-              <h2 class="text-base font-black text-[#FFCC45] flex items-center gap-2">
-                <i data-lucide="file-check" class="w-5 h-5 text-[#16A572]"></i> Meus Documentos
-              </h2>
+              <div class="flex items-center gap-2">
+                <button onclick="switchDriverTab('profile')" class="p-1 rounded-xl bg-[#123D32] hover:bg-[#0d2821] text-[#FFCC45] transition flex items-center gap-1 font-bold text-[11px]">
+                  <i data-lucide="chevron-left" class="w-4 h-4"></i> Voltar ao Perfil
+                </button>
+              </div>
               <span class="text-[10px] font-black bg-[#16A572] text-[#123D32] px-2 py-0.5 rounded-full">HOMOLOGADO</span>
             </div>
 
@@ -2009,9 +2415,11 @@
           <!-- ==================== PAGE 4: VEÍCULO (MEU VEÍCULO) ==================== -->
           <div id="d-screen-vehicle" class="d-page-view hidden flex-1 flex flex-col relative w-full overflow-y-auto bg-[#17211D] text-[#F8F9F6] pt-14 pb-20 px-4">
             <div class="flex items-center justify-between mb-3 border-b border-[#123D32] pb-2">
-              <h2 class="text-base font-black text-[#FFCC45] flex items-center gap-2">
-                <i data-lucide="car" class="w-5 h-5 text-[#16A572]"></i> Meu Veículo
-              </h2>
+              <div class="flex items-center gap-2">
+                <button onclick="switchDriverTab('profile')" class="p-1 rounded-xl bg-[#123D32] hover:bg-[#0d2821] text-[#FFCC45] transition flex items-center gap-1 font-bold text-[11px]">
+                  <i data-lucide="chevron-left" class="w-4 h-4"></i> Voltar ao Perfil
+                </button>
+              </div>
               <span class="text-[10px] font-bold bg-[#16A572]/20 text-[#16A572] px-2 py-0.5 rounded-full">Simbora Conforto</span>
             </div>
 
@@ -2191,7 +2599,49 @@
               <span class="text-[10px] font-black bg-[#FFCC45] text-[#123D32] px-2 py-0.5 rounded-full">DIAMANTE</span>
             </div>
 
-            <!-- 12 Required Driver Menu Items -->
+            <!-- SEÇÃO MIGRADA: VEÍCULO E DOCUMENTOS (SIMBORA 4.1) -->
+            <div class="mb-3">
+              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1 mb-1.5 flex items-center justify-between">
+                <span>Veículo e Documentação</span>
+                <span class="text-[9px] text-[#16A572] font-bold">100% Regularizado</span>
+              </div>
+              <div class="bg-[#123D32]/80 rounded-2xl border border-[#16A572]/40 shadow-xs divide-y divide-[#16A572]/20 text-xs overflow-hidden">
+                <div onclick="navigateToDriver('d-screen-vehicle')" class="p-3.5 flex items-center justify-between cursor-pointer hover:bg-[#123D32] transition">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-[#16A572]/20 text-[#16A572] flex items-center justify-center font-bold">
+                      <i data-lucide="car" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span class="font-bold text-white block">Meu Veículo</span>
+                      <span class="text-[11px] text-slate-300">Toyota Corolla XEi • QTT-4821</span>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold bg-[#16A572] text-[#123D32] px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> Ativo
+                  </span>
+                </div>
+
+                <div onclick="navigateToDriver('d-screen-docs')" class="p-3.5 flex items-center justify-between cursor-pointer hover:bg-[#123D32] transition">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-[#16A572]/20 text-[#16A572] flex items-center justify-center font-bold">
+                      <i data-lucide="file-check" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span class="font-bold text-white block">Meus Documentos</span>
+                      <span class="text-[11px] text-slate-300">CNH com EAR, CRLV e ANTT</span>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold bg-[#16A572] text-[#123D32] px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12 Required Driver Menu Items (Preservados Integralmente) -->
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1 mb-1.5">
+              Configurações e Conta
+            </div>
             <div class="bg-[#123D32]/70 rounded-2xl border border-[#16A572]/30 shadow-xs divide-y divide-[#16A572]/20 text-xs mb-3">
               <div onclick="navigateToDriver('d-subpage-personal-data')" class="p-3 flex items-center justify-between cursor-pointer hover:bg-[#123D32] transition">
                 <span class="flex items-center gap-2.5 font-bold text-slate-200"><i data-lucide="user" class="w-4 h-4 text-[#FFCC45]"></i> 1. Dados Pessoais</span>
@@ -2479,23 +2929,23 @@
             </div>
           </div>
 
-          <!-- ==================== DRIVER FIXED BOTTOM NAVIGATION BAR ==================== -->
-          <nav class="absolute bottom-0 left-0 right-0 h-16 bg-[#123D32]/95 backdrop-blur-md border-t border-[#16A572]/40 flex items-center justify-around px-2 z-30 pb-3 text-slate-300 shadow-lg">
+          <!-- ==================== DRIVER FIXED BOTTOM NAVIGATION BAR (SIMBORA 4.1: 5 ITENS) ==================== -->
+          <nav class="absolute bottom-0 left-0 right-0 h-16 bg-[#123D32]/95 backdrop-blur-md border-t border-[#16A572]/40 flex items-center justify-around px-2 z-50 pb-3 text-slate-300 shadow-lg pointer-events-auto">
             <button onclick="switchDriverTab('nav')" id="d-tab-nav" class="d-tab-btn flex flex-col items-center gap-0.5 text-[#FFCC45] font-black transition">
               <i data-lucide="navigation" class="w-4 h-4"></i>
               <span class="text-[9px]">Navegar</span>
             </button>
+            <button onclick="switchDriverTab('rides')" id="d-tab-rides" class="d-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition">
+              <i data-lucide="car" class="w-4 h-4"></i>
+              <span class="text-[9px]">Corridas</span>
+            </button>
+            <button onclick="switchDriverTab('carpools')" id="d-tab-carpools" class="d-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span class="text-[9px]">Caronas</span>
+            </button>
             <button onclick="switchDriverTab('earnings')" id="d-tab-earnings" class="d-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition">
               <i data-lucide="wallet" class="w-4 h-4"></i>
               <span class="text-[9px]">Ganhos</span>
-            </button>
-            <button onclick="switchDriverTab('docs')" id="d-tab-docs" class="d-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition">
-              <i data-lucide="file-check" class="w-4 h-4"></i>
-              <span class="text-[9px]">Documentos</span>
-            </button>
-            <button onclick="switchDriverTab('vehicle')" id="d-tab-vehicle" class="d-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition">
-              <i data-lucide="car" class="w-4 h-4"></i>
-              <span class="text-[9px]">Veículo</span>
             </button>
             <button onclick="switchDriverTab('profile')" id="d-tab-profile" class="d-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition">
               <i data-lucide="user-check" class="w-4 h-4"></i>
@@ -4309,14 +4759,20 @@
     }
 
     function showDriverPage(targetId) {
-      document.querySelectorAll('.d-page-view').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.d-page-view').forEach(el => {
+        el.classList.add('hidden');
+        el.style.display = 'none';
+      });
       const target = document.getElementById(targetId);
       if (target) {
         target.classList.remove('hidden');
+        target.style.display = 'flex';
       }
 
       let currentBranch = 'profile';
       if (targetId.startsWith('d-screen-nav')) currentBranch = 'nav';
+      else if (targetId === 'd-screen-rides') currentBranch = 'rides';
+      else if (targetId === 'd-screen-carpools') currentBranch = 'carpools';
       else if (targetId.includes('earnings') || targetId.includes('statement')) currentBranch = 'earnings';
       else if (targetId.includes('docs') || targetId.includes('upload-doc')) currentBranch = 'docs';
       else if (targetId.includes('vehicle') || targetId.includes('inspections')) currentBranch = 'vehicle';
@@ -4325,7 +4781,7 @@
       updateDriverNavUI(currentBranch);
 
       if (currentBranch === 'earnings') {
-        loadDriverWeeklyEarnings();
+        renderDriverWeeklyEarnings();
       } else if (currentBranch === 'vehicle') {
         checkDriverVehicleChangeStatus();
       }
@@ -4339,10 +4795,12 @@
     function switchDriverTab(tabName) {
       const map = {
         'nav': 'd-screen-nav',
+        'rides': 'd-screen-rides',
+        'carpools': 'd-screen-carpools',
         'earnings': 'd-screen-earnings',
+        'profile': 'd-screen-profile',
         'docs': 'd-screen-docs',
-        'vehicle': 'd-screen-vehicle',
-        'profile': 'd-screen-profile'
+        'vehicle': 'd-screen-vehicle'
       };
       const targetId = map[tabName] || 'd-screen-nav';
       dNavStack = [targetId];
@@ -4353,15 +4811,18 @@
       document.querySelectorAll('.d-tab-btn').forEach(b => {
         b.className = 'd-tab-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-white font-semibold transition';
       });
-      const activeTab = document.getElementById('d-tab-' + branch);
+
+      // Highlight Perfil tab if navigating to vehicle or docs (migrated inside profile)
+      const effectiveBranch = (branch === 'docs' || branch === 'vehicle') ? 'profile' : branch;
+      const activeTab = document.getElementById('d-tab-' + effectiveBranch);
       if (activeTab) {
         activeTab.className = 'd-tab-btn flex flex-col items-center gap-0.5 text-[#FFCC45] font-black transition';
       }
 
-      ['nav', 'earnings', 'docs', 'vehicle', 'profile'].forEach(t => {
+      ['nav', 'rides', 'carpools', 'earnings', 'profile'].forEach(t => {
         const pill = document.getElementById('pill-d-' + t);
         if (pill) {
-          if (t === branch) {
+          if (t === effectiveBranch) {
             pill.className = 'px-2.5 py-1 rounded-lg font-bold bg-[#FFCC45] text-[#123D32] transition';
           } else {
             pill.className = 'px-2.5 py-1 rounded-lg font-bold bg-[#17211D] text-slate-300 hover:text-white border border-[#16A572]/30 transition';
@@ -4993,77 +5454,145 @@
     // ==========================================
     // SIMBORA 3.4 — ANIMATED WEEKLY EARNINGS DASHBOARD
     // ==========================================
+    // ==================== UNIFIED EARNINGS ENGINE (SIMBORA 4.1) ====================
+    let driverEarningsFilter = 'all'; // 'all' | 'rides' | 'carpools'
+
+    const unifiedEarningsData = {
+      days: [
+        { dayKey: 'SEG', label: 'Segunda-feira', dateFormatted: '20/10', ridesNet: 85.00, ridesGross: 100.00, ridesCount: 2, carpoolsNet: 34.00, carpoolsGross: 40.00, carpoolsCount: 1 },
+        { dayKey: 'TER', label: 'Terça-feira', dateFormatted: '21/10', ridesNet: 112.25, ridesGross: 132.06, ridesCount: 3, carpoolsNet: 45.00, carpoolsGross: 52.94, carpoolsCount: 1 },
+        { dayKey: 'QUA', label: 'Quarta-feira', dateFormatted: '22/10', ridesNet: 55.75, ridesGross: 65.59, ridesCount: 1, carpoolsNet: 25.00, carpoolsGross: 29.41, carpoolsCount: 1 },
+        { dayKey: 'QUI', label: 'Quinta-feira', dateFormatted: '23/10', ridesNet: 133.50, ridesGross: 157.06, ridesCount: 4, carpoolsNet: 45.00, carpoolsGross: 52.94, carpoolsCount: 1 },
+        { dayKey: 'SEX', label: 'Sexta-feira', dateFormatted: '24/10', ridesNet: 186.50, ridesGross: 219.41, ridesCount: 5, carpoolsNet: 60.00, carpoolsGross: 70.59, carpoolsCount: 2 },
+        { dayKey: 'SAB', label: 'Sábado', dateFormatted: '25/10', ridesNet: 142.00, ridesGross: 167.06, ridesCount: 4, carpoolsNet: 45.00, carpoolsGross: 52.94, carpoolsCount: 1 },
+        { dayKey: 'DOM', label: 'Domingo', dateFormatted: '26/10', ridesNet: 0.00, ridesGross: 0.00, ridesCount: 0, carpoolsNet: 0.00, carpoolsGross: 0.00, carpoolsCount: 0 }
+      ],
+      summary: {
+        all: {
+          todayNet: 178.20,
+          todaySub: '4 viagens concluídas (3 corridas + 1 carona)',
+          weekGross: 1140.00,
+          weekNet: 969.00,
+          weekSub: 'Média: R$ 43,84 / viagem',
+          totalTrips: 26
+        },
+        rides: {
+          todayNet: 133.20,
+          todaySub: '3 corridas concluídas hoje',
+          weekGross: 841.18,
+          weekNet: 715.00,
+          weekSub: 'Média: R$ 37,63 / corrida',
+          totalTrips: 19
+        },
+        carpools: {
+          todayNet: 45.00,
+          todaySub: '1 carona concluída (Penedo ➔ Maceió)',
+          weekGross: 298.82,
+          weekNet: 254.00,
+          weekSub: 'Média: R$ 42,69 / carona',
+          totalTrips: 7
+        }
+      }
+    };
+
+    function setDriverEarningsFilter(filter) {
+      driverEarningsFilter = filter;
+      ['all', 'rides', 'carpools'].forEach(f => {
+        const btn = document.getElementById('d-filter-btn-' + f);
+        if (btn) {
+          if (f === filter) {
+            btn.className = 'flex-1 py-1.5 rounded-lg text-center transition bg-[#FFCC45] text-[#123D32] font-black shadow-xs';
+          } else {
+            btn.className = 'flex-1 py-1.5 rounded-lg text-center transition text-slate-300 hover:text-white';
+          }
+        }
+      });
+      renderDriverWeeklyEarnings();
+    }
+
     async function loadDriverWeeklyEarnings() {
+      renderDriverWeeklyEarnings();
+    }
+
+    function renderDriverWeeklyEarnings() {
       const container = document.getElementById('d-weekly-bars-container');
       if (!container) return;
 
-      let data = null;
-      try {
-        const res = await fetch('http://localhost:3001/drivers/me/earnings/weekly');
-        if (res.ok) {
-          data = await res.json();
-          logEvent('DRIVER', 'Dados de ganhos semanais carregados do backend real.');
-        }
-      } catch (e) {
-        console.warn('Backend weekly earnings unreachable, using verified weekly dataset', e);
-      }
+      const filter = driverEarningsFilter;
+      const summary = unifiedEarningsData.summary[filter];
 
-      if (!data || !data.days) {
-        data = {
-          days: [
-            { dayKey: 'SEG', label: 'Segunda-feira', dateFormatted: '20/10', grossEarnings: 140.00, netEarnings: 119.00, tripsCount: 3, averagePerTrip: 39.67, isMax: false, isMin: false },
-            { dayKey: 'TER', label: 'Terça-feira', dateFormatted: '21/10', grossEarnings: 185.00, netEarnings: 157.25, tripsCount: 4, averagePerTrip: 39.31, isMax: false, isMin: false },
-            { dayKey: 'QUA', label: 'Quarta-feira', dateFormatted: '22/10', grossEarnings: 95.00, netEarnings: 80.75, tripsCount: 2, averagePerTrip: 40.38, isMax: false, isMin: true },
-            { dayKey: 'QUI', label: 'Quinta-feira', dateFormatted: '23/10', grossEarnings: 210.00, netEarnings: 178.50, tripsCount: 5, averagePerTrip: 35.70, isMax: false, isMin: false },
-            { dayKey: 'SEX', label: 'Sexta-feira', dateFormatted: '24/10', grossEarnings: 290.00, netEarnings: 246.50, tripsCount: 7, averagePerTrip: 35.21, isMax: true, isMin: false },
-            { dayKey: 'SAB', label: 'Sábado', dateFormatted: '25/10', grossEarnings: 220.00, netEarnings: 187.00, tripsCount: 5, averagePerTrip: 37.40, isMax: false, isMin: false },
-            { dayKey: 'DOM', label: 'Domingo', dateFormatted: '26/10', grossEarnings: 0.00, netEarnings: 0.00, tripsCount: 0, averagePerTrip: 0.00, isMax: false, isMin: false }
-          ],
-          weeklySummary: {
-            totalGross: 1140.00,
-            totalNet: 969.00,
-            totalTrips: 26,
-            averageFare: 37.27,
-            platformFeePercentage: 15,
-            maxDay: 'SEX',
-            minDay: 'QUA'
-          }
-        };
-      }
+      // Update Today card
+      const todayVal = document.getElementById('d-earnings-today-val');
+      const todaySub = document.getElementById('d-earnings-today-sub');
+      if (todayVal) todayVal.innerText = 'R$ ' + summary.todayNet.toFixed(2).replace('.', ',');
+      if (todaySub) todaySub.innerText = summary.todaySub;
 
-      driverWeeklyEarningsData = data;
+      // Update Week card
+      const weekVal = document.getElementById('d-earnings-week-val');
+      const weekSub = document.getElementById('d-earnings-week-sub');
+      if (weekVal) weekVal.innerText = 'R$ ' + summary.weekGross.toFixed(2).replace('.', ',');
+      if (weekSub) weekSub.innerText = summary.weekSub;
 
+      // Update Total Net Badge
       const badge = document.getElementById('d-earnings-weekly-total-badge');
-      const totalNet = data.weeklyTotalNet || (data.weeklySummary && data.weeklySummary.totalNet) || 0;
-      if (badge && totalNet) {
-        badge.innerText = `Total Líquido: R$ ${Number(totalNet).toFixed(2).replace('.', ',')}`;
+      if (badge) {
+        badge.innerText = 'Total Líquido: R$ ' + summary.weekNet.toFixed(2).replace('.', ',');
       }
 
-      const maxNet = Math.max(...data.days.map(d => d.netEarnings), 100);
+      // Calculate values according to filter
+      const dayValues = unifiedEarningsData.days.map(d => {
+        let net = 0;
+        let gross = 0;
+        let count = 0;
+        if (filter === 'all') {
+          net = d.ridesNet + d.carpoolsNet;
+          gross = d.ridesGross + d.carpoolsGross;
+          count = d.ridesCount + d.carpoolsCount;
+        } else if (filter === 'rides') {
+          net = d.ridesNet;
+          gross = d.ridesGross;
+          count = d.ridesCount;
+        } else if (filter === 'carpools') {
+          net = d.carpoolsNet;
+          gross = d.carpoolsGross;
+          count = d.carpoolsCount;
+        }
+        return {
+          ...d,
+          activeNet: net,
+          activeGross: gross,
+          activeCount: count
+        };
+      });
 
-      container.innerHTML = data.days.map((day, idx) => {
-        const heightPct = day.netEarnings === 0 ? 5 : Math.max(8, Math.round((day.netEarnings / maxNet) * 100));
+      const maxNet = Math.max(...dayValues.map(d => d.activeNet), 50);
+
+      container.innerHTML = dayValues.map((day, idx) => {
+        const heightPct = day.activeNet === 0 ? 5 : Math.max(8, Math.round((day.activeNet / maxNet) * 100));
         let barBg = 'bg-[#16A572]/70 hover:bg-[#16A572]';
         let borderStyle = 'border-t border-[#16A572]';
         let glowStyle = '';
         let labelColor = 'text-slate-400';
 
-        if (day.isMax) {
+        const isMax = day.activeNet === maxNet && day.activeNet > 0;
+        const isMin = day.activeNet > 0 && day.activeNet === Math.min(...dayValues.filter(d => d.activeNet > 0).map(d => d.activeNet));
+
+        if (isMax) {
           barBg = 'bg-gradient-to-t from-[#16A572] to-[#00FF9C]';
           borderStyle = 'border-2 border-[#00FF9C]';
           glowStyle = 'box-shadow: 0 0 14px rgba(0, 255, 156, 0.6);';
           labelColor = 'text-[#00FF9C] font-black';
-        } else if (day.isMin && day.netEarnings > 0) {
+        } else if (isMin) {
           barBg = 'bg-gradient-to-t from-[#123D32] to-[#FFCC45]/60';
           borderStyle = 'border-t border-[#FFCC45]';
           labelColor = 'text-[#FFCC45]';
-        } else if (day.netEarnings === 0) {
+        } else if (day.activeNet === 0) {
           barBg = 'bg-slate-700/40';
           borderStyle = 'border-t border-slate-600';
           labelColor = 'text-slate-600';
         }
 
-        const delay = idx * 90;
+        const delay = idx * 60;
 
         return `
           <div
@@ -5075,18 +5604,18 @@
             <div class="w-full h-28 flex items-end justify-center">
               <div
                 class="w-full max-w-[22px] rounded-t-lg transition-all duration-300 ${barBg} ${borderStyle}"
-                style="height: ${heightPct}%; animation: earningsBarGrow 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: ${delay}ms; ${glowStyle}"
+                style="height: ${heightPct}%; animation: earningsBarGrow 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: ${delay}ms; ${glowStyle}"
               ></div>
             </div>
-            <span class="text-[9px] font-bold ${labelColor}">${day.dayCode || day.dayKey}</span>
+            <span class="text-[9px] font-bold ${labelColor}">${day.dayKey}</span>
           </div>
         `;
       }).join('');
     }
 
     function showChartTooltip(e, dayIndex) {
-      if (!driverWeeklyEarningsData || !driverWeeklyEarningsData.days[dayIndex]) return;
-      const day = driverWeeklyEarningsData.days[dayIndex];
+      const day = unifiedEarningsData.days[dayIndex];
+      if (!day) return;
       const tooltip = document.getElementById('d-chart-tooltip');
       if (!tooltip) return;
 
@@ -5098,13 +5627,15 @@
 
       const formatBRL = (v) => 'R$ ' + Number(v).toFixed(2).replace('.', ',');
 
-      const label = day.dayName || day.label || 'Dia';
-      const dateFormatted = day.dateFormatted || day.date || '';
-      if (tDay) tDay.innerText = `${label} (${dateFormatted})`;
-      if (tGross) tGross.innerText = formatBRL(day.grossEarnings);
-      if (tNet) tNet.innerText = formatBRL(day.netEarnings);
-      if (tTrips) tTrips.innerText = `${day.tripsCount} viagem${day.tripsCount === 1 ? '' : 'ns'}`;
-      if (tAvg) tAvg.innerText = formatBRL(day.averagePerTrip);
+      const totalNet = day.ridesNet + day.carpoolsNet;
+      const totalGross = day.ridesGross + day.carpoolsGross;
+      const totalCount = day.ridesCount + day.carpoolsCount;
+
+      if (tDay) tDay.innerText = `${day.label} (${day.dateFormatted})`;
+      if (tGross) tGross.innerText = formatBRL(totalGross);
+      if (tNet) tNet.innerText = formatBRL(totalNet);
+      if (tTrips) tTrips.innerText = `${day.ridesCount} corridas + ${day.carpoolsCount} caronas`;
+      if (tAvg) tAvg.innerText = formatBRL(totalCount > 0 ? (totalNet / totalCount) : 0);
 
       tooltip.classList.remove('hidden');
     }
@@ -5112,6 +5643,52 @@
     function hideChartTooltip() {
       const tooltip = document.getElementById('d-chart-tooltip');
       if (tooltip) tooltip.classList.add('hidden');
+    }
+
+    function filterDriverRides(filter) {
+      ['all', 'active', 'completed', 'cancelled'].forEach(f => {
+        const btn = document.getElementById('d-rf-' + f);
+        if (btn) {
+          if (f === filter) {
+            btn.className = 'flex-1 py-1 rounded-lg bg-[#FFCC45] text-[#123D32] font-black transition';
+          } else {
+            btn.className = 'flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition';
+          }
+        }
+      });
+
+      const items = document.querySelectorAll('.d-ride-item');
+      items.forEach(item => {
+        const status = item.getAttribute('data-status');
+        if (filter === 'all' || status === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function filterDriverStatement(filter) {
+      ['all', 'rides', 'carpools', 'payouts'].forEach(f => {
+        const btn = document.getElementById('d-st-' + f);
+        if (btn) {
+          if (f === filter) {
+            btn.className = 'flex-1 py-1 rounded-lg bg-[#FFCC45] text-[#123D32] font-black transition';
+          } else {
+            btn.className = 'flex-1 py-1 rounded-lg text-slate-300 hover:text-white transition';
+          }
+        }
+      });
+
+      const rows = document.querySelectorAll('.d-statement-row');
+      rows.forEach(row => {
+        const cat = row.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          row.style.display = 'block';
+        } else {
+          row.style.display = 'none';
+        }
+      });
     }
 
     // Load backend official terms & privacy dynamically
